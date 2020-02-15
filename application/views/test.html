@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<style type="text/css">
+	.month-picker {
+    width: 200px;
+    display: none;
+    position: absolute;
+    z-index: 9999;
+}
+.month-year-input {
+    width: 60px;
+}
+.month-picker .year-container-all {
+    cursor: pointer;
+}
+.month-picker-year-table .year-container-all {
+    text-align: center;
+}
+.month-picker-year-table .year-title, .month-picker-year-table .year-container {
+    float: left;
+    display: inline-block;
+}
+.month-picker-year-table .year-title {
+    margin-left: 20px;
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+}
+.month-picker-year-table .year {
+    margin-right: 15px;
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+}
+.month-picker-year-table .year-container {
+    width: 50px;
+}
+.month-picker-year-table .previous-year {
+    width: 35px;
+}
+.month-picker-year-table .next-year {
+    width: 35px;
+    text-align: right;
+}
+.month-picker-year-table button {
+    width: 1.8em;
+    height: 1.8em;
+    text-align: center;
+    cursor: pointer;
+}
+.month-picker-year-table .year-container {
+    text-align: center;
+}
+.month-picker-month-table td {
+    height: 35px;
+    text-align: center;
+    font-size: 12px;
+}
+.month-picker-open-button {
+    height: 20px;
+    width: 20px;
+    vertical-align: bottom;
+}
+.month-picker-invalid-message {
+    display: none;
+    background-color: Yellow;
+}
+.month-picker-disabled {
+    background-color: #e1e1e1;
+}
+/******* ***************** ********/
+
+/* Unit Testing CSS */
+
+/******* ***************** ********/
+ body {
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+}
+.option-block {
+    background-color: #e1e1e1;
+    display: none;
+    padding: 4px;
+    border: solid 1px Black;
+}
+.option {
+    margin: 20px;
+    border: solid 1px Gray;
+    padding: 4px;
+}
+.option-link {
+    text-decoration: underline;
+    color: Blue;
+    cursor: pointer;
+    font-weight: bold;
+}
+.option-link:hover {
+    color: Red;
+}
+.option-type {
+    margin: 0 25px;
+}
+.demo {
+    background-color: #e1e1e1;
+    padding: 8px;
+    border: solid 1px Gray;
+}
+.demo-position {
+    background-color: #e1e1e1;
+    padding: 8px;
+    border: solid 1px Gray;
+    width:100%;
+}
+.text-right{
+    text-align: right;   
+}
+</style>
+<script type="text/javascript">
+	/*
+	Masked Input plugin for jQuery
+	Copyright (c) 2007-2013 Josh Bush (digitalbush.com)
+	Licensed under the MIT license (http://digitalbush.com/projects/masked-input-plugin/#license)
+	Version: 1.3.1
+*/
+(function(e){function t(){var e=document.createElement("input"),t="onpaste";return e.setAttribute(t,""),"function"==typeof e[t]?"paste":"input"}var n,a=t()+".mask",r=navigator.userAgent,i=/iphone/i.test(r),o=/android/i.test(r);e.mask={definitions:{9:"[0-9]",a:"[A-Za-z]","*":"[A-Za-z0-9]"},dataName:"rawMaskFn",placeholder:"_"},e.fn.extend({caret:function(e,t){var n;if(0!==this.length&&!this.is(":hidden"))return"number"==typeof e?(t="number"==typeof t?t:e,this.each(function(){this.setSelectionRange?this.setSelectionRange(e,t):this.createTextRange&&(n=this.createTextRange(),n.collapse(!0),n.moveEnd("character",t),n.moveStart("character",e),n.select())})):(this[0].setSelectionRange?(e=this[0].selectionStart,t=this[0].selectionEnd):document.selection&&document.selection.createRange&&(n=document.selection.createRange(),e=0-n.duplicate().moveStart("character",-1e5),t=e+n.text.length),{begin:e,end:t})},unmask:function(){return this.trigger("unmask")},mask:function(t,r){var c,l,s,u,f,h;return!t&&this.length>0?(c=e(this[0]),c.data(e.mask.dataName)()):(r=e.extend({placeholder:e.mask.placeholder,completed:null},r),l=e.mask.definitions,s=[],u=h=t.length,f=null,e.each(t.split(""),function(e,t){"?"==t?(h--,u=e):l[t]?(s.push(RegExp(l[t])),null===f&&(f=s.length-1)):s.push(null)}),this.trigger("unmask").each(function(){function c(e){for(;h>++e&&!s[e];);return e}function d(e){for(;--e>=0&&!s[e];);return e}function m(e,t){var n,a;if(!(0>e)){for(n=e,a=c(t);h>n;n++)if(s[n]){if(!(h>a&&s[n].test(R[a])))break;R[n]=R[a],R[a]=r.placeholder,a=c(a)}b(),x.caret(Math.max(f,e))}}function p(e){var t,n,a,i;for(t=e,n=r.placeholder;h>t;t++)if(s[t]){if(a=c(t),i=R[t],R[t]=n,!(h>a&&s[a].test(i)))break;n=i}}function g(e){var t,n,a,r=e.which;8===r||46===r||i&&127===r?(t=x.caret(),n=t.begin,a=t.end,0===a-n&&(n=46!==r?d(n):a=c(n-1),a=46===r?c(a):a),k(n,a),m(n,a-1),e.preventDefault()):27==r&&(x.val(S),x.caret(0,y()),e.preventDefault())}function v(t){var n,a,i,l=t.which,u=x.caret();t.ctrlKey||t.altKey||t.metaKey||32>l||l&&(0!==u.end-u.begin&&(k(u.begin,u.end),m(u.begin,u.end-1)),n=c(u.begin-1),h>n&&(a=String.fromCharCode(l),s[n].test(a)&&(p(n),R[n]=a,b(),i=c(n),o?setTimeout(e.proxy(e.fn.caret,x,i),0):x.caret(i),r.completed&&i>=h&&r.completed.call(x))),t.preventDefault())}function k(e,t){var n;for(n=e;t>n&&h>n;n++)s[n]&&(R[n]=r.placeholder)}function b(){x.val(R.join(""))}function y(e){var t,n,a=x.val(),i=-1;for(t=0,pos=0;h>t;t++)if(s[t]){for(R[t]=r.placeholder;pos++<a.length;)if(n=a.charAt(pos-1),s[t].test(n)){R[t]=n,i=t;break}if(pos>a.length)break}else R[t]===a.charAt(pos)&&t!==u&&(pos++,i=t);return e?b():u>i+1?(x.val(""),k(0,h)):(b(),x.val(x.val().substring(0,i+1))),u?t:f}var x=e(this),R=e.map(t.split(""),function(e){return"?"!=e?l[e]?r.placeholder:e:void 0}),S=x.val();x.data(e.mask.dataName,function(){return e.map(R,function(e,t){return s[t]&&e!=r.placeholder?e:null}).join("")}),x.attr("readonly")||x.one("unmask",function(){x.unbind(".mask").removeData(e.mask.dataName)}).bind("focus.mask",function(){clearTimeout(n);var e;S=x.val(),e=y(),n=setTimeout(function(){b(),e==t.length?x.caret(0,e):x.caret(e)},10)}).bind("blur.mask",function(){y(),x.val()!=S&&x.change()}).bind("keydown.mask",g).bind("keypress.mask",v).bind(a,function(){setTimeout(function(){var e=y(!0);x.caret(e),r.completed&&e==x.val().length&&r.completed.call(x)},0)}),y()}))}})})(jQuery);
+
+/*
+https://github.com/KidSysco/jquery-ui-month-picker/
+
+Version 2.2
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation;
+version 3.0. This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, visit
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt.
+*/
+;
+(function ($, window, document) {
+    var _markup;
+    var _speed = 500;
+    var _disabledClass = 'month-picker-disabled';
+    var _inputMask = '99/9999';
+    var _defaultPos = { my: 'left top+1', at: 'left bottom' };
+    var _setupErr = 'MonthPicker Setup Error: ';
+    var _posErrr = _setupErr + 'The jQuery UI position plug-in must be loaded in order to specify a position.';
+    
+    $.MonthPicker = {
+        i18n: {
+            year: "Year",
+            prevYear: "Previous Year",
+            nextYear: "Next Year",
+            next5Years: 'Jump Forward 5 Years',
+            prev5Years: 'Jump Back 5 Years',
+            nextLabel: "Next",
+            prevLabel: "Prev",
+            buttonText: "Open Month Chooser",
+            jumpYears: "Jump Years",
+            months: ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
+        }
+    };
+    
+    _markup =
+        '<div class="ui-widget-header ui-helper-clearfix ui-corner-all">' +
+            '<table class="month-picker-year-table" width="100%" border="0" cellspacing="1" cellpadding="2">' +
+                '<tr>' +
+                    '<td class="previous-year"><button>&nbsp;</button></td>' +
+                    '<td class="year-container-all">' +
+                        '<div class="year-title"></div>' +
+                        '<div id="year-container"><span class="year"></span></div>' +
+                    '</td>' +
+                    '<td class="next-year"><button>&nbsp;</button></td>' +
+                '</tr>' +
+            '</table>' +
+        '</div>' +
+        '<div class="ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">' +
+            '<table class="month-picker-month-table" width="100%" border="0" cellspacing="1" cellpadding="2">' +
+                '<tr>' +
+                    '<td><button class="button-1" type="button" /></td>' +
+                    '<td><button class="button-2" type="button" /></td>' +
+                    '<td><button class="button-3" type="button" /></td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><button class="button-4" type="button" /></td>' +
+                    '<td><button class="button-5" type="button" /></td>' +
+                    '<td><button class="button-6" type="button" /></td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><button class="button-7" type="button" /></td>' +
+                    '<td><button class="button-8" type="button" /></td>' +
+                    '<td><button class="button-9" type="button" /></td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><button class="button-10" type="button" /></td>' +
+                    '<td><button class="button-11" type="button" /></td>' +
+                    '<td><button class="button-12" type="button" /></td>' +
+                '</tr>' +
+            '</table>' +
+        '</div>';
+
+    $.widget("KidSysco.MonthPicker", {
+
+        /******* Properties *******/
+
+        options: {
+            i18n: null,
+            Position: null,
+            StartYear: null,
+            ShowIcon: true,
+            UseInputMask: false,
+            ValidationErrorMessage: null,
+            Disabled: false,
+            OnAfterMenuOpen: $.noop,
+            OnAfterMenuClose: $.noop,
+            OnAfterNextYear: $.noop,
+            OnAfterNextYears: $.noop,
+            OnAfterPreviousYear: $.noop,
+            OnAfterPreviousYears: $.noop,
+            OnAfterChooseMonth: $.noop,
+            OnAfterChooseYear: $.noop,
+            OnAfterChooseYears: $.noop,
+            OnAfterChooseMonths: $.noop
+        },
+
+        _monthPickerMenu: null,
+
+        _monthPickerButton: null,
+
+        _validationMessage: null,
+
+        _yearContainer: null,
+        
+        _isMonthInputType: null,
+
+        _enum: {
+            _overrideStartYear: 'MonthPicker_OverrideStartYear'
+        },
+
+        /******* jQuery UI Widget Factory Overrides ********/
+
+        _destroy: function () {
+            if (jQuery.mask && this.options.UseInputMask) {
+                this.element.unmask();
+            }
+
+            this.element.val('')
+                .css('color', '')
+                .removeClass('month-year-input')
+                .removeData(this._enum._overrideStartYear)
+                .unbind();
+
+            $(document).unbind('click.MonthPicker' + this.element.attr('id'), $.proxy(this._hide, this));
+
+            if(this._monthPickerMenu){
+                this._monthPickerMenu.remove();
+                this._monthPickerMenu = null;
+            }
+
+            if (this.monthPickerButton) {
+                this._monthPickerButton.remove();
+                this._monthPickerButton = null;
+            }
+
+            if (this._validationMessage) {
+                this._validationMessage.remove();
+                this._validationMessage = null;
+            }
+        },
+
+        _setOption: function (key, value) {
+            switch (key) {
+                case 'i18n':
+                    // Pass a clone i18n object to the this._super.
+                    value = $.extend({}, value);
+                    break;
+                case 'Destroy':
+                    this._destroy();
+                    return;
+	        }
+	        
+	        // In jQuery UI 1.8, manually invoke the _setOption method from the base widget.
+            //$.Widget.prototype._setOption.apply(this, arguments);
+            // In jQuery UI 1.9 and above, you use the _super method instead.
+            this._super(key, value);
+            
+            switch (key) {
+	            case 'Position':
+                    if (!$.ui.position) {
+                        alert(_posErrr);
+                    }
+                    break;
+                case 'Disabled':
+                    this._setDisabledState();
+                    break;
+                 case 'UseInputMask':
+                    this._setUseInputMask();
+                    break;
+                case 'StartYear':
+                    this._setStartYear();
+                    if (value !== null) {
+                        this._setPickerYear(value);
+                    }
+                    break;
+                case 'ShowIcon':
+                    this._showIcon();
+                    break;
+                case 'ValidationErrorMessage':
+                    if (this.options.ValidationErrorMessage !== null) {
+                        this._createValidationMessage();
+                    } else {
+                        this._removeValidationMessage();
+                    }
+
+                    break;
+            }
+        },
+
+        _init: function () {
+            if (!jQuery.ui || !jQuery.ui.button || !jQuery.ui.datepicker) {
+                alert(_setupErr + 'The jQuery UI button and datepicker plug-ins must be loaded before MonthPicker is called.');
+                return false;
+            }
+
+            var _el = this.element;
+            // According to http://www.w3.org/TR/html-markup/input.html#input
+            // An input element with no type attribute specified represents the same thing as an
+            // input element with its type attribute set to "text".
+            // TLDR:
+            // http://www.w3.org/TR/html5/forms.html#the-input-element 
+            // https://api.jquery.com/text-selector/
+            if (!_el.is('input') || ['text', 'month', void 0].indexOf(_el.attr('type')) === -1) {
+	            var error = _setupErr + 'MonthPicker can only be called on text or month inputs.';
+	            // Call alert first so that IE<10 won't trip over console.log and swallow all errors.
+                alert(error + ' \n\nSee console (developer tools) for more details.');
+                
+                console.error(error + '\n Caused by:');
+                console.log(_el[0]);
+                return false;
+            }
+
+            if (!jQuery.mask && this.options.UseInputMask) {
+                alert(_setupErr + 'The UseInputMask option is set but the Digital Bush Input Mask jQuery Plugin is not loaded. Get the plugin from http://digitalbush.com/');
+                return false;
+            }
+            
+            if (this.options.Position !== null && !$.ui.position) {
+                alert(_posErrr);
+                return false;
+            }
+            
+            this._isMonthInputType = _el.attr('type') === 'month';
+            if (this._isMonthInputType) {
+	            _el.css('width', 'auto');
+            }
+
+            _el.addClass('month-year-input');
+
+            this._setStartYear();
+
+            this._monthPickerMenu = $('<div id="MonthPicker_' + _el.attr('id') + '" class="month-picker ui-helper-clearfix"></div>');
+
+            $(_markup).appendTo(this._monthPickerMenu);
+            $('body').append(this._monthPickerMenu);
+
+            this._monthPickerMenu.find('.year-title').text(this._i18n('year'));
+            this._monthPickerMenu.find('.year-container-all').attr('title', this._i18n('jumpYears'));
+
+            this._showIcon();
+
+            this._createValidationMessage();
+
+            this._yearContainer = $('.year', this._monthPickerMenu);
+
+            $('.previous-year button', this._monthPickerMenu)
+                .button({
+                icons: {
+                    primary: 'ui-icon-circle-triangle-w'
+                },
+                text: false
+            });
+            $('.previous-year button span.ui-button-icon-primary').text(this._i18n('prevLabel'));
+             
+            $('.next-year button', this._monthPickerMenu)
+                .button({
+                icons: {
+                    primary: 'ui-icon-circle-triangle-e'
+                },
+                text: false
+            });
+            $('.next-year button span.ui-button-icon-primary').text(this._i18n('nextLabel'));
+
+            $('.month-picker-month-table td button', this._monthPickerMenu).button();
+
+            $('.year-container-all', this._monthPickerMenu).click($.proxy(this._showYearsClickHandler, this));
+
+            $(document).bind('click.MonthPicker' + this.element.attr('id'), $.proxy(this._hide, this));
+            this._monthPickerMenu.bind('click.MonthPicker', function (event) {
+                return false;
+            });
+
+            this._setUseInputMask();
+            this._setDisabledState();
+        },
+
+        /****** Misc. Utility functions ******/
+
+        _i18n: function(str) {
+            return $.extend({}, $.MonthPicker.i18n, this.options.i18n)[str];
+        },
+
+        /****** Publicly Accessible API functions ******/
+
+        GetSelectedYear: function () {
+            return this._validateYear(this.element.val());
+        },
+
+        GetSelectedMonth: function () {
+            return this._validateMonth(this.element.val());
+        },
+
+        GetSelectedMonthYear: function () {
+            var _month = this._validateMonth(this.element.val()),
+                _year = this._validateYear(this.element.val()), 
+                _date;
+
+            if (!isNaN(_year) && !isNaN(_month)) {
+                if (this.options.ValidationErrorMessage !== null && !this.options.Disabled) {
+                    $('#MonthPicker_Validation_' + this.element.attr('id')).hide();
+                }
+                
+                if(this._isMonthInputType){
+                    _date = _year + '-' + _month;
+                }else{
+                    _date = _month + '/' + _year;
+                }
+                
+                $(this).val(_date);
+                return _date;
+            } else {
+                if (this.options.ValidationErrorMessage !== null && !this.options.Disabled) {
+                    $('#MonthPicker_Validation_' + this.element.attr('id')).show();
+                }
+
+                return null;
+            }
+        },
+
+        Disable: function () {
+            this._setOption("Disabled", true);
+        },
+
+        Enable: function () {
+            this._setOption("Disabled", false);
+        },
+
+        Destroy: function() {
+            this._destroy();
+        },
+
+        ClearAllCallbacks: function () {
+            for (var _opt in this.options) {
+                if (_opt.indexOf('On') === 0) {
+                    this.options[_opt] = $.noop;
+                }
+            }
+        },
+
+        Clear: function () {
+            this.element.val('');
+
+            if (this._validationMessage !== null) {
+                this._validationMessage.hide();
+            }
+        },
+
+        /****** Private functions ******/
+
+        _showIcon: function () {
+            if (this._monthPickerButton === null) {
+                if (this.options.ShowIcon) {
+                    this._monthPickerButton = $('<span id="MonthPicker_Button_' + this.element.attr('id') + '" class="month-picker-open-button">' + this._i18n('buttonText') + '</span>').insertAfter(this.element);
+                    this._monthPickerButton.button({
+                        text: false,
+                        icons: {
+                            primary: 'ui-icon-calculator'
+                        }
+                    })
+                        .click($.proxy(this._show, this));
+                } else {
+                    this.element.bind('click.MonthPicker', $.proxy(this._show, this));
+                }
+            } else {
+                if (!this.options.ShowIcon) {
+                    this._monthPickerButton.remove();
+                    this._monthPickerButton = null;
+                    this.element.bind('click.MonthPicker', $.proxy(this._show, this));
+                }
+            }
+        },
+
+        _createValidationMessage: function () {
+            if (this.options.ValidationErrorMessage !== null && this.options.ValidationErrorMessage !== '') {
+                this._validationMessage = $('<span id="MonthPicker_Validation_' + this.element.attr('id') + '" class="month-picker-invalid-message">' + this.options.ValidationErrorMessage + '</span>');
+
+                this._validationMessage.insertAfter(this.options.ShowIcon ? this.element.next() : this.element);
+
+                this.element.blur($.proxy(this.GetSelectedMonthYear, this));
+            }
+        },
+
+        _removeValidationMessage: function () {
+            if (this.options.ValidationErrorMessage === null) {
+                this._validationMessage.remove();
+                this._validationMessage = null;
+            }
+        },
+
+        _show: function () {
+            var _selectedYear = this.GetSelectedYear();
+            if (this.element.data(this._enum._overrideStartYear) !== void 0) {
+                this._setPickerYear(this.options.StartYear);
+            } else if (!isNaN(_selectedYear)) {
+                this._setPickerYear(_selectedYear);
+            } else {
+                this._setPickerYear(new Date().getFullYear());
+            }
+
+            var _menu = this._monthPickerMenu;
+            if (_menu.css('display') === 'none') {
+                _menu.slideDown({
+	               duration: _speed,
+	               start: $.proxy(this._position, this, _menu),
+	               complete: $.proxy(this.options.OnAfterMenuOpen, this.options)
+	            });
+            }
+
+            this._showMonths();
+
+            return false;
+        },
+
+        _position: $.ui.position ?
+            function($menu) {
+                var _posOpts = $.extend(_defaultPos, this.options.Position);
+                return $menu.position($.extend({of: this.element}, _posOpts));
+            } :
+            function($menu) {
+                var _el = this.element;
+
+                return $menu.css({
+                    top: (_el.offset().top + _el.height() + 7) + 'px',
+                    left: _el.offset().left + 'px'
+                });
+            },
+
+        _hide: function () {
+            if (this._monthPickerMenu.css('display') === 'block') {
+                this._monthPickerMenu.slideUp(_speed, $.proxy(this.options.OnAfterMenuClose, this.options));
+            }
+        },
+		
+        _setUseInputMask: function () {
+            if (!this._isMonthInputType) {
+                try {
+                    if (this.options.UseInputMask) {
+                        this.element.mask(_inputMask);
+                    } else {
+                        this.element.unmask();
+                    }
+                } catch (e) {}
+            }
+        },
+
+        _setDisabledState: function () {
+            if (this.options.Disabled) {
+                this.element.prop('disabled', true);
+                this.element.addClass(_disabledClass);
+                if (this._monthPickerButton !== null) {
+                    this._monthPickerButton.button('option', 'disabled', true);
+                }
+
+                if (this._validationMessage !== null) {
+                    this._validationMessage.hide();
+                }
+
+            } else {
+                this.element.prop('disabled', false);
+                this.element.removeClass(_disabledClass);
+                if (this._monthPickerButton !== null) {
+                    this._monthPickerButton.button('option', 'disabled', false);
+                }
+            }
+        },
+
+        _setStartYear: function () {
+            if (this.options.StartYear !== null) {
+                this.element.data(this._enum._overrideStartYear, true);
+            } else {
+                this.element.removeData(this._enum._overrideStartYear);
+            }
+        },
+
+        _getPickerYear: function () {
+            return parseInt(this._yearContainer.text(), 10);
+        },
+
+        _setPickerYear: function (year) {
+            this._yearContainer.text(year);
+        },
+
+        _validateMonth: function (text) {
+            if (text === '') {
+                return NaN;
+            }
+
+            if (text.indexOf('/') != -1) {
+                var _month = parseInt(text.split('/')[0], 10);
+                if (!isNaN(_month)) {
+                    if (_month >= 1 && _month <= 12) {
+                        return _month;
+                    }
+                }
+            }
+            
+            if (text.indexOf('-') != -1) {
+                var _month = parseInt(text.split('-')[1], 10);
+                if (!isNaN(_month)) {
+                    if (_month >= 1 && _month <= 12) {
+                        return _month;
+                    }
+                }
+            }
+
+            return NaN;
+        },
+
+        _validateYear: function (text) {
+            if (text === '') {
+                return NaN;
+            }
+
+            if (text.indexOf('/') != -1) {
+                var _year = parseInt(text.split('/')[1], 10);
+
+                if (!isNaN(_year)) {
+                    if (_year >= 1800 && _year <= 3000) {
+                        return _year;
+                    }
+                }
+            }
+            
+            if (text.indexOf('-') != -1) {
+                var _year = parseInt(text.split('-')[0], 10);
+
+                if (!isNaN(_year)) {
+                    if (_year >= 1800 && _year <= 3000) {
+                        return _year;
+                    }
+                }
+            }
+
+            return NaN;
+        },
+
+        _chooseMonth: function (month) {
+            if (month > 0 && month < 10) {
+                month = '0' + month;
+            }
+
+            if (this.element.is('input[type="month"]')) {
+                this.element.val(this._getPickerYear() + '-' + month).change();
+            } else {
+                this.element.val(month + '/' + this._getPickerYear()).change();
+            }
+            
+            this.element.blur();
+            
+            this.options.OnAfterChooseMonth();
+        },
+
+        _chooseYear: function (year) {
+            this._setPickerYear(year);
+            this._showMonths();
+
+            this.options.OnAfterChooseYear();
+        },
+
+        _showMonths: function () {
+            var _months = this._i18n('months');
+
+            $('.previous-year button', this._monthPickerMenu)
+                .attr('title', this._i18n('prevYear'))
+                .unbind('click')
+                .bind('click.MonthPicker', $.proxy(this._previousYear, this));
+
+            $('.next-year button', this._monthPickerMenu)
+                .attr('title', this._i18n('nextYear'))
+                .unbind('click')
+                .bind('click.MonthPicker', $.proxy(this._nextYear, this));
+
+            $('.year-container-all', this._monthPickerMenu).css('cursor', 'pointer');
+            $('.month-picker-month-table button', this._monthPickerMenu).unbind('.MonthPicker');
+
+            for (var _month in _months) {
+                var _counter = parseInt(_month, 10) + 1;
+                $('.button-' + _counter, this._monthPickerMenu)
+                    .bind('click.MonthPicker', {
+                    _month: _counter
+                }, $.proxy(function (event) {
+                    this._chooseMonth(event.data._month);
+                    this._hide();
+                }, this));
+
+                $('.button-' + _counter, this._monthPickerMenu).button('option', 'label', _months[_month]);
+            }
+        },
+
+        _showYearsClickHandler: function () {
+            this._showYears();
+
+            this.options.OnAfterChooseYears();
+        },
+
+        _showYears: function () {
+            var _year = this._getPickerYear();
+
+            $('.previous-year button', this._monthPickerMenu)
+                .attr('title', this._i18n('prev5Years'))
+                .unbind('click')
+                .bind('click', $.proxy(function () {
+                this._previousYears();
+                return false;
+            }, this));
+
+            $('.next-year button', this._monthPickerMenu)
+                .attr('title', this._i18n('next5Years'))
+                .unbind('click')
+                .bind('click', $.proxy(function () {
+                this._nextYears();
+                return false;
+            }, this));
+
+            $('.year-container-all', this._monthPickerMenu).css('cursor', 'default');
+            $('.month-picker-month-table button', this._monthPickerMenu).unbind('.MonthPicker');
+
+            var _yearDifferential = -4;
+            for (var _counter = 1; _counter <= 12; _counter++) {
+                $('.button-' + _counter, this._monthPickerMenu)
+                    .bind('click.MonthPicker', {
+                    _yearDiff: _yearDifferential
+                }, $.proxy(function (event) {
+                    this._chooseYear(_year + event.data._yearDiff);
+                }, this));
+
+                $('.button-' + _counter, this._monthPickerMenu).button('option', 'label', _year + _yearDifferential);
+
+                _yearDifferential++;
+            }
+        },
+
+        _nextYear: function () {
+            var _year = $('.month-picker-year-table .year', this._monthPickerMenu);
+            _year.text(parseInt(_year.text()) + 1, 10);
+
+            this.options.OnAfterNextYear();
+        },
+
+        _nextYears: function () {
+            var _year = $('.month-picker-year-table .year', this._monthPickerMenu);
+            _year.text(parseInt(_year.text()) + 5, 10);
+            this._showYears();
+
+            this.options.OnAfterNextYears();
+        },
+
+        _previousYears: function () {
+            var _year = $('.month-picker-year-table .year', this._monthPickerMenu);
+            _year.text(parseInt(_year.text()) - 5, 10);
+            this._showYears();
+
+            this.options.OnAfterPreviousYears();
+        },
+
+        _previousYear: function () {
+            var _year = $('.month-picker-year-table .year', this._monthPickerMenu);
+            _year.text(parseInt(_year.text()) - 1, 10);
+            
+            this.options.OnAfterPreviousYear();
+        }
+    });
+}(jQuery, window, document));
+
+/******* ***************** ********/
+/******* Unit Testing Code ********/
+/******* ***************** ********/
+
+var _today = new Date();
+
+module("Installation");
+
+/***** Test basic the installation for the pre-requisite objects and namespaces *****/
+
+test('qUnit Status', function () {
+    ok(true, 'qUnit is installed and working.');
+});
+
+test('jQuery Status', function () {
+    ok(jQuery, 'jQuery ' + $().jquery + ' is installed.');
+    ok(jQuery.ui, 'jQuery UI ' + jQuery.ui.version + ' is installed.');
+    ok(jQuery.widget, 'jQuery UI widget is installed.');
+    ok(jQuery.ui.button, 'jQuery UI button is installed.');
+    ok(jQuery.ui.datepicker, 'jQuery UI datepicker is installed.');
+
+});
+
+test('MonthPicker Status', function () {
+    ok(jQuery.KidSysco, 'KidSysco namespace exists.');
+    ok(jQuery.KidSysco.MonthPicker, 'MonthPicker plugin function exists.');
+    ok(jQuery.KidSysco.MonthPicker.prototype, 'MonthPicker plugin prototype exists.');
+});
+
+test('Digital Bush Status', function () {
+    ok(jQuery.mask, 'Digital Bush Input Mask Plugin is installed.');
+});
+
+test('jQuery UI .position() Status', function () {
+    ok($.ui.position, 'jQuery UI .position() plugin is installed.');
+});
+
+module("Functionality");
+
+/***** Icon Demo Tests *****/
+
+test('Icon Option Tests', function () {
+    var _picker = $('#IconDemo').MonthPicker({
+        ShowIcon: true
+    });
+
+    equal($('#MonthPicker_Button_IconDemo').length, 1, '#IconDemo initialized with icon showing.');
+    _picker.MonthPicker('option', 'ShowIcon', false);
+    equal($('#MonthPicker_Button_IconDemo').length, 0, '#IconDemo icon removed after init.');
+
+    $('#IconDemo').MonthPicker('destroy');
+    ok($('#MonthPicker_IconDemo').length === 0, "#IconDemo has been destroyed.");
+
+    _picker = $('#IconDemo').MonthPicker({
+        ShowIcon: false
+    });
+
+    equal($('#MonthPicker_Button_IconDemo').length, 0, '#IconDemo initialized without an icon.');
+    _picker.MonthPicker('option', 'ShowIcon', true);
+    equal($('#MonthPicker_Button_IconDemo').length, 1, '#IconDemo icon added after init.');
+
+    $('#NoIconDemo').MonthPicker({
+        ShowIcon: false
+    });
+
+    ok($('#MonthPicker_NoIconDemo').length === 1, "#NoIconDemo has been initialized for demo purposes.");
+});
+
+test('jQueryUI .position() Tests', function () {
+    var _windowWidth = $(window).width();
+    var _picker = $('#PositionDemo').MonthPicker({
+        ShowIcon: false,
+        Position: {
+    		collision: 'fit flip'
+ 		},
+         OnAfterMenuOpen: function () {
+            var _lastPointFullyVisibleX = _windowWidth - 200;
+            start();
+            equal(_pickerMenu.css('display'), 'block', '#PositionDemo responded to a text input click event and showed the menu.');
+    		ok($('#MonthPicker_PositionDemo').position().left <= _lastPointFullyVisibleX, "#PositionDemo is fully visible on the X axis.");
+            $('.button-1', _pickerMenu).trigger($.Event('click'));
+            stop();
+        },
+        OnAfterMenuClose: function () {
+            $(window).scrollTop(0);
+            start();
+            equal(_pickerMenu.css('display'), 'none', '#PositionDemo responded to a button click event by closing the menu.');
+            // destroy the monthpicker and re-create it so it doesnt fire anymore qunit events upon being used.
+            $('#PositionDemo').MonthPicker('destroy');
+            ok($('#MonthPicker_PositionDemo').length === 0, "#PositionDemo has been destroyed.");
+            $('#PositionDemo').MonthPicker({
+        		ShowIcon: false,
+        		Position: {
+    				collision: 'fit flip'
+ 				}
+        	});
+    	}
+    });
+    
+	var _pickerMenu = $('#MonthPicker_PositionDemo');
+    // scroll window into position
+    $(window).scrollTop(590);
+    // click the the button to show the monthpicker menu
+    _picker.trigger($.Event('click'));
+    stop();
+    
+    
+    
+    equal(_pickerMenu.length, 1, '#PositionDemo month picker menu exists in the DOM.');
+
+});
+
+test('Start Year Option Tests', function () {
+    var _picker = $('#StartYearDemo').MonthPicker({
+        ShowIcon: false,
+        OnAfterMenuOpen: function () {
+            start();
+            equal(_pickerMenu.css('display'), 'block', '#StartYearDemo responded to a text input click event and showed the menu.');
+            equal(parseInt(_picker.MonthPicker('GetSelectedYear'), 10), 2025, '#StartYearDemo defaulted to 2025, the year specified in the textbox.');
+            _picker.MonthPicker('option', 'StartYear', 2095);
+            equal(parseInt($('.year', _pickerMenu).text(), 10), 2095, '#StartYearDemo switched the year to 2095 after init.');
+            $('.button-1', _pickerMenu).trigger($.Event('click'));
+            equal(parseInt(_picker.MonthPicker('GetSelectedYear'), 10), 2095, '#StartYearDemo selected the correct year, 2095, upon choosing a month.');
+            stop();
+        },
+        OnAfterMenuClose: function () {
+            start();
+            equal(_pickerMenu.css('display'), 'none', '#StartYearDemo responded to a button click event by closing the menu.');
+            $('#StartYearDemo').MonthPicker('destroy');
+            ok($('#MonthPicker_StartYearDemo').length === 0, "#StartYearDemo has been destroyed.");
+            $('#StartYearDemo').val('1/2025').MonthPicker({
+                ShowIcon: false,
+                OnAfterMenuOpen: function () {
+                    start();
+                    // get the picker menu again because it was removed from the dom upon destroying StartYearDemo.
+                    _pickerMenu = $('#MonthPicker_StartYearDemo');
+                    equal(_pickerMenu.css('display'), 'block', '#StartYearDemo responded to a text input click event and showed the menu.');
+                    equal(parseInt(_picker.MonthPicker('GetSelectedYear'), 10), 2025, '#StartYearDemo defaulted to 2025, the year specified in the textbox.');
+                    $(document).trigger($.Event('click'));
+                    stop();
+                },
+                OnAfterMenuClose: function () {
+                    start();
+                    equal(_pickerMenu.css('display'), 'none', '#StartYearDemo responded to a button click event by closing the menu.');
+                    _picker.MonthPicker('destroy');
+                    // get the picker menu again because it was removed from the dom upon destroying StartYearDemo.
+                    ok($('#MonthPicker_StartYearDemo').length === 0, "#StartYearDemo has been destroyed again.");
+
+                    // Setup StartYearDemo so that it will run as a demo without firing off tests.
+                    $('#StartYearDemo').val('1/2025').MonthPicker({
+                        ShowIcon: false
+                    });
+                    ok(_pickerMenu.length === 1, "#StartYearDemo has been re-initialized for demo purposes.");
+                    $('#OverrideStartYear').MonthPicker({
+                        ShowIcon: false,
+                        StartYear: 2023
+                    });
+                    ok($('#MonthPicker_OverrideStartYear').length === 1, "#OverrideStartYear has been initialized for demo purposes.");
+                    ApiTests();
+                }
+            });
+            ok(_pickerMenu.length === 1, "#StartYearDemo has been re-initialized for more tests.");
+            _picker.trigger($.Event('click'));
+            stop();
+        }
+    });
+
+    var _pickerMenu = $('#MonthPicker_StartYearDemo');
+    equal(_pickerMenu.length, 1, '#StartYearDemo month picker menu exists in the DOM.');
+    _picker.trigger($.Event('click'));
+    stop();
+});
+
+function ApiTests() {
+    test('API Tests', function () {
+        var _picker = $('#GetYearDemo').MonthPicker({
+            ValidationErrorMessage: 'Invalid Date!'
+        });
+        ok($('#MonthPicker_GetYearDemo').length === 1, '#GetYearDemo has been initialized.');
+        equal(_picker.MonthPicker('GetSelectedMonth'), 2, '#GetYearDemo GetSelectedMonth() API call returned the correct month, 2.');
+        equal(_picker.MonthPicker('GetSelectedYear'), 2012, '#GetYearDemo GetSelectedYear() API call returned the correct year, 2012.');
+        equal(_picker.MonthPicker('GetSelectedMonthYear'), '2/2012', '#GetYearDemo GetSelectedMonthYear() API call returned the correct month/year, 2/2012.');
+
+        _picker.val('aa');
+        equal(_picker.MonthPicker('GetSelectedMonthYear'), null, '#GetYearDemo GetSelectedMonthYear() API call detected a bad date and returned null.');
+        ok(isNaN(_picker.MonthPicker('GetSelectedMonth')), '#GetYearDemo GetSelectedMonth() API call detected a bad date and returned NaN.');
+        ok(isNaN(_picker.MonthPicker('GetSelectedYear')), '#GetYearDemo GetSelectedYear() API call detected a bad date and returned NaN.');
+        equal($('#MonthPicker_Validation_GetYearDemo').css('display'), 'inline', '#GetYearDemo showed a validation message about a bad date.');
+
+        _picker.MonthPicker('Clear').val('02/2012');
+        equal($('#MonthPicker_Validation_GetYearDemo').css('display'), 'none', '#GetYearDemo Clear() API call reset the validation warning.');
+
+        _picker = $('#EnableDisableDemo').MonthPicker({
+            Disabled: true
+        });
+        equal(_picker.prop('disabled'), true, '#EnableDisableDemo was initialized into a disabled state.');
+        _picker.MonthPicker('option', 'Disabled', false);
+        equal(_picker.prop('disabled'), false, '#EnableDisableDemo was enabled by changing the Disabled option.');
+        _picker.MonthPicker('Disable');
+        equal(_picker.prop('disabled'), true, '#EnableDisableDemo was disabled using the Disable() API call.');
+        _picker.MonthPicker('Enable');
+        equal(_picker.prop('disabled'), false, '#EnableDisableDemo was enabled using the Disable() API call.');
+
+        _picker = $('#DialogDemo').MonthPicker();
+        $('#Modal').dialog({
+            autoOpen: false,
+            title: 'MonthPicker Dialog Test',
+            modal: true
+        });
+        ok($('#MonthPicker_DialogDemo').length === 1, '#DialogDemo initialized, manually test the MonthPicker behavior in the dialog.');
+        DigitalBushTests();
+    });
+}
+
+function DigitalBushTests() {
+    test('Digital Bush Tests', function () {
+        var _picker = $('#DigitalBush').MonthPicker({
+            UseInputMask: true
+        });
+        _picker.focus();
+
+        $('#DigitalBushBoth').MonthPicker({
+            UseInputMask: true,
+            ValidationErrorMessage: 'Invalid Date!'
+        });
+        equal($('#DigitalBushBoth').MonthPicker('GetSelectedMonthYear'), null, '#DigitalBushBoth GetSelectedMonthYear API call returned null as expected.');
+        equal($('#MonthPicker_Validation_DigitalBushBoth').css('display'), 'inline', '#DigitalBushBoth showed a validation message about a bad date.');
+        $('#DigitalBushBoth').MonthPicker('Clear');
+        equal($('#MonthPicker_Validation_DigitalBushBoth').css('display'), 'none', '#DigitalBushBoth cleared the validation error message using the Clear() API call.');
+    });
+}
+
+/* End Month Picker Code */
+
+
+// Fire up the tabbed documentation at the bottom of the page.
+$(document).ready(function () {
+    $('#tabs').tabs();
+});
+</script>
+</head>
+<body>
+<div>
+     <h1>
+            The jQuery UI Month Picker Plugin</h1>
+
+    <p>The jQuery UI Month Picker Plugin was designed to allow users to choose only a month and year when only that input is required. Clicking on the year, allows the user to jump ahead or back 5 years at a time. Clicking anywhere on the page, except on the month picker menu itself, will cause the month picker to hide.</p>
+    
+     <h2>
+            Demonstration & Unit Testing</h2>
+
+    <blockquote>
+        <p class="demo"> <b>Icon Demonstration</b>
+
+            <br />This demonstrates the default option for showing an icon.
+            <br />
+            <br />Choose a Month:
+            <input id="IconDemo" type="text" />
+        </p>
+        <p class="demo"> <b>No Icon Demonstration</b>
+
+            <br />This demonstrates setting options for removing the icon.
+            <br />
+            <br />Choose a month:
+            <input id="NoIconDemo" type="text" />
+        </p>
+        <p class="demo"> <b>Start Year Demonstration</b>
+
+            <br />This demonstrates how the plugin will default to the year specified in the text box. Changing the year in the text box will result in a new default year for the chooser and if no date is selected then the default year is the current year.
+            <br />
+            <br />Choose a month:
+            <input id="StartYearDemo" type="text" value="01/2025" />
+        </p>
+        <p class="demo"> <b>Override Start Year Demonstration</b>
+
+            <br />This demonstrates how the MonthPicker can be configured to override the start year default behavior. This MonthPicker will start on 2023 no matter which date is currently selected, even if no date is specified.
+            <br />
+            <br />Choose a month:
+            <input id="OverrideStartYear" type="text" />
+        </p>
+        <p class="demo"> <b>Get Month/Year & Validation API Demonstration</b>
+
+            <br />This demonstrates API usage for the GetSelectedMonthYear(), GetSelectedYear() and GetSelectedMonth() function calls which will also perform date validation. Clear() will clear the text field and any validation messages.
+            <br />
+            <br />Choose a month:
+            <input id="GetYearDemo" class="GetYearDemo" type="text" value="02/2012" />
+            <br />
+            <br />
+            <button type="button" onclick="alert($('.GetYearDemo').MonthPicker('GetSelectedYear'));">Get Year</button>
+            <button type="button" onclick="alert($('#GetYearDemo').MonthPicker('GetSelectedMonth'));">Get Month</button>
+            <button type="button" onclick="alert($('#GetYearDemo').MonthPicker('GetSelectedMonthYear'));">Get Month and Year</button>
+            <button type="button" onclick="$('#GetYearDemo').MonthPicker('Clear');">Clear</button>
+        </p>
+        <p class="demo"> <b>Disable/Enable API Demonstration</b>
+
+            <br />This demonstrates API usage for the Enable() and Disable().
+            <br />
+            <br />Choose a month:
+            <input id="EnableDisableDemo" type="text" value="12/2009" />
+            <br />
+            <button type="button" onclick="$('#EnableDisableDemo').MonthPicker('option', 'Disabled', true);">Disable</button>
+            <button type="button" onclick="$('#EnableDisableDemo').MonthPicker('option', 'Disabled', false);">Enable</button>
+        </p>
+        <p class="demo"> <b>Digital Bush Integration Demonstration</b>
+
+            <br />This demonstrates how the MonthPicker plugin integrates with the <a href="http://digitalbush.com/" target="_new">Digital Bush Plugin for Input Masking</a> as well as the html 5 placeholder attribute to simulate watermarking. Try to type an invalid date and try the Get Month/Year button to fire off validation.
+            <br />
+            <br />Type in a month/year:
+            <br />
+            <input id="DigitalBush" type="text" class="digital-bush" />
+            <br />
+            <br />Type in a month/year::
+            <br />
+            <input id="DigitalBushBoth" type="text" class="digital-bush" placeholder="mm/yyyy" />
+            <br />
+            <br />
+            <button type="button" onclick="$('.digital-bush').MonthPicker('Clear');">Clear All</button>
+            <button type="button" onclick="alert($('#DigitalBushBoth').MonthPicker('GetSelectedMonthYear'));">Get Month/Year</button>
+        </p>
+        <p class="demo"> <b>jQuery UI Dialog Integration Demonstration</b>
+
+            <br />This demonstrates the Month Picker running inside of the jQuery UI Modal Dialog.
+            <br />
+            <br />
+            <button type="button" id="LaunchDialog" onclick="$('#Modal').dialog('open');">Launch Dialog</button>
+        </p>
+        
+        <div class="demo-position"> <b>.position() Integration Demonstration</b>
+
+            <br />This demonstrates the Month Picker integration with the optional .position() plugin.
+        The right aligned input helps to show how the menu will not allow the edges of the window to hide it's appearance. The menu will position itself so that it is always visible. The same effect can be seen on every other month picker on this page by scrolling down low enough so that the menu shows above the input instead of below.
+            <p class="text-right">
+            <br />Choose a month:
+            <input id="PositionDemo" type="text" value="02/2012" />
+            </p>
+        </div>
+        <p class="demo"> <b>Error Checking</b>
+
+            <br />This demonstrates what will happen if the MonthPicker is called on html elements other than a text input.
+            <br />
+            <br /> <span id="MySpan" style="border: solid 1px black; padding: 5px; margin: 5px; background-color: Gray;
+                    color: White;">#MySpan</span>
+
+            <button type="button" id="Button1" onclick="$('#MySpan').MonthPicker();">Call MonthPicker on span</button>
+        </p>
+    </blockquote>
+</div>
+ <h2>
+        Unit Test Results</h2>
+
+<div id="qUnitOutput" style="margin-bottom: 25px;">
+     <h1 id="qunit-header">
+            qUnit Testing Output</h1>
+
+     <h2 id="qunit-banner">
+        </h2>
+
+    <div id="qunit-testrunner-toolbar"></div>
+     <h2 id="qunit-userAgent">
+        </h2>
+
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture">test markup</div>
+</div>
+ <h2>
+        Documentation Reference</h2>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#Source">Source</a>
+
+        </li>
+        <li><a href="#Prereq">Prerequisites</a>
+
+        </li>
+        <li><a href="#Options">Options</a>
+
+        </li>
+        <li><a href="#Methods">API</a>
+
+        </li>
+        <li><a href="#Events">Events</a>
+
+        </li>
+        <li><a href="#Theme">Theming</a>
+
+        </li>
+    </ul>
+    <div id="Source">
+         <h3>
+                Source Code Example</h3>
+
+        <blockquote>
+            <p>This plugin can only be called on text boxes as follows.</p> <pre>
+$('#TextBox1').MonthPicker({ StartYear: 2020, ShowIcon: false });
+$('#TextBox2').MonthPicker().css('backgroundColor', 'lightyellow');
+        </pre>
+
+        </blockquote>
+    </div>
+    <div id="Prereq">
+         <h3>
+                Prerequisites</h3>
+
+        <p>This plugin has been tested using the following configuration.</p>
+        <ul>
+            <li>jQuery 1.9</li>
+            <li>jQuery UI 1.9, 1.10
+                <ul>
+                    <li>jQuery UI Widget Factory required</li>
+                    <li>.button() plugin required</li>
+                    <li>.datepicker() plugin required</li>
+                </ul>
+            </li>
+            <li>(optional) Digital Bush Input Mask jQuery Plugin</li>
+        </ul>
+    </div>
+    <div id="Options">
+         <h3>
+                Options</h3>
+
+        <blockquote>
+            <div class="option"> <span class="option-link" onclick="$('#DisabledExample').toggle();">Disabled</span>
+ <span class="option-type">Type: Boolean</span>  <span class="option-type">Default: false</span>
+
+                <blockquote id="DisabledExample" class="option-block">Disables/enables the MonthPicker on initialization.
+                    <br />
+                    <br /> <b>Code Examples</b>
+
+                    <br />
+                    <br />Initialize a MonthPicker with the disabled option specified.
+                    <br />
+                    <br />$('.selector').MonthPicker({ Disabled: true });
+                    <br />
+                    <br />Get or set the disabled option, after init. <pre>
+//getter
+var disabled = $('.selector').MonthPicker('option', 'Disabled');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'Disabled', true );
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#ShowIconExample').toggle();">ShowIcon</span>
+ <span class="option-type">Type: boolean</span>  <span class="option-type">Default: true</span>
+
+                <blockquote id="ShowIconExample" class="option-block">Indicates whether or not to show an icon that opens the month picker. Without an icon, the month picker menu will show upon focus of the text box.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Initialize a MonthPicker with the ShowIcon option specified.
+                    <br /> <pre>
+$('.selector').MonthPicker({ ShowIcon: true });
+</pre>
+
+                    <br />Get or set the disabled option, after init. <pre>
+//getter
+var disabled = $('.selector').MonthPicker('option', 'ShowIcon');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'ShowIcon', true );
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#StartYearExample').toggle();">StartYear</span>
+ <span class="option-type">Type: int</span>  <span class="option-type">Default: The current
+                        year.</span>
+
+                <blockquote id="StartYearExample" class="option-block">Sets the starting year in the month picker. This setting will over ride all other start year behaviors.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Initialize a MonthPicker with the StartYear option specified.
+                    <br /> <pre>
+$('.selector').MonthPicker({StartYear: 2020 });</pre>
+
+                    <br />Get or set the disabled option, after init. Set to null to omit this behavior. <pre>
+//getter
+var disabled = $('.selector').MonthPicker('option', 'StartYear');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'StartYear', 2032);
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#ValidationErrorMessageExample').toggle();">ValidationErrorMessage</span>
+ <span class="option-type">Type: Nullable string</span>  <span class="option-type">Default:
+                        null</span>
+
+                <blockquote id="ValidationErrorMessageExample" class="option-block">Specifies the validation error message and if specified will activate date validation when the text box loses focus and when any of the API methods are called.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Initialize a MonthPicker with the ValidationErrorMessage option specified.
+                    <br /> <pre>
+$('.selector').MonthPicker({ValidationErrorMessage: 'Invalid Date!' });</pre>
+Get or set the ValidationErrorMessage option, after init. Set to null to omit this behavior. <pre>
+//getter
+var disabled = $('.selector').MonthPicker('option', 'ValidationErrorMessage');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'ValidationErrorMessage', 'Invalid Date!');
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#UseInputMaskMessageExample').toggle();">UseInputMask</span>
+ <span class="option-type">Type: bool</span>  <span class="option-type">Default:
+                        false</span>
+
+                <blockquote id="UseInputMaskMessageExample" class="option-block">Directs the MonthPicker to use the Digital Bush InputMask jQuery Plugin which must be loaded to the page if this option is to be used.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Initialize a MonthPicker with the UseInputMask option specified.
+                    <br /> <pre>
+$('.selector').MonthPicker({UseInputMask: true });</pre>
+Get or set the UseInputMask option, after init. <pre>
+//getter
+var disabled = $('.selector').MonthPicker('option', 'UseInputMask');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'UseInputMask', false);
+</pre>
+
+                </blockquote>
+            </div>
+        </blockquote>
+    </div>
+    <div id="Methods">
+         <h3>
+                API Methods</h3>
+
+        <blockquote>
+            <p> <b>$('.selector').MonthPicker('Clear')</b>
+
+                <br />If the Digital Bush Watermark plugin is activated. This will set the field to a blank value and show the watermark again.</p>
+            <p> <b>$('.selector').MonthPicker('ClearAllCallbacks')</b>
+
+                <br />Disables all previously assigned event callbacks listed in the Events tab.</p>
+            <p> <b>$('.selector').MonthPicker('Disable')</b>
+
+                <br />Disables the MonthPicker and its associated elements.</p>
+            <p> <b>$('.selector').MonthPicker('Enable')</b>
+
+                <br />Enables the MonthPicker and its associated elements.</p>
+            <p> <b>$('.selector').MonthPicker('GetSelectedMonthYear')</b>
+
+                <br />Validates the selected month/year and returns the selected value if it is a valid date. Returns null if there is no valid date, displays an error message if the message is specified, focuses and selects the violating text.</p>
+            <p> <b>$('.selector').MonthPicker('GetSelectedMonth')</b>
+
+                <br />Returns only the month portion of the selected date as an integer. Returns NaN if there is no valid date.</p>
+            <p> <b>$('.selector').MonthPicker('GetSelectedYear')</b>
+
+                <br />Returns only the year portion of the selected date as an integer. Returns NaN if there is no valid date.</p>
+        </blockquote>
+    </div>
+    <div id="Events">
+         <h3>
+                Events</h3>
+
+        <blockquote>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterMenuOpenExample').toggle();">OnAfterMenuOpen</span>
+
+                <blockquote id="OnAfterMenuOpenExample" class="option-block">This event is triggered after the MonthPicker opens.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterMenuOpen: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterMenuOpen');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterMenuOpen', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterMenuCloseExample').toggle();">OnAfterMenuClose</span>
+
+                <blockquote id="OnAfterMenuCloseExample" class="option-block">This event is triggered after the MonthPicker menu is closed.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterMenuClose: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterMenuClose');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterMenuClose', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterOnAfterNextYearExample').toggle();">OnAfterNextYear</span>
+
+                <blockquote id="OnAfterOnAfterNextYearExample" class="option-block">This event is triggered when the MonthPicker Next Year button is clicked.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterNextYear: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterNextYear');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterNextYear', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterOnAfterNextYearsExample').toggle();">OnAfterNextYears</span>
+
+                <blockquote id="OnAfterOnAfterNextYearsExample" class="option-block">This event is triggered when the MonthPicker Jump Ahead 5 Years button is clicked.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterNextYears: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterNextYears');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterNextYears', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterPreviousYearExample').toggle();">OnAfterPreviousYear</span>
+
+                <blockquote id="OnAfterPreviousYearExample" class="option-block">This event is triggered when the MonthPicker Previous Year button is clicked.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterPreviousYear: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterPreviousYear');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterPreviousYear', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterPreviousYearsExample').toggle();">OnAfterPreviousYears</span>
+
+                <blockquote id="OnAfterPreviousYearsExample" class="option-block">This event is triggered when the MonthPicker Jump Back 5 Years button is clicked.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterPreviousYears: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterPreviousYears');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterPreviousYears', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterChooseMonthExample').toggle();">OnAfterChooseMonth</span>
+
+                <blockquote id="OnAfterChooseMonthExample" class="option-block">This event is triggered when a month button is clicked in the picker.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterChooseMonth: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterChooseMonth');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterChooseMonth', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterChooseMonthsExample').toggle();">OnAfterChooseMonths</span>
+
+                <blockquote id="OnAfterChooseMonthsExample" class="option-block">This event is triggered when the choose months button is clicked in the picker.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterChooseMonths: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterChooseMonths');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterChooseMonths', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterChooseYearExample').toggle();">OnAfterChooseYear</span>
+
+                <blockquote id="OnAfterChooseYearExample" class="option-block">This event is triggered when a year button is clicked in the picker.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterChooseYear: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterChooseYear');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterChooseYear', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+            <div class="option"> <span class="option-link" onclick="$('#OnAfterChooseYearsExample').toggle();">OnAfterChooseYears</span>
+
+                <blockquote id="OnAfterChooseYearsExample" class="option-block">This event is triggered when the choose years button is clicked in the picker.
+                    <br />
+                    <br /> <b>Code Example</b>
+
+                    <br />
+                    <br />Supply a callback function to handle the event as an init option.
+                    <br /> <pre>
+$('.selector').MonthPicker({OnAfterChooseYears: function(){} });</pre>
+Get or set the callback function, after init. <pre>
+//getter
+var myFunction = $('.selector').MonthPicker('option', 'OnAfterChooseYears');
+<br />
+//setter
+$('.selector').MonthPicker('option', 'OnAfterChooseYears', function(){});
+</pre>
+
+                </blockquote>
+            </div>
+        </blockquote>
+    </div>
+    <div id="Theme">
+        <p>The MonthPicker plugin uses the jQuery UI CSS Framework to style its look and feel, including the colors of buttons and background textures. We recommend using the ThemeRoller tool to create and download custom themes that are easy to build and maintain.</p>
+        <p>If a deeper level of customization is needed, there are widget-specific classes referenced within the MonthPicker.css stylesheet that can be modified. These classes are highlighed below.</p>
+        <p> <b>.month-picker-disabled</b>
+
+            <br />Customize the disabled look of the MonthPicker text box.</p>
+        <p> <b>.month-picker-invalid-message</b>
+
+            <br />Customize the look of validation message.</p>
+        <p> <b>.month-year-input</b>
+
+            <br />Customize the look of the MonthPicker text input box in an enabled state.</p>
+    </div>
+</div>
+<div>&nbsp;
+    <br />
+    <br />
+</div>
+<div id="Modal">Test:
+    <input id="DialogDemo" type="text" />
+</div>
+<a href="https://github.com/KidSysco/jquery-ui-month-picker" target="_new"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+</body>
+</html>
