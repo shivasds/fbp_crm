@@ -384,7 +384,7 @@
                         <!-- <td><?php echo $data->last_update; ?></td> -->
                         <td class="priority-11">
                             <table>
-                                <tr>
+                            <tr style="background-color: #ffffff00;">
                                     <td>
                                         <!-- <a onclick="edit('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_edit"> -->
                                         <a href="<?= base_url('callback-details?id='.$data->id) ?>" target="_blank">
