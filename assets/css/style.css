@@ -305,6 +305,7 @@ background-color:#00C6D7!important;
     background: #02BBCA;
     float: right;
 }
+
 ul#menu i {
     font-size: 1.1em;
     margin-right: 6px;
@@ -6798,7 +6799,7 @@ footer  p a:hover ,.footer p a:hover{
 			left: 12%;
 		}
 	 .sidebar-menu {
-          position:absolute;
+          position:fixed;
 	  }
 	 .page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
@@ -7826,6 +7827,16 @@ footer  p a:hover ,.footer p a:hover{
 	}
 }
 @media (max-width:375px){
+
+	.MyImage {
+		background: url(http://localhost:8081/uploads/admin.png);
+		width: 150px;
+		height: 150px;
+		position: relative;
+		margin-left: 12px;
+		border-radius: 100%;
+		border: 2px solid #00c6d7;
+	}
 	.container{
 		width:300px;
 	}
