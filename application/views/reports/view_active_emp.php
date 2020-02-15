@@ -128,8 +128,7 @@
             $i=1;
             foreach ($last_login as $last) {
                 if($last->last_login!='0000-00-00 00:00:00')
-                {
-                 
+                {    
                 echo "<tr><td>".$i++."</td>";
                 echo "<td>".$last->first_name." ".$last->last_name ."</td>";
                 echo "<td>".$last->last_login."</td></tr>";
@@ -166,7 +165,7 @@
 
                                      <!--footer section start-->
                                         <footer>
-                                           <p>&copy 2020 Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
+                                           <p>&copy <?= date('Y')?> Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
                                         </footer>
                                     <!--footer section end-->
                                 </div>

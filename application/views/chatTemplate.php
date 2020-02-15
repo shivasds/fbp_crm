@@ -253,7 +253,7 @@ else{
 
                    <!--footer section start-->
                     <footer>
-                       <p>&copy 2020 Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
+                       <p>&copy <?= date('Y')?> Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
                     </footer>
                   <!--footer section end-->
                 </div>

@@ -306,8 +306,7 @@ class Admin extends CI_Controller {
 			$email1=$this->input->post('email1');
 			$email2=$this->input->post('email2');
 			$project=$this->input->post('project');
-			$lead_source=$this->input->post('lead_source');
-			//$leadId=$this->input->post('leadId');
+			$lead_source=$this->input->post('lead_source'); 
 			$lead_ids = json_decode(json_encode($this->callback_model->get_last_id()),true);
 			$lead_ids = $lead_ids['id']+1;
 			$user_name=$this->input->post('user_name');
@@ -332,8 +331,7 @@ class Admin extends CI_Controller {
 				'status_id'=>$status,
 				'notes'=>$notes,
 				'date_added'=>date('Y-m-d H:i:s'),
-			);
-			// print_r($data);exit;
+			); 
 			$query=$this->callback_model->add_callbacks($data);
 			redirect(base_url().'admin/callbacks');
 		}
@@ -1075,7 +1073,7 @@ class Admin extends CI_Controller {
 			$config = email_config();
 			
 			$this->email->initialize($config);
-			$this->email->from("shiva@secondsdigital.com","Admin");
+			$this->email->from("admin@leads.com","Admin");
 			$this->email->to($to_emails);
 			$this->email->subject($subject);
 			$this->email->message($mail_body);

@@ -1273,7 +1273,7 @@ $('.selector').MonthPicker('option', 'ShowIcon', true );
                     <br />
                     <br />Initialize a MonthPicker with the StartYear option specified.
                     <br /> <pre>
-$('.selector').MonthPicker({StartYear: 2020 });</pre>
+$('.selector').MonthPicker({StartYear: <?= date('Y')?> });</pre>
 
                     <br />Get or set the disabled option, after init. Set to null to omit this behavior. <pre>
 //getter
