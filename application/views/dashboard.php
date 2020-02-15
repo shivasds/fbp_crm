@@ -11,28 +11,6 @@
    }
    //echo $string_ids;
 
-    if(!$this->session->userdata('permissions') && $this->session->userdata('permissions')=='' ) {
-    ?>
-
-    <style type="text/css">
-    .alrtMsg{padding-top: 50px;}
-    .alrtMsg i {
-        font-size: 60px;
-        color: #f1c836;
-    }
-    </style>
-    <div class="container"> 
-        <div class="row"> 
-            <div class="text-center alrtMsg">
-                <i class="fa fa-exclamation-triangle"></i>
-                <h3>You Do Not have permission as of now. Please contact your Administration and Request for Permission.</h3>
-            </div>
-        </div>
-    </div>
-    <?php
-}
-
-
     ?>
 <body>
 	 <div class="se-pre-con"></div>
@@ -74,6 +52,30 @@
 					<div class="clearfix"></div>
 				</div>
 					<!-- //header-ends -->
+					<?php
+    if(!$this->session->userdata('permissions') && $this->session->userdata('permissions')=='' ) {
+    ?>
+
+    <style type="text/css">
+    .alrtMsg{padding-top: 50px;}
+    .alrtMsg i {
+        font-size: 60px;
+        color: #f1c836;
+    }
+    </style>
+    <div class="container"> 
+        <div class="row"> 
+            <div class="text-center alrtMsg">
+                <i class="fa fa-exclamation-triangle"></i>
+                <h3>You Do Not have permission as of now. Please contact your Administration and Request for Permission.</h3>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+
+								else{?>
 						<div class="outter-wp">
 								<!--custom-widgets-->
 												<div class="custom-widgets">
@@ -646,6 +648,8 @@
 												</div>
 									
 									</div>
+									<?php
+								}?>
 <!--/tabs-->
 										<div class="tab-main">
 											 <!--/tabs-inner-->
