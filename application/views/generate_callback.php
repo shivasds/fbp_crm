@@ -140,10 +140,10 @@
                 </select>
             </div>
 
-            <div class="col-sm-3 form-group">
+            <!-- <div class="col-sm-3 form-group">
                 <label for="leadId">Lead Id:</label>
                 <input type="text" class="form-control" id="leadId" name="leadId" placeholder="Lead Id">
-            </div>
+            </div> -->
 
             <div class="col-md-3 form-group">
                 <label for="assign">User Name:</label>

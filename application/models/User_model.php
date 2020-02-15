@@ -303,7 +303,7 @@ class User_model extends CI_Model {
         $this->db->select('first_name, last_name, type, last_login')
             ->from('user')
             ->where_in('type', array('1','2'))
-           
+            ->where('date(last_login)',date('Y-m-d'))
             ->where('active', 1)
             ->order_by('last_login','DESC');
         return $this->db->get()->result();

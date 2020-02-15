@@ -307,7 +307,9 @@ class Admin extends CI_Controller {
 			$email2=$this->input->post('email2');
 			$project=$this->input->post('project');
 			$lead_source=$this->input->post('lead_source');
-			$leadId=$this->input->post('leadId');
+			//$leadId=$this->input->post('leadId');
+			$lead_ids = json_decode(json_encode($this->callback_model->get_last_id()),true);
+			$lead_ids = $lead_ids['id']+1;
 			$user_name=$this->input->post('user_name');
 			$due_date=$this->input->post('due_date');
 			$sub_broker=$this->input->post('sub_broker');
@@ -323,7 +325,7 @@ class Admin extends CI_Controller {
 				'email2'=>$email2,
 				'project_id'=>$project,
 				'lead_source_id'=>$lead_source,
-				'leadid'=>$leadId,
+				'leadid'=> trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
 				'user_id'=>$user_name,
 				'due_date'=>$due_date,
 				'broker_id'=>$sub_broker,
@@ -1991,7 +1993,7 @@ class Admin extends CI_Controller {
 						'contact_no2'=>trim($contact_no2),
 						'email1'=>trim($email1),
 						'email2'=>trim($email2),
-						'leadid'=>trim("FBP - ".sprintf("%'.011d",$lead_ids).PHP_EOL),
+						'leadid'=>trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
 						'notes'=>trim($notes),
 					);
 					// print_r($data);exit;
@@ -3089,31 +3091,7 @@ if ($err) {
 		$data['heading'] ="Active Employees";
 			$data['last_login'] = $this->user_model->get_live_feed_back();
 			$this->load->view('reports/view_active_emp.php', $data);
-
-		/*$usrId 		= $this->input->get('userId');
-		$fromDate 	= $this->input->get('fromDate');
-		$toDate 	= $this->input->get('endDate');
-		if($usrId && $fromDate && $toDate) {
-			$data['name'] = "reports";
-			$advisorData = $this->user_model->get_user_data($usrId);
-			$data['heading']  = "Callback report for ".$advisorData['first_name']." ".$advisorData['last_name'];
-			$data['duration'] = "<strong>From</strong> <em>".$fromDate."</em> <strong>To</strong> <em>".$toDate."</em>";
-			
-			$clause = "ct.userId =".$usrId." AND ct.entryDate BETWEEN '".$fromDate."' AND '".$toDate."'";
-			
-
-			//------- pagination ------
-			$rowCount 				= $this->callback_model->countCallbackLists($clause);
-			$data["totalRecords"] 	= $rowCount;
-			$data["links"] 			= paginitaionWithQueryString(base_url().'admin/view_callbacks_lists/', 3, VIEW_PER_PAGE, $rowCount, $this->input->get());	
-			$page = $this->uri->segment(3);
-	        $offset = !$page ? 0 : $page;
-			//------ End --------------
-			$data['result'] = $this->callback_model->getCallbackLists($clause, $offset, VIEW_PER_PAGE);
-			$this->load->view('reports/view_callbacks_lists.php', $data);
-		}
-		else
-			show_404();*/
+ 
 	}
 
 

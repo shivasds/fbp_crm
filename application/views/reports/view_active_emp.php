@@ -130,10 +130,10 @@
                 if($last->last_login!='0000-00-00 00:00:00')
                 {
                  
-                echo "<tr><td>".$i."</td>";
+                echo "<tr><td>".$i++."</td>";
                 echo "<td>".$last->first_name." ".$last->last_name ."</td>";
                 echo "<td>".$last->last_login."</td></tr>";
-                }
+                } 
             }
 
             ?> 
