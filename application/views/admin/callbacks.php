@@ -143,7 +143,7 @@
     }
     .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
         display: none;   
-    }
+    }*/
     tr.highlight_past td.due_date{
         background-color: #cc6666 !important;
     }
@@ -152,7 +152,7 @@
     }
     tr.highlight_future td.due_date{
         background-color: #65dc68 !important;
-    }
+    }/*
     #history_table td {
         border: 1px solid #aaa;
         padding: 5px
@@ -1291,7 +1291,7 @@
 			<!--/sidebar-menu-->
 				<div class="sidebar-menu">
 					<header class="logo">
-					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <!--<h1>CSG</h1>--></span> 
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
