@@ -53,7 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+//	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
@@ -63,6 +63,17 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
+$domain = (! empty($_SERVER['HTTP_HOST'])) ? strtolower($_SERVER['HTTP_HOST']) : 'cli';
+
+if (strpos($domain, '.dev') !== false || strpos($domain, 'localhost') !== false || strpos($domain, '.local') !== false || $domain == 'cli')
+{
+   define('ENVIRONMENT', 'development');
+}
+else
+{
+   define('ENVIRONMENT', 'production');
+}
+
 switch (ENVIRONMENT)
 {
 	case 'development':
