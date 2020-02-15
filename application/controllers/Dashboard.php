@@ -1131,7 +1131,7 @@ class Dashboard extends CI_Controller {
                 }
                 else
                 {
-                    if($this->session->userdata('profile_pic')=='admin.png')
+                    if($this->session->userdata('profile_pic')=='admin.png' || $this->session->userdata('profile_pic')!='admin.png')
                     {
                         $data = $this->user_model->update_profile_pic($this->session->userdata('user_id'));
                         //  echo $data;die;
