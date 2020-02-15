@@ -1946,6 +1946,8 @@ class Admin extends CI_Controller {
 			if (move_uploaded_file($_FILES["upload_xl"]["tmp_name"], $target)){
 				$this->load->library('excel');
 				$objPHPExcel = PHPExcel_IOFactory::load($target);
+				$lead_ids = json_decode(json_encode($this->callback_model->get_last_id()),true);
+				$lead_ids = $lead_ids['id'];
 				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 					break;
 				$lastColumn = $worksheet->getHighestColumn();
@@ -1958,6 +1960,7 @@ class Admin extends CI_Controller {
 				$email1Key = array_search('Email', $keyArray);
 				$email2Key = array_search('Email 2', $keyArray);
 				$leadIdKey = array_search('Lead Id', $keyArray);
+				//$leadIdKey = "FBP - ".sprintf("%'.011d",$lead_ids).PHP_EOL;
 				$notesKey = array_search('Notes', $keyArray);
 				$highestRow = $worksheet->getHighestRow();
 				$newCallbacks = array();
@@ -1988,7 +1991,7 @@ class Admin extends CI_Controller {
 						'contact_no2'=>trim($contact_no2),
 						'email1'=>trim($email1),
 						'email2'=>trim($email2),
-						'leadid'=>trim($leadId),
+						'leadid'=>trim("FBP - ".sprintf("%'.011d",$lead_ids).PHP_EOL),
 						'notes'=>trim($notes),
 					);
 					// print_r($data);exit;
@@ -1998,6 +2001,8 @@ class Admin extends CI_Controller {
 					}
 					else
 						$duplicate++;
+
+					$lead_ids++;
 				}
 				unlink($target);
 				$data['callbacks'] = $newCallbacks;

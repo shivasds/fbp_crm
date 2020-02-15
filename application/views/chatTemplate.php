@@ -177,6 +177,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title"><?=$strTitle;?></h3>
                   <?php //print_r($vendorslist);echo $vendorslist[0]['id']."this is vendorslist";
+                  $vendorslist = json_decode(json_encode($vendorslist),true);
                     $vendors='';
                     foreach ($vendorslist as $Vendor) {
                      $vendors.=strval($Vendor['id'].",");

@@ -55,7 +55,7 @@ class ChatController extends CI_Controller {
         $city_id=$this->user_model->get_city_id($data['user_id']);  
         $data['city_id']=$city_id[0]->city_id;
         $this->session->set_userdata('city_id',$data['city_id']);
-        $data['user_ids']=$this->user_model->get_city_user_ids($city_id[0]->city_id);
+        $data['user_ids']=$this->user_model->get_city_user_ids( );
         $data['user_ids'] =json_decode( json_encode($data['user_ids']), true);
 
              //  print_r( $data['user_ids']);exit();
@@ -63,105 +63,8 @@ class ChatController extends CI_Controller {
         $data['profile_pic'] = $this->user_model->get_profile_pic_name($data['user_id']);
         $data['profile_pic'] = json_decode( json_encode($data['profile_pic']), true);
         $this->session->set_userdata('profile_pic',$data['profile_pic'][0]['profile_pic']);
-        if ($this->session->userdata('user_type') == 'user') {
-            $data['imp_callbacks'] = $this->callback_model->fetch_important_callbacks($data['user_id']);
-            $data['today_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'today');
-            $data['yesterday_callback_count'] = $this->callback_model->fetch_yesterday_callback_count($data['user_id']);
-            $data['overdue_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'overdue');
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],"all","",true);
-            $data['dead_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'dead');
-            $data['close_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'close');
-            $data['active_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'active');
-            $data['client_reg_count'] = $this->callback_model->fetch_client_reg_count($data['user_id']);
-            $data['total_revenue'] = $this->callback_model->fetch_total_revenue($data['user_id']);
-            $data['manager_name'] = $this->user_model->get_manager_name($data['user_id']);
-            $this->session->set_userdata('manager_name', $data['manager_name']);
-            $data['incentive_slabs'] = $this->callback_model->fetch_employee_incentive_slabs();
-            $data['target'] = $this->callback_model->get_target($data['user_id'],date("m/Y"));
-            $data['callsDone'] = $this->callback_model->callbackTrackCountByUserId($data['user_id']);
-           $data['calls_assigned_today']=$this->callback_model->get_callbacks_assigned_today($data['user_id']);
-            $fetchData = $this->callback_model->get_siteVisitDataByUserId($data['user_id']);
-            
-            $prArry = array();
-            $i = 1;
-            foreach ($fetchData as $key => $value) {
-            	$prArry[$value['id']][$key] = $value['id'];
-            	$prArry[$value['id']][$key] = $value['projectName'];
-            }
-            $data['site_visit_projects'] = $prArry;
-            $data['site_visit_data'] = $fetchData;
-            //print_r($this->session->userdata());
-
-        }
-        elseif ($this->session->userdata('user_type') == 'manager'){
-            $data['imp_callbacks'] = $this->callback_model->fetch_important_callbacks($data['user_id']);
-            $data['team_members'] = $this->user_model->get_team_members($data['user_id']);
-            $data['total_team_members'] = $this->user_model->get_team_members_count($data['user_id']); 
-            $data['total_calls'] = $this->callback_model->get_total_team_calls($data['user_id']);
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id']);
-            $data['total_active_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'all',"cb.status_id!=4 AND cb.status_id!=5");
-            $data['close_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'close');
-            $data['total_revenue'] = $this->callback_model->fetch_total_revenue($data['user_id']);
-            $data['total_team_revenue'] = $this->callback_model->fetch_total_revenue($data['user_id'],True);
-            $data['lead_source_report'] = $this->callback_model->get_lead_source_report($data['user_id']);
-            $data['call_reports'] = $this->callback_model->get_call_reports($data['user_id']);
-            $data['incentive_slabs'] = $this->callback_model->fetch_employee_incentive_slabs();
-            $data['target'] = $this->callback_model->get_target($data['user_id'],date("m/Y"));
-            // echo $this->db->last_query();exit;
-
-            $fetchData = $this->callback_model->get_siteVisitDataByUserId($data['user_id']);            
-            $prArry = array();
-            $i = 1;
-            foreach ($fetchData as $key => $value) {
-                $prArry[$value['id']][$key] = $value['id'];
-                $prArry[$value['id']][$key] = $value['projectName'];
-            }
-            $data['site_visit_projects'] = $prArry;
-            $data['site_visit_data'] = $fetchData;
-        }
-         elseif ($this->session->userdata('user_type') == 'City_head'){
-                $data['user_id']=$this->session->userdata('user_id');
-                $city_id=$this->user_model->get_city_id($data['user_id']);
-                $data['city_id']=$city_id[0]->city_id;
-                $this->session->set_userdata('city_id',$data['city_id']);
-                $data['user_ids']=$this->user_model->get_city_user_ids($city_id[0]->city_id);
-             //  print_r( $data['user_ids']);exit();
-                $this->session->set_userdata('user_ids',$data['user_ids']);
-                $data['team_members'] = $this->user_model->get_team_members();
-                $data['total_active_callback_count'] = $this->callback_model->fetch_callback_count(false,'all',"cb.status_id!=4 AND cb.status_id!=5");
-                $data['close_leads_count'] = $this->callback_model->fetch_leads_count(null,'close');
-                $data['total_revenue'] = $this->callback_model->fetch_total_revenue();
-                $data['target'] = $this->callback_model->get_target(null,date("m/Y"));
-            
-            $data['imp_callbacks'] = $this->callback_model->fetch_important_callbacks( );
-            $fetchData = $this->callback_model->get_siteVisitDataByUserId();            
-            $prArry = array();
-            $i = 1;
-            foreach ($fetchData as $key => $value) {
-                $prArry[$value['id']][$key] = $value['id'];
-                $prArry[$value['id']][$key] = $value['projectName'];
-            }
-            $data['site_visit_projects'] = $prArry;
-            $data['site_visit_data'] = $fetchData;
-            $data['total_team_members'] = $this->user_model->get_team_members_count($data['user_id']); 
-            $data['total_calls'] = $this->callback_model->get_total_team_calls();
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count();
-            $data['today_callback_count'] = $this->callback_model->fetch_callback_count(null,'today');
-          //  $data['total_callback_count'] = $this->callback_model->fetch_callback_count();
-             $data['total_team_revenue'] = $this->callback_model->fetch_total_revenue(null,True);
-             $data['lead_source_report'] = $this->callback_model->get_lead_source_report();
-              $data['call_reports'] = $this->callback_model->get_call_reports($data['user_id']);           
-        }
-        else{
-            $data['productivity_report'] = $this->callback_model->get_call_reports();
-            $data['overdue_lead_count'] = $this->callback_model->get_overdue_lead_count();
-            $data['today_callback_count'] = $this->callback_model->fetch_callback_count(null,'today');
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count();
-            $data['lead_source_report'] = $this->callback_model->get_lead_source_report();
-            $data['live_feed_back'] = $this->user_model->get_live_feed_back();
-            // echo "<pre>";print_r($data['productivity_report']);exit;
+     
           
-        }
       
 		$data['vendorslist']=$data['user_ids'];
 		

@@ -1217,5 +1217,14 @@ $list_id=implode(',', $ids);
         return $q->result_array();
     }
 
+    function get_last_id()
+    {
+        $last = $this->db->order_by('id',"desc")
+        ->limit(1)
+        ->get('callback')
+        ->row();
+        return $last;
+    }
+
 
 }

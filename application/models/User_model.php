@@ -330,11 +330,14 @@ class User_model extends CI_Model {
           
         return $result;
     }
-    public function get_city_user_ids($id)
+    public function get_city_user_ids($id='')
     {
             $this->db->select('id');
             $this->db->from('user');
-           // $this->db->where('city_id',$id);
+            if($id)
+            {
+           $this->db->where('city_id',$id);   
+            }
             $this->db->where('id!=',$this->session->userdata('user_id'));
             $this->db->where('active',1);
             $result= $this->db->get()->result();
