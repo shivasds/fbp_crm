@@ -305,7 +305,6 @@ background-color:#00C6D7!important;
     background: #02BBCA;
     float: right;
 }
-
 ul#menu i {
     font-size: 1.1em;
     margin-right: 6px;
@@ -1163,7 +1162,12 @@ a.deutsch img,a.ukrainian img,a.english img,a.espana img,a.russian img {
     transition: all 0.3s ease-out;
     font-size: 0.9em;
 }
-
+.inner-content{
+	margin-left: 10px;
+}
+.container{
+	margin-left: 10px;
+}
 .wrapper-dropdown-3 .dropdown li i {
     float: right;
     color: inherit;
@@ -5516,8 +5520,8 @@ footer  p a:hover ,.footer p a:hover{
 /*---responsive-----*/
 @media (max-width:1600px){
 	.container{
-		width: 1300px;
-		margin-left: 10px;
+		width: auto;
+		/* margin-left: 10px; */
 	}
 	.left-content {
 		float: right;
@@ -5534,13 +5538,13 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:1540px){
 	.container {
-		width: 1286px;
-		margin-left: 18px;
+		width: auto;
+		/* margin-left: 18px; */
      }
 }
 @media (max-width:1110px){
 	.container {
-		width: 904px;
+		width: auto;
      }
 }
 @media (max-width:1440px){
@@ -5615,7 +5619,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:1366px){
 	.container {
-		width: 1107px;
+		width: auto;
 		
 	 }
 	 .h1, h1 {
@@ -5705,14 +5709,14 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:1135px){
 	.container {
-		width: 906px;
+		width: auto;
        
      }
 }
 
 @media (max-width:1280px){
 	.container {
-		width: 1006px;
+		width: auto;
        
      }
 	.profile_details_left {
@@ -5787,14 +5791,14 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:1050px){
 	.container {
-		width: 696px;
-		margin-left: 10px;
+		width: auto;
+		/* margin-left: 10px; */
 	}
 	}
 	
 	@media (max-width:1150px){
 		.container{
-			width:815px;
+			width: auto;
 		}
 		.profile_details_left {
 			float: right;
@@ -5803,7 +5807,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 @media (max-width:1024px){
 	.container{
-		width:787px;
+		width: auto;
 	}
 	.profile_details_left {
 		float: right;
@@ -5983,14 +5987,14 @@ footer  p a:hover ,.footer p a:hover{
 
 @media (max-width:930px){
 	.container {
-		width: 706px;
+		width: auto;
        
      }
 }
 @media (max-width:991px){
 	.container{
-		width: 696px;
-        margin-left: 10px;
+		width: auto;
+        /* margin-left: 10px; */
 	}
 	#menu li a {
 		padding: 12px 20px;
@@ -6138,7 +6142,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:800px){
 	.container{
-		width:595px;
+		width: auto;
 	}
 	label {
 		font-size: 12px;
@@ -6239,7 +6243,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:768px){
 	.container{
-		width: 570px;
+		width: auto;
 		
 	}
 	.page-container {
@@ -6349,7 +6353,7 @@ footer  p a:hover ,.footer p a:hover{
 		font-size: 18px;}
 
 	.container{
-		width:500px;
+		width: auto;
 		
 	}
 
@@ -6475,7 +6479,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:667px){
 	.container{
-		width:491px;
+		width: auto;
 	}
 	.widget {
 		width: 43.5%;
@@ -6491,7 +6495,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:640px){
 	.container{
-		width:520px;
+		width: auto;
 	}
 	.page-container {
 		min-width:650px;
@@ -6867,7 +6871,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:600px){
 	.container{
-		width:550px;
+			width: auto;
 	}
 	footer p {
 		color: #fff;
@@ -6983,8 +6987,8 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width: 568px){
 	.container{
-		width: 514px;
-        margin-left: 20px;
+		width: auto;
+        margin-left: 9px;
 	}
 	.page-container {
 		min-width:568px;
@@ -7103,7 +7107,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:480px){
 	.container{
-		width:400px;
+		width: auto;
 	}
 	.page-container {
 		min-width:480px;
@@ -7357,7 +7361,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:414px){
 	.container{
-		width: 336px;
+		width: auto;
 	}
 	.page-container {
 		min-width:414px;
@@ -7655,7 +7659,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:384px){
 	.container{
-		width:309px;
+		width: auto;
 	}
 	.profile_details_left {
 		float: right;
@@ -7827,18 +7831,8 @@ footer  p a:hover ,.footer p a:hover{
 	}
 }
 @media (max-width:375px){
-
-	.MyImage {
-		background: url(http://localhost:8081/uploads/admin.png);
-		width: 150px;
-		height: 150px;
-		position: relative;
-		margin-left: 12px;
-		border-radius: 100%;
-		border: 2px solid #00c6d7;
-	}
 	.container{
-		width:300px;
+		width: auto;
 	}
 	ul.dropdown-menu.two {
 		padding: 0;
@@ -8243,7 +8237,7 @@ footer  p a:hover ,.footer p a:hover{
 }
 @media (max-width:320px){
 	.container{
-		width:250px;
+		width: auto;
 	}
 	footer p {
 		font-size: 0.8em;

@@ -72,6 +72,7 @@
         <h1><?php echo $heading; ?></h1>
     </div>
     <style>
+        
     @media screen and (min-width: 768px) {
       
         .modal-dialog  {
@@ -383,16 +384,16 @@
                         <!-- <td><?php echo $data->last_update; ?></td> -->
                         <td class="priority-11">
                             <table>
-                                <tr>
+                            <tr style="background-color: #ffffff00;">
                                     <td>
                                         <!-- <a onclick="edit('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_edit"> -->
                                         <a href="<?= base_url('callback-details?id='.$data->id) ?>" target="_blank">
-                                            <i class="fa fa-home fa-2x"  title="Detail" style="color:#ff1122; font-size:21px;padding-right:7px;" aria-hidden="true"></i>
+                                            <i class="fa fa-home fa-2x"  title="Detail" style="background-color: #ffffff00; color:#ff1122; font-size:20px;padding-right:5px;" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                     <td>
                                         <a onclick="previous_callbacks('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_previous">
-                                            <i class="fa fa-keyboard-o fa-2x" title="Notes" style="color:#ff1122; font-size:21px;padding-right:7px;" aria-hidden="true"></i>
+                                            <i class="fa fa-keyboard-o fa-2x" title="Notes" style="color:#ff1122; background-color: #ffffff00; font-size:20px;padding-right:5px;" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                 </tr>

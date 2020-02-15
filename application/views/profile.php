@@ -78,19 +78,41 @@
 						 <!-- //header-ends -->
 						<!--outter-wp-->
 							<div class="outter-wp">
-									<!--sub-heard-part-->
-									  <div class="sub-heard-part">
-									   <ol class="breadcrumb m-b-0">
-											<li><a href="index.html">Home</a></li>
-											<li class="active">Profile</li>
-										</ol>
-									   </div>
+                                    <!--sub-heard-part-->
+                                    <div class="row">
+									  <div class="col-xs-8 col-sm-10 col-md-10">
+                                        <ol class="breadcrumb m-b-0">
+                                                <li><a href="index.html">Home</a></li>
+                                                <li class="active">Profile</li>
+                                                
+                                        </ol>
+                                       </div>
+                                        <div class="col-xs-4 col-sm-2 col-md-2">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        Reset Password
+                                        </button>
+                                        </div>
+                                    </div>
 								    <!--//sub-heard-part-->
 										<!--/profile--> 
 														<!--/profile-inner-->
 <style type="text/css">
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+ 
+}
 	input[type=text], select {
-width: 100%;
+    width: 100%;
     padding: 7px 20px;
     margin: 0px -1px;
     display: inline-block;
@@ -99,7 +121,7 @@ width: 100%;
     box-sizing: border-box;
 }
 	input[type=email], select {
-width: 100%;
+    width: 100%;
     padding: 7px 20px;
     margin: 0px -1px;
     display: inline-block;
@@ -136,7 +158,7 @@ input[type=submit]:hover {
 input[readonly] {
      cursor: no-drop;
 }
-														</style>
+  </style>
 														 <div class="profile-section-inner">
 														       <div class="col-md-6 profile-info">
 																	<h3 class="inner-tittle">Personal Information </h3>
@@ -196,14 +218,15 @@ input[readonly] {
 															<div class="col-md-6 profile-info two">
 															   <h3 class="inner-tittle two">Head Office </h3>
 																<div class="main-grid3 map">
- 	  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.08652150032!2d77.59919581443324!3d12.966315190859378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14677a117163%3A0xcc934a3cb6703eed!2sFull%20Basket%20Property%20Services%20Pvt%20Ltd%20%7C%20Leading%20Real%20Estate%20Company%20in%20Bangalore!5e0!3m2!1sen!2sin!4v1575961381619!5m2!1sen!2sin" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe> 
-																							<div class="gmap-info">
-																									<h4> <i class="fa fa-map-marker"></i> <b><a href="#" class="text-dark">Fullbasket Propertys</a></b></h4>
-																									<p>hayes Road, Richmond Circle</p>
-																									 <p>Bangaluru Karnataka - 560025</p>
-																									<p><!--Rera : PRM/KA/RERA/1251/446/AG/170926/000120<br>-->
+ 	                                                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.08652150032!2d77.59919581443324!3d12.966315190859378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14677a117163%3A0xcc934a3cb6703eed!2sFull%20Basket%20Property%20Services%20Pvt%20Ltd%20%7C%20Leading%20Real%20Estate%20Company%20in%20Bangalore!5e0!3m2!1sen!2sin!4v1575961381619!5m2!1sen!2sin" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe> 
+															<div class="gmap-info">
+																<h4> <i class="fa fa-map-marker"></i> <b><a href="#" class="text-dark">Fullbasket Propertys</a></b></h4>
+																<p>hayes Road, Richmond Circle</p>
+                                                                
+                                                                <p>Bangaluru Karnataka - 560025</p>
+																<p><!--Rera : PRM/KA/RERA/1251/446/AG/170926/000120<br>-->
 L:  080-2331375</p>
-																								</div>
+																</div>
 																	
 																	</div>
 																	
@@ -521,5 +544,42 @@ L:  080-2331375</p>
     }
 
 </script>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+<form action="/action_page.php" method="post">
+
+  <div class="container">
+    <label for="uname"><b>Enter New Password</b></label>
+    <input type="text" placeholder="Enter New Password" name="uname" required>
+
+    <label for="uname"><b>Confirm New Password</b></label>
+    <input type="text" placeholder="Confirm New Password" name="uname" required>
+        
+    <!-- <button type="submit">Save</button> -->
+   
+  </div>
+
+ 
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
