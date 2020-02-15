@@ -120,6 +120,15 @@ span.psw {
     border-radius: 4px;
     box-sizing: border-box;
 }
+  input[type=password], select {
+    width: 100%;
+    padding: 7px 20px;
+    margin: 0px -1px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 	input[type=email], select {
     width: 100%;
     padding: 7px 20px;
@@ -262,6 +271,15 @@ L:  080-2331375</p>
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
+           <?php
+    if ($this->session->flashdata('message')) {
+        ?>
+       <script>alert('<?= $this->session->flashdata('message') ?>');</script>
+         
+        <?php
+    }
+
+    ?>
 			<div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
 			<!--/down-->
 							<div class="down">	
@@ -550,34 +568,35 @@ L:  080-2331375</p>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
       
-<form action="/action_page.php" method="post">
+<form action="<?php echo base_url()?>dashboard/change_password" method="post">
 
-  <div class="container">
+  <div class=" ">
     <label for="uname"><b>Enter New Password</b></label>
-    <input type="text" placeholder="Enter New Password" name="uname" required>
+    <input type="password" placeholder="Enter New Password" name="password" required>
 
     <label for="uname"><b>Confirm New Password</b></label>
-    <input type="text" placeholder="Confirm New Password" name="uname" required>
+    <input type="password" placeholder="Confirm New Password" name="cpassword" required>
         
     <!-- <button type="submit">Save</button> -->
    
   </div>
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
 
  
 </form>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      
     </div>
   </div>
 </div>

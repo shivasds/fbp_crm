@@ -449,6 +449,9 @@ class Dashboard extends CI_Controller {
         $data['heading'] ="Change Password";
         if($this->input->post()){
             $password = $this->input->post('password');
+            $cpassword = $this->input->post('cpassword');
+            if(strcmp($password,$cpassword)==0)
+            {
             $user_id = $this->session->userdata('user_id');
             $this->db->update(
                 'user',
@@ -459,9 +462,17 @@ class Dashboard extends CI_Controller {
                     "id" => $user_id
                 )
             );
-            redirect(base_url());
+            $this->session->set_flashdata('message', 'Your Password Changes Successfully');
+            redirect(base_url('dashboard/profile'));
+            }
+            else
+            {
+                $this->session->set_flashdata('message', 'Password and confirm password entered by you are not same');
+                redirect(base_url('dashboard/profile'));
+            }
+
         }
-        $this->load->view('change_password',$data);
+       // $this->load->view('change_password',$data);
     }
 
     public function generate_callback() {

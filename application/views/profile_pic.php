@@ -93,6 +93,7 @@ else
                 
 <?php 
 }
+echo form_close();
 ?>
 <script>
   $(document).ready(function(){
