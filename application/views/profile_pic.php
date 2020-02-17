@@ -75,7 +75,7 @@ else
  <div class="MyImage" id="OpenImgUpload"> 
  <div class="penLayer">
   <!-- <a href="#" id="OpenImgUpload"><img src="<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>" width="150" height="150"></a>  -->
-  <i class="fa fa-camera" aria-hidden="true"></i>
+  <i class="fa fa-camera" style="color: white;" aria-hidden="true"></i>
 <br>
 <span style="color: white;">Update</span>
   </div></div>                          
