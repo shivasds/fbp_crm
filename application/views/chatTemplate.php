@@ -209,6 +209,7 @@
               <!-- USERS LIST -->
               <div class="box box-danger">
                   <div class="box-header with-border">
+                    <h6>Active (<?php $count=$this->user_model->get_active_users_count();echo $count[0]->count-1?$count[0]->count-1:0; ?>) </h6>
                     <h3 class="box-title"><?=$strTitle;?></h3>
                     <?php //print_r($vendorslist);echo $vendorslist[0]['id']."this is vendorslist";
                     $vendors='';
@@ -258,7 +259,7 @@
                       }
                     ?>
                        <li class="selectVendor"  id="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'];?>">
-                          <img onclick="ScrollDown();"style=" <?php if($i<=20){echo 'border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';};?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name']?>">
+                         <img onclick="ScrollDown();"style=" <?php if($i<=20){$count++;echo 'border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';}?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'].' '.$user[0]['last_name']?>">
                           <a class="users-list-name" href="#"><?=$user[0]['first_name'];?></a>
                           <!--<span class="users-list-date">Yesterday</span>-->
                         </li>
