@@ -1991,7 +1991,7 @@ class Admin extends CI_Controller {
 						'contact_no2'=>trim($contact_no2),
 						'email1'=>trim($email1),
 						'email2'=>trim($email2),
-						'leadid'=>trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
+						'leadid'=>trim("FBP-".sprintf("%'.011d",$lead_ids++).PHP_EOL),
 						'notes'=>trim($notes),
 					);
 					// print_r($data);exit;
@@ -2001,8 +2001,7 @@ class Admin extends CI_Controller {
 					}
 					else
 						$duplicate++;
-
-					$lead_ids++;
+	 
 				}
 				unlink($target);
 				$data['callbacks'] = $newCallbacks;
@@ -2743,11 +2742,8 @@ if ($err) {
 		$data['strsubTitle']='';
 		$list=[];
         	$data['name'] = "chat";
-        $data['user_id'] = $this->session->userdata('user_id');
-        $city_id=$this->user_model->get_city_id($data['user_id']);  
-        $data['city_id']=$city_id[0]->city_id;
-        $this->session->set_userdata('city_id',$data['city_id']);
-        $data['user_ids']=$this->user_model->get_city_user_ids($city_id[0]->city_id);
+        $data['user_id'] = $this->session->userdata('user_id'); 
+        $data['user_ids']=$this->user_model->get_city_user_ids('time');
         $data['user_ids'] =json_decode( json_encode($data['user_ids']), true);
         $data['vendorslist']=$data['user_ids'];
 		

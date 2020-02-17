@@ -77,6 +77,7 @@ $route['excel/view_callback/(:num)']="ExcelController/view_callback";
 $route['ExcelReportController/(:num)']="ExcelReportController";
 $route['chat']="ChatController";
 $route['get-chat-history-vendor']="ChatController/get_chat_history_by_vendor";
+$route['make_user_online']="ChatController/make_user_online";
 $route['send-message']="ChatController/send_text_message";
 $route['admin/chat']="admin/chat";
 $route['admin/get-chat-history-vendor']="admin/get_chat_history_by_vendor";

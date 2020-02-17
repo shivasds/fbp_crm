@@ -334,9 +334,13 @@ class User_model extends CI_Model {
     {
             $this->db->select('id');
             $this->db->from('user');
-            if($id)
+            if($id=='time')
             {
-           $this->db->where('city_id',$id);   
+             $this->db->order_by('last_update','desc');
+            }
+            else
+            {
+                $this->db->where('city_id',$id); 
             }
             $this->db->where('id!=',$this->session->userdata('user_id'));
             $this->db->where('active',1);
