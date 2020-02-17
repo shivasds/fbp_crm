@@ -190,17 +190,13 @@
               </div>
               <!--/.direct-chat -->
             </div>
-
-
-                    <?php
-                    $count=0;
-                    ?>
+ 
 
             <div class="col-sm-6 col-md-6 col-lg-6">
               <!-- USERS LIST -->
               <div class="box box-danger">
                   <div class="box-header with-border">
-                  <h6>Active (<?=$count++;?>) </h6>
+                  <h6>Active (<?php $count=$this->user_model->get_active_users_count();echo $count[0]->count-1?$count[0]->count-1:0; ?>) </h6>
                     <h3 class="box-title"><?=$strTitle;?></h3>
                     <?php //print_r($vendorslist);echo $vendorslist[0]['id']."this is vendorslist";
                     $vendors='';
