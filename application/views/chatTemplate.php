@@ -1,7 +1,28 @@
 <?php 
     defined('BASEPATH') OR exit('No direct script access allowed');
     $this->load->view('inc/header'); 
-?>
+    if(!$this->session->userdata('permissions') && $this->session->userdata('permissions')=='' ) {
+    ?>
+    <style type="text/css">
+    .alrtMsg{padding-top: 50px;}
+    .alrtMsg i {
+        font-size: 60px;
+        color: #f1c836;
+    }
+    </style>
+    <div class="container"> 
+        <div class="row"> 
+            <div class="text-center alrtMsg">
+                <i class="fa fa-exclamation-triangle"></i>
+                <h3>You Do Not have permission as of now. Please contact your Administration and Request for Permission.</h3>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+
+    ?>
     <style>
   .fileDiv {
   position: relative;
@@ -78,7 +99,7 @@
                   </script>
               <!--/profile_details-->
                 <div class="profile_details_left">
-                  <?php $this->load->view('notification');?>
+                 <?php $this->load->view('notification');?>
               </div>
               <div class="clearfix"></div>  
               <!--//profile_details-->
@@ -87,35 +108,10 @@
           <div class="clearfix"></div>
         </div>
           <!-- //header-ends -->
-             <?php
-              if(!$this->session->userdata('permissions') && $this->session->userdata('permissions')=='' ) {
-    ?>
-    <style type="text/css">
-    .alrtMsg{padding-top: 50px;}
-    .alrtMsg i {
-        font-size: 60px;
-        color: #f1c836;
-    }
-    </style>
-    <div class="container"> 
-        <div class="row"> 
-            <div class="text-center alrtMsg">
-                <i class="fa fa-exclamation-triangle"></i>
-                <h3>You Do Not have permission as of now. Please contact your Administration and Request for Permission.</h3>
-            </div>
-        </div>
-    </div>
-    <?php
-}
-else{
-
-    ?>
             <div class="outter-wp">
      <div class="row">
            
-
-            
-            <div class="col-sm-8 col-md-8" id="chatSection">
+            <div class="col-md-6" id="chatSection">
               <!-- DIRECT CHAT -->
               <div class="box box-warning direct-chat direct-chat-primary">
                 <div class="box-header with-border">
@@ -135,10 +131,40 @@ else{
                 <!-- /.box-header -->
                 <div class="box-body">
                   <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages" id="content">
+                  <div class="direct-chat-messages" style="height: 450px;" id="content">
                      <!-- /.direct-chat-msg -->
+                     <style>
+                    #myBtn {
+                        display: block;
+                        /*position: fixed;*/
+                        bottom: 193px;
+                        right: 30px;
+                        z-index: 99;
+                        font-size: 16px;
+                        border: medium none;
+                        outline: medium none;
+                        background-color: #FF3600;
+                        color: #FFF;
+                        cursor: pointer;
+                        padding: 9px;
+                        border-radius: 16px;
 
-                     <div id="dumppy"></div>
+                    }
+
+                    #myBtn:hover {
+                      background-color: #555;
+                    }
+                    /* .selectVendor .user_nactive img{
+                      border: 2px solid #de2323;
+                    }
+                    .selectVendor .user_active img{
+                      border: 2px solid #0e8016;
+                    } */
+                    </style>
+                     <!--<button onclick="ScrollDown()" id="myBtn" title="Go to top">Bottom</button>-->
+                     <div id="dumppy">
+                       
+                     </div>
 
                   </div>
                   <!--/.direct-chat-messages-->
@@ -173,52 +199,70 @@ else{
 
 
 
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-4 col-md-6 col-lg-6">
               <!-- USERS LIST -->
               <div class="box box-danger">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><?=$strTitle;?></h3>
-                  <?php //print_r($vendorslist);echo $vendorslist[0]['id']."this is vendorslist";
-                  $vendorslist = json_decode(json_encode($vendorslist),true);
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><?=$strTitle;?></h3>
+                    <?php //print_r($vendorslist);echo $vendorslist[0]['id']."this is vendorslist";
                     $vendors='';
                     foreach ($vendorslist as $Vendor) {
-                     $vendors.=strval($Vendor['id'].",");
+                    $vendors.=strval($Vendor['id'].",");
                     }
                     $vendors = rtrim($vendors, ", ");
-          
-          //echo $vendors;?>
-                  <div class="box-tools pull-right">
-                    <span class="label label-danger"><?=count($vendorslist);?> <?=$strsubTitle;?></span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
+                              
+                    //echo $vendors;?>
+                    <div class="box-tools pull-right">
+                      <span class="label label-danger"><?=count($vendorslist);?> <?=$strsubTitle;?></span>
+                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <!-- /.box-header -->
+                  <!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="users-list clearfix">
                   
                     <?php if(!empty($vendorslist)){
                     
-            foreach($vendorslist as $v):
-              $this->load->model('user_model');
-              $user=$this->user_model->get_user_details($v);
- 
-            ?>
-                       <li class="selectVendor" id="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'];?>">
-                          <img src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name']?>">
+                    foreach($vendorslist as $v):
+                      $this->load->model('user_model');
+                      $user=$this->user_model->get_user_details($v);
+                      $s =$user[0]['last_update']; 
+                      $i = strtotime(date('Y-m-d h:i:s')) - strtotime($s);
+                      //echo $i;
+                      if($i<=10){
+                        ?>
+                        <style>
+                        .selectVendor  img{
+                          border: 2px solid #0e8016;
+                        }
+                        </style>
+                        <?php
+                      }else{
+                        ?>
+                        <style>
+                        .selectVendor  img{
+                          border: 2px solid #de2323;
+                        }
+                        </style>
+                        <?php
+                      }
+                    ?>
+                       <li class="selectVendor"  id="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'];?>">
+                          <img onclick="ScrollDown();"style=" <?php if($i<=20){echo 'border: 2px solid #0e8016';};?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name']?>">
                           <a class="users-list-name" href="#"><?=$user[0]['first_name'];?></a>
                           <!--<span class="users-list-date">Yesterday</span>-->
                         </li>
-                    <?php
-                     endforeach;?>
-                    
-                   <?php }else{?>
-                    <li>
-                       <a class="users-list-name" href="#">No Vendor's Find...</a>
-                     </li>
-                    <?php } ?>
+                        <?php
+                        endforeach;?>
+                        
+                        <?php }else{?>
+                        <li>
+                          <a class="users-list-name" href="#">No Users's Find...</a>
+                        </li>
+                      <?php } ?>
                     
                     
                   </ul>
@@ -239,9 +283,6 @@ else{
 
                   
                   </div>
-                  <?php
-                }
-                ?>
 <!--/tabs-->
                     <div class="tab-main">
                        <!--/tabs-inner-->
@@ -261,7 +302,7 @@ else{
         <!--//content-inner-->
       <!--/sidebar-menu-->
         <div class="sidebar-menu">
-          <header class="logo">
+          <header class="logo"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
           <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
           <!--<img id="logo" src="" alt="Logo"/>--> 
           </a> 
@@ -311,244 +352,11 @@ else{
 <!--js -->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-
-<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
 <script src="<?=base_url('public/chat/chat.js');?>"></script> 
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
 <!-- Bootstrap Core JavaScript -->
-  
-   <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-        if (!Modernizr.inputtypes.date) {
-            // If not native HTML5 support, fallback to jQuery datePicker
-            $('input[type=date]').datepicker({
-                // Consistent format with the HTML5 picker
-                    dateFormat : 'dd/mm/yy'
-                }
-            );
-        }
-        if (!Modernizr.inputtypes.time) {
-            // If not native HTML5 support, fallback to jQuery timepicker
-            $('input[type=time]').timepicker({ 'timeFormat': 'H:i' });
-        }
-        $('#revenueMonth').MonthPicker({
-            Button: false
-        });
-        get_revenues();
-
-        $('.view_callbacks').click(function(){
-            var type = $(this).data('type');
-            var data = {};
-            switch (type)
-            {
-                case "user_total":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date = "<?php echo date('Y-m-d'); ?>";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_overdue":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date_to = "<?php echo date('Y-m-d H:i:s'); ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_close": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-
-                case "user_important":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.access = 'read_write'; 
-                    data.important = 1;
-                    break;
-
-                case "manager_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "manager_close":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-            }
-            
-            view_callbacks(data,'post');
-
-        });
-
-        $("#refresh").click(function(){
-            $(".se-pre-con").show();
-            $.get("<?php echo base_url(); ?>dashboard/get_live_feed_back", function(response){
-                $("#live_feed_back_body").html(response);
-                $(".se-pre-con").hide("slow");
-            });
-        });
-
-        $("#overdue_lead_count").click(function(){
-            var form = document.createElement('form');
-            form.method = "POST";
-            form.action = "<?php echo base_url()."dashboard/generate_report" ?>";
-            
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = "toDate";
-            input.value = $(this).data('datetime');
-            form.appendChild(input);
-
-            input = document.createElement('input');
-            input.type = "text";
-            input.name = "reportType";
-            input.value = "due";
-            form.appendChild(input);
-
-            document.body.appendChild(form);
-            form.submit();
-        });
-
-        $('.emailSiteVisit').on('click', function(){
-            $(".se-pre-con").show();
-            $.ajax({
-                type : 'POST',
-                url : "<?= base_url('site-visit-report-mail');?>",
-                data:1,
-                success: function(res){
-                    $(".se-pre-con").hide("slow");
-                    if(res == 1)
-                        alert('Email Sent Successfully.');
-                    else
-                        alert('Email Sent fail!');
-                }
-            });
-        });
-
-    });
-    // $('#filter_revenue').click(get_revenues());
-    function get_revenues(){
-        $.get( "<?php echo base_url()."dashboard/get_revenue/" ?>"+$('#revenueMonth').val(), function( data ) {
-            $('#revenue_data').html(data);
-        });
-    }
-    function view_callbacks(data, method) {
-        var form = document.createElement('form');
-        form.method = method;
-        form.action = "<?php echo base_url()."view_callbacks?" ?>"+jQuery.param(data);
-        for (var i in data) {
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = i;
-            input.value = data[i];
-            form.appendChild(input);
-        }
-        //console.log(form);
-        document.body.appendChild(form);
-        form.submit();
-    }
-
-</script>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-        if (!Modernizr.inputtypes.date) {
-            // If not native HTML5 support, fallback to jQuery datePicker
-            $('input[type=date]').datepicker({
-                // Consistent format with the HTML5 picker
-                    dateFormat : 'dd/mm/yy'
-                }
-            );
-        }
-        if (!Modernizr.inputtypes.time) {
-            // If not native HTML5 support, fallback to jQuery timepicker
-            $('input[type=time]').timepicker({ 'timeFormat': 'H:i' });
-        }
-        $('#revenueMonth').MonthPicker({
-            Button: false
-        });
-        get_revenues();
-
-       
-
-        $("#refresh").click(function(){
-            $(".se-pre-con").show();
-            $.get("<?php echo base_url(); ?>dashboard/get_live_feed_back", function(response){
-                $("#live_feed_back_body").html(response);
-                $(".se-pre-con").hide("slow");
-            });
-        });
-
-        $("#overdue_lead_count").click(function(){
-            var form = document.createElement('form');
-            form.method = "POST";
-            form.action = "<?php echo base_url()."dashboard/generate_report" ?>";
-            
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = "toDate";
-            input.value = $(this).data('datetime');
-            form.appendChild(input);
-
-            input = document.createElement('input');
-            input.type = "text";
-            input.name = "reportType";
-            input.value = "due";
-            form.appendChild(input);
-
-            document.body.appendChild(form);
-            form.submit();
-        });
-
-        $('.emailSiteVisit').on('click', function(){
-            $(".se-pre-con").show();
-            $.ajax({
-                type : 'POST',
-                url : "<?= base_url('site-visit-report-mail');?>",
-                data:1,
-                success: function(res){
-                    $(".se-pre-con").hide("slow");
-                    if(res == 1)
-                        alert('Email Sent Successfully.');
-                    else
-                        alert('Email Sent fail!');
-                }
-            });
-        });
-
-    });
-    // $('#filter_revenue').click(get_revenues());
-    function get_revenues(){
-        $.get( "<?php echo base_url()."dashboard/get_revenue/" ?>"+$('#revenueMonth').val(), function( data ) {
-            $('#revenue_data').html(data);
-        });
-    }
-    function view_callbacks(data, method) {
-        var form = document.createElement('form');
-        form.method = method;
-        form.action = "<?php echo base_url()."view_callbacks?" ?>"+jQuery.param(data);
-        for (var i in data) {
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = i;
-            input.value = data[i];
-            form.appendChild(input);
-        }
-        //console.log(form);
-        document.body.appendChild(form);
-        form.submit();
-    }
-
-</script>
+ 
 
 <!-- Bootstrap 3.3.7 -->
 

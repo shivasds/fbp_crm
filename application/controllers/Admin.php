@@ -3087,6 +3087,16 @@ if ($err) {
 			$this->load->view('reports/view_active_emp.php', $data);
  
 	}
+public function make_user_online($value='')
+	{
+		$where = array('id'=>$this->session->userdata('user_id'));
+		$data = array('last_update'=>date('Y-m-d h:i:s'));
+		$bool = $this->callback_model->updateWhere($where,$data,'user');
+		if($bool)
+		echo 'success';
+		else
+		echo 'error';
 
+	}
 
 }
