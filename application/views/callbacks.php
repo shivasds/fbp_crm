@@ -110,6 +110,14 @@
         border: 1px solid #aaa;
         padding: 5px
     }
+
+    .icon .fa{
+            background-color: #ffffff00; 
+            color:#ff1122;
+             font-size:20px;
+             padding-right:5px;
+        }
+
     @media (max-width: 991px){
         .priority-7,.priority-8,.priority-13,.priority-14{
 			display:none;
@@ -142,6 +150,12 @@
         #search_form{
             display:none;
         }
+        .icon .fa{
+            background-color: #ffffff00; 
+            color:#ff1122;
+             font-size:16px!important;
+            
+        }
        
 	}
 	/* @media screen and (max-width: 384px) {
@@ -154,6 +168,13 @@
    
 	}  */
 	@media screen and (max-width: 300px) {
+        .icon .fa{
+            background-color: #ffffff00; 
+            color:#ff1122;
+             font-size:16px!important;
+            
+        }
+        .
         #search_form{
             display:none;
         }
@@ -384,16 +405,16 @@
                         <!-- <td><?php echo $data->last_update; ?></td> -->
                         <td class="priority-11">
                             <table>
-                            <tr style="background-color: #ffffff00;">
+                            <tr class="icon" style="background-color: #ffffff00;">
                                     <td>
                                         <!-- <a onclick="edit('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_edit"> -->
                                         <a href="<?= base_url('callback-details?id='.$data->id) ?>" target="_blank">
-                                            <i class="fa fa-home fa-2x"  title="Detail" style="background-color: #ffffff00; color:#ff1122; font-size:20px;padding-right:5px;" aria-hidden="true"></i>
+                                            <i class="fa fa-home fa-2x"  title="Detail" style="" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                     <td>
                                         <a onclick="previous_callbacks('<?php echo $data->id; ?>')" data-toggle="modal" data-target="#modal_previous">
-                                            <i class="fa fa-keyboard-o fa-2x" title="Notes" style="color:#ff1122; background-color: #ffffff00; font-size:20px;padding-right:5px;" aria-hidden="true"></i>
+                                            <i class="fa fa-keyboard-o fa-2x" title="Notes" style="" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                 </tr>

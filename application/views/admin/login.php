@@ -67,7 +67,7 @@
 									<!--footer section end-->
 									<!--/404-->
 <!--js -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>

@@ -96,7 +96,7 @@
                                         </ol>
                                        </div>
                                         <div class="col-xs-4 col-sm-2 col-md-2">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style=" float: right;">
                                         Reset Password
                                         </button>
                                         </div>
@@ -110,6 +110,16 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
+@media (max-width: 375px){
+    .btn-primary{
+    font-size: 12px;
+    margin-top: auto;
+    padding: 5px;
+    /* margin-left: -19px;  */
+    }
+   
+}
+
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -333,7 +343,6 @@ L:  080-2331375</p>
 <!--js -->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script>
 <script src="<?php echo base_url()?>assets/js/scripts.js"></script>
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
