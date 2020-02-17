@@ -55,7 +55,7 @@ class ChatController extends CI_Controller {
         $city_id=$this->user_model->get_city_id($data['user_id']);  
         $data['city_id']=$city_id[0]->city_id;
         $this->session->set_userdata('city_id',$data['city_id']);
-        $data['user_ids']=$this->user_model->get_city_user_ids();
+        $data['user_ids']=$this->user_model->get_city_user_ids('time');
         $data['user_ids'] =json_decode( json_encode($data['user_ids']), true);
 
              // print_r( $data['user_ids']);exit();
