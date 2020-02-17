@@ -154,12 +154,12 @@
                     #myBtn:hover {
                       background-color: #555;
                     }
-                    /* .selectVendor img{
+                    .selectVendor .user_nactive img{
                       border: 2px solid #de2323;
                     }
-                    .selectVendor .active img{
+                    .selectVendor .user_active img{
                       border: 2px solid #0e8016;
-                    } */
+                    }
                     </style>
                      <!--<button onclick="ScrollDown()" id="myBtn" title="Go to top">Bottom</button>-->
                      <div id="dumppy">
