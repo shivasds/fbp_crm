@@ -1991,7 +1991,7 @@ class Admin extends CI_Controller {
 						'contact_no2'=>trim($contact_no2),
 						'email1'=>trim($email1),
 						'email2'=>trim($email2),
-						'leadid'=>trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
+						'leadid'=>trim("FBP-".sprintf("%'.011d",$lead_ids++).PHP_EOL),
 						'notes'=>trim($notes),
 					);
 					// print_r($data);exit;
@@ -2001,8 +2001,7 @@ class Admin extends CI_Controller {
 					}
 					else
 						$duplicate++;
-
-					$lead_ids++;
+	 
 				}
 				unlink($target);
 				$data['callbacks'] = $newCallbacks;
