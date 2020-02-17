@@ -579,10 +579,10 @@ L:  080-2331375</p>
 
   <div class=" ">
     <label for="uname"><b>Enter New Password</b></label>
-    <input type="password" placeholder="Enter New Password" name="password" required>
+    <input type="password" placeholder="Password" id="password" required>
 
     <label for="uname"><b>Confirm New Password</b></label>
-    <input type="password" placeholder="Confirm New Password" name="cpassword" required>
+    <input type="password" placeholder="Confirm Password" id="confirm_password" required>
         
     <!-- <button type="submit">Save</button> -->
    
@@ -600,5 +600,21 @@ L:  080-2331375</p>
     </div>
   </div>
 </div>
+
+<script>
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
 </body>
 </html>
