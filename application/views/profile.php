@@ -586,11 +586,11 @@ L:  080-2331375</p>
 <form action="<?php echo base_url()?>dashboard/change_password" method="post">
 
   <div class=" ">
-    <label for="uname"><b>Enter New Password</b></label>
-    <input type="password" placeholder="Password" id="password" required>
+    <label for="pswd"><b>Enter New Password</b></label>
+    <input type="password" placeholder="Password" id="password" name="password" required>
 
-    <label for="uname"><b>Confirm New Password</b></label>
-    <input type="password" placeholder="Confirm Password" id="confirm_password" required>
+    <label for="pswd"><b>Confirm New Password</b></label>
+    <input type="password" placeholder="Confirm Password" id="confirm_password" name="cpassword" required>
         
     <!-- <button type="submit">Save</button> -->
    
