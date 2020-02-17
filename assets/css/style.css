@@ -1166,7 +1166,7 @@ a.deutsch img,a.ukrainian img,a.english img,a.espana img,a.russian img {
 	margin-left: 7px;
 }
 .container{
-	margin-left: 10px;
+	margin-left: 8px;
 }
 .wrapper-dropdown-3 .dropdown li i {
     float: right;
@@ -5830,6 +5830,9 @@ footer  p a:hover ,.footer p a:hover{
 		}
 	}
 @media (max-width:1024px){
+	.inner-content{
+		margin-left: 3px;
+	}
 	.container{
 		width: auto;
 	}
@@ -6266,6 +6269,9 @@ footer  p a:hover ,.footer p a:hover{
 	}
 }
 @media (max-width:768px){
+	.inner-content {
+		margin-left: 10px;
+	}
 	.container{
 		width: auto;
 		
@@ -7012,7 +7018,7 @@ footer  p a:hover ,.footer p a:hover{
 @media (max-width: 568px){
 	.container{
 		width: auto;
-        margin-left: 9px;
+        /* margin-left: 9px; */
 	}
 	.page-container {
 		min-width:568px;
@@ -7384,6 +7390,9 @@ footer  p a:hover ,.footer p a:hover{
 	}
 }
 @media (max-width:414px){
+	.inner-content {
+		margin-left: 3px;
+	}
 	.container{
 		width: auto;
 	}
@@ -7855,6 +7864,9 @@ footer  p a:hover ,.footer p a:hover{
 	}
 }
 @media (max-width:375px){
+	.inner-content {
+		margin-left: 7px;
+	}
 	.container{
 		width: auto;
 	}
