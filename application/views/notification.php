@@ -57,7 +57,7 @@ $count =  $this->callback_model->get_notification_count();
                                            <li class="dropdown note">
                                             <?php
                                            // print_r($this->session->userdata());
-                                            $this->load->model('ChatModel');
+                                             
                                            $unread = $this->ChatModel->get_unread_msgs($this->session->userdata('user_id'));
                                            if($unread[0]["count"]==0)
                                             $space="&nbsp";
