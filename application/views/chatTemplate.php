@@ -134,6 +134,12 @@
                   <div class="direct-chat-messages" style="height: 450px;" id="content">
                      <!-- /.direct-chat-msg -->
                      <style>
+                       .users-list>li {
+                      width: 20%!important;
+                      float: left;
+                      padding: 10px;
+                      text-align: center;
+                  }
                     #myBtn {
                         display: block;
                         /*position: fixed;*/

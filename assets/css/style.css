@@ -3878,6 +3878,7 @@ button.btn.btn-default.tip {
 
 ::-webkit-scrollbar {
 	width: 10px;
+	overflow:auto;
   }
   
   /* Track */
@@ -3889,13 +3890,13 @@ button.btn.btn-default.tip {
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-	background: #5bc0de; 
+	background: #00c6d7; 
 	
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-	background: #5bc0de; 
+	background: #00c6d7; 
   }
 
 .activity_box{

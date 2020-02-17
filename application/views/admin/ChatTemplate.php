@@ -24,6 +24,12 @@
 
     ?>
     <style>
+      .users-list>li {
+    width: 20%!important;
+    float: left;
+    padding: 10px;
+    text-align: center;
+}
   .fileDiv {
   position: relative;
   overflow: hidden;
@@ -131,7 +137,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages" style="height: 400px;" id="content">
+                  <div class="direct-chat-messages" style="height: 400px;background: #8a90900d;" id="content">
                      <!-- /.direct-chat-msg -->
                      <style>
                     #myBtn {
