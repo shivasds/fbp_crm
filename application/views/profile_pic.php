@@ -39,6 +39,41 @@ margin-top:-30px;
 margin-left:-30px;
 
 }
+@media (max-width: 375px){
+    .MyImage{
+    background: url(<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>);
+    width: 140px;
+    height: 140px;
+    position: relative;
+    /* margin-left: 29px; */
+    display: inline-block;
+    border-radius: 100%;
+    border: 2px solid #002561;
+}
+.penLayer{
+  position:absolute;
+  width:100%;
+  height:50%;
+  font-size: 14px;
+  margin-top:50%;
+  background:rgba(0, 0, 0, 0.46);
+  border-bottom-left-radius: 110px;
+  border-bottom-right-radius: 110px;
+  display:none;
+    border-bottom: 0;
+
+}
+.penLayer img{
+  width:60px;
+height:60px;
+position:absolute;
+left:50%;
+top:50%;
+margin-top:-30px;
+margin-left:-30px;
+
+}
+}
 .down i {
   font-size: 1.5em;
     margin-top: 10px;
