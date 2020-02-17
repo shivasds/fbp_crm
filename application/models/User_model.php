@@ -332,7 +332,7 @@ class User_model extends CI_Model {
     }
     public function get_city_user_ids($id='')
     {
-            $this->db->select('id,last_update');
+            $this->db->select('id');
             $this->db->from('user');
             if($id=='time')
             {
