@@ -2,6 +2,7 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
     $this->load->view('inc/admin_header'); 
     $this->load->model('user_model');
+    
    
    //echo $string_ids;
 

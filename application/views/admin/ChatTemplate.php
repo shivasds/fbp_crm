@@ -229,6 +229,9 @@
                     foreach($vendorslist as $v):
                       $this->load->model('user_model');
                       $user=$this->user_model->get_user_details($v);
+                      $s =$user[0]['last_update']; 
+                      $i = strtotime(date('Y-m-d h:i:s')) - strtotime($s);
+                      //echo $i;
         
                     ?>
                        <li class="selectVendor"  id="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'];?>">
@@ -241,7 +244,7 @@
                         
                         <?php }else{?>
                         <li>
-                          <a class="users-list-name" href="#">No Vendor's Find...</a>
+                          <a class="users-list-name" href="#">No Users's Find...</a>
                         </li>
                       <?php } ?>
                     

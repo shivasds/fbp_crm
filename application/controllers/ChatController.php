@@ -55,11 +55,11 @@ class ChatController extends CI_Controller {
         $city_id=$this->user_model->get_city_id($data['user_id']);  
         $data['city_id']=$city_id[0]->city_id;
         $this->session->set_userdata('city_id',$data['city_id']);
-        $data['user_ids']=$this->user_model->get_city_user_ids( );
+        $data['user_ids']=$this->user_model->get_city_user_ids();
         $data['user_ids'] =json_decode( json_encode($data['user_ids']), true);
 
-             //  print_r( $data['user_ids']);exit();
-                $this->session->set_userdata('user_ids',$data['user_ids']);
+             // print_r( $data['user_ids']);exit();
+        $this->session->set_userdata('user_ids',$data['user_ids']);
         $data['profile_pic'] = $this->user_model->get_profile_pic_name($data['user_id']);
         $data['profile_pic'] = json_decode( json_encode($data['profile_pic']), true);
         $this->session->set_userdata('profile_pic',$data['profile_pic'][0]['profile_pic']);
@@ -251,6 +251,15 @@ class ChatController extends CI_Controller {
 		$this->ChatModel->TrashById($receiver_id); 
  
  		
+	}
+
+	public function make_user_online($value='')
+	{
+		$where = array('id'=>$this->session->userdata('user_id'));
+		$data = array('last_update'=>date('Y-m-d h:i:s'));
+		$this->callback_model->updateWhere($where,$data,'user');
+		//print_r($this->db->last_query());
+		echo 'success';
 	}
 	
 }
