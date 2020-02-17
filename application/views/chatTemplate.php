@@ -277,7 +277,7 @@ else{
                                       <a href="#"><span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?></a><br>
                                         <?php } ?>
                   <ul>
-                  <li><a class="tooltips" href="#"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
+                  <li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
                     <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
                     <li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                     </ul>

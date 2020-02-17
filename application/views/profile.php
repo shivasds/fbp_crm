@@ -1,6 +1,14 @@
 <?php 
     defined('BASEPATH') OR exit('No direct script access allowed');
-    $this->load->view('inc/header'); 
+    
+    if($this->session->userdata('user_type')=='admin')
+    {
+      $this->load->view('inc/admin_header'); 
+    }
+    else
+    {
+      $this->load->view('inc/header'); 
+    }
     $this->load->model('user_model');
    $user_ids =$this->session->userdata('user_ids');
    $user_ids =json_decode( json_encode($user_ids), true);
