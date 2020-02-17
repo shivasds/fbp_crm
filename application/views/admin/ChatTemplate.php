@@ -111,7 +111,7 @@
             <div class="outter-wp">
      <div class="row">
            
-            <div class="col-md-8" id="chatSection">
+            <div class="col-md-6" id="chatSection">
               <!-- DIRECT CHAT -->
               <div class="box box-warning direct-chat direct-chat-primary">
                 <div class="box-header with-border">
@@ -154,12 +154,12 @@
                     #myBtn:hover {
                       background-color: #555;
                     }
-                    .selectVendor .user_nactive img{
+                    /* .selectVendor .user_nactive img{
                       border: 2px solid #de2323;
                     }
                     .selectVendor .user_active img{
                       border: 2px solid #0e8016;
-                    }
+                    } */
                     </style>
                      <!--<button onclick="ScrollDown()" id="myBtn" title="Go to top">Bottom</button>-->
                      <div id="dumppy">
@@ -199,7 +199,7 @@
 
 
 
-            <div class="col-sm-4 col-md-4 col-lg-6">
+            <div class="col-sm-4 col-md-6 col-lg-6">
               <!-- USERS LIST -->
               <div class="box box-danger">
                   <div class="box-header with-border">
@@ -232,7 +232,23 @@
                       $s =$user[0]['last_update']; 
                       $i = strtotime(date('Y-m-d h:i:s')) - strtotime($s);
                       //echo $i;
-        
+                      if($i<=4){
+                        ?>
+                        <style>
+                        .selectVendor  img{
+                          border: 2px solid #0e8016;
+                        }
+                        </style>
+                        <?php
+                      }else{
+                        ?>
+                        <style>
+                        .selectVendor  img{
+                          border: 2px solid #de2323;
+                        }
+                        </style>
+                        <?php
+                      }
                     ?>
                        <li class="selectVendor"  id="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'];?>">
                           <img onclick="ScrollDown();" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name']?>">
