@@ -400,7 +400,7 @@ class User_model extends CI_Model {
         $date = date("Y-m-d H:i:s", strtotime(date('Y-m-d h:i:s')) - 20);
         $this->db->select('count(*) as count')
         ->from('user')
-        ->where('last_update>=',$date);
+        ->where('last_update>=',$date)
         ->where('active',1);
 
         $result= $this->db->get()->result();  
