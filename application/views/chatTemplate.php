@@ -154,7 +154,12 @@
                     #myBtn:hover {
                       background-color: #555;
                     }
-                   
+                    /* .selectVendor .user_nactive img{
+                      border: 2px solid #de2323;
+                    }
+                    .selectVendor .user_active img{
+                      border: 2px solid #0e8016;
+                    } */
                     </style>
                      <!--<button onclick="ScrollDown()" id="myBtn" title="Go to top">Bottom</button>-->
                      <div id="dumppy">
@@ -230,9 +235,9 @@
                       if($i<=10){
                         ?>
                         <style>
-                        .selectVendor  img{
+                        /* .selectVendor  img{
                           border: 2px solid #0e8016;
-                        }
+                        } */
                         </style>
                         <?php
                       }else{
@@ -247,7 +252,7 @@
                       }
                     ?>
                        <li class="selectVendor"  id="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'];?>">
-                          <img onclick="ScrollDown();"style=" <?php if($i<=20){echo 'border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name']?>">
+                          <img onclick="ScrollDown();"style=" <?php if($i<=20){echo 'border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';};?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name']?>">
                           <a class="users-list-name" href="#"><?=$user[0]['first_name'];?></a>
                           <!--<span class="users-list-date">Yesterday</span>-->
                         </li>
