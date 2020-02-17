@@ -74,6 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $(this).timepicker({ 'timeFormat': 'H:i' });
         });
     });
+ 
 </script> 
 
 </head> 
