@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                           //alert('user is actice');
                           },
                           error: function (jqXHR, status, err) {
-                             alert('Local error callback');
+                             //alert('Local error callback');
                           }
                     }); 
 }, 5000);
