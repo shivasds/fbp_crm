@@ -50,7 +50,7 @@
 }
 .spiner{}
 .spiner .fa-spin { font-size:24px;}
-.attachmentImgCls{ width:450px; margin-left: -25px; cursor:pointer; }
+.attachmentImgCls{ width:400px; margin-left: -25px; cursor:pointer; }
 </style>
  
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -111,7 +111,7 @@
             <div class="outter-wp">
      <div class="row">
            
-            <div class="col-md-6" id="chatSection">
+            <div class="col-sm-6 col-md-6 col-lg-6" id="chatSection">
               <!-- DIRECT CHAT -->
               <div class="box box-warning direct-chat direct-chat-primary">
                 <div class="box-header with-border">
@@ -131,7 +131,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                   <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages" style="height: 450px;" id="content">
+                  <div class="direct-chat-messages" style="height: 400px;" id="content">
                      <!-- /.direct-chat-msg -->
                      <style>
                     #myBtn {
@@ -154,12 +154,7 @@
                     #myBtn:hover {
                       background-color: #555;
                     }
-                    /* .selectVendor .user_nactive img{
-                      border: 2px solid #de2323;
-                    }
-                    .selectVendor .user_active img{
-                      border: 2px solid #0e8016;
-                    } */
+                  
                     </style>
                      <!--<button onclick="ScrollDown()" id="myBtn" title="Go to top">Bottom</button>-->
                      <div id="dumppy">
@@ -199,7 +194,7 @@
 
 
 
-            <div class="col-sm-4 col-md-6 col-lg-6">
+            <div class="col-sm-6 col-md-6 col-lg-6">
               <!-- USERS LIST -->
               <div class="box box-danger">
                   <div class="box-header with-border">
