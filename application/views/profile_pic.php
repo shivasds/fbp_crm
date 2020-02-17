@@ -141,5 +141,19 @@ $('.MyImage').hover(function(){
 })
 
 })
+
+$(window).resize(function(){
+
+if ($(window).width() <= 400) {  
+
+  $('.MyImage').hover(function(){
+
+$('.penLayer').fadeToggle();
+
+})
+
+}     
+
+});
   </script>
 

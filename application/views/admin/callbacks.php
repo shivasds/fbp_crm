@@ -162,7 +162,7 @@
     <form method="POST" id="search_form">
      <div class="col-xs-12 col-sm-12 col-md-12" style="margin-left: 2px;">
         <div class="row">
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="emp_code">Department:</label>
                     <select  class="form-control"  id="dept" name="dept" >
                         <option value="">Select</option>
@@ -172,7 +172,7 @@
                         <?php }?>             
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="emp_code">Project:</label>
                     <select  class="form-control"  id="project" name="project" >
                         <option value="">Select</option>
@@ -182,7 +182,7 @@
                         <?php }?>              
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">Lead Source:</label>
                     <select  class="form-control"  id="lead_source" name="lead_source" >
                         <option value="">Select</option>
@@ -192,7 +192,7 @@
                         <?php } ?>             
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">User Name:</label>
                     <select  class="form-control"  id="user_name" name="user_name" >
                         <option value="">Select</option>
@@ -226,7 +226,7 @@
                         <?php } ?>
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">Sub Broker:</label>
                     <select  class="form-control"  id="sub_broker" name="sub_broker" >
                         <option value="">Select</option>
@@ -236,7 +236,7 @@
                         <?php } ?>              
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">Status:</label>
                     <select  class="form-control"  id="status" name="status" >
                         <option value="">Select</option>
@@ -246,7 +246,7 @@
                         <?php } ?>
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">City:</label>
                     <select  class="form-control"  id="city" name="city" >
                         <option value="">Select</option>
@@ -256,13 +256,13 @@
                         <?php } ?>               
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3">
+                <div class="col-xs-12 col-md-3">
                     <div class="form-group">
                         <label>Search:</label>
                         <input type="text" class="form-control" name="srxhtxt" id="srxhtxt" placeholder="Enter search text" value="<?= ($this->session->userdata('SRCHTXT')) ? $this->session->userdata('SRCHTXT') : '' ?>" />
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-3">
+                <div class="col-xs-12 col-md-3">
                     <div class="form-group">
                         <label>Due Date</label>
                         <select  class="form-control" name="searchDate" id="searchDate">
@@ -404,7 +404,7 @@
                 <h4 class="modal-title">Call back details</h4>
             </div>
             <div class="modal-body">
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <input type="hidden" id="mhid">
                     <label for="emp_code">Dept:</label>
                     <select  class="form-control"  id="m_dept" name="m_dept" required >
@@ -427,7 +427,7 @@
                     <label for="name">Contact No 2:</label>
                     <input type="text" class="form-control" id="m_contact_no2" name="m_contact_no2" placeholder="Contact No">
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">Call back type:</label>
                     <select  class="form-control"  id="m_callback_type" name="m_callback_type" required="required" >
                         <option value="">Select </option>
@@ -445,7 +445,7 @@
                     <label for="email">Email2:</label>
                     <input type="email" class="form-control" id="m_email2" name="m_email2" placeholder="email">
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="emp_code">Project:</label>
                     <select  class="form-control"  id="m_project" name="m_project" required="required" >
                         <option value="">Select</option>
@@ -455,7 +455,7 @@
                         <?php }?>               
                     </select>
                 </div>
-                <div class="col-xs-6 col-md-3 form-group">
+                <div class="col-xs-12 col-md-3 form-group">
                     <label for="assign">Lead Source:</label>
                     <select  class="form-control"  id="m_lead_source" name="m_lead_source" required="required" >
                         <option value="">Select</option>
@@ -1337,7 +1337,6 @@
 
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script>
 <script src="<?php echo base_url()?>assets/js/scripts.js"></script>
 
 <!-- Bootstrap Core JavaScript -->

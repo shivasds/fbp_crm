@@ -1,6 +1,8 @@
 <?php 
-    defined('BASEPATH') OR exit('No direct script access allowed');
-    if($this->session->userdata("user_type") == "admin")
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+if($this->session->userdata("user_type") == "admin")
         $this->load->view('inc/admin_header');
     else
         $this->load->view('inc/header');    
@@ -246,7 +248,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/vroom.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>-->
-<script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script> 
+
 <script src="<?php echo base_url()?>assets/js/scripts.js"></script>
 
 <!-- Bootstrap Core JavaScript --> 

@@ -3874,6 +3874,30 @@ button.btn.btn-default.tip {
 	overflow-y: scroll;
     padding:2em 1em;
 }
+
+
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	box-shadow: blue; 
+	background: #052963; 
+	
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #5bc0de; 
+	
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #5bc0de; 
+  }
+
 .activity_box{
   min-height:202px;
 }
