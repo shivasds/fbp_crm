@@ -100,7 +100,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         font-size: 15px;
     }
 </style>
- 
+ <script type="text/javascript">
+     window.setInterval(function(){
+                $.ajax({
+                          //dataType : "json",
+                          url: 'make_user_online',
+                          success:function(data)
+                          {
+                          //alert('user is actice');
+                          },
+                          error: function (jqXHR, status, err) {
+                             alert('Local error callback');
+                          }
+                    }); 
+}, 5000);
+</script>
 </head> 
 <div class="modal fade" id="modalPermission" role="dialog" data-backdrop="static">
         <div class="modal-dialog modal-lg">

@@ -53,7 +53,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://rawgit.com/KidSysco/jquery-ui-month-picker/v3.0.0/demo/MonthPicker.min.js"></script>
-
+<script type="text/javascript">
+     window.setInterval(function(){
+                $.ajax({
+                          //dataType : "json",
+                          url: 'make_user_online',
+                          success:function(data)
+                          {
+                         // alert('user is actice');
+                          },
+                          error: function (jqXHR, status, err) {
+                             alert('Local error callback');
+                          }
+                    }); 
+}, 5000);
+</script>
 <script type="text/javascript">
     $(function(){
         $('.datepicker').each(function(){
@@ -74,7 +88,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $(this).timepicker({ 'timeFormat': 'H:i' });
         });
     });
+
  
 </script> 
+
 
 </head> 
