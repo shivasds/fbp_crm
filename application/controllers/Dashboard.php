@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
         $this->load->model('callback_model');
         $this->load->library('session');
         $this->load->model('login_model');
+         $this->load->model('ChatModel');
 
         if($this->session->userdata('user_id') && $this->session->userdata('is_loggedin') == true && ($this->session->userdata('username') !='admin') )     
             $this->getPermission($this->session->userdata('user_id'));
