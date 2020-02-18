@@ -66,10 +66,11 @@ height: 100px;
     border-bottom-left-radius: 3px;
     padding: 16px!important;
 }
-  .selectVendor img{ 
-width: 100%; 
-height: 100%; 
+
+.users-list>li img { 
+  height: -webkit-fill-available!important;
 }
+
 
 
 .message-notify{

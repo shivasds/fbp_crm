@@ -73,16 +73,12 @@
 height: 100px; 
 /* border: 5px dashed #f7a239; */
   }
-  .selectVendor img{ 
+  /* img{ 
 width: 100%; 
 height: 100%; 
-}
-.box-body {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    padding: 16px!important;
+} */
+.users-list>li img { 
+    height: -webkit-fill-available!important;
 }
 
 .message-notify{
