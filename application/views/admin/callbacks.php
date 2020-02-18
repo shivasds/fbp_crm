@@ -111,7 +111,7 @@
         .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-10,.priority-11{
 			display:none;
 		}
-        .priority-12,.priority-13{
+        .priority-13{
 			display:none;
 		}
 	}
@@ -291,7 +291,7 @@
        </div>
     </form>
 
-  
+    <!-- display nowrap -->
     <div class="" style="margin-bottom: 5%;">
     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
@@ -374,7 +374,7 @@
                 <h4 class="modal-title">Call back Notes</h4>
             </div>
             <div class="modal-body">
-                <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%" >
+                <table id="example1" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%" >
                     <thead>
                         <tr>
                             <th>S No.</th>
@@ -1389,14 +1389,17 @@
             });
         });
 
-    });
+    //});
     // $('#filter_revenue').click(get_revenues());
   
 
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            "scrollX": true,
+            "scrollY": true
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
