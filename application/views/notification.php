@@ -60,18 +60,18 @@ $count =  $this->callback_model->get_notification_count();
                                              
                                            $unread = $this->ChatModel->get_unread_msgs($this->session->userdata('user_id'));
                                            if($unread[0]["count"]==0)
-                                            $space="&nbsp";
+                                            $space="";
                                         else
                                             $space = $unread[0]["count"];
                                             if($this->session->userdata('user_type')!='admin')
                                             
 
-echo '<div class="tooltip"><a href="'. base_url('chat') .'" class="" ><i class="fa fa-commenting-o">'.$space.'</i></a> <span class="tooltiptext">Chat</span></div>';
+echo '<div class="tooltip"><a href="'. base_url('chat') .'" class="" ><i class="fa fa-commenting-o"></i> <span class="badge">'.$space.'</span></a> <span class="tooltiptext">Chat</span></div>';
                                           
                                           
 
                                           else
-echo '<div class="tooltip"><a href="'. base_url('admin/chat') .'" class="" ><i class="fa fa-commenting-o">'.$space.'</i></a><span class="tooltiptext">Chat</span></div>';
+echo '<div class="tooltip"><a href="'. base_url('admin/chat') .'" class="" ><i class="fa fa-commenting-o"></i><span class="badge">'.$space.'</span></a><span class="tooltiptext">Chat</span></div>';
                                           
                                             ?>
                                         </li>
