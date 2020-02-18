@@ -53,12 +53,25 @@
 			height: auto;
 			width: 70px;
   }
-  .selectVendor img{
-    width: 100%; 
-   height: 100%; 
-  border-radius: 100%;
-  }
  
+  .selectVendor{
+    width: 30%; 
+height: 100px; 
+/* border: 5px dashed #f7a239; */
+  }
+  .box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 16px!important;
+}
+
+.users-list>li img { 
+  height: -webkit-fill-available!important;
+}
+
+
 
 .message-notify{
 	  position: absolute;
@@ -251,7 +264,7 @@
                     </div>
                   </div>
                   <!-- /.box-header -->
-                <div class="box-body no-padding">
+                <div class="box-body">
                   <ul class="users-list clearfix">
                   
                     <?php if(!empty($vendorslist)){
@@ -282,7 +295,7 @@
                       }
                     ?>
                        <li class="selectVendor img_cont"  id="<?=$user[0]['id'];?>" title="<?=$user[0]['first_name'];?>">
-                         <img onclick="ScrollDown();"style=" <?php if($i<=20){$count++;echo 'border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';}?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'].' '.$user[0]['last_name']?>"><?php
+                         <img onclick="ScrollDown();"style=" <?php if($i<=20){$count++;echo 'width: 100%;height: 100%;border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';}?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'].' '.$user[0]['last_name']?>"><?php
                          $unread = $this->ChatModel->get_unread_msgs($this->session->userdata('user_id'),$user[0]['id']);
                                            if($unread[0]["count"]==0)
                                             $space="";
