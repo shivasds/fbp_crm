@@ -2818,15 +2818,17 @@ if ($err) {
 	}
 	
 	public function get_chat_history_by_vendor(){
-        $id=$this->user_model->get_userid_by_name($this->input->get('receiver_id'));
+      //  $id=$this->user_model->get_userid_by_name($this->input->get('receiver_id'));
+		$r_id = $this->input->get('receiver_id');
 		$receiver_id = $this->OuthModel->Encryptor('decrypt', $this->input->get('receiver_id') );
 		/*print_r($receiver_id);die('chill');
 		print_r($id);
 		 */
         $Logged_sender_id = $this->session->userdata['user_id'];
-        $this->session->set_userdata('receiver_id',$id[0]['id']);
-		$history = $this->ChatModel->GetReciverChatHistory($id[0]['id']);
-		//print_r($history);
+        $this->session->set_userdata('receiver_id',$r_id);
+		$history = $this->ChatModel->GetReciverChatHistory($r_id);
+		 
+		$this->ChatModel->read_msg($r_id,$Logged_sender_id);
 		foreach($history as $chat):
 			
 			$message_id = $this->OuthModel->Encryptor('encrypt', $chat['id']);
@@ -3090,7 +3092,7 @@ if ($err) {
 public function make_user_online($value='')
 	{
 		$where = array('id'=>$this->session->userdata('user_id'));
-		$data = array('last_update'=>date('Y-m-d h:i:s'));
+		$data = array('last_update'=>date('Y-m-d H:i:s'));
 		$bool = $this->callback_model->updateWhere($where,$data,'user');
 		if($bool)
 		echo 'success';

@@ -54,5 +54,29 @@
 			return true;
 		else
 			return false;
- 	}	
+ 	}
+
+ 	public function read_msg($r_id='',$s_id='')
+ 		{
+ 			 
+ 			$this->db->where('receiver_id',  $s_id);
+ 			$this->db->where('sender_id',$r_id);
+    		$this->db->update('chat', array('read_msg' => 0));
+  			return true;
+ 		}	
+ 		public function get_unread_msgs($id='',$u_id='')
+ 		{
+ 		$this->db->select('count(*) as count');
+		$this->db->from('chat');
+		$this->db->where('receiver_id',$id);
+		if($u_id)
+			$this->db->where('sender_id',$u_id);
+		$this->db->where('read_msg',1);
+   		$query = $this->db->get();
+ 		if ($query) {
+			 return $query->result_array();
+		 } else {
+			 return false;
+		 }
+ 		}
  }
