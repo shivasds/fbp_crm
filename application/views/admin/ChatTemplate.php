@@ -24,6 +24,14 @@
 
     ?>
     <style>
+      @media (max-width:375px){
+      .users-list>li {
+    width: 50%!important;
+    float: left;
+    padding: 10px;
+    text-align: center;
+}
+      }
       .users-list>li {
     width: 20%!important;
     float: left;
