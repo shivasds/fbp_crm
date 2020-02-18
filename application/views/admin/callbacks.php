@@ -10,10 +10,10 @@
         font-size: 60px;
         color: #f1c836;
     }
-    .table {
+    /* .table {
     margin-bottom: 0;
     margin-left: -20px;
-    }
+    } */
  
     </style>
     <div class="container"> 
@@ -76,18 +76,7 @@
         <h1 style=" margin-left: 20px;"><?php echo $heading; ?></h1>
     </div>
     <style>
-   .table-striped {
-	    border: #e1e0e0 1px solid;
-	}
-	.table-striped th {
-	    text-align: left;
-	    background: #f0F0F0;
-	    padding: 10px;
-	}
-	.table-striped td {
-	    border-bottom: #e1e0e0 1px solid;
-	    padding: 10px;
-	}
+ 
 	@media (max-width: 991px){
    .priority-10,.priority-11,.priority-12,.priority-13{
 			display:none;
@@ -126,24 +115,6 @@
 	
 	}
   
-    /* .form-group input[type="checkbox"] {
-        display: none;
-    }
-    .form-group input[type="checkbox"] + .btn-group > label span {
-        width: 20px;
-    }
-    .form-group input[type="checkbox"] + .btn-group > label span:first-child {
-        display: none;
-    }
-    .form-group input[type="checkbox"] + .btn-group > label span:last-child {
-        display: inline-block;   
-    }
-    .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
-        display: inline-block;
-    }
-    .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
-        display: none;   
-    }*/
     tr.highlight_past td.due_date{
         background-color: #cc6666 !important;
     }
@@ -152,11 +123,8 @@
     }
     tr.highlight_future td.due_date{
         background-color: #65dc68 !important;
-    }/*
-    #history_table td {
-        border: 1px solid #aaa;
-        padding: 5px
-    } */
+    }
+ 
    
    </style>
     <form method="POST" id="search_form">
@@ -1396,10 +1364,11 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable({
-            "scrollX": true,
-            "scrollY": true
-        });
+        $('#example').DataTable();
+        // $('#example').DataTable({
+        //     "scrollX": true,
+        //     "scrollY": true
+        // });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
