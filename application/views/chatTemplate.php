@@ -48,6 +48,26 @@
     color: #fff;
   text-align: right;
 }
+.img_cont{
+			position: relative;
+			height: 70px;
+			width: 70px;
+	}
+	.img_cont_msg{
+			height: 40px;
+			width: 40px;
+	}
+.message-notify{
+	  position: absolute;
+    color: white;
+    height: 22px;
+    width: 22px;
+    background-color: #052963e0;
+    border-radius: 68%;
+    bottom: 2.1em;
+    right: 0.3em;
+	}
+ 
 .spiner{}
 .spiner .fa-spin { font-size:24px;}
 .attachmentImgCls{ width:450px; margin-left: -25px; cursor:pointer; }
@@ -111,7 +131,7 @@
             <div class="outter-wp">
      <div class="row">
            
-            <div class="col-md-6" id="chatSection">
+            <div class="col-sm-4 col-md-6 col-lg-6" id="chatSection">
               <!-- DIRECT CHAT -->
               <div class="box box-warning direct-chat direct-chat-primary">
                 <div class="box-header with-border">
@@ -258,15 +278,20 @@
                         <?php
                       }
                     ?>
-                       <li class="selectVendor"  id="<?=$user[0]['id'];?>" title="<?=$user[0]['first_name'];?>">
+                       <li class="selectVendor img_cont"  id="<?=$user[0]['id'];?>" title="<?=$user[0]['first_name'];?>">
                          <img onclick="ScrollDown();"style=" <?php if($i<=20){$count++;echo 'border: 2px solid #0e8016;box-shadow: 2px 2px 5px #0e8016;';}?>" src="<?=base_url('uploads/').$user[0]['profile_pic'];?>" alt="<?=$user[0]['first_name'];?>" title="<?=$user[0]['first_name'].' '.$user[0]['last_name']?>"><?php
                          $unread = $this->ChatModel->get_unread_msgs($this->session->userdata('user_id'),$user[0]['id']);
                                            if($unread[0]["count"]==0)
-                                            $space="&nbsp";
+                                            $space="";
                                         else
-                                            $space = $unread[0]["count"];
-echo $space;
-                                          ?>
+                                        {
+                                         echo '<span class="message-notify">';
+                                         $space = $unread[0]["count"];
+                                            echo $space;
+                                        }
+                                            
+                                          ?></span>
+                                          <br>
                           <a class="users-list-name" href="#"><?=$user[0]['first_name'];?></a>
                           <!--<span class="users-list-date">Yesterday</span>-->
                         </li>
