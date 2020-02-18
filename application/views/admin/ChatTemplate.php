@@ -80,6 +80,17 @@ height: 100%;
 .users-list>li img { 
     height: -webkit-fill-available!important;
 }
+@media (max-width: 1440px){
+  #chatSection{
+  position: fixed;
+  width: 43%;
+}
+}
+@media (max-width: 550px){
+#chatSection {
+    position: initial;
+    width: auto;
+}
 
 .message-notify{
 	  position: absolute;
@@ -154,7 +165,7 @@ height: 100%;
             <div class="outter-wp">
      <div class="row">
            
-            <div class="col-sm-6 col-md-6 col-lg-6" id="chatSection">
+            <div class="col-sm-6 col-md-6 col-lg-6" id="chatSection" style="float:left;">
               <!-- DIRECT CHAT -->
               <div class="box box-warning direct-chat direct-chat-primary">
                 <div class="box-header with-border">
@@ -235,7 +246,7 @@ height: 100%;
             </div>
  
 
-            <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="col-sm-6 col-md-6 col-lg-6" style="float:right;">
               <!-- USERS LIST -->
               <div class="box box-danger">
                   <div class="box-header with-border">
