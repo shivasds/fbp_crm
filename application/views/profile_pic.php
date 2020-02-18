@@ -1,7 +1,7 @@
 
 <style>
   .MyImage{
-    background: url(<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>);
+    /* background: url(<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>); */
     width: 150px;
     height: 150px;
     position: relative;
@@ -10,11 +10,17 @@
     border-radius: 100%;
     border: 3px solid #002561;
 }
+
+.MyImage img{
+  width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
 .penLayer{
   position:absolute;
   width:100%;
   height:50%;
-  margin-top:50%;
+  margin-top: -48%;
   background:rgba(0, 0, 0, 0.46);
   border-bottom-left-radius: 110px;
   border-bottom-right-radius: 110px;
@@ -41,7 +47,7 @@ margin-left:-30px;
 }
 @media (max-width: 375px){
     .MyImage{
-    background: url(<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>);
+    /* background: url(<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>); */
     width: 140px;
     height: 140px;
     position: relative;
@@ -55,7 +61,7 @@ margin-left:-30px;
   width:100%;
   height:50%;
   font-size: 14px;
-  margin-top:50%;
+  margin-top:-49%;
   background:rgba(0, 0, 0, 0.46);
   border-bottom-left-radius: 110px;
   border-bottom-right-radius: 110px;
@@ -85,7 +91,7 @@ if($this->session->userdata('user_type')!='admin')
 {
   ?>
 <div class="MyImage" id="OpenImgUpload">
-<!-- <a href="#" id="OpenImgUpload"><img src="<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>" width="150" height="150"></a>  -->
+<img src="<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>" width="150" height="150">
 <div class="penLayer">
 <i class="fa fa-camera" style="color: white;" aria-hidden="true"></i>
 <br>
@@ -108,9 +114,10 @@ else
 {
   ?>
  <div class="MyImage" id="OpenImgUpload"> 
+ <img src="<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>" width="150" height="150">
+  
  <div class="penLayer">
-  <!-- <a href="#" id="OpenImgUpload"><img src="<?php echo base_url()?>uploads/<?= $this->session->userdata('profile_pic');?>" width="150" height="150"></a>  -->
-  <i class="fa fa-camera" style="color: white;" aria-hidden="true"></i>
+<i class="fa fa-camera" style="color: white;" aria-hidden="true"></i>
 <br>
 <span style="color: white;">Update</span>
   </div></div>                          
@@ -142,18 +149,5 @@ $('.MyImage').hover(function(){
 
 })
 
-$(window).resize(function(){
-
-if ($(window).width() <= 400) {  
-
-  $('.MyImage').hover(function(){
-
-$('.penLayer').fadeToggle();
-
-})
-
-}     
-
-});
   </script>
 

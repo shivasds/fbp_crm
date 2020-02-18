@@ -57,13 +57,19 @@
 
 .img_cont{
 			position: relative;
-			height: 70px;
+		height: auto;
 			width: 70px;
 	}
-	.img_cont_msg{
-			height: 40px;
-			width: 40px;
-	}
+  .selectVendor{
+    width: 30%; 
+height: 100px; 
+/* border: 5px dashed #f7a239; */
+  }
+  img{ 
+width: 100%; 
+height: 100%; 
+}
+
 .message-notify{
 	  position: absolute;
     color: white;
