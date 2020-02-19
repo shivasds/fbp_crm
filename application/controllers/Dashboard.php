@@ -313,7 +313,9 @@ class Dashboard extends CI_Controller {
         
         //------- pagination ------
         $rowCount               = $this->callback_model->count_search_records(null,$where,null,null,$user_type);
+        //echo $rowCount;die;
         $data["totalRecords"]   = $rowCount;
+        //print_r($data["totalRecords"]);die;
         $data["links"]          = paginitaion(base_url().'callbacks/', 2,VIEW_PER_PAGE, $rowCount);
         $page = $this->uri->segment(2);
         $offset = !$page ? 0 : $page;

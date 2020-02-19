@@ -350,13 +350,15 @@
     <br>
     <?php if($this->session->userdata("user_type")=="manager") { ?>
         Now showing <?php echo ($this->session->userdata('self') == "1")?"self":"teams"; ?> callbacks. <a href="#" id="change_callbacks">Change</a>
-    <?php } ?>
+    <?php }
+
+     ?>
     <br>
 
 </div>
 
 <div class="container">
-        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table  class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th class="priority-1">No</th>
@@ -427,8 +429,8 @@
     
     
         <div style="margin-top: 20px">
-            <!-- <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(2)) ? $this->uri->segment(2)+1 : 1; ?> to <?= ($this->uri->segment(2)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
-            <ul class="pagination pull-right"><?php echo $links; ?></ul> -->
+             <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(2)) ? $this->uri->segment(2)+1 : 1; ?> to <?= ($this->uri->segment(2)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
+            <ul class="pagination pull-right"><?php echo $links; ?></ul> 
         </div>
     </div>
 <br/><br/>
