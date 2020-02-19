@@ -158,7 +158,7 @@ class User_model extends CI_Model {
         $this->db->from('user');
         $this->db->order_by('id','desc');
         $ids=array();
-        foreach ($this->session->userdata('user_ids') as $id) {
+        foreach ($this->session->userdata('city_user_ids') as $id) {
         // echo $id->id;
         $ids[]=$id->id;
         }

@@ -230,7 +230,7 @@ class Callback_model extends MY_Model {
               
          
           $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -301,23 +301,25 @@ class Callback_model extends MY_Model {
         }
          else if($user == 'City_head'){
           //print_r($this->session->userdata('user_idsuser
-          if($this->session->userdata('city_user')!=null)
-          {
-          
-          }
-          else
-          {
+         //  if($this->session->userdata('city_user')!=null)
+         //  {
+         // echo $this->session->userdata('city_user'); die;
+         //  }
+         //  else
+         //  {
                   //echo $this->session->userdata('city_user');die;
+            //print_r($this->session->userdata('city_user_ids'));die;
           $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
           
         $list_id=implode(',', $ids);
+
         //$this->db->where("u.city_id", $this->session->userdata('city_id'));
          $this->db->where("(cb.user_id in(".$list_id."))", NULL, FALSE);
-          }
+          //}
        
         }
         elseif ($user == 'user') {
@@ -388,7 +390,7 @@ class Callback_model extends MY_Model {
         }
           elseif($this->session->userdata('user_type')=='City_head')
             {
-                foreach ($this->session->userdata('user_ids') as $id) {
+                foreach ($this->session->userdata('city_user_ids') as $id) {
 // echo $id->id;
 $ids[]=$id->id;
 }
@@ -426,7 +428,7 @@ $list_id=implode(',', $ids);
             $this->db->where("cb.user_id", $user_id);
             elseif($this->session->userdata('user_type')=='City_head')
             {
-                foreach ($this->session->userdata('user_ids') as $id) {
+                foreach ($this->session->userdata('city_user_ids') as $id) {
 // echo $id->id;
 $ids[]=$id->id;
 }
@@ -468,7 +470,7 @@ $list_id=implode(',', $ids);
         if($this->session->userdata('user_type')=='City_head')
         {
             $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -507,7 +509,7 @@ $list_id=implode(',', $ids);
         if($this->session->userdata('user_type')=='City_head')
         {
             $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -578,7 +580,7 @@ $list_id=implode(',', $ids);
         $this->db->where("(u.id = $user_id OR u.reports_to=$user_id)");
         elseif($this->session->userdata('user_type')=='City_head')
             {
-                foreach ($this->session->userdata('user_ids') as $id) {
+                foreach ($this->session->userdata('city_user_ids') as $id) {
             // echo $id->id;
             $ids[]=$id->id;
             }
@@ -596,7 +598,7 @@ $list_id=implode(',', $ids);
         if($this->session->userdata('user_type')=='City_head')
         {
             $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -634,7 +636,7 @@ $list_id=implode(',', $ids);
         else
             {
                 	$ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -668,7 +670,7 @@ $list_id=implode(',', $ids);
         elseif(($this->session->userdata('user_type')=="City_head"))
         {
             $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -720,7 +722,7 @@ $list_id=implode(',', $ids);
         elseif(($this->session->userdata('user_type')=="City_head"))
         {
             $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -1082,7 +1084,7 @@ $list_id=implode(',', $ids);
            if($this->session->userdata('user_type')=='City_head')
            {
    $ids=array();
-          foreach ($this->session->userdata('user_ids') as $id) {
+          foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
           }
@@ -1145,7 +1147,7 @@ $list_id=implode(',', $ids);
         $this->db->where(['cb.user_id'=>$userid, 'ced.flag'=>1, 'ced.type'=>1]);
         elseif($this->session->userdata('user_type')=='City_head')
             {
-                foreach ($this->session->userdata('user_ids') as $id) {
+                foreach ($this->session->userdata('city_user_ids') as $id) {
 // echo $id->id;
 $ids[]=$id->id;
 }
