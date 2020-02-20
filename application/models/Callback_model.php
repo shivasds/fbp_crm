@@ -186,7 +186,7 @@ class Callback_model extends MY_Model {
         $this->db->from('callback as cb');
         return $this->db->count_all_results();
     }
-    function count_search_records($type,$query,$limit=null,$offset=null,$user="admin",$request=null, $report=""){
+    function count_search_records($type,$query,$limit=null,$offset=null,$user='',$request=null, $report=""){
     	$user=$this->session->userdata('user_type');
         $this->db->select('cb.*,p.name as project_name,ls.name as lead_source_name,concat(u.first_name,"",u.last_name) as user_name,b.name as broker_name,s.name as status_name');
         if($type){
@@ -254,6 +254,7 @@ class Callback_model extends MY_Model {
             $this->db->group_by('cr.callback_id');
         }
         $this->db->from('callback as cb');
+        //echo $this->db->last_query();die;
         //echo $this->db->count_all_results();die;
         return $this->db->count_all_results();
     }
@@ -345,7 +346,7 @@ class Callback_model extends MY_Model {
         if($offset)
             $this->db->limit($offset, $limit);
         $query=$this->db->get();
-        
+
         return $query?$query->result():array();
     }
 

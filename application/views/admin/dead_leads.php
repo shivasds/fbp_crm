@@ -176,7 +176,29 @@
                     <?php } ?>               
                 </select>
             </div>
+            <?php
+            if($this->session->userdata("user_type")=="City_head"){
+                 $users = $this->user_model->get_city_users_active();
+                    // print_r($all_user);die;
+            ?>
+            <div class="col-md-3 form-group">
+                <label for="assign">User Name:</label>
+                <select  class="form-control"  id="user_name" name="user_name" >
+                  <option value="">Select</option>
+                    <?php 
 
+                                foreach ($users as $user) {
+                                ?>
+                         <option value="<?php echo $user->id ?>" <?php echo ($user->id  == $this->session->userdata('city_user')) ? 'selected' : ''; ?>><?php echo $user->first_name." ".$user->last_name; ?></option>
+                    <?php } ?>    
+                </select>
+            </div>
+            <?php
+        }
+        else
+        {
+
+            ?>
             <div class="col-md-3 form-group">
                 <label for="assign">User Name:</label>
                 <select  class="form-control"  id="user_name" name="user_name" >
@@ -205,6 +227,7 @@
                     <?php } ?>
                 </select>
             </div>
+        <?php } ?>
         
             <div class="col-md-3">
                 <div class="form-group">
@@ -797,7 +820,7 @@
         </div>
     </div>
 </div>
-
+<br><br>
 
 <div class="modal fade" id="modalReassign"  role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-lg">
