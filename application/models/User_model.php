@@ -14,6 +14,7 @@ class User_model extends CI_Model {
             ->from('user')
             ->order_by('first_name','asc')
             ->order_by('last_name','asc');
+            $this->db->where('active',1);
         if($where)
             $this->db->where($where);
         $query=$this->db->get();
