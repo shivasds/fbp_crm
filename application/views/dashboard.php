@@ -268,14 +268,14 @@
 														                            </table>
 																							</div>
 																						</section>
-									<section id="section-3">
+									                                                    <section id="section-3">
 																							<div class="">
 																							 <br>
-														                            <table class="table">
+														                            <!-- <table class="table">
 														                                <thead>
 														                                    <tr>
 														                                        <th>Total Revenue</th> 
-														                                        <!-- <th>Lastest Comment</th> -->
+														                                        <!-- <th>Lastest Comment</th>
 														                                    </tr>
 														                                </thead>
 														                                <tbody>
@@ -284,7 +284,19 @@
 														                                	</tr>
 									                                  
 														                                </tbody>
-														                            </table>
+                                                                                    </table> -->
+                                                                                    
+                                                                                    <div class="container">
+                                                                                            <div class="row text-center">
+                                                                                                <div class="col-md-6">
+                                                                                                Total Revenue
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                <?php echo $total_revenue; ?>
+                                                                                                </div>
+                                                                                               
+                                                                                            </div>
+                                                                                            </div>
 																							</div>
 																						</section>
 																					</div><!-- /content -->
