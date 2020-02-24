@@ -292,7 +292,7 @@
                                                                                                 Total Revenue
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
-                                                                                                <?php echo $total_revenue; ?>
+                                                                                               <a href="#" class="view_callbacks" data-type="user_close"><?php echo $total_revenue; ?></a>
                                                                                                 </div>
                                                                                                
                                                                                             </div>
