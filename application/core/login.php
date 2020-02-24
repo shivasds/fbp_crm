@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--footer section end-->
 									<!--/404-->
 <!--js -->
-<!-- <script src="<?php echo base_url(); ?>js/jquery.nicescroll.js"></script> -->
+
 <script src="<?php echo base_url(); ?>js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
    <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>

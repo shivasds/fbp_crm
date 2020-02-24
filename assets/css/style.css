@@ -22,6 +22,15 @@ body a{
 		/* border-radius: 10px */
 		
 	}
+	.scrollbar2{
+		height: auto;
+		max-height: 350px;
+		overflow-x: hidden;
+		
+		/* background: #02BBCA!important; */
+		padding-bottom: 64px!important;
+		/* border-radius: 10px */
+	}
 
 	#bluescroll::-webkit-scrollbar-track
 	{
