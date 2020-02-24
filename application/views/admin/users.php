@@ -165,8 +165,8 @@
        
 	
 	}
-    </style>
-
+ </style>
+   
     <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
         <div class="col-sm-6 form-group">
             <label for="emp_code">Employee Code:</label>
@@ -183,6 +183,14 @@
         <div class="col-sm-6 form-group">
             <label for="email">Email Id:</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Employee Enter email" required="required">
+        </div>
+        <div class="col-sm-6 form-group">
+            <label for="emp_dob">D.O.B:</label>
+            <input type="text" class="form-control datepicker" id="emp_dob" name="emp_dob" placeholder="Employee Date Of Birth" readonly required="required">
+        </div>
+        <div class="col-sm-6 form-group">
+            <label for="emp_doj">D.O.J:</label>
+            <input type="text" class="form-control datepicker" id="emp_doj" name="emp_doj" placeholder="Employee Date Of Joining" readonly required="required">
         </div>
         <div class="col-sm-6 form-group">
             <label for="emp_last_name">Mobile Number:</label>
@@ -592,9 +600,9 @@
 <!--js -
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/vroom.css">
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/vroom.js"></script>-->
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
+<!-- <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>--> -->
 <script src="<?= base_url();?>assets/js/custom.js"></script>
 <!-- Bootstrap Core JavaScript -->
    

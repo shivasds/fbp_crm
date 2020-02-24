@@ -56,7 +56,7 @@ $i=1;
                     if(count($childModules)>0){
                         echo '<ul class="dropdown-menu scrollbar1" id="bluescroll">';
                         foreach ($childModules as $cModule) {
-                            $baseLink = ($this->session->userdata('user_type') == 'admin' || $this->session->userdata('user_type') == 'City_head') ? base_url('admin/'.$cModule['permalink']) : base_url($cModule['permalink']);
+                            $baseLink = ($this->session->userdata('user_type') == 'admin' || $this->session->userdata('user_type') == 'City_head' ? base_url('admin/'.$cModule['permalink']) : base_url($cModule['permalink']);
                             //if(in_array($cModule['id'], $permissionArry))
                                /* if($cModule['module']== 'Online Leads')
                                 {

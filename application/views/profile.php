@@ -200,13 +200,23 @@ input[readonly] {
 																		<div class="about-info-p">
 																			<strong>Employee Code</strong>
 																			<br> 	
-																			<input type="text" name="emp_code" readonly="" value="<?php echo $this->session->userdata('username'); ?>">
+																			<input type="text" name="emp_code" onfocus="this.blur()"readonly="" value="<?php echo $this->session->userdata('username'); ?>">
 																		</div>
 																		<div class="about-info-p">
 																			<strong>Mobile</strong>
 																			<br>
 																			<input type="text" name="user_mobile" placeholder="Mobile Number" value="<?= $this->session->userdata('user_mobile')?$this->session->userdata('user_mobile') : '';?>" >
 																		</div>
+                                    <div class="about-info-p">
+                                      <strong>D.O.B</strong>
+                                      <br>
+                                      <input type="text" name="user_dob" onfocus="this.blur()" readonly=""  value="<?= $this->session->userdata('user_dob')?$this->session->userdata('user_dob') : '';?>" readonly>
+                                    </div>
+                                    <div class="about-info-p">
+                                      <strong>D.O.J</strong>
+                                      <br>
+                                      <input type="text" name="user_doj" onfocus="this.blur()" readonly=""  value="<?= $this->session->userdata('user_mobile')?$this->session->userdata('user_doj') : '';?>" readonly>
+                                    </div>
 																		<div class="about-info-p">
 																			<strong>Address</strong>
 																			<textarea name="address" placeholder="Address" ><?= $this->session->userdata('user_address')?$this->session->userdata('user_address') : '';?> </textarea>
@@ -214,13 +224,13 @@ input[readonly] {
 																		</div> 
 																		<div class="about-info-p">
 																			<strong>Email</strong>
-																			<input type="email" name="user_email" readonly="" value="<?php echo $this->session->userdata('user_email'); ?>">
+																			<input type="email" name="user_email" onfocus="this.blur()" readonly="" value="<?php echo $this->session->userdata('user_email'); ?>">
 																			<br> 
 																		</div>
 
 																		<div class="about-info-p">
 																			<strong>Designation</strong>
-																			<input type="text" name="user_designation" readonly=""value="<?php echo $this->session->userdata('user_type'); ?>">
+																			<input type="text" name="user_designation" onfocus="this.blur()" readonly=""value="<?php echo $this->session->userdata('user_type'); ?>">
 																			<br> 
 																		</div> 
 																		
@@ -343,8 +353,8 @@ L:  080-2331375</p>
 <!--js -->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
+<!--<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->-->
 
 <!-- Bootstrap Core JavaScript -->
   
