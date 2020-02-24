@@ -280,7 +280,7 @@
 														                                </thead>
 														                                <tbody>
 														                                	<tr>
-														                                		 <td><?php echo $total_revenue; ?></td>
+														                                		 <td><a href="#" class="view_callbacks" data-type="user_close"><?php echo $total_revenue; ?></a></td>
 														                                	</tr>
 									                                  
 														                                </tbody>

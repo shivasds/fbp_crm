@@ -566,7 +566,11 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+             "paging":   false,
+              "info": false
+
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({

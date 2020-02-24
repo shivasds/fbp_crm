@@ -130,7 +130,7 @@
         </div>
     </form>
     <br>
- <div  style="width:100%; height:100%; overflow: scroll;padding-right: 20px;padding-left: 20px">
+ <div  style=" ">
 	<table class="display" cellspacing="0" width="100%" >
 		<thead>
 			
