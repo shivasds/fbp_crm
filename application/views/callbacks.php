@@ -350,7 +350,9 @@
     <br>
     <?php if($this->session->userdata("user_type")=="manager") { ?>
         Now showing <?php echo ($this->session->userdata('self') == "1")?"self":"teams"; ?> callbacks. <a href="#" id="change_callbacks">Change</a>
-    <?php } ?>
+    <?php }
+
+     ?>
     <br>
 
 </div>
@@ -427,8 +429,8 @@
     
     
         <div style="margin-top: 20px">
-            <!-- <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(2)) ? $this->uri->segment(2)+1 : 1; ?> to <?= ($this->uri->segment(2)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
-            <ul class="pagination pull-right"><?php echo $links; ?></ul> -->
+             <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(2)) ? $this->uri->segment(2)+1 : 1; ?> to <?= ($this->uri->segment(2)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
+            <ul class="pagination pull-right"><?php echo $links; ?></ul> 
         </div>
     </div>
 <br/><br/>
@@ -551,9 +553,10 @@
 
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script> 
-<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script>-->
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
-<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
  Bootstrap Core JavaScript 
    -->
    <script>

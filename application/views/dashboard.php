@@ -168,7 +168,7 @@
 																<label><?php echo $active_leads_count; ?></label>
 															</div>
 															<div class="clearfix"> </div>	
-														</div>
+														</div> 
 														<div class="clearfix"> </div>	
 													</div>
 													<br>
@@ -179,6 +179,7 @@
 																						<ul>
 																							<li class="tab-current"><a href="#section-1" class="icon-shop"><i class="lnr lnr-briefcase"></i> <span>Important Calls</span></a></li>
 																							<li><a href="#section-2" class="icon-cup"><i class="lnr lnr-lighter"></i> <span>Site Visit Fixed</span></a></li>
+																							<li><a href="#section-3" class="icon-cup"><i class="lnr lnr-lighter"></i> <span>Total Revenue</span></a></li>
 																						</ul>
 																					</nav>
 																					<div class="content tab">
@@ -263,6 +264,25 @@
                                         echo '<tr><td colspan="3">No records found!</td></tr>';
                                     ?> 
 										                                        
+														                                </tbody>
+														                            </table>
+																							</div>
+																						</section>
+									<section id="section-3">
+																							<div class="">
+																							 <br>
+														                            <table class="table">
+														                                <thead>
+														                                    <tr>
+														                                        <th>Total Revenue</th> 
+														                                        <!-- <th>Lastest Comment</th> -->
+														                                    </tr>
+														                                </thead>
+														                                <tbody>
+														                                	<tr>
+														                                		 <td><?php echo $total_revenue; ?></td>
+														                                	</tr>
+									                                  
 														                                </tbody>
 														                            </table>
 																							</div>
@@ -717,7 +737,8 @@
 <!--js 
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script>-->
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
 <!-- Bootstrap Core JavaScript -->

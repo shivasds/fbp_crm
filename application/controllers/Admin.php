@@ -803,6 +803,7 @@ class Admin extends CI_Controller {
 			$status=$this->input->post('status');
 			$city=$this->input->post('city');
 			$dead_reason=$this->input->post('dead_reason');
+		 
             
 			if($dept!==null){
 				$this->session->set_userdata("department",$dept);
@@ -865,6 +866,7 @@ class Admin extends CI_Controller {
 					
 		}
 		else{
+				 
 			if($this->session->userdata("department"))
 				$where.=" AND cb.dept_id=".trim($this->session->userdata("department"));
 			if($this->session->userdata("project"))
@@ -903,7 +905,8 @@ class Admin extends CI_Controller {
 			redirect('admin/dead_leads');
 		}*/
 		//------- pagination ------
-		$rowCount 				= $this->callback_model->count_search_records(null,$where,$user="admin");
+		$rowCount 				= $this->callback_model->count_search_records(null,$where);
+		//echo $rowCount;die;
 		$data["totalRecords"] 	= $rowCount;
 		$data["links"] 			= paginitaion(base_url().'admin/dead_leads/', 3,VIEW_PER_PAGE, $rowCount);
 		$page = $this->uri->segment(3);

@@ -120,7 +120,7 @@ class Dashboard extends CI_Controller {
                 $this->session->set_userdata('city_id',$data['city_id']);
                 $data['user_ids']=$this->user_model->get_city_user_ids($city_id[0]->city_id);
              //  print_r( $data['user_ids']);exit();
-                $this->session->set_userdata('user_ids',$data['user_ids']);
+                $this->session->set_userdata('city_user_ids',$data['user_ids']);
                 $data['team_members'] = $this->user_model->get_team_members();
                 $data['total_active_callback_count'] = $this->callback_model->fetch_callback_count(false,'all',"cb.status_id!=4 AND cb.status_id!=5");
                 $data['close_leads_count'] = $this->callback_model->fetch_leads_count(null,'close');
@@ -145,22 +145,7 @@ class Dashboard extends CI_Controller {
              $data['total_team_revenue'] = $this->callback_model->fetch_total_revenue(null,True);
              $data['lead_source_report'] = $this->callback_model->get_lead_source_report();
               $data['call_reports'] = $this->callback_model->get_call_reports($data['user_id']);
-          /*
-            $city_id=$this->user_model->get_city_id($user_id);
-            $data['city_id']=$city_id[0]->city_id;
-            $this->session->set_userdata('city_id',$data['city_id']);
-            $data['user_ids']=$this->user_model->get_city_user_ids($city_id[0]->city_id);
-          //  print_r( $data['user_ids']);exit();
-            $this->session->set_userdata('user_ids',$data['user_ids']);
-            $data['imp_callbacks'] = $this->callback_model->fetch_important_callbacks();
-             $data['call_reports'] = $this->callback_model->get_call_reports();
-            $data['overdue_lead_count'] = $this->callback_model->get_overdue_lead_count();
-            $data['today_callback_count'] = $this->callback_model->fetch_callback_count(null,'today');
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count();
-            $data['lead_source_report'] = $this->callback_model->get_lead_source_report();
-            $data['live_feed_back'] = $this->user_model->get_live_feed_back();
-            */
-                  
+                       
            
         }
         elseif ($this->session->userdata('user_type') == 'admin') {
@@ -328,7 +313,9 @@ class Dashboard extends CI_Controller {
         
         //------- pagination ------
         $rowCount               = $this->callback_model->count_search_records(null,$where,null,null,$user_type);
+        //echo $rowCount;die;
         $data["totalRecords"]   = $rowCount;
+        //print_r($data["totalRecords"]);die;
         $data["links"]          = paginitaion(base_url().'callbacks/', 2,VIEW_PER_PAGE, $rowCount);
         $page = $this->uri->segment(2);
         $offset = !$page ? 0 : $page;

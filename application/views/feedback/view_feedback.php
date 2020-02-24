@@ -467,6 +467,6 @@ echo "<script>printFunction();</script>";
 </div>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/starrr.js"></script>
 
-<script src="<?php echo base_url()?>assets/js/scripts.js"></script>
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 </body>
 </html>
