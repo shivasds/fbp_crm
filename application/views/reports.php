@@ -234,11 +234,11 @@
 										});
 							</script>
 <!--js -->
-<link rel="stylesheet" href="<?php echo base_url()?>assets/css/vroom.css">
+<!-- <link rel="stylesheet" href="<?php echo base_url()?>assets/css/vroom.css">
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/vroom.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/jquery.roll.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script> -->
+<!-- <script src="<?php echo base_url()?>assets/js/jquery.roll.js"></script> -->
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
 <!-- Bootstrap Core JavaScript -->
