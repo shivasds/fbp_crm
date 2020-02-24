@@ -125,140 +125,154 @@
         background-color: #65dc68 !important;
     }
  
-   
+    .plus {
+    background-color: #5bc0de;
+    border: none;
+    margin-bottom: 11px;
+    float: right;
+    color: white;
+    border-radius: 6px;
+    padding: 7px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
    </style>
-    <form method="POST" id="search_form">
-     <div class="col-xs-12 col-sm-12 col-md-12" style="margin-left: 2px;">
-        <div class="row">
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="emp_code">Department:</label>
-                    <select  class="form-control"  id="dept" name="dept" >
-                        <option value="">Select</option>
-                        <?php $all_department=$this->common_model->all_active_departments();
-                        foreach($all_department as $department){ ?>
-                            <option value="<?php echo $department->id; ?>" <?php if(($this->session->userdata("department"))==$department->id) echo 'selected' ?>><?php echo $department->name; ?></option>
-                        <?php }?>             
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="emp_code">Project:</label>
-                    <select  class="form-control"  id="project" name="project" >
-                        <option value="">Select</option>
-                        <?php $projects= $this->common_model->all_active_projects(); 
-                        foreach( $projects as $project){ ?>
-                            <option value="<?php echo $project->id ?>" <?php if(($this->session->userdata("project"))==$project->id) echo 'selected' ?>><?php echo $project->name ?></option>
-                        <?php }?>              
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="assign">Lead Source:</label>
-                    <select  class="form-control"  id="lead_source" name="lead_source" >
-                        <option value="">Select</option>
-                        <?php $lead_source= $this->common_model->all_active_lead_sources(); 
-                        foreach( $lead_source as $source){ ?>
-                            <option value="<?php echo $source->id ?>" <?php if(($this->session->userdata("lead_source"))==$source->id) echo 'selected' ?>><?php echo $source->name ?></option>
-                        <?php } ?>             
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="assign">User Name:</label>
-                    <select  class="form-control"  id="user_name" name="user_name" >
-                        <option value="">Select</option>
-                        <?php $all_user= $this->user_model->all_users("type in (1,2,3,4,5,6) AND emp_code !='admin' and active=1"); 
-                        foreach( $all_user as $user){ 
-                            switch ($user->type) {
-                                case '1':
-                                    $role = "User";
-                                    break;
-
-                                case '2':
-                                    $role = "Manager";
-                                    break;
-
-                                case '3':
-                                    $role = "VP";
-                                    break;
-                                
-                                case '4':
-                                    $role = "Director";
-                                    break;
-                                case '5':
-                                    $role = "Admin";
-                                    break;
-                                    case '6':
-                                    $role = "City Head";
-                                    break;
-                            }
-                            ?>
-                            <option value="<?php echo $user->id ?>" <?php if(($this->session->userdata("search_username"))==$user->id) echo 'selected' ?>><?php echo $user->first_name." ".$user->last_name." ($role)"; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="assign">Sub Broker:</label>
-                    <select  class="form-control"  id="sub_broker" name="sub_broker" >
-                        <option value="">Select</option>
-                        <?php $brokers= $this->common_model->all_active_brokers(); 
-                        foreach( $brokers as $broker){ ?>
-                            <option value="<?php echo $broker->id; ?>" <?php if(($this->session->userdata("sub_broker"))==$broker->id) echo 'selected' ?>><?php echo $broker->name ?></option>
-                        <?php } ?>              
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="assign">Status:</label>
-                    <select  class="form-control"  id="status" name="status" >
-                        <option value="">Select</option>
-                        <?php $statuses= $this->common_model->all_active_statuses(); 
-                        foreach( $statuses as $status){ ?>
-                            <option value="<?php echo $status->id; ?>" <?php if(($this->session->userdata("status"))==$status->id) echo 'selected' ?>><?php echo $status->name ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3 form-group">
-                    <label for="assign">City:</label>
-                    <select  class="form-control"  id="city" name="city" >
-                        <option value="">Select</option>
-                        <?php $cities= $this->common_model->all_active_cities(); 
-                        foreach( $cities as $city){ ?>
-                            <option value="<?php echo $city->id; ?>" <?php if(($this->session->userdata("city"))==$city->id) echo 'selected' ?>><?php echo $city->name ;?></option>
-                        <?php } ?>               
-                    </select>
-                </div>
-                <div class="col-xs-12 col-md-3">
-                    <div class="form-group">
-                        <label>Search:</label>
-                        <input type="text" class="form-control" name="srxhtxt" id="srxhtxt" placeholder="Enter search text" value="<?= ($this->session->userdata('SRCHTXT')) ? $this->session->userdata('SRCHTXT') : '' ?>" />
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-3">
-                    <div class="form-group">
-                        <label>Due Date</label>
-                        <select  class="form-control" name="searchDate" id="searchDate">
-                            <option value="">--Select--</option>
-                            <option value="today" <?= ($this->session->userdata('SRCHDT')== "today")? 'selected':''; ?>>Due date</option>
-                            <option value="yesterday" <?= ($this->session->userdata('SRCHDT')== "yesterday")? 'selected':''; ?>>Overdue </option>
-                            <option value="tomorrow" <?= ($this->session->userdata('SRCHDT')== "tomorrow")? 'selected':''; ?>>Upcoming calls</option>
+   <!-- <button class="plus"  onclick="myFunction()"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add User</button>
+      <div id="myDIV" style="display:none;">
+    -->
+   <div id="myDIV" >
+        <form method="POST" id="search_form">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-left: 2px;">
+            <div class="row">
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="emp_code">Department:</label>
+                        <select  class="form-control"  id="dept" name="dept" >
+                            <option value="">Select</option>
+                            <?php $all_department=$this->common_model->all_active_departments();
+                            foreach($all_department as $department){ ?>
+                                <option value="<?php echo $department->id; ?>" <?php if(($this->session->userdata("department"))==$department->id) echo 'selected' ?>><?php echo $department->name; ?></option>
+                            <?php }?>             
                         </select>
                     </div>
-                </div>
-                <div class="clearfix"></div>
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="emp_code">Project:</label>
+                        <select  class="form-control"  id="project" name="project" >
+                            <option value="">Select</option>
+                            <?php $projects= $this->common_model->all_active_projects(); 
+                            foreach( $projects as $project){ ?>
+                                <option value="<?php echo $project->id ?>" <?php if(($this->session->userdata("project"))==$project->id) echo 'selected' ?>><?php echo $project->name ?></option>
+                            <?php }?>              
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="assign">Lead Source:</label>
+                        <select  class="form-control"  id="lead_source" name="lead_source" >
+                            <option value="">Select</option>
+                            <?php $lead_source= $this->common_model->all_active_lead_sources(); 
+                            foreach( $lead_source as $source){ ?>
+                                <option value="<?php echo $source->id ?>" <?php if(($this->session->userdata("lead_source"))==$source->id) echo 'selected' ?>><?php echo $source->name ?></option>
+                            <?php } ?>             
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="assign">User Name:</label>
+                        <select  class="form-control"  id="user_name" name="user_name" >
+                            <option value="">Select</option>
+                            <?php $all_user= $this->user_model->all_users("type in (1,2,3,4,5,6) AND emp_code !='admin' and active=1"); 
+                            foreach( $all_user as $user){ 
+                                switch ($user->type) {
+                                    case '1':
+                                        $role = "User";
+                                        break;
 
-                <div class="col-sm-6">
-                    <button class="btn btn-info btn-block" id="admin-reset"onclick="reset_data()" >Reset</button>
-                </div>
-                <div class="col-sm-6">
-                    <button type="submit" id="admin-search" class="btn btn-success btn-block">Search</button>
-                </div>
-        </div>
-        
-        <div class="col-sm-6" style="margin-top: 11px;margin-bottom: 10px;">
-            <?php $row['page']= $this->uri->segment(3);?>
-            <a class="btn btn-default" href="<?php echo site_url()?>excel/<?php echo  $row['page'];?>">Download Excel File</a>
-            <!--<a class="btn btn-default " href='<?php// echo site_url("admin/createXLS/").($this->uri->segment(3));?>'>View & Download</a>-->
-        </div>
-       </div>
-    </form>
+                                    case '2':
+                                        $role = "Manager";
+                                        break;
 
+                                    case '3':
+                                        $role = "VP";
+                                        break;
+                                    
+                                    case '4':
+                                        $role = "Director";
+                                        break;
+                                    case '5':
+                                        $role = "Admin";
+                                        break;
+                                        case '6':
+                                        $role = "City Head";
+                                        break;
+                                }
+                                ?>
+                                <option value="<?php echo $user->id ?>" <?php if(($this->session->userdata("search_username"))==$user->id) echo 'selected' ?>><?php echo $user->first_name." ".$user->last_name." ($role)"; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="assign">Sub Broker:</label>
+                        <select  class="form-control"  id="sub_broker" name="sub_broker" >
+                            <option value="">Select</option>
+                            <?php $brokers= $this->common_model->all_active_brokers(); 
+                            foreach( $brokers as $broker){ ?>
+                                <option value="<?php echo $broker->id; ?>" <?php if(($this->session->userdata("sub_broker"))==$broker->id) echo 'selected' ?>><?php echo $broker->name ?></option>
+                            <?php } ?>              
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="assign">Status:</label>
+                        <select  class="form-control"  id="status" name="status" >
+                            <option value="">Select</option>
+                            <?php $statuses= $this->common_model->all_active_statuses(); 
+                            foreach( $statuses as $status){ ?>
+                                <option value="<?php echo $status->id; ?>" <?php if(($this->session->userdata("status"))==$status->id) echo 'selected' ?>><?php echo $status->name ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3 form-group">
+                        <label for="assign">City:</label>
+                        <select  class="form-control"  id="city" name="city" >
+                            <option value="">Select</option>
+                            <?php $cities= $this->common_model->all_active_cities(); 
+                            foreach( $cities as $city){ ?>
+                                <option value="<?php echo $city->id; ?>" <?php if(($this->session->userdata("city"))==$city->id) echo 'selected' ?>><?php echo $city->name ;?></option>
+                            <?php } ?>               
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Search:</label>
+                            <input type="text" class="form-control" name="srxhtxt" id="srxhtxt" placeholder="Enter search text" value="<?= ($this->session->userdata('SRCHTXT')) ? $this->session->userdata('SRCHTXT') : '' ?>" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Due Date</label>
+                            <select  class="form-control" name="searchDate" id="searchDate">
+                                <option value="">--Select--</option>
+                                <option value="today" <?= ($this->session->userdata('SRCHDT')== "today")? 'selected':''; ?>>Due date</option>
+                                <option value="yesterday" <?= ($this->session->userdata('SRCHDT')== "yesterday")? 'selected':''; ?>>Overdue </option>
+                                <option value="tomorrow" <?= ($this->session->userdata('SRCHDT')== "tomorrow")? 'selected':''; ?>>Upcoming calls</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-sm-6">
+                        <button class="btn btn-info btn-block" id="admin-reset"onclick="reset_data()" >Reset</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="submit" id="admin-search" class="btn btn-success btn-block">Search</button>
+                    </div>
+            </div>
+            
+            <div class="col-sm-6" style="margin-top: 11px;margin-bottom: 10px;">
+                <?php $row['page']= $this->uri->segment(3);?>
+                <a class="btn btn-default" href="<?php echo site_url()?>excel/<?php echo  $row['page'];?>">Download Excel File</a>
+                <!--<a class="btn btn-default " href='<?php// echo site_url("admin/createXLS/").($this->uri->segment(3));?>'>View & Download</a>-->
+            </div>
+        </div>
+        </form>
+    </div>
     <!-- display nowrap -->
     <div class="" style="margin-bottom: 5%;">
     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -1434,5 +1448,16 @@
     });
 
 </script>
+
+<script>
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
 </body>
 </html>

@@ -268,14 +268,14 @@
 														                            </table>
 																							</div>
 																						</section>
-									<section id="section-3">
+									                                                    <section id="section-3">
 																							<div class="">
 																							 <br>
-														                            <table class="table">
+														                            <!-- <table class="table">
 														                                <thead>
 														                                    <tr>
 														                                        <th>Total Revenue</th> 
-														                                        <!-- <th>Lastest Comment</th> -->
+														                                        <!-- <th>Lastest Comment</th>
 														                                    </tr>
 														                                </thead>
 														                                <tbody>
@@ -284,7 +284,19 @@
 														                                	</tr>
 									                                  
 														                                </tbody>
-														                            </table>
+                                                                                    </table> -->
+                                                                                    
+                                                                                    <div class="container">
+                                                                                            <div class="row text-center">
+                                                                                                <div class="col-md-6">
+                                                                                                Total Revenue
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                <?php echo $total_revenue; ?>
+                                                                                                </div>
+                                                                                               
+                                                                                            </div>
+                                                                                            </div>
 																							</div>
 																						</section>
 																					</div><!-- /content -->
@@ -739,7 +751,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
 <script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script>-->
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
-<!--<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->-->
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
 <!-- Bootstrap Core JavaScript -->
   

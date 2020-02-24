@@ -430,7 +430,7 @@
     
         <div style="margin-top: 20px">
              <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(2)) ? $this->uri->segment(2)+1 : 1; ?> to <?= ($this->uri->segment(2)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
-            <ul class="pagination pull-right"><?php echo $links; ?></ul> 
+              <ul class="pagination pull-right"><?php echo $links; ?></ul> 
         </div>
     </div>
 <br/><br/>
@@ -556,7 +556,7 @@
 <script src="<?php echo base_url()?>assets/js/jquery.nicescroll.js"></script>-->
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
-<!--<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
+<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
  Bootstrap Core JavaScript 
    -->
    <script>
@@ -567,9 +567,9 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
-             "paging":   false,
+              "paging":   false,
               "info": false
-
+ 
         });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
