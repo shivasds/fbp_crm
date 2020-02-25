@@ -14,7 +14,9 @@ body a{
 }
 /* chnage to make admin menu scrollable */
 
-
+.logo{
+	background: #021f4e;
+}
 
 	.scrollbar1{
 		height: auto;
@@ -7210,7 +7212,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.left-content {
 		float: right;
-		width: 87%;
+		width: 89%;
 	}
 	.page-container.sidebar-collapsed .left-content {
 		float: right;
@@ -7629,7 +7631,7 @@ footer  p a:hover ,.footer p a:hover{
 		margin: 0px 0 8px 0;
 	}
 	.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-		padding: 10px 3px !important;
+		padding: 7px 0px !important;
 		font-size: 0.7em;
 		color: #999;
 		border-top: none !important;
@@ -7805,10 +7807,10 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed-back .left-content {
 		float: right;
-		width: 83%;
+		width: 90%;
 	}
 	.left-content {
-		width: 86%;
+		width: 90%;
 	}
 	.outter-wp {
 		padding: 0.5em 1.5em;

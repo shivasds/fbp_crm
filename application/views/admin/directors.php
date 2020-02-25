@@ -250,7 +250,7 @@
 	    padding: 10px;
 	}
 	@media (max-width: 991px){
-        .priority-6,.priority-7,.priority-8{
+        .priority-3,.priority-4,.priority-5{
 			display:none;
 		}
         .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -270,13 +270,43 @@
 }
         }
         @media (max-width:1150px){
-       .priority-6,.priority-7,.priority-8{
-			display:none;
-		}
+      
         }
       
-	@media screen and (max-width: 900px) and (min-width: 550px) {
-		.priority-6, .priority-7,.priority-8{
+	@media screen (max-width: 900px){
+		.priority-2,.priority-4,.priority-5, .priority-3{
+			display:none;
+        }
+        .plus {
+                background-color: #5bc0de;
+                border: none;
+                margin-bottom: 11px;
+                float: right;
+                color: white;
+                border-radius: 6px;
+                padding: 5px 7px;
+                font-size: 11px;
+                cursor: pointer;
+    }
+    .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    font-size: 0.8em;
+    color: #999;
+    border-top: none !important;
+    width: 0%;
+}
+        .btn {
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 0;
+    text-decoration: none;
+    padding: 2px 2px;
+    font-size: 13px;
+}
+      
+	}
+	
+	@media screen (max-width: 550px) {
+        .priority-2,.priority-4,.priority-5,.priority-6, .priority-3{
 			display:none;
 		}
         .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -297,8 +327,8 @@
       
 	}
 	
-	@media screen and (max-width: 550px) {
-        .priority-2,.priority-4,.priority-6, .priority-7,.priority-8,{
+	@media screen (max-width: 300px) {
+        .priority-2,.priority-4,.priority-3,.priority-5{
 			display:none;
 		}
         .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -317,65 +347,60 @@
     font-size: 13px;
 }
       
-	}
-	
-	@media screen and (max-width: 300px) {
-        .priority-2,.priority-4,.priority-6, .priority-7,.priority-8,{
-			display:none;
-		}
-        .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    /* padding: 10px 5px !important; */
-    font-size: 0.8em;
-    color: #999;
-    border-top: none !important;
-    width: 0%;
-}
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
-      
-	}
+    }
+    
+    .plus{
+        background-color: #5bc0de;
+        border: none;
+        margin-bottom: 11px;
+        float: right;
+        color: white;
+        border-radius: 6px;
+        padding: 7px 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
     </style>
-    <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
-        <div class="col-sm-3 form-group">
-            <label for="director">Enter First Name:</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
-        </div>
+     <button class="plus"  onclick="myFunction()"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add User</button>
+    <br>
+    <br>
+    <div id="myDIV" style="display:none;">
+        <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
+            <div class="col-sm-3 form-group">
+                <label for="director">Enter First Name:</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
+            </div>
 
-        <div class="col-sm-3 form-group">
-            <label for="director">Enter Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" >
-        </div>
+            <div class="col-sm-3 form-group">
+                <label for="director">Enter Last Name:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" >
+            </div>
 
-        <div class="col-sm-3 form-group">
-            <label for="email">Enter Email:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
-        </div>
+            <div class="col-sm-3 form-group">
+                <label for="email">Enter Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+            </div>
 
-        <div class="col-sm-3 form-group">
-            <label for="emp_code">Enter Emp code:</label>
-            <input type="text" class="form-control" onblur="code_check(this.value)" id="emp_code" name="emp_code" placeholder="Enter Employee Id" required>
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_last_name">Mobile Number:</label>
-            <input type="text" class="form-control" id="emp_last_name" name="employee_mobile" placeholder="Employee Mobile Number" required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_last_name">Address:</label>
-            <textarea name="employee_address"></textarea>
-        </div>
+            <div class="col-sm-3 form-group">
+                <label for="emp_code">Enter Emp code:</label>
+                <input type="text" class="form-control" onblur="code_check(this.value)" id="emp_code" name="emp_code" placeholder="Enter Employee Id" required>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="emp_last_name">Mobile Number:</label>
+                <input type="text" class="form-control" id="emp_last_name" name="employee_mobile" placeholder="Employee Mobile Number" required="required">
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="emp_last_name">Address:</label>
+                <textarea name="employee_address"></textarea>
+            </div>
 
-        <div class="col-sm-12 form-group">
-            <button type="submit" style="margin-top:25px;" id="add_director" class="btn btn-success btn-block" disabled>Add Director</button>
-        </div>
-    </form>
+            <div class="col-sm-12 form-group">
+                <button type="submit" style="margin-top:25px;" id="add_director" class="btn btn-success btn-block" disabled>Add Director</button>
+            </div>
+        </form>
+    </div>
 
-    <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th class="priority-1">Id</th>
@@ -659,59 +684,7 @@
         $('#revenueMonth').MonthPicker({
             Button: false
         });
-        get_revenues();
-
-        $('.view_callbacks').click(function(){
-            var type = $(this).data('type');
-            var data = {};
-            switch (type)
-            {
-                case "user_total":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date = "<?php echo date('Y-m-d'); ?>";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_overdue":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date_to = "<?php echo date('Y-m-d H:i:s'); ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_close": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-
-                case "user_important":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.access = 'read_write'; 
-                    data.important = 1;
-                    break;
-
-                case "manager_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "manager_close":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-            }
-            
-            view_callbacks(data,'post');
-
-        });
-
+      
         $("#refresh").click(function(){
             $(".se-pre-con").show();
             $.get("<?php echo base_url(); ?>dashboard/get_live_feed_back", function(response){
@@ -758,27 +731,7 @@
         });
 
     });
-    // $('#filter_revenue').click(get_revenues());
-    function get_revenues(){
-        $.get( "<?php echo base_url()."dashboard/get_revenue/" ?>"+$('#revenueMonth').val(), function( data ) {
-            $('#revenue_data').html(data);
-        });
-    }
-    function view_callbacks(data, method) {
-        var form = document.createElement('form');
-        form.method = method;
-        form.action = "<?php echo base_url()."view_callbacks?" ?>"+jQuery.param(data);
-        for (var i in data) {
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = i;
-            input.value = data[i];
-            form.appendChild(input);
-        }
-        //console.log(form);
-        document.body.appendChild(form);
-        form.submit();
-    }
+  
 
 </script>
 <script>
@@ -799,58 +752,7 @@
         $('#revenueMonth').MonthPicker({
             Button: false
         });
-        get_revenues();
-
-        $('.view_callbacks').click(function(){
-            var type = $(this).data('type');
-            var data = {};
-            switch (type)
-            {
-                case "user_total":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date = "<?php echo date('Y-m-d'); ?>";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_overdue":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date_to = "<?php echo date('Y-m-d H:i:s'); ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_close": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-
-                case "user_important":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.access = 'read_write'; 
-                    data.important = 1;
-                    break;
-
-                case "manager_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "manager_close":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-            }
-            
-            view_callbacks(data,'post');
-
-        });
+       
 
         $("#refresh").click(function(){
             $(".se-pre-con").show();
@@ -898,28 +800,19 @@
         });
 
     });
-    // $('#filter_revenue').click(get_revenues());
-    function get_revenues(){
-        $.get( "<?php echo base_url()."dashboard/get_revenue/" ?>"+$('#revenueMonth').val(), function( data ) {
-            $('#revenue_data').html(data);
-        });
-    }
-    function view_callbacks(data, method) {
-        var form = document.createElement('form');
-        form.method = method;
-        form.action = "<?php echo base_url()."view_callbacks?" ?>"+jQuery.param(data);
-        for (var i in data) {
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = i;
-            input.value = data[i];
-            form.appendChild(input);
-        }
-        //console.log(form);
-        document.body.appendChild(form);
-        form.submit();
-    }
+  
 
 </script>
+
+<script>
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
 </body>
 </html>

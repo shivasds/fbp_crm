@@ -75,14 +75,7 @@
     border-top: none !important;
     width: 0%;
 }
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-    }
+  
         }
         @media (max-width:1150px){
         .priority-3,.priority-5,.priority-6,.priority-7,.priority-8{
@@ -90,7 +83,7 @@
 		}
         }
        
-	@media screen and (max-width: 900px) and (min-width: 550px) {
+	@media screen (max-width: 900px){
 		.priority-3,.priority-4,.priority-5,.priority-6, .priority-7,.priority-8{
 			display:none;
 		}
@@ -101,14 +94,18 @@
     border-top: none !important;
     width: 0%;
 }
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
+.plus {
+                background-color: #5bc0de;
+                border: none;
+                margin-bottom: 11px;
+                float: right;
+                color: white;
+                border-radius: 6px;
+                padding: 5px 7px;
+                font-size: 11px;
+                cursor: pointer;
+    }
+   
 	}
 	
 	@media screen and (max-width: 550px) {
@@ -122,15 +119,7 @@
     border-top: none !important;
     width: 0%;
 }
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
-      
+
 	}
 	
 	@media screen and (max-width: 300px) {
@@ -144,18 +133,26 @@
     border-top: none !important;
     width: 0%;
 }
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
-       
-	
-	}
+     	
+    }
+    
+    .plus{
+        background-color: #5bc0de;
+        border: none;
+        margin-bottom: 11px;
+        float: right;
+        color: white;
+        border-radius: 6px;
+        padding: 7px 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
     </style>
+
+<button class="plus"  onclick="myFunction()"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add User</button>
+    <br>
+    <br>
+    <div id="myDIV" style="display:none;">
     <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
         <div class="col-sm-3 form-group">
             <label for="director">Enter First Name:</label>
@@ -221,8 +218,8 @@
             <button type="submit" style="margin-top:25px;" id="add_vp" class="btn btn-success btn-block" disabled>Add VP</button>
         </div>
     </form>
-
-    <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+  </div>
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th class="priority-1">Id</th>
@@ -834,5 +831,16 @@
     }
 
 </script>
+
+<script>
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
 </body>
 </html>

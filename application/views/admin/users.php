@@ -100,7 +100,7 @@
 		}
         }
        
-	@media screen and (max-width: 900px) and (min-width: 550px) {
+	@media screen (max-width: 900px){
 		.priority-2,.priority-4,.priority-5,.priority-6, .priority-7,.priority-8{
 			display:none;
 		}
@@ -110,18 +110,39 @@
     color: #999;
     border-top: none !important;
     width: 0%;
-}
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
+        }
+                .btn {
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 0;
+            text-decoration: none;
+            padding: 2px 2px;
+            font-size: 13px;
+        }
+
+        .plus {
+                background-color: #5bc0de;
+                border: none;
+                margin-bottom: 11px;
+                float: right;
+                color: white;
+                border-radius: 6px;
+                padding: 5px 7px;
+                font-size: 11px;
+                cursor: pointer;
+    }
 	}
 	
-	@media screen and (max-width: 550px) {
+
+
+    @media (max-width: 384px){
+        /* .left-content {
+    width: 89%;
+    } */
+        }
+
+	
+	@media screen (max-width: 300px) {
         .priority-2,.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,{
 			display:none;
 		}
@@ -139,142 +160,135 @@
     text-decoration: none;
     padding: 2px 2px;
     font-size: 13px;
-}
-      
-	}
-	
-	@media screen and (max-width: 300px) {
-        .priority-2,.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,{
-			display:none;
-		}
-        .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    /* padding: 10px 5px !important; */
-    font-size: 0.8em;
-    color: #999;
-    border-top: none !important;
-    width: 0%;
-}
-        .btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
-       
+  }
+  
+     
 	
 	}
+    .plus{
+        background-color: #5bc0de;
+        border: none;
+        margin-bottom: 11px;
+        float: right;
+        color: white;
+        border-radius: 6px;
+        padding: 7px 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
  </style>
-   
-    <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
-        <div class="col-sm-6 form-group">
-            <label for="emp_code">Employee Code:</label>
-            <input type="text" class="form-control" id="emp_code" onblur="code_check(this.value)" name="emp_code" placeholder="Employee Code" required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_first_name">First name:</label>
-            <input type="text" class="form-control" id="emp_first_name" name="first_name" placeholder="Employee first name" required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_last_name">Last name:</label>
-            <input type="text" class="form-control" id="emp_last_name" name="last_name" placeholder="Employee last name" required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="email">Email Id:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Employee Enter email" required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_dob">D.O.B:</label>
-            <input type="text" class="form-control datepicker" id="emp_dob" name="emp_dob" placeholder="Employee Date Of Birth" readonly required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_doj">D.O.J:</label>
-            <input type="text" class="form-control datepicker" id="emp_doj" name="emp_doj" placeholder="Employee Date Of Joining" readonly required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_last_name">Mobile Number:</label>
-            <input type="text" class="form-control" id="emp_last_name" name="employee_mobile" placeholder="Employee Mobile Number" required="required">
-        </div>
-        <div class="col-sm-6 form-group">
-            <label for="emp_last_name">Address:</label>
-            <textarea name="employee_address"></textarea>
-        </div>
-        <div class="col-md-6 form-group">
-            <label for="emp_code">Manager:</label>
-            <select  class="form-control"  id="manager" name="manager" required="required" >
-                <option value="">Select</option>
-                <?php $all_manager=$this->common_model->all_active_managers();
-                foreach($all_manager as $manager){ ?>
-                    <option value="<?php echo $manager->id; ?>"><?php echo $manager->first_name." ".$manager->last_name; ?></option>
-                <?php }?>
-            </select>
-        </div>
+    <button class="plus"  onclick="myFunction()"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add User</button>
+    <br>
+    <br>
+      <div id="myDIV" style="display:none;">
+             <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
+                <div class="col-sm-6 form-group">
+                    <label for="emp_code">Employee Code:</label>
+                    <input type="text" class="form-control" id="emp_code" onblur="code_check(this.value)" name="emp_code" placeholder="Employee Code" required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_first_name">First name:</label>
+                    <input type="text" class="form-control" id="emp_first_name" name="first_name" placeholder="Employee first name" required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_last_name">Last name:</label>
+                    <input type="text" class="form-control" id="emp_last_name" name="last_name" placeholder="Employee last name" required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="email">Email Id:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Employee Enter email" required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_dob">D.O.B:</label>
+                    <input type="text" class="form-control datepicker" id="emp_dob" name="emp_dob" placeholder="Employee Date Of Birth" readonly required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_doj">D.O.J:</label>
+                    <input type="text" class="form-control datepicker" id="emp_doj" name="emp_doj" placeholder="Employee Date Of Joining" readonly required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_last_name">Mobile Number:</label>
+                    <input type="text" class="form-control" id="emp_last_name" name="employee_mobile" placeholder="Employee Mobile Number" required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_last_name">Address:</label>
+                    <textarea name="employee_address"></textarea>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="emp_code">Manager:</label>
+                    <select  class="form-control"  id="manager" name="manager" required="required" >
+                        <option value="">Select</option>
+                        <?php $all_manager=$this->common_model->all_active_managers();
+                        foreach($all_manager as $manager){ ?>
+                            <option value="<?php echo $manager->id; ?>"><?php echo $manager->first_name." ".$manager->last_name; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
 
-        <div class="col-md-6 form-group">
-            <label for="emp_code">User type:</label>
-            <select  class="form-control"  id="select_user" name="select_user" required="required" >
-                <option value="user">User</option>
-                <option value="crm">CRM</option>
-            </select>
-        </div>
+                <div class="col-md-6 form-group">
+                    <label for="emp_code">User type:</label>
+                    <select  class="form-control"  id="select_user" name="select_user" required="required" >
+                        <option value="user">User</option>
+                        <option value="crm">CRM</option>
+                    </select>
+                </div>
 
-        <div class="col-md-6 form-group">
-            <label for="emp_code">Deprtment:</label>
-            <select  class="form-control"  id="user_type" name="department" required="required" >
-                <option value="">Select</option>
-                <?php $all_department=$this->common_model->all_active_departments();
-                foreach($all_department as $department){ ?>
-                    <option value="<?php echo $department->id; ?>"><?php echo $department->name; ?></option>
-                <?php }?>
-            </select>
-        </div>
-          
-        <div class="col-md-6 form-group">
-            <label for="emp_code">City:</label>
-            <select  class="form-control"  id="user_type" name="city" required="required" >
-                <option value="">Select</option>
-                <?php $all_city=$this->common_model->all_active_cities();
-                foreach($all_city as $city){ ?>
-                    <option value="<?php echo $city->id; ?>"><?php echo $city->name; ?></option>
-                <?php }?>
-            </select>
-        </div>
+                <div class="col-md-6 form-group">
+                    <label for="emp_code">Deprtment:</label>
+                    <select  class="form-control"  id="user_type" name="department" required="required" >
+                        <option value="">Select</option>
+                        <?php $all_department=$this->common_model->all_active_departments();
+                        foreach($all_department as $department){ ?>
+                            <option value="<?php echo $department->id; ?>"><?php echo $department->name; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
+                
+                <div class="col-md-6 form-group">
+                    <label for="emp_code">City:</label>
+                    <select  class="form-control"  id="user_type" name="city" required="required" >
+                        <option value="">Select</option>
+                        <?php $all_city=$this->common_model->all_active_cities();
+                        foreach($all_city as $city){ ?>
+                            <option value="<?php echo $city->id; ?>"><?php echo $city->name; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
 
-        <button type="submit" id="add_user" class="btn btn-success btn-block" disabled>Submit</button>
-    </form>
-</div>
+                <button type="submit" id="add_user" class="btn btn-success btn-block" disabled>Submit</button>
+            </form>
+      </div>
 
 <div class="container">
-    <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th class="priority-1">No</th>
-                <th class="priority-2">Employee Code</th>
-                <th class="priority-3">First name</th>
-                <th class="priority-4">Last name</th>
-                <th class="priority-5">E-mail Id</th>
-                <th class="priority-6">Manager</th>
-                <th class="priority-7">Status</th>
-                <th class="priority-8">Edit</th>
-                <th class="priority-9">Change Password</th> 
-                <th class="priority-10">Privilege</th>
+                <th class="priority-1" style="width:30%;">No</th>
+                <th class="priority-2" style="width:30%;">Employee Code</th>
+                <th class="priority-3" style="width:30%;">First name</th>
+                <th class="priority-4" style="width:30%;">Last name</th>
+                <th class="priority-5" style="width:30%;">E-mail Id</th>
+                <th class="priority-6" style="width:30%;">Manager</th>
+                <th class="priority-7" style="width:30%;">Status</th>
+                <th class="priority-8" style="width:30%;">Edit</th>
+                <th class="priority-9" style="width:30%;">Change Password</th> 
+                <th class="priority-10" style="width:30%;">Privilege</th>
             </tr>
         </thead> 
         <tbody>
             <?php if(isset($all_user)){
                 foreach($all_user as $user){ ?>
                     <tr>
-                        <td class="priority-1"><?php echo $user->id; ?></td>
-                        <td class="priority-2"><?php echo $user->emp_code; ?></td>
-                        <td class="priority-3"><?php echo $user->first_name; ?></td>
-                        <td class="priority-4"><?php echo $user->last_name; ?></td>
-                        <td class="priority-5"><?php echo $user->email; ?></td>
-                        <td class="priority-6"><?php echo $user->reports_to; ?></td>
-                        <td class="priority-7" align="middle"><button type="button" id="b1<?php echo $user->id; ?>" class="btn <?php echo $user->active?'btn-info':'btn-danger'; ?>" onclick="change_state(<?php echo $user->id; ?>)"><span id="stateus_sp_<?php echo $user->id; ?>"><?php echo $user->active?'Active':'Inactive';?></span></button></td>
-                        <td class="priority-8" align="middle"><button type="button" class="btn btn-info" onclick="edit_user(<?php echo $user->id; ?>)" data-toggle="modal" data-target="#modal_edit">Edit</button></td>
-                        <td class="priority-9" align="middle"><button type="button" class="btn btn-info" onclick="reset_password(<?php echo $user->id; ?>)">Reset Password</button></td>
-                        <td class="priority-10" align="middle">
+                        <td class="priority-1" style="width:30%;"><?php echo $user->id; ?></td>
+                        <td class="priority-2" style="width:30%;"><?php echo $user->emp_code; ?></td>
+                        <td class="priority-3" style="width:30%;"><?php echo $user->first_name; ?></td>
+                        <td class="priority-4" style="width:30%;"><?php echo $user->last_name; ?></td>
+                        <td class="priority-5" style="width:30%;"><?php echo $user->email; ?></td>
+                        <td class="priority-6" style="width:30%;"><?php echo $user->reports_to; ?></td>
+                        <td class="priority-7"  style="width:30%;vertical-align:middle;"><button type="button" id="b1<?php echo $user->id; ?>" class="btn <?php echo $user->active?'btn-info':'btn-danger'; ?>" onclick="change_state(<?php echo $user->id; ?>)"><span id="stateus_sp_<?php echo $user->id; ?>"><?php echo $user->active?'Active':'Inactive';?></span></button></td>
+                        <td class="priority-8" style="width:30%;vertical-align:middle;"><button type="button" class="btn btn-info" onclick="edit_user(<?php echo $user->id; ?>)" data-toggle="modal" data-target="#modal_edit">Edit</button></td>
+                        <td class="priority-9" style="width:30%;vertical-align:middle;"><button type="button" class="btn btn-info" onclick="reset_password(<?php echo $user->id; ?>)">Reset Password</button></td>
+                        <td class="priority-10" style="width:30%;vertical-align:middle;">
                             <button type="button" class="btn btn-info" onclick="permissionModal(<?php echo $user->id; ?>)" data-toggle="modal" data-target="#modalPermission">Permission</button>
                         </td>
                     </tr>
@@ -602,7 +616,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/vroom.js"></script>-->
 <!-- <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
-<!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>--> -->
+<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 <script src="<?= base_url();?>assets/js/custom.js"></script>
 <!-- Bootstrap Core JavaScript -->
    
@@ -624,58 +638,7 @@
         $('#revenueMonth').MonthPicker({
             Button: false
         });
-        get_revenues();
-
-        $('.view_callbacks').click(function(){
-            var type = $(this).data('type');
-            var data = {};
-            switch (type)
-            {
-                case "user_total":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date = "<?php echo date('Y-m-d'); ?>";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_overdue":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.due_date_to = "<?php echo date('Y-m-d H:i:s'); ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "user_close": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-
-                case "user_important":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.access = 'read_write'; 
-                    data.important = 1;
-                    break;
-
-                case "manager_active": 
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.for = "dashboard";
-                    data.access = 'read_write'; 
-                    break;
-
-                case "manager_close":
-                    data.advisor = "<?php echo $user_id; ?>";
-                    data.status = "close";
-                    break;
-            }
-            
-            view_callbacks(data,'post');
-
-        });
+       
 
         $("#refresh").click(function(){
             $(".se-pre-con").show();
@@ -723,53 +686,19 @@
         });
 
     });
-    // $('#filter_revenue').click(get_revenues());
-    function get_revenues(){
-        $.get( "<?php echo base_url()."dashboard/get_revenue/" ?>"+$('#revenueMonth').val(), function( data ) {
-            $('#revenue_data').html(data);
-        });
-    }
-    function view_callbacks(data, method) {
-        var form = document.createElement('form');
-        form.method = method;
-        form.action = "<?php echo base_url()."view_callbacks?" ?>"+jQuery.param(data);
-        for (var i in data) {
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = i;
-            input.value = data[i];
-            form.appendChild(input);
-        }
-        //console.log(form);
-        document.body.appendChild(form);
-        form.submit();
-    }
-
-</script>
-<script>
    
-    // $('#filter_revenue').click(get_revenues());
-    function get_revenues(){
-        $.get( "<?php echo base_url()."dashboard/get_revenue/" ?>"+$('#revenueMonth').val(), function( data ) {
-            $('#revenue_data').html(data);
-        });
-    }
-    function view_callbacks(data, method) {
-        var form = document.createElement('form');
-        form.method = method;
-        form.action = "<?php echo base_url()."view_callbacks?" ?>"+jQuery.param(data);
-        for (var i in data) {
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = i;
-            input.value = data[i];
-            form.appendChild(input);
-        }
-        //console.log(form);
-        document.body.appendChild(form);
-        form.submit();
-    }
 
 </script>
+
+<script>
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
 </body>
 </html>
