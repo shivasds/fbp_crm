@@ -216,7 +216,8 @@
                                 foreach ($users as $key => $value) { ?>
                                     <option value="<?php echo $value->id ?>" <?php echo ($value->id  == $user_name) ? 'selected' : ''; ?>><?php echo $value->first_name." ".$value->last_name." (user)"; ?></option>
                                 <?php } }elseif ($this->session->userdata("user_type")=="City_head" ){ 
-                                $users = $this->user_model->get_usersby_reports_to($this->session->userdata("user_id"));
+                               // $users = $this->user_model->get_usersby_reports_to($this->session->userdata("user_id"));
+                                    $users = $this->user_model->get_city_users_active();;
                                 foreach ($users as $key => $value) { ?>
                                     <option value="<?php echo $value->id ?>" <?php echo ($value->id  == $user_name) ? 'selected' : ''; ?>><?php echo $value->first_name." ".$value->last_name." (user)"; ?></option>
                                 <?php } ?>

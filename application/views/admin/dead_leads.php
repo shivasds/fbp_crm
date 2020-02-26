@@ -837,8 +837,15 @@
                             <select  class="form-control"  name="userId" id="userId" required >
                                 <option value="">Select</option>         
                                 <?php
-                                if($this->user_model->all_employees()) {
-                                    foreach ($this->user_model->all_employees() as $usr) {
+                                if($this->session->userdata("user_type")=="City_head"){
+                                $users = $this->user_model->get_city_users_active();
+                            }
+                            else
+                            {
+                                $users = $this->user_model->all_employees();
+                            }
+                                if($users) {
+                                    foreach ($users as $usr) {
                                         $sel = '';
                                         echo '<option value="'.$usr->id.'">'.$usr->first_name.' '.$usr->last_name.'</option>';
                                     }
