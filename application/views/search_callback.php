@@ -212,7 +212,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ if ($result) { ?>
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -246,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ if ($result) { ?>
             <!--/sidebar-menu-->
                 <div class="sidebar-menu">
                     <header class="logo"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
                     <!--<img id="logo" src="" alt="Logo"/>--> 
                   </a> 
                 </header>
@@ -254,16 +258,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ if ($result) { ?>
             <!--/down-->
                             <div class="down">  
                                       <?php $this->load->view('profile_pic');?>
-                                      <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+                                      <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
                                        <p><?php echo $this->session->userdata('user_type'); ?></p>
                                      <?php if($this->session->userdata('user_type')=='user')
                                        {?>
-                                      <a href="#"><span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?></a><br>
+                                      <span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?><br>
                                         <?php } ?>
                                     
                                     <ul>
                                     <li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-                                        <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+                                        <!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
                                         <li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                                         </ul>
                                     </div>
@@ -304,7 +308,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ if ($result) { ?>
    
    <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -444,7 +452,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){ if ($result) { ?>
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({

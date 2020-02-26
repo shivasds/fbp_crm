@@ -2066,8 +2066,16 @@ class Admin extends CI_Controller {
 	public function online_leads(){
 		$data['name'] ="more";
 		$data['heading'] ="Online Callbacks";
-		$data['leads'] = $this->common_model->getAll('online_leads');
-		$data['projects']= $this->common_model->all_active_projects();
+		
+		// $data['projects']= $this->common_model->all_active_projects();
+		$rowCount 				=$this->common_model->countAll('online_leads');
+		$data["totalRecords"] 	= $rowCount;
+		$data["links"] 			= paginitaion(base_url().'admin/online_leads/', 3,VIEW_PER_PAGE, $rowCount);
+		$page = $this->uri->segment(3);
+        $offset = !$page ? 0 : $page;
+		//------ End --------------
+
+      $data['leads'] = $this->common_model->getAll('online_leads',VIEW_PER_PAGE,$offset);
 		$this->load->view('admin/online_leads',$data);
 	}
 	public function acres99_leads()
@@ -2078,14 +2086,22 @@ class Admin extends CI_Controller {
 		$this->common_model->save_online_leads_99acres(json_decode(json_encode($data['lead']), True));
 		$data['name'] ="more";
 		$data['heading'] ="99 Acres Online Callbacks";
-		$data['leads'] = $this->common_model->get_online_leads('99acres');
+		$rowCount 				= $this->common_model->count_onlineleads('online_leads','99acres');
+			$data["totalRecords"] 	= $rowCount;
+			$data["links"] 			= paginitaionWithQueryString(base_url().'admin/acres99_leads/', 3, VIEW_PER_PAGE, $rowCount, $this->input->get());
+			//print_r($data["links"])	
+			$page = $this->uri->segment(3);
+	        $offset = !$page ? 0 : $page;
+			//------ End --------------
+			// $data['result'] = $this->callback_model->getCallbackLists($clause, $offset, VIEW_PER_PAGE);
+		$data['leads'] = $this->common_model->get_online_leads('online_leads','99acres',VIEW_PER_PAGE,$offset);
 		if (empty($data['leads'])) {
 			$data['name'] = "index";
      echo "<script>alert('no leads in 99acre');</script>";
      $this->load->view('admin/online_leads',$data);
 		}
 		else
-		{
+		{ 
 		$this->load->view('admin/online_leads',$data);
 		}
 		//$data['projects']= $this->common_model->all_active_projects();
@@ -2098,10 +2114,15 @@ class Admin extends CI_Controller {
 		$data['name'] ="more";
 		$data['heading'] ="Magic Bricks Online Callbacks";
 		$this->common_model->save_online_leads($leadsdata_magicbrick);
-		$data['leads'] = $this->common_model->get_online_leads('Magicbricks');
-		//$array = json_decode(json_encode($data['leads']), True);
-		//echo $array[0]['project'];die;
-		//if(isexist_project($array[0]['project']))
+		//$data['leads'] = $this->common_model->get_online_leads('Magicbricks');
+		$rowCount 				= $this->common_model->count_onlineleads('online_leads','Magicbricks');
+			$data["totalRecords"] 	= $rowCount;
+			$data["links"] 			= paginitaionWithQueryString(base_url().'admin/magicbricks_leads/', 3, VIEW_PER_PAGE, $rowCount, $this->input->get());	
+			$page = $this->uri->segment(3);
+	        $offset = !$page ? 0 : $page;
+			//------ End --------------
+			// $data['result'] = $this->callback_model->getCallbackLists($clause, $offset, VIEW_PER_PAGE);
+		$data['leads'] = $this->common_model->get_online_leads('online_leads','Magicbricks',VIEW_PER_PAGE,$offset);
 		$this->load->view('admin/online_leads',$data); 
 	}
 	function  magic_brick_api()
@@ -2198,7 +2219,15 @@ class Admin extends CI_Controller {
 			}
 		}
 
-		$data['leads'] = $this->common_model->get_online_leads('commonfloor',$where);
+		//$data['leads'] = $this->common_model->get_online_leads('commonfloor',$where);
+		$rowCount 				= $this->common_model->count_onlineleads('online_leads','Commonfloor');
+			$data["totalRecords"] 	= $rowCount;
+			$data["links"] 			= paginitaionWithQueryString(base_url().'admin/commonfloor_leads/', 3, VIEW_PER_PAGE, $rowCount, $this->input->get());	
+			$page = $this->uri->segment(3);
+	        $offset = !$page ? 0 : $page;
+			//------ End --------------
+			// $data['result'] = $this->callback_model->getCallbackLists($clause, $offset, VIEW_PER_PAGE);
+		$data['leads'] = $this->common_model->get_online_leads('online_leads','Commonfloor',VIEW_PER_PAGE,$offset);
 		$this->load->view('admin/online_leads',$data); 
 	}
 	public function commonfloor_leads_api()
@@ -2218,7 +2247,7 @@ class Admin extends CI_Controller {
 
 		public function fetch_99acre_online_leads(){
 		$url =  "https://www.99acres.com/99api/v1/getmy99Response/OeAuXClO43hwseaXEQ/uid/";
-		$data = $this->common_model->load_l_s_credentials('99acre');
+		//$data = $this->common_model->load_l_s_credentials('99acre');
 		//print_r($data);die;
 		$username = 'city.99';
 		$password = 'Shashank1986';
@@ -2227,10 +2256,11 @@ class Admin extends CI_Controller {
 		$request = "<?xml version='1.0'?><query><user_name>$username</user_name><pswd>$password</pswd><start_date>$start_date</start_date><end_date>$end_date</end_date></query>";
 		$allParams = array('xml'=>$request);
 		$leads = $this->get99AcresLeads();
-		print_r($leads); die;
+		//print_r($leads); die;
 		$data=array();
 		$i=0;
-		$data = simplexml_load_string($leads); 
+		if(!empty($leads))
+	{$data = simplexml_load_string($leads); }
 		 //print_r($data);
 		 //die;
 		//echo $data->ErrorDetail->Message;
@@ -2298,7 +2328,7 @@ class Admin extends CI_Controller {
 				if($p_id=='')
 					$p_id['id']=1;
 				}
-				elseif($lead_data->source=='Magicbrick')
+				elseif($lead_data->source=='Magicbricks')
 				{
 				$p_id=$this->common_model->get_project_id_by_name($lead_data->project,2);
 				if($p_id=='')
@@ -2350,17 +2380,17 @@ class Admin extends CI_Controller {
 
 				//echo json_encode($return);
 			}
-			if($data['lead_source_id']==1)
+			if($data['lead_source_id']==30)
 			{
 					$ext="acres99_leads";
 					$this->session->set_userdata('ext',$ext);
 			}
-				elseif($data['lead_source_id']==2)
+				elseif($data['lead_source_id']==29)
 				{
 					$ext="magicbricks_leads";
 					$this->session->set_userdata('ext',$ext);
 				}
-				elseif($data['lead_source_id']==3)
+				elseif($data['lead_source_id']==32)
 				{
 					$ext="commonfloor_leads";
 					$this->session->set_userdata('ext',$ext);
