@@ -220,7 +220,7 @@ class Admin extends CI_Controller {
 				'address' =>$address
 			);
 			$this->user_model->add_user($savedata);
-			redirect('admin/managers');
+			redirect('admin/manage_managers');
 		}
 		$data['all_managers'] = $this->user_model->all_managers();
 		$this->load->view('admin/managers',$data);
