@@ -221,7 +221,10 @@ class Callback_model extends MY_Model {
             
         }   
         if($user == 'manager'){
-            $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."') OR cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);
+if($this->session->userdata('self')==1)
+            {$this->db->where("(cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);}
+        else
+            {$this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."'))", NULL, FALSE);}
         }
          else if($user == 'City_head'){
           //print_r($this->session->userdata('user_ids'));
@@ -298,8 +301,10 @@ class Callback_model extends MY_Model {
              
         }   
         if($user == 'manager'){
-
-            $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."') OR cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);
+if($this->session->userdata('self')==1)
+            { $this->db->where("(cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);}
+        else
+            {$this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."'))", NULL, FALSE);}
         }
          else if($user == 'City_head'){
           //print_r($this->session->userdata('user_idsuser
@@ -346,7 +351,7 @@ class Callback_model extends MY_Model {
         if($offset)
             $this->db->limit($offset, $limit);
         $query=$this->db->get();
-
+       //  echo $this->db->last_query();  
         return $query?$query->result():array();
     }
 

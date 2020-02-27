@@ -715,7 +715,7 @@
                 </div>
                 <div class="col-sm-6 form-group">
                     <label for="comment">Current Callbacks:</label>
-                    <textarea class="form-control" name="notes" rows="3" id="current_callback1" name="current_callback1" onblur="curr(this.value)"></textarea>
+                    <textarea class="form-control" name="notes" rows="3" id="current_callback1" name="current_callback1" onblur="curr(this.value)" placeholder="PLease Update Your Charges To Save"></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                     <input type="checkbox" name="fancy-checkbox-success" onclick="reassignDate()"  id="fancy-checkbox-success" autocomplete="off" />

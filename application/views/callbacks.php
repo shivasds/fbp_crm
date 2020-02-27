@@ -10,6 +10,7 @@
         font-size: 60px;
         color: #f1c836;
     }
+
     </style>
     <div class="container"> 
         <div class="row"> 
@@ -384,6 +385,7 @@
             <tbody id="main_body">
                 <?php $i= 1;
                 if(count($result)>0){
+                  // echo $this->session->userdata('self');
                 foreach ($result as $data) {
                     $duedate = explode(" ", $data->due_date);
                     $duedate = $duedate[0]; ?>
@@ -423,7 +425,13 @@
                             </table>
                         </td>
                     </tr>
-                <?php $i++; } }?>
+                <?php $i++; } }
+                else
+                {
+                    echo "<tr><td colspan=13 align=center>No Data Found</td></tr>";
+                }
+
+                ?>
             </tbody>
         </table>
     
@@ -444,12 +452,12 @@
 
 <script type="text/javascript">
 
-    // $(document).ready(function() {
+    $(document).ready(function() {
     //      $('#example').DataTable({
-              "paging":   false,
-              "info": false
+        //       "paging":   false,
+        //       "info": false
  
-        });
+        // });
     //     if (!Modernizr.inputtypes.date) {
     //         // If not native HTML5 support, fallback to jQuery datePicker
     //         $('input[type=date]').datepicker({
@@ -466,13 +474,13 @@
     //         Button: false
     //     });
 
-    //     $('#change_callbacks').click(function(){
-    //         $("#self_input").val(($("#self_input").val() == "0")?"1":"0");
-    //         $("#search_form").submit();
-    //     });
+        $('#change_callbacks').click(function(){
+            $("#self_input").val(($("#self_input").val() == "0")?"1":"0");
+            $("#search_form").submit();
+        });
 
 
-    // });
+    });
 
     function reset_data(){
         $('#dept').val("");

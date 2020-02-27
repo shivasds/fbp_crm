@@ -140,7 +140,7 @@
 <?php 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-if ($result) { ?>
+ ?>
 <div class="container">
 <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%"  >
 	<thead>
@@ -163,6 +163,7 @@ if ($result) { ?>
 	</thead> 
 	<tbody id="main_body">
 		<?php $i= 1;
+		if ($result) {
 		if(count($result)>0){
 		foreach ($result as $data) {
 			$duedate = explode(" ", $data->due_date);
@@ -201,7 +202,11 @@ if ($result) { ?>
 					</table>
 				</td>
 			</tr>
-		<?php $i++; } }?>
+		<?php $i++; } } }
+		  else
+                {
+                    echo "<tr><td colspan=13 align=center>No Data Found</td></tr>";
+                }?>
 	</tbody>
 </table>
 </div>
@@ -1094,7 +1099,7 @@ if ($result) { ?>
 		});
 	}
 </script>
-<?php }} ?>
+<?php } ?>
 									</div>
 <!--/tabs-->
 										 <div class="tab-main">

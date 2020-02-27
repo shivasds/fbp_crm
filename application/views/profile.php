@@ -90,7 +90,7 @@
                                     <div class="row">
 									  <div class="col-xs-8 col-sm-10 col-md-10">
                                         <ol class="breadcrumb m-b-0">
-                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="<?=base_url();?>">Home</a></li>
                                                 <li class="active">Profile</li>
                                                 
                                         </ol>
