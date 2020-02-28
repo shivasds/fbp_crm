@@ -29,11 +29,15 @@ class Common_model extends MY_Model {
     }
 
     public function all_active_advisors(){
+
         $this->db->select('u.*')
             ->distinct()
             ->from('callback as cb')
             ->join('user as u','u.id=cb.user_id')
             ->order_by('u.id');
+            if($this->session->userdata("user_type")=="manager") {
+            $this->db->where("reports_to",$this->session->userdata('user_id'));
+        }
         return $this->db->get()->result();
     }
 

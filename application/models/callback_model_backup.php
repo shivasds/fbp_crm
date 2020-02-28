@@ -187,7 +187,7 @@ class Callback_model extends MY_Model {
         return $this->db->count_all_results();
     }
     function count_search_records($type,$query,$limit=null,$offset=null,$user='',$request=null, $report=""){
-        $user=$this->session->userdata('user_type');
+    	$user=$this->session->userdata('user_type');
         $this->db->select('cb.*,p.name as project_name,ls.name as lead_source_name,concat(u.first_name,"",u.last_name) as user_name,b.name as broker_name,s.name as status_name');
         if($type){
             switch ($type) {
@@ -221,7 +221,10 @@ class Callback_model extends MY_Model {
             
         }   
         if($user == 'manager'){
-$this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."') OR cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);
+if($this->session->userdata('self')==1)
+            {$this->db->where("(cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);}
+        else
+            {$this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."'))", NULL, FALSE);}
         }
          else if($user == 'City_head'){
           //print_r($this->session->userdata('user_ids'));
@@ -298,7 +301,10 @@ $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this-
              
         }   
         if($user == 'manager'){
-$this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."') OR cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);
+if($this->session->userdata('self')==1)
+            { $this->db->where("(cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);}
+        else
+            {$this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."'))", NULL, FALSE);}
         }
          else if($user == 'City_head'){
           //print_r($this->session->userdata('user_idsuser
@@ -638,7 +644,7 @@ $list_id=implode(',', $ids);
         }
         else
             {
-                    $ids=array();
+                	$ids=array();
           foreach ($this->session->userdata('city_user_ids') as $id) {
              // echo $id->id;
               $ids[]=$id->id;
@@ -1092,8 +1098,8 @@ $list_id=implode(',', $ids);
               $ids[]=$id->id;
           }
         $list_id=implode(',', $ids);
-        $this->db->where("cb.user_id in(".$list_id.")");
-       
+	    $this->db->where("cb.user_id in(".$list_id.")");
+	   
            }
         $this->db->where($clause);
         $this->db->from('callbacks_track as ct');   
