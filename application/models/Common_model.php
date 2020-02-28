@@ -36,7 +36,7 @@ class Common_model extends MY_Model {
             ->join('user as u','u.id=cb.user_id')
             ->order_by('u.id');
             if($this->session->userdata("user_type")=="manager") {
-            $this->db->where("reports_to",$this->session->userdata('user_id'));
+             $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."') OR cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);
         }
         return $this->db->get()->result();
     }
