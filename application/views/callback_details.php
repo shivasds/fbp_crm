@@ -494,7 +494,7 @@ Team Fullbasket Property Services Pvt Ltd
                 <?php if($edit){ ?>
                     <div class="col-sm-6 form-group">
                         <label for="comment">Current Callbacks:</label>
-                        <textarea class="form-control" name="notes" rows="5" id="current_callback1" name="current_callback1" onkeyup="curr(this.value)" placeholder="Please Update Your Charges To Save"></textarea>
+                        <textarea class="form-control" name="notes" rows="5" id="current_callback1" name="current_callback1" onkeyup="curr(this.value)" placeholder="Please Update Your Changes To Save"></textarea>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6 form-group">
