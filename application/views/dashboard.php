@@ -12,6 +12,19 @@
    //echo $string_ids;
 
     ?>
+    <style>
+        .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        </style>
 <body>
 	 <div class="se-pre-con"></div>
    <div class="page-container" style="height: 1000px;">
@@ -323,8 +336,8 @@
 																<h5>Team</h5>
 																<h4> Revenue</h4>
 															</div>
-															<div class="stats-right">
-																<label><a href="#" ><?php echo $total_team_revenue; ?></a></label>
+															<div class="stats-right" >
+																<label style=""><a href="#" ><?php echo $total_team_revenue; ?></a></label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -333,8 +346,8 @@
 																<h5>Own</h5>
 																<h4>Closed Calls</h4>
 															</div>
-															<div class="stats-right">
-																<label> <?php echo $close_leads_count; ?></label>
+															<div class="stats-right" id="textright">
+																<label><?php echo $close_leads_count; ?></label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -343,7 +356,7 @@
 																<h5>Total Calls </h5>
 																<h4>For Team</h4>
 															</div>
-															<div class="stats-right">
+															<div class="stats-right" id="textright">
 																<label><a href="#"  ><?php echo $total_calls; ?></a></label>
 															</div>
 															<div class="clearfix"> </div>	
