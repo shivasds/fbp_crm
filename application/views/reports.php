@@ -50,7 +50,13 @@
 <div class="container">
 	<div class="page-header">
     <h1 style=" margin-left: 12px;"><?php echo $heading; ?></h1>
-	</div>
+    </div>
+    <style>
+        .lead{
+            margin-bottom:5px;
+            margin-top:5px;
+        }
+        </style>
 
     <form action="<?php echo base_url()?>admin/generate_report">
     <div class="col-xs-12 col-md-12">
@@ -67,58 +73,58 @@
             <!-- <input type="date" class="form-control" id="toDate" name="toDate" placeholder="Date" required="required"> -->
             <input type="time" class="form-control" id="toTime" name="toTime" placeholder="Time" value="23:59" required="required">
 		</div>
-		<div class="col-xs-6 col-md-6 form-group radio-btn">
+		<div class="col-xs-12 col-md-6 form-group radio-btn">
 			<!-- <label for="emp_code">To:</label> -->
-            <label for = "lead_report" class="col-xs-5">Lead Report:</label>
-            <div class="col-xs-6">
+            <label for = "lead_report" class="lead col-xs-7">Lead Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control col-xs-5" id="lead_report" value="lead" name="reportType" >
             </div>
             <div class="clearfix"></div>
-            <label for = "lead_assignment_report" class="col-xs-5">Lead Assignment Report:</label>
-            <div class="col-xs-6">
+            <label for = "lead_assignment_report" class="lead col-xs-7">Lead Assignment Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="lead_assignment_report" value="lead_assignment" name="reportType" >
             </div>
             <div class="clearfix"></div>
             <?php if($this->session->userdata('user_type')!='City_head'){ ?>
-            <label for = "site_visit_report" class="col-xs-5">Site Visit Done report:</label>
-            <div class="col-xs-6">
+            <label for = "site_visit_report" class="lead col-xs-7">Site Visit Done report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="site_visit_report" value="site_visit" name="reportType" >
             </div>
             <div class="clearfix"></div>
-            <label for = "clent_reg_report" class="col-xs-5">Client registration report:</label>
-            <div class="col-xs-6">
+            <label for = "clent_reg_report" class="lead col-xs-7">Client registration report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="clent_reg_report" value="clent_reg" name="reportType" >
             </div>
             <div class="clearfix"></div>
-            <label for = "revenue_report" class="col-xs-5">Revenue Report:</label>
-            <div class="col-xs-6">
+            <label for = "revenue_report" class="lead col-xs-7">Revenue Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="revenue_report" value="revenue" 
                 name="reportType" >
             </div>
             <div class="clearfix"></div>
-            <label for = "daily_act_report" class="col-xs-5">Daily Activity Report:</label>
-            <div class="col-xs-6">
+            <label for = "daily_act_report" class="lead col-xs-7">Daily Activity Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="daily_act_report" value="daily_act" name="reportType" >
             </div>
             <div class="clearfix"></div>
-            <label for = "site_visit_fixed_report" class="col-xs-5">Site Visit Fixed Report:</label>
-            <div class="col-xs-6">
+            <label for = "site_visit_fixed_report" class="lead col-xs-7">Site Visit Fixed Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="site_visit_fixed_report" value="site_visit_fixed" name="reportType" >
             </div>   
             <div class="clearfix"></div>
-            <label for = "face_to_face_report" class="col-xs-5">Face to Face Report:</label>
-            <div class="col-xs-6">
+            <label for = "face_to_face_report" class="lead col-xs-7">Face to Face Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="face_to_face_report" value="face_to_face" name="reportType" >
             </div>
         <?php }?>
             <div class="clearfix"></div>
-            <label for = "face_to_face_report" class="col-xs-5">Due Report:</label>
-            <div class="col-xs-6">
+            <label for = "face_to_face_report" class="lead col-xs-7">Due Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="due_report" value="due" name="reportType" >
             </div>  
             <div class="clearfix"></div>
-            <label for = "face_to_face_report" class="col-xs-5">Callback Report:</label>
-            <div class="col-xs-6">
+            <label for = "face_to_face_report" class="lead col-xs-7">Callback Report:</label>
+            <div class="lead col-xs-5">
                 <input type="radio" class="form-control" id="callback_report" value="dailyCallback" name="reportType" >
             </div>  
 		</div>
@@ -136,7 +142,11 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -191,7 +201,7 @@
 			<!--/sidebar-menu-->
 				<div class="sidebar-menu">
 					<header class="logo">
-					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
@@ -199,12 +209,12 @@
 			<!--/down-->
 							<div class="down">	
 									  <?php $this->load->view('profile_pic');?>
-									  <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+									  <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
 									   <p><?php echo $this->session->userdata('user_type'); ?></p>
 									
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+										<!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
@@ -245,7 +255,11 @@
    
    <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({

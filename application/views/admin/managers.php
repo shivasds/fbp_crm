@@ -15,7 +15,7 @@
 			<div class="header-section">
 						<!--menu-right-->
 						<div class="top_menu">
-						       <!-- <!--<div class="main-search">
+						        <!--<div class="main-search">
 											<form>
 											   <input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" class="text"/>
 												<input type="submit" value="">
@@ -65,7 +65,7 @@
 	    padding: 10px;
 	}
 	@media (max-width: 991px){
-        .priority-6,.priority-7,.priority-8{
+        .priority-6,.priority-7{
 			display:none;
 		}
         .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -77,7 +77,7 @@
 }
         }
         @media (max-width: 800px){
-        .priority-6,.priority-7,.priority-8,.priority-9, .priority-10{
+        .priority-6,.priority-7,.priority-9, .priority-10{
 			display:none;
 		}
         .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -87,22 +87,22 @@
     border-top: none !important;
     width: 0%;
 }
-        .btn {
+    .btn {
     cursor: pointer;
-    margin: 10px;
+    /* margin: 3px; */
     border-radius: 0;
     text-decoration: none;
     padding: 2px 2px;
     font-size: 13px;
 }
         }
-        @media (max-width: 1366px){
-       .priority-6,.priority-7,.priority-8,.priority-3,.priority-4{
-			display:none;
-		}
-        }
+        .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+    text-align: center;
+}
+      
         @media (max-width: 1150px){
-           .priority-3,.priority-4,.priority-6{
+           .priority-3,.priority-4,.priority-5,.priority-6,.priority-7,.priority-8,.priority-10{
 			display:none;
 		}
         .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -114,14 +114,14 @@
 }
         .btn {
     cursor: pointer;
-    margin: 10px;
+    /* margin: 3px; */
     border-radius: 0;
     text-decoration: none;
     padding: 2px 2px;
     font-size: 13px;
 }
         }
-	@media screen and (max-width: 900px) and (min-width: 550px) {
+	@media screen (max-width: 900px){
 		.priority-3,.priority-4,.priority-6, .priority-7,.priority-8{
 			display:none;
 		}
@@ -134,7 +134,7 @@
 }
         .btn {
     cursor: pointer;
-    margin: 10px;
+    /* margin: 10px; */
     border-radius: 0;
     text-decoration: none;
     padding: 2px 2px;
@@ -154,14 +154,7 @@
     border-top: none !important;
     width: 0%;
 }
-.btn {
-    cursor: pointer;
-    margin: 10px;
-    border-radius: 0;
-    text-decoration: none;
-    padding: 2px 2px;
-    font-size: 13px;
-}
+
 	}
 	
 	@media screen and (max-width: 300px) {
@@ -185,78 +178,97 @@
 }
 	
       
-	}
+    }
+    
+    .plus{
+        background-color: #5bc0de;
+        border: none;
+        margin-bottom: 11px;
+        float: right;
+        color: white;
+        border-radius: 6px;
+        padding: 7px 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
     </style>
-    <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-sm-3 form-group">
-                <label for="director">Enter First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
-            </div>
 
-            <div class="col-sm-3 form-group">
-                <label for="director">Enter Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" >
-            </div>
+    <button class="plus"  onclick="myFunction()"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add User</button>
+    <br>
+    <br>
+    <div id="myDIV" style="display:none;">
+        <form name="save_seller_form" id="save_seller_form" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-3 form-group">
+                    <label for="director">Enter First Name:</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
+                </div>
 
-            <div class="col-sm-3 form-group">
-                <label for="email">Enter Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
-            </div>
+                <div class="col-sm-3 form-group">
+                    <label for="director">Enter Last Name:</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" >
+                </div>
 
-            <div class="col-sm-3 form-group">
-                <label for="emp_code">Enter Emp code:</label>
-                <input type="text" class="form-control" onblur="code_check(this.value)" id="emp_code" name="emp_code" placeholder="Enter Employee Id" required>
-            </div>
-            <div class="col-sm-6 form-group">
-                <label for="emp_last_name">Mobile Number:</label>
-                <input type="text" class="form-control" id="employee_mobile" name="employee_mobile" placeholder="Employee Mobile Number" required="required">
-            </div>
-            <div class="col-sm-6 form-group">
-                <label for="emp_last_name">Address:</label>
-                <textarea name="employee_address"></textarea>
-            </div>
+                <div class="col-sm-3 form-group">
+                    <label for="email">Enter Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                </div>
 
-            <div class="col-md-3 form-group">
-                <label for="emp_code">Deprtment:</label>
-                <select  class="form-control"  id="user_type" name="department" required="required" >
-                    <option value="">Select</option>
-                    <?php $all_department=$this->common_model->all_active_departments();
-                    foreach($all_department as $department){ ?>
-                        <option value="<?php echo $department->id; ?>"><?php echo $department->name; ?></option>
-                    <?php }?>
-                </select>
-            </div>
+                <div class="col-sm-3 form-group">
+                    <label for="emp_code">Enter Emp code:</label>
+                    <input type="text" class="form-control" onblur="code_check(this.value)" id="emp_code" name="emp_code" placeholder="Enter Employee Id" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_last_name">Mobile Number:</label>
+                    <input type="text" class="form-control" id="employee_mobile" name="employee_mobile" placeholder="Employee Mobile Number" required="required">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="emp_last_name">Address:</label>
+                    <textarea name="employee_address"></textarea>
+                </div>
 
-            <div class="col-md-3 form-group">
-                <label for="emp_code">City:</label>
-                <select  class="form-control"  id="user_type" name="city" required="required" >
-                    <option value="">Select</option>
-                    <?php $all_city=$this->common_model->all_active_cities();
-                    foreach($all_city as $city){ ?>
-                        <option value="<?php echo $city->id; ?>"><?php echo $city->name; ?></option>
-                    <?php }?>
-                </select>
-            </div>
+                <div class="col-md-3 form-group">
+                    <label for="emp_code">Deprtment:</label>
+                    <select  class="form-control"  id="user_type" name="department" required="required" >
+                        <option value="">Select</option>
+                        <?php $all_department=$this->common_model->all_active_departments();
+                        foreach($all_department as $department){ ?>
+                            <option value="<?php echo $department->id; ?>"><?php echo $department->name; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
 
-            <div class="col-md-6 form-group">
-                <label for="emp_code">VP:</label>
-                <select  class="form-control"  id="director" name="director" required="required" >
-                    <option value="">Select</option>
-                    <?php $all_vps=$this->user_model->all_users("(type=3 AND active=1)");
-                    foreach($all_vps as $vp){ ?>
-                        <option value="<?php echo $vp->id; ?>"><?php echo $vp->first_name." ".$vp->last_name; ?></option>
-                    <?php }?>
-                </select>
-            </div>
+                <div class="col-md-3 form-group">
+                    <label for="emp_code">City:</label>
+                    <select  class="form-control"  id="user_type" name="city" required="required" >
+                        <option value="">Select</option>
+                        <?php $all_city=$this->common_model->all_active_cities();
+                        foreach($all_city as $city){ ?>
+                            <option value="<?php echo $city->id; ?>"><?php echo $city->name; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
 
-            <div class="col-sm-12 form-group">
-                <button type="submit" style="margin-top:25px;" id="add_manager" class="btn btn-success btn-block" disabled>Add Manager</button>
+                <div class="col-md-6 form-group">
+                    <label for="emp_code">VP:</label>
+                    <select  class="form-control"  id="director" name="director" required="required" >
+                        <option value="">Select</option>
+                        <?php $all_vps=$this->user_model->all_users("(type=3 AND active=1)");
+                        foreach($all_vps as $vp){ ?>
+                            <option value="<?php echo $vp->id; ?>"><?php echo $vp->first_name." ".$vp->last_name; ?></option>
+                        <?php }?>
+                    </select>
+                </div>
+
+                <div class="col-sm-12 form-group">
+                    <button type="submit" style="margin-top:25px;" id="add_manager" class="btn btn-success btn-block" disabled>Add Manager</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
     <div>
-    <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th class="priority-1">Id</th>
@@ -543,7 +555,7 @@
 			<!--/sidebar-menu-->
 				<div class="sidebar-menu">
 					<header class="logo">
-					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
@@ -551,12 +563,12 @@
 			<!--/down-->
 							<div class="down">	
 									  <?php $this->load->view('profile_pic');?>
-									  <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+									  <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
 									   <p><?php echo $this->session->userdata('user_type'); ?></p>
 									
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+										<!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
@@ -627,7 +639,11 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -765,5 +781,16 @@
     }
 
 </script>
+
+<script>
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
 </body>
 </html>

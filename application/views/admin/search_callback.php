@@ -140,7 +140,7 @@
 <?php 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-if ($result) { ?>
+ ?>
 <div class="container">
 <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%"  >
 	<thead>
@@ -163,6 +163,7 @@ if ($result) { ?>
 	</thead> 
 	<tbody id="main_body">
 		<?php $i= 1;
+		if ($result) {
 		if(count($result)>0){
 		foreach ($result as $data) {
 			$duedate = explode(" ", $data->due_date);
@@ -201,7 +202,11 @@ if ($result) { ?>
 					</table>
 				</td>
 			</tr>
-		<?php $i++; } }?>
+		<?php $i++; } } }
+		  else
+                {
+                    echo "<tr><td colspan=13 align=center>No Data Found</td></tr>";
+                }?>
 	</tbody>
 </table>
 </div>
@@ -643,7 +648,11 @@ if ($result) { ?>
 <script type="text/javascript">
 
 	$(document).ready(function() {
-	    $('#example').DataTable();
+	     $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
 	    if (!Modernizr.inputtypes.date) {
 	        // If not native HTML5 support, fallback to jQuery datePicker
 	        $('input[type=date]').datepicker({
@@ -1090,7 +1099,7 @@ if ($result) { ?>
 		});
 	}
 </script>
-<?php }} ?>
+<?php } ?>
 									</div>
 <!--/tabs-->
 										 <div class="tab-main">
@@ -1110,7 +1119,7 @@ if ($result) { ?>
 			<!--/sidebar-menu-->
 				<div class="sidebar-menu">
 					<header class="logo">
-					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
@@ -1118,12 +1127,12 @@ if ($result) { ?>
 			<!--/down-->
 							<div class="down">	
 									  <?php $this->load->view('profile_pic');?>
-									  <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+									  <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
 									   <p><?php echo $this->session->userdata('user_type'); ?></p>
 									
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+										<!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
@@ -1165,7 +1174,11 @@ if ($result) { ?>
    
    <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -1305,7 +1318,11 @@ if ($result) { ?>
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({

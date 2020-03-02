@@ -78,17 +78,17 @@
     <style>
  
 	@media (max-width: 991px){
-   .priority-10,.priority-11,.priority-12,.priority-13{
+   .priority-10,.priority-12,.priority-13{
 			display:none;
 		}
         }
         @media (max-width: 1150px){
-            .priority-11,.priority-12,.priority-13{
+            .priority-12,.priority-13{
 			display:none;
 		}
         }
 	@media screen and (max-width: 900px) and (min-width: 550px) {
-		.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-10,.priority-11{
+		.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-10{
 			display:none;
 		}
         .priority-12,.priority-13{
@@ -97,7 +97,7 @@
 	}
 	
 	@media screen and (max-width: 550px) {
-        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-10,.priority-11{
+        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-10{
 			display:none;
 		}
         .priority-13{
@@ -340,8 +340,8 @@
                     </tbody>
         </table>
         <div style="margin-top: 20px">
-                    <!-- <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1; ?> to <?= ($this->uri->segment(3)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
-                    <ul class="pagination pull-right"><?php echo $links; ?></ul> -->
+                    <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1; ?> to <?= ($this->uri->segment(3)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
+                    <ul class="pagination pull-right"><?php echo $links; ?></ul> 
                </div>
     </div>
 
@@ -715,7 +715,7 @@
                 </div>
                 <div class="col-sm-6 form-group">
                     <label for="comment">Current Callbacks:</label>
-                    <textarea class="form-control" name="notes" rows="3" id="current_callback1" name="current_callback1" onblur="curr(this.value)"></textarea>
+                    <textarea class="form-control" name="notes" rows="3" id="current_callback1" name="current_callback1" onblur="curr(this.value)" placeholder="PLease Update Your Changes To Save"></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                     <input type="checkbox" name="fancy-checkbox-success" onclick="reassignDate()"  id="fancy-checkbox-success" autocomplete="off" />
@@ -1273,7 +1273,7 @@
 			<!--/sidebar-menu-->
 				<div class="sidebar-menu">
 					<header class="logo">
-					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
@@ -1281,12 +1281,12 @@
 			<!--/down-->
 							<div class="down">	
 									  <?php $this->load->view('profile_pic');?>
-									  <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+									  <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
 									   <p><?php echo $this->session->userdata('user_type'); ?></p>
 									
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+										<!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
@@ -1378,7 +1378,11 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         // $('#example').DataTable({
         //     "scrollX": true,
         //     "scrollY": true

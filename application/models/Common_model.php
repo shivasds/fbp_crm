@@ -29,11 +29,15 @@ class Common_model extends MY_Model {
     }
 
     public function all_active_advisors(){
+
         $this->db->select('u.*')
             ->distinct()
             ->from('callback as cb')
             ->join('user as u','u.id=cb.user_id')
             ->order_by('u.id');
+            if($this->session->userdata("user_type")=="manager") {
+             $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this->session->userdata('user_id')."') OR cb.user_id = ".$this->session->userdata('user_id').")", NULL, FALSE);
+        }
         return $this->db->get()->result();
     }
 
@@ -331,18 +335,17 @@ class Common_model extends MY_Model {
     function deleteAccess($clause){
         $this->db->delete('tbl_privilege', $clause);
         return true;
-    }
-     function get_online_leads($lead_source)
+    } 
+     function get_online_leads($table_name = '',$lead_source='', $perpage = NULL, $offset = NULL)
      {
         $d=0;
-        $this->db->select()
-            ->from('online_leads')
-            ->where('source',$lead_source)
+        $this->db-> where('source',$lead_source)
             ->where('saved',$d);
 
            // ->order_by('name','asc');
-        $query=$this->db->get();
-        return $query->result();
+        //$query=$this->db->get();
+        return (is_null($perpage) or is_null($offset)) ? $this->db->get($table_name)->result() : $this->db->get($table_name, $perpage, $offset)->result();
+        //return $query->result();
      }
 
         function save_online_leads($leads)
@@ -651,6 +654,16 @@ class Common_model extends MY_Model {
 
            
         }
+            public function count_onlineleads($table_name = '',$source='') {
+        if ($table_name == '')
+            $table_name = $this->table_name;
+            $this->db->select('*')
+            ->from('online_leads')->where('saved',0)
+            ->where('source',$source);
+            $query = $this->db->get(); 
+             
+        return $query->num_rows();
+    }
 
 
        }

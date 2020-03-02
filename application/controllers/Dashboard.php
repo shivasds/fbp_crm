@@ -474,7 +474,9 @@ class Dashboard extends CI_Controller {
             $email2=$this->input->post('email2');
             $project=$this->input->post('project');
             $lead_source=$this->input->post('lead_source');
-            $leadId=$this->input->post('leadId');
+           // $leadId=$this->input->post('leadId');
+            $lead_ids = json_decode(json_encode($this->callback_model->get_last_id()),true);
+            $leadId = $lead_ids['id']+1;
             $due_date=$this->input->post('due_date');
             $sub_broker=$this->input->post('sub_broker');
             $status=$this->input->post('status');
@@ -489,7 +491,7 @@ class Dashboard extends CI_Controller {
                 'email2'=>$email2,
                 'project_id'=>$project,
                 'lead_source_id'=>$lead_source,
-                'leadid'=>$leadId,
+                'leadid'=>trim("FBP-".sprintf("%'.011d",$leadId).PHP_EOL),
                 'user_id'=>$this->session->userdata("user_id"),
                 'due_date'=>$due_date,
                 'broker_id'=>$sub_broker,

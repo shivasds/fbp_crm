@@ -837,8 +837,15 @@
                             <select  class="form-control"  name="userId" id="userId" required >
                                 <option value="">Select</option>         
                                 <?php
-                                if($this->user_model->all_employees()) {
-                                    foreach ($this->user_model->all_employees() as $usr) {
+                                if($this->session->userdata("user_type")=="City_head"){
+                                $users = $this->user_model->get_city_users_active();
+                            }
+                            else
+                            {
+                                $users = $this->user_model->all_employees();
+                            }
+                                if($users) {
+                                    foreach ($users as $usr) {
                                         $sel = '';
                                         echo '<option value="'.$usr->id.'">'.$usr->first_name.' '.$usr->last_name.'</option>';
                                     }
@@ -890,7 +897,11 @@
         $("#search_form").submit();
     }
     // $(document).ready(function() {
-    //     //$('#example').DataTable();
+    //     // $('#example').DataTable({
+              // "paging":   false,
+              // "info": false
+ 
+        // });
     //     if (!Modernizr.inputtypes.date) {
     //         // If not native HTML5 support, fallback to jQuery datePicker
     //         $('input[type=date]').datepicker({
@@ -1481,7 +1492,7 @@
 			<!--/sidebar-menu-->
 				<div class="sidebar-menu">
 					<header class="logo">
-					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
 					<!--<img id="logo" src="" alt="Logo"/>--> 
 				  </a> 
 				</header>
@@ -1489,12 +1500,12 @@
 			<!--/down-->
 							<div class="down">	
 									  <?php $this->load->view('profile_pic');?>
-									  <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+									  <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
 									   <p><?php echo $this->session->userdata('user_type'); ?></p>
 									
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+										<!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
@@ -1542,7 +1553,11 @@
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -1558,7 +1573,7 @@
         $('#revenueMonth').MonthPicker({
             Button: false
         });
-        get_revenues();
+        
 
       
 
@@ -1569,43 +1584,7 @@
                 $(".se-pre-con").hide("slow");
             });
         });
-
-        $("#overdue_lead_count").click(function(){
-            var form = document.createElement('form');
-            form.method = "POST";
-            form.action = "<?php echo base_url()."dashboard/generate_report" ?>";
-            
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = "toDate";
-            input.value = $(this).data('datetime');
-            form.appendChild(input);
-
-            input = document.createElement('input');
-            input.type = "text";
-            input.name = "reportType";
-            input.value = "due";
-            form.appendChild(input);
-
-            document.body.appendChild(form);
-            form.submit();
-        });
-
-        $('.emailSiteVisit').on('click', function(){
-            $(".se-pre-con").show();
-            $.ajax({
-                type : 'POST',
-                url : "<?= base_url('site-visit-report-mail');?>",
-                data:1,
-                success: function(res){
-                    $(".se-pre-con").hide("slow");
-                    if(res == 1)
-                        alert('Email Sent Successfully.');
-                    else
-                        alert('Email Sent fail!');
-                }
-            });
-        });
+ 
 
     });
     // $('#filter_revenue').click(get_revenues());

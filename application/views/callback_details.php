@@ -216,7 +216,8 @@
                                 foreach ($users as $key => $value) { ?>
                                     <option value="<?php echo $value->id ?>" <?php echo ($value->id  == $user_name) ? 'selected' : ''; ?>><?php echo $value->first_name." ".$value->last_name." (user)"; ?></option>
                                 <?php } }elseif ($this->session->userdata("user_type")=="City_head" ){ 
-                                $users = $this->user_model->get_usersby_reports_to($this->session->userdata("user_id"));
+                               // $users = $this->user_model->get_usersby_reports_to($this->session->userdata("user_id"));
+                                    $users = $this->user_model->get_city_users_active();;
                                 foreach ($users as $key => $value) { ?>
                                     <option value="<?php echo $value->id ?>" <?php echo ($value->id  == $user_name) ? 'selected' : ''; ?>><?php echo $value->first_name." ".$value->last_name." (user)"; ?></option>
                                 <?php } ?>
@@ -493,7 +494,7 @@ Team Fullbasket Property Services Pvt Ltd
                 <?php if($edit){ ?>
                     <div class="col-sm-6 form-group">
                         <label for="comment">Current Callbacks:</label>
-                        <textarea class="form-control" name="notes" rows="5" id="current_callback1" name="current_callback1" onkeyup="curr(this.value)"></textarea>
+                        <textarea class="form-control" name="notes" rows="5" id="current_callback1" name="current_callback1" onkeyup="curr(this.value)" placeholder="Please Update Your Changes To Save"></textarea>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-6 form-group">
@@ -1356,7 +1357,7 @@ e.preventDefault();
             <!--/sidebar-menu-->
                 <div class="sidebar-menu">
                     <header class="logo"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
                     <!--<img id="logo" src="" alt="Logo"/>--> 
                   </a> 
                 </header>
@@ -1364,16 +1365,16 @@ e.preventDefault();
             <!--/down-->
                             <div class="down">  
                                       <?php $this->load->view('profile_pic');?>
-                                      <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+                                      <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
                                        <p><?php echo $this->session->userdata('user_type'); ?></p>
                                      <?php if($this->session->userdata('user_type')=='user')
                                        {?>
-                                      <a href="#"><span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?></a><br>
+                                      <span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?><br>
                                         <?php } ?>
                                     
                                     <ul>
                                     <li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-                                        <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+                                        <!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
                                         <li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                                         </ul>
                                     </div>
@@ -1414,7 +1415,11 @@ e.preventDefault();
    -->
    <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
@@ -1554,7 +1559,11 @@ e.preventDefault();
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+         $('#example').DataTable({
+              "paging":   false,
+              "info": false
+ 
+        });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({

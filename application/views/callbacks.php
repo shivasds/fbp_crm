@@ -10,6 +10,7 @@
         font-size: 60px;
         color: #f1c836;
     }
+
     </style>
     <div class="container"> 
         <div class="row"> 
@@ -127,7 +128,7 @@
         }
         }
         @media (max-width: 1150px){
-            .priority-9, .priority-7,.priority-8,.priority-13,.priority-14{
+            .priority-10, .priority-7,.priority-8,.priority-13,.priority-14{
 			display:none;
 		}
 
@@ -137,14 +138,14 @@
         #search_form{
             display:none;
         }
-		.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-13,.priority-14{
+		.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-13,.priority-14{
 			display:none;
 		}
        
 	}
 	
 	@media screen and (max-width: 550px) {
-        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-13,.priority-14{
+        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-13,.priority-14{
 			display:none;
 		}
         #search_form{
@@ -162,7 +163,7 @@
         #search_form{
             display:none;
         }
-        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-11{
+        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-11{
 			display:none;
 		}
    
@@ -178,7 +179,7 @@
         #search_form{
             display:none;
         }
-        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-9,.priority-11,.priority-13,.priority-14{
+        .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-11,.priority-13,.priority-14{
 			display:none;
 		}
    
@@ -384,6 +385,7 @@
             <tbody id="main_body">
                 <?php $i= 1;
                 if(count($result)>0){
+                  // echo $this->session->userdata('self');
                 foreach ($result as $data) {
                     $duedate = explode(" ", $data->due_date);
                     $duedate = $duedate[0]; ?>
@@ -423,7 +425,13 @@
                             </table>
                         </td>
                     </tr>
-                <?php $i++; } }?>
+                <?php $i++; } }
+                else
+                {
+                    echo "<tr><td colspan=13 align=center>No Data Found</td></tr>";
+                }
+
+                ?>
             </tbody>
         </table>
     
@@ -444,8 +452,12 @@
 
 <script type="text/javascript">
 
-    // $(document).ready(function() {
-    //     $('#example').DataTable();
+    $(document).ready(function() {
+    //      $('#example').DataTable({
+        //       "paging":   false,
+        //       "info": false
+ 
+        // });
     //     if (!Modernizr.inputtypes.date) {
     //         // If not native HTML5 support, fallback to jQuery datePicker
     //         $('input[type=date]').datepicker({
@@ -462,13 +474,13 @@
     //         Button: false
     //     });
 
-    //     $('#change_callbacks').click(function(){
-    //         $("#self_input").val(($("#self_input").val() == "0")?"1":"0");
-    //         $("#search_form").submit();
-    //     });
+        $('#change_callbacks').click(function(){
+            $("#self_input").val(($("#self_input").val() == "0")?"1":"0");
+            $("#search_form").submit();
+        });
 
 
-    // });
+    });
 
     function reset_data(){
         $('#dept').val("");
@@ -503,7 +515,7 @@
             <!--/sidebar-menu-->
                 <div class="sidebar-menu">
                     <header class="logo"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"> <h1>FBP</h1></span> 
+                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>  <span id="logo"> <h1>FBP</h1></span> 
                     <!--<img id="logo" src="" alt="Logo"/>--> 
                   </a> 
                 </header>
@@ -511,16 +523,16 @@
             <!--/down-->
                             <div class="down">  
                                       <?php $this->load->view('profile_pic');?>
-                                      <a href="#"><span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span></a>
+                                      <span class=" name-caret"><?php echo $this->session->userdata('user_name'); ?></span>
                                        <p><?php echo $this->session->userdata('user_type'); ?></p>
                                      <?php if($this->session->userdata('user_type')=='user')
                                        {?>
-                                      <a href="#"><span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?></a><br>
+                                      <span class="name-caret">RM:</span> <?php echo $this->session->userdata('manager_name'); ?><br>
                                         <?php } ?>
                                     
                                     <ul>
                                     <li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-                                        <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+                                        <!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
                                         <li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                                         </ul>
                                     </div>
@@ -567,8 +579,9 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
-            "paging":   false,
-            "info":     false
+              "paging":   false,
+              "info": false
+ 
         });
         if (!Modernizr.inputtypes.date) {
             // If not native HTML5 support, fallback to jQuery datePicker
