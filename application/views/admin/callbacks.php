@@ -272,10 +272,10 @@
             </div>
         </div>
         </form>
-    </div>
+   </div>
     <!-- display nowrap -->
     <div class="" style="margin-bottom: 5%;">
-    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr id="tableheading">
                             <th class="priority-1" >No</th>
@@ -338,15 +338,15 @@
                             </tr>
                         <?php $i++; } }?>
                     </tbody>
-                </table>
-                <div style="margin-top: 20px">
+        </table>
+        <div style="margin-top: 20px">
                     <!-- <span class="pull-left"><p>Showing <?php echo ($this->uri->segment(3)) ? $this->uri->segment(3)+1 : 1; ?> to <?= ($this->uri->segment(3)+count($result)); ?> of <?= $totalRecords; ?> entries</p></span>
                     <ul class="pagination pull-right"><?php echo $links; ?></ul> -->
                </div>
     </div>
 
    
- </div>
+   </div>
 
 <div class="modal fade" id="modal_notes" role="dialog">
     <div class="modal-dialog modal-lg">
