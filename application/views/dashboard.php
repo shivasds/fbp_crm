@@ -316,6 +316,50 @@
 												elseif ($this->session->userdata('user_type')=="manager"  ) { 
 
         ?>
+
+												   <div class="row-one">
+														<div class="col-md-3 widget">
+															<div class="stats-left ">
+																<h5>Team</h5>
+																<h4> Revenue</h4>
+															</div>
+															<div class="stats-right">
+																<label><a href="#" ><?php echo $total_team_revenue; ?></a></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-mdl">
+															<div class="stats-left">
+																<h5>Own</h5>
+																<h4>Closed Calls</h4>
+															</div>
+															<div class="stats-right">
+																<label> <?php echo $close_leads_count; ?></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-thrd">
+															<div class="stats-left">
+																<h5>Total Calls </h5>
+																<h4>For Team</h4>
+															</div>
+															<div class="stats-right">
+																<label><a href="#"  ><?php echo $total_calls; ?></a></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-last">
+															<div class="stats-left">
+																<h5>Own</h5>
+																<h4>Revenue</h4>
+															</div>
+															<div class="stats-right">
+																<label> <?php echo $total_revenue; ?></label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="clearfix"> </div>	
+													</div>
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="tab-inner">
@@ -716,7 +760,7 @@
                                         <?php } ?>
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<!-- <li><a class="tooltips" href="#"><span>Settings</span><i class="lnr lnr-cog"></i></a></li> -->
+										<li><a class="tooltips" href="#"><span><?=$total_team_members?></span> </a></li>
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
