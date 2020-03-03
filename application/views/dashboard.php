@@ -356,7 +356,7 @@
             padding: 37px 0px;
         }
         }
-        @media (max-width:1280px){
+        /*@media (max-width:1280px){
             .stats-right{
             padding: 21px 0px;
         } 
@@ -364,7 +364,7 @@
         #textright{
             padding: 32px 0px;
         }
-        }
+        }*/
         @media (max-width:1150px){
             .stats-right{
             padding: 33px 0px;
@@ -396,14 +396,14 @@
         }
         </style>
 
-												   <!-- <div class="row-one">
+												   <div class="row-one">
 														<div class="col-md-3 widget">
 															<div class="stats-left ">
 																<h5>Team</h5>
 																<h4> Revenue</h4>
 															</div>
 															<div class="stats-right" >
-																<label style=""><a href="#" ><?php echo $total_team_revenue; ?></a></label>
+																<label style=""><a href="#" ><?php echo $total_team_revenue?$total_team_revenue:0; ?></a></label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -413,7 +413,7 @@
 																<h4>Closed Calls</h4>
 															</div>
 															<div class="stats-right" id="textright">
-																<label><?php echo $close_leads_count; ?></label>
+																<label> <a href="#" class="view_callbacks" data-type="manager_close"><?php echo $close_leads_count; ?></a></label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -423,7 +423,7 @@
 																<h4>For Team</h4>
 															</div>
 															<div class="stats-right" id="textright">
-																<label><a href="#"  ><?php echo $total_calls; ?></a></label>
+																<label><a href="<?php echo base_url().'view_callbacks?advisor='.$team_members; ?>" ><?php echo $total_calls; ?></a></label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -438,7 +438,7 @@
 															<div class="clearfix"> </div>	
 														</div>
 														<div class="clearfix"> </div>	
-													</div> -->
+													</div> 
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="tab-inner">
