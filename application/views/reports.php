@@ -57,11 +57,11 @@
             margin-bottom:5px;
             margin-top:5px;
             font-size: 16px;
-    }
-    .lead{
-        height: 26px;
-    }
-            </style>
+       }
+        .lead{
+            height: 26px;
+        }
+    </style>
 
     <form action="<?php echo base_url()?>admin/generate_report">
     <div class="col-xs-12 col-md-12">
