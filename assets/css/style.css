@@ -278,7 +278,7 @@ a:hover { transition: all 200ms ease-in-out; }
   
 }
 .submenushow li a{
-	padding: 7px 51px!important;
+    font-size: 12px!important;
     background-color: #021f4eba !important;
 }
 .submenushow a {

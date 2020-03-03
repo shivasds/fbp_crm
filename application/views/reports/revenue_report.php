@@ -50,8 +50,15 @@
 <style type="text/css">
 	.display td {
 	    border: 1px solid #aaa;
-	    padding: 5px
-	  }
+        padding: 5px;
+        font-size: 14px!important;
+      }
+      th {
+    color: #0c0b0b!important;
+    font-weight: 400;
+    font-size: 14px!important;
+}
+
 </style>
 </head>
 <body>
