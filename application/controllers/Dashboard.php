@@ -90,7 +90,9 @@ class Dashboard extends CI_Controller {
         elseif ($this->session->userdata('user_type') == 'manager'){
             $data['imp_callbacks'] = $this->callback_model->fetch_important_callbacks($data['user_id']);
             $data['team_members'] = $this->user_model->get_team_members($data['user_id']);
+
             $data['total_team_members'] = $this->user_model->get_team_members_count($data['user_id']); 
+            $this->session->set_userdata("manager_team_size", $data['total_team_members'] );
             $data['total_calls'] = $this->callback_model->get_total_team_calls($data['user_id']);
             $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id']);
             $data['total_active_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'all',"cb.status_id!=4 AND cb.status_id!=5");
