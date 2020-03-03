@@ -12,19 +12,7 @@
    //echo $string_ids;
 
     ?>
-    <style>
-        .stats-right{
-            padding: 25px 0px;
-        } 
-        .stats-right label{
-            font-size: 1em; 
-            color: #3E3D3D;
-            word-break: break-all;
-        }
-        #textright{
-            padding: 37px 0px;
-        }
-        </style>
+  
 <body>
 	 <div class="se-pre-con"></div>
    <div class="page-container" style="height: 1000px;">
@@ -329,6 +317,84 @@
 												elseif ($this->session->userdata('user_type')=="manager"  ) { 
 
         ?>
+         <style>
+
+        .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        @media (max-width:1366px){
+            .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        }
+        @media (max-width:1366px){
+            .stats-right{
+            padding: 25px 0px;
+        } 
+        .stats-right label{
+            font-size: 1em; 
+            color: #3E3D3D;
+            word-break: break-all;
+        }
+        #textright{
+            padding: 37px 0px;
+        }
+        }
+        @media (max-width:1280px){
+            .stats-right{
+            padding: 21px 0px;
+        } 
+       
+        #textright{
+            padding: 32px 0px;
+        }
+        }
+        @media (max-width:1150px){
+            .stats-right{
+            padding: 33px 0px;
+}
+        } 
+       
+        #textright{
+            padding: 32px 0px;
+        }
+        }
+
+        @media (max-width:930px){
+            .stats-right{
+            padding: 2px 0px;
+        } 
+       
+        #textright{
+            padding: 24px 0px;
+        }
+        }
+        @media (max-width:768px){
+            .stats-right{
+            padding: 2px 0px;
+        } 
+       
+        #textright{
+            padding: 24px 0px;
+        }
+        }
+        </style>
 
 												   <div class="row-one">
 														<div class="col-md-3 widget">

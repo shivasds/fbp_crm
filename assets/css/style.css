@@ -275,8 +275,15 @@ a:hover { transition: all 200ms ease-in-out; }
 
   visibility: visible;
   opacity: 1;
+  
 }
-
+.submenushow li a{
+	padding: 7px 51px!important;
+    background-color: #021f4eba !important;
+}
+.submenushow a {
+	list-style-type: circle;
+}
 .caretdown {
     border-bottom: 4px dashed;
     border-right: 4px solid transparent;
