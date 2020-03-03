@@ -644,29 +644,6 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
-         $('#example').DataTable({
-              "paging":   false,
-              "info": false
- 
-        });
-        if (!Modernizr.inputtypes.date) {
-            // If not native HTML5 support, fallback to jQuery datePicker
-            $('input[type=date]').datepicker({
-                // Consistent format with the HTML5 picker
-                    dateFormat : 'dd/mm/yy'
-                }
-            );
-        }
-        if (!Modernizr.inputtypes.time) {
-            // If not native HTML5 support, fallback to jQuery timepicker
-            $('input[type=time]').timepicker({ 'timeFormat': 'H:i' });
-        }
-        $('#c_bkngMnth, #c_estMonthofInvoice').MonthPicker({
-            Button: false
-        });
-    });
-    
     function abc(){
         alert("hello");
     }
