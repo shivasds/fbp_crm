@@ -25,15 +25,19 @@
   .tooltip:hover .tooltiptext {
 	visibility: visible;
   }
-	</style>
+  </style>
+  
+ 
 <?php
 $baseURL = ($this->session->userdata('user_type') == 'admin') ? base_url('admin') : base_url();
 $i=1;
 ?>
+
+
 <div class="menu headerScroll">
 									<ul id="menu" class="scrollbar2">
 										<li class="<?php if($name=='index'){echo 'active';}?>"><a href="<?php echo $baseURL; ?>"><i class="fa fa-home"></i> <span>Home</span></a></li>
-	
+	              
 
 	<?php
     $this->load->model('Common_model');
@@ -54,7 +58,7 @@ $i=1;
                     <a href="<?= $baseLink;?>" <?= $aAttr; ?> ><i class="<?php  echo $pModule['class']?>"></i> <span><?= $pModule['module'].((count($childModules)>0) ? '<span class="caret"></span>' :'') ?></span></a>
                     <?php
                     if(count($childModules)>0){
-                        echo '<ul class="dropdown-menu scrollbar1" id="bluescroll">';
+                        echo '<ul>';
                         foreach ($childModules as $cModule) {
                             $baseLink = ($this->session->userdata('user_type') == 'admin' || $this->session->userdata('user_type') == 'City_head') ? base_url('admin/'.$cModule['permalink']) : base_url($cModule['permalink']);
                             //if(in_array($cModule['id'], $permissionArry))
@@ -154,10 +158,22 @@ $i=1;
 										<li id="menu-arquivos" ><a href="500.html">500</a></li>
 									  </ul>
 									</li>-->
-								  </ul>
-                </div>
-                </div>
+                  </ul>
+                  
+
+                  
+                <!-- </div>
+                </div> -->
   </div>
+
+
+
+
+
+
+
+
+  
 		<style>
     .table {
         color: green;
@@ -177,9 +193,33 @@ $i=1;
 
 
 $(document).ready(function(){
-  $(".headerScroll").click(function(){
-    // alert("hii");
-    $( ".headerScroll li" ).parent().toggleClass("scrollbar2");
+  $("#menu li ul").addClass("submenuhidden")
   });
-});
+
+  var ul = document.getElementById('menu');
+  console.log(ul)
+    ul.onclick = function(event) {
+        var target = getEventTarget(event);
+        
+        if($(target).parents('li').children('ul').attr("class")=="submenuhidden")
+        {
+          $(target).parents('li').children('ul').removeClass("submenuhidden")
+          $(target).parents('li').children('ul').addClass("submenushow")
+          
+        }
+        else{
+          $(target).parents('li').children('ul').addClass("submenuhidden")
+          $(target).parents('li').children('ul').removeClass("submenushow")
+        }
+        
+        
+        
+    };
+    function getEventTarget(e) {
+        e = e || window.event;
+        return e.target || e.srcElement; 
+    }
+//});
 </script>
+
+

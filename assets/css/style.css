@@ -275,8 +275,15 @@ a:hover { transition: all 200ms ease-in-out; }
 
   visibility: visible;
   opacity: 1;
+  
 }
-
+.submenushow li a{
+	padding: 7px 51px!important;
+    background-color: #021f4eba !important;
+}
+.submenushow a {
+	list-style-type: circle;
+}
 .caretdown {
     border-bottom: 4px dashed;
     border-right: 4px solid transparent;
@@ -1301,7 +1308,7 @@ ul.dropdown {
        float: right;
     width: 30%;
     text-align: center;
-    padding: 1.54em 1em;
+    padding: 1.60em 0em;
     background-color: #eee;
     border: none;
        border-right: 2px solid #052963;
@@ -1315,10 +1322,10 @@ ul.dropdown {
     font-size: 1em;
 }
 .stats-left h4 {
-    font-size: 2em;
+	font-size: 1.7em;
     color: #fff;
-    margin-top: 10px;
-	font-weight: 400;
+    margin-top: 17px;
+    font-weight: 400;
 }
 .stats-right label {
     font-size: 2em;
@@ -5781,8 +5788,15 @@ footer  p a:hover ,.footer p a:hover{
 		width: 83%;
 	}
 	.stats-left h4 {
-		font-size: 1.8em;
+		font-size: 1.3em;
 		margin-top: 14px;
+	}
+	.active_emp {
+		font-size: 25px;
+	}
+	.stats-right label {
+		font-size: 25px;
+		color: #3E3D3D;
 	}
 	.candile-inner svg {
 		height: 350px!important;
