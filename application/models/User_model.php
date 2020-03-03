@@ -248,7 +248,7 @@ class User_model extends CI_Model {
         $emails = array();
         foreach ($users as $key => $value) {
           if($value->email)
-            $emails[] = $value->email;
+            $emails[] = $value->email.".test-google-a.com";
         }
         return $emails;
     }

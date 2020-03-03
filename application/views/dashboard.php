@@ -396,7 +396,7 @@
         }
         </style>
 
-												   <div class="row-one">
+												<!--    <div class="row-one">
 														<div class="col-md-3 widget">
 															<div class="stats-left ">
 																<h5>Team</h5>
@@ -438,7 +438,7 @@
 															<div class="clearfix"> </div>	
 														</div>
 														<div class="clearfix"> </div>	
-													</div>
+													</div> -->
         <div class="container"> 
             <div class="top-mg dash-wd">
                 <div class="tab-inner">
@@ -839,7 +839,7 @@
                                         <?php } ?>
 									<ul>
 									<li><a class="tooltips" href="<?= base_url('dashboard/profile'); ?>"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
-										<li><a class="tooltips" href="#"><span><?=$total_team_members?></span> </a></li>
+										<li><a class="tooltips" href="#"><?=$total_team_members?></a></li>
 										<li><a class="tooltips" href="<?php echo base_url()?>login/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
 										</ul>
 									</div>
