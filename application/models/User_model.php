@@ -193,6 +193,7 @@ class User_model extends CI_Model {
         {
         $this->db->where("u.reports_to = $user_id ", NULL, FALSE);
         }
+        $this->db->where('active',1);
         $this->db->from('user as u');
 
         return $this->db->count_all_results();
