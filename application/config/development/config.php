@@ -26,5 +26,13 @@ date_default_timezone_set('Asia/Kolkata');
 $base  = "http://".$_SERVER['HTTP_HOST'];
 $base .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 $config['base_url'] = $base;
-
+/*
 $config['sess_save_path'] = null;
+$config['sess_match_ip'] = TRUE;
+$config['sess_time_to_update'] = 300;*/
+$config['sess_driver'] = 'files';
+$config['sess_cookie_name'] = 'ci_session';
+$config['sess_expiration'] = 1440;
+$config['sess_save_path'] = BASEPATH . 'yourfoldername/cache/';
+$config['sess_match_ip'] = TRUE;
+$config['sess_time_to_update'] = 300;
