@@ -389,7 +389,7 @@ td, th {
 	            ?>
 	</form>
 </div>
-<p class="footer">&copy; <?=date('Y');?> Fullbasket Propertys. All Rights Reserved | Developed by <a href="http://secondsdigital.com"> seconds digital solutions</a></p>
+<p class="footer">&copy; <?=date('Y');?> Fullbasket Propertys. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> seconds digital solutions</a></p>
 </div>
 
 </body>
