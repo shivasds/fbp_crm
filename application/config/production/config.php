@@ -23,14 +23,14 @@ date_default_timezone_set('Asia/Kolkata');
 | a PHP script and you can easily do that on your own.
 |
 */
-$base  = "https://".$_SERVER['HTTP_HOST'];
+$base  = "http://".$_SERVER['HTTP_HOST'];
 $base .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 $config['base_url'] = $base;
 
 //$config['sess_save_path'] = '/tmp'; 
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 1440;
+$config['sess_expiration'] = 3000;
 $config['sess_save_path'] = BASEPATH . 'newcrm/cache/';
 $config['sess_match_ip'] = TRUE;
-$config['sess_time_to_update'] = 300;
+//$config['sess_time_to_update'] = 300;
