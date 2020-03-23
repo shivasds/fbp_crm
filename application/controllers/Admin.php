@@ -3140,6 +3140,24 @@ public function make_user_online($value='')
 	$data['name'] ="admin";
 		$data['heading'] ="User Track Records";
 		$data['trcking_data'] = $this->common_model->track_users();
+		if($value)
+		{
+			$subject="Users Track Report";
+			$mail_body = $this->load->view("reports/user_track_report", $data, true);
+			$to_emails = $this->user_model->get_vp_director_admin_emails();
+			$this->load->library('email');
+			$config = email_config();
+			
+			$this->email->initialize($config);
+			$this->email->from("admin@leads.com","Admin");
+			$this->email->to($to_emails);
+			$this->email->subject($subject);
+			$this->email->message($mail_body);
+			//$this->email->send();
+			if($this->email->send())
+				echo "Success";
+		}
+		else
 		$this->load->view('admin/track_users',$data);
 	}
 

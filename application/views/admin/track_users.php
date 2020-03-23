@@ -51,6 +51,12 @@
     <div class="page-header">
         <h1><?php echo $heading; ?></h1>
     </div>
+    <div class="alert alert-success" style="display: none;">
+        <strong>Success!</strong> Email Sent.
+    </div>
+    <div class="alert alert-danger" style="display: none;">
+        <strong>Error!</strong> Email not Sent.
+    </div>
     <style type="text/css">
         textarea {
         width: 100%;
@@ -178,7 +184,9 @@
     }
  </style>
 
-
+<div class="col-sm-3 form-group">
+            <button id="email_this_track_report" class="btn btn-default btn-block">Email this report</button>
+        </div>
 
  <table class="table table-striped table-bordered dataTable no-footer">
      <tr>
@@ -205,11 +213,8 @@ $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
         }
      }
      ?>
- </table>
-</body>
-
-</html>
-						</div><!--/tabs-->
+ </table> 
+ 			</div><!--/tabs-->
 										 <div class="tab-main">
 											 <!--/tabs-inner-->
 												
@@ -278,76 +283,23 @@ $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
 <script src="<?= base_url();?>assets/js/custom.js"></script>
 <!-- Bootstrap Core JavaScript -->
    
-   <script>
-    $(document).ready(function() {
-         $('#example').DataTable({
-              "paging":   false,
-              "info": false
- 
-        });
-        if (!Modernizr.inputtypes.date) {
-            // If not native HTML5 support, fallback to jQuery datePicker
-            $('input[type=date]').datepicker({
-                // Consistent format with the HTML5 picker
-                    dateFormat : 'dd/mm/yy'
-                }
-            );
-        }
-        if (!Modernizr.inputtypes.time) {
-            // If not native HTML5 support, fallback to jQuery timepicker
-            $('input[type=time]').timepicker({ 'timeFormat': 'H:i' });
-        }
-        $('#revenueMonth').MonthPicker({
-            Button: false
-        });
-       
-
-        $("#refresh").click(function(){
-            $(".se-pre-con").show();
-            $.get("<?php echo base_url(); ?>dashboard/get_live_feed_back", function(response){
-                $("#live_feed_back_body").html(response);
-                $(".se-pre-con").hide("slow");
-            });
-        });
-
-        $("#overdue_lead_count").click(function(){
-            var form = document.createElement('form');
-            form.method = "POST";
-            form.action = "<?php echo base_url()."dashboard/generate_report" ?>";
-            
-            var input = document.createElement('input');
-            input.type = "text";
-            input.name = "toDate";
-            input.value = $(this).data('datetime');
-            form.appendChild(input);
-
-            input = document.createElement('input');
-            input.type = "text";
-            input.name = "reportType";
-            input.value = "due";
-            form.appendChild(input);
-
-            document.body.appendChild(form);
-            form.submit();
-        });
-
-        $('.emailSiteVisit').on('click', function(){
-            $(".se-pre-con").show();
+   <script>  
+        $('#email_this_track_report').on('click', function(){
+            //$(".se-pre-con").show();
             $.ajax({
                 type : 'POST',
-                url : "<?= base_url('site-visit-report-mail');?>",
+                url : "<?= base_url('admin/track_users/1');?>",
                 data:1,
                 success: function(res){
-                    $(".se-pre-con").hide("slow");
-                    if(res == 1)
+                   // $(".se-pre-con").hide("slow");
+                    if($.trim(res) == "Success")
                         alert('Email Sent Successfully.');
                     else
                         alert('Email Sent fail!');
                 }
             });
-        });
-
-    });
+        }); 
+ 
    
 
 </script>
