@@ -113,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                              //alert('Local error callback');
                           }
                     }); 
-}, 5000);
+}, 30000);
 </script>
 </head> 
 <div class="modal fade" id="modalPermission" role="dialog" data-backdrop="static">

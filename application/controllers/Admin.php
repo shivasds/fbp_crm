@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -3124,6 +3125,7 @@ if ($err) {
 	}
 public function make_user_online($value='')
 	{
+		$this->db->simple_query('update user set todaytimer = todaytimer+30 where Id ='. $this->session->userdata('user_id'));
 		$where = array('id'=>$this->session->userdata('user_id'));
 		$data = array('last_update'=>date('Y-m-d H:i:s'));
 		$bool = $this->callback_model->updateWhere($where,$data,'user');
@@ -3132,6 +3134,13 @@ public function make_user_online($value='')
 		else
 		echo 'error';
 
+	}
+	public function track_users($value='')
+	{
+	$data['name'] ="admin";
+		$data['heading'] ="User Track Records";
+		$data['trcking_data'] = $this->common_model->track_users();
+		$this->load->view('admin/track_users',$data);
 	}
 
 	 
