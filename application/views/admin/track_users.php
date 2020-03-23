@@ -193,7 +193,7 @@
          <th>S.No</th>
          <th>Name</th>
          <th>First Login</th>
-         <th>Logged In Time</th>
+         <th>Last Logged In Time</th>
          <th>Total Time Spent</th>
      </tr>
      <?php
