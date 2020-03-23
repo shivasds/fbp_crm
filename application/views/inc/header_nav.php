@@ -197,7 +197,7 @@ $(document).ready(function(){
   });
 
   var ul = document.getElementById('menu');
-  console.log(ul)
+ // console.log(ul)
     ul.onclick = function(event) {
         var target = getEventTarget(event);
         
