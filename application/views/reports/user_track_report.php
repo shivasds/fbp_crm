@@ -20,13 +20,13 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #00C6D7;
-  color: white;
+  background-color: #f0F0F0;
+  color: black;
 }
     </style>
 </head>
 <center><h2>Users Login Report</h2></center>
- <table  id="track_report" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+ <table  id="track_report" border="0" cellpadding="0" cellspacing="0" height="100%" width="60%" id="bodyTable">
      <tr>
          <th>S.No</th>
          <th>Name</th>

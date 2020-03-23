@@ -3142,10 +3142,10 @@ public function make_user_online($value='')
 		$data['trcking_data'] = $this->common_model->track_users();
 		if($value)
 		{
-			$subject="Users Track Report";
+			$subject="Users Login Report";
 			$mail_body = $this->load->view("reports/user_track_report", $data, true);
-			/*$to_emails ="hr@fullbasketproperty.com, vickyvani@fullbasketproperty.com, manjitvani@fullbasketproperty.com, sgupta@fullbasketproperty.com,shiva@secondsdigital.com";*/
-			$to_emails ="hr@fullbasketproperty.com, shiva@secondsdigital.com";
+			$to_emails ="hr@fullbasketproperty.com, vickyvani@fullbasketproperty.com, manjitvani@fullbasketproperty.com, sgupta@fullbasketproperty.com,shiva@secondsdigital.com";
+			// $to_emails ="hr@fullbasketproperty.com, shiva@secondsdigital.com";
 			$this->load->library('email');
 			$config = email_config();
 			
