@@ -112,4 +112,16 @@ class Login_model extends CI_Model {
         $q = $this->db->get('tbl_modules');
         return $q->row_array();
     }
+
+    function updateWhere($where,$table_name='',$data='')
+            {
+
+              foreach ($where as $leadid) {
+               // print_r($where);die;
+                $this->db->set($data);
+                $this->db->where($where);
+                $this->db->update($table_name);       
+            }
+            return true;
+            }
 }

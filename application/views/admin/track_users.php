@@ -192,6 +192,7 @@
      <tr>
          <th>S.No</th>
          <th>Name</th>
+         <th>First Login</th>
          <th>Logged In Time</th>
          <th>Total Time Spent</th>
      </tr>
@@ -207,6 +208,7 @@
 $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
            echo "<tr><td>".$y."</td>";
            echo "<td>".$track['first_name']." ".$track['last_name']."</td>";
+           echo "<td>".$track['login_time']."</td>";
            echo "<td>".$track['last_login']."</td>";
            echo "<td>".$timeFormat."</td></tr>";
            $y++;

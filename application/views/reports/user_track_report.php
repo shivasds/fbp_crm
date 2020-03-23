@@ -25,12 +25,13 @@
 }
     </style>
 </head>
-<center><h2>Users Track Report</h2></center>
+<center><h2>Users Login Report</h2></center>
  <table  id="track_report" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
      <tr>
          <th>S.No</th>
          <th>Name</th>
-         <th>Logged In Time</th>
+         <th>today First Login</th>
+         <th>Last Logged In Time</th>
          <th>Total Time Spent</th>
      </tr>
      <?php
@@ -45,6 +46,7 @@
 $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
            echo "<tr><td>".$y."</td>";
            echo "<td>".$track['first_name']." ".$track['last_name']."</td>";
+           echo "<td>".$track['last_login']."</td>";
            echo "<td>".$track['last_login']."</td>";
            echo "<td>".$timeFormat."</td></tr>";
            $y++;
