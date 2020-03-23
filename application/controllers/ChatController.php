@@ -257,7 +257,7 @@ class ChatController extends CI_Controller {
 
 public function make_user_online($value='')
 	{
-		$this->db->simple_query('update user set todaytimer = todaytimer+30 where Id ='. $this->session->userdata('user_id'));
+		$this->db->simple_query('update user set todaytimer = todaytimer+5 where Id ='. $this->session->userdata('user_id'));
 		$where = array('id'=>$this->session->userdata('user_id'));
 		$data = array('last_update'=>date('Y-m-d H:i:s'));
 		
