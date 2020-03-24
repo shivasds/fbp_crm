@@ -46,7 +46,7 @@
 $timeFormat = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
            echo "<tr><td>".$y."</td>";
            echo "<td>".$track['first_name']." ".$track['last_name']."</td>";
-           echo "<td>".date('Y-m-d H:s:iA',strtotime($track['login_time']))."</td>";
+           echo "<td>".date('Y-m-d H:s:i A',strtotime($track['login_time']))."</td>";
            echo "<td>".$track['last_login']."</td>";
            echo "<td>".$timeFormat."</td></tr>";
            $y++;
