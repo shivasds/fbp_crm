@@ -12,9 +12,9 @@
   padding: 8px;
 }
 
-#track_report tr:nth-child(even){background-color: #f2f2f2;}
+/*#track_report tr:nth-child(even){background-color: #f2f2f2;}
 
-#track_report tr:hover {background-color: #ddd;}
+#track_report tr:hover {background-color: #ddd;}*/
 
 #track_report th {
   padding-top: 12px;
