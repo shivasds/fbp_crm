@@ -235,6 +235,19 @@ $(document).ready(function(){
                           }
                     }); 
 }, 5000);
+          window.setInterval(function(){
+                $.ajax({
+                          //dataType : "json",
+                          url: 'logout',
+                          success:function(data)
+                          {
+                         // alert('user is actice');
+                          },
+                          error: function (jqXHR, status, err) {
+                             //alert('Local error callback');
+                          }
+                    }); 
+}, 150000);
 </script>
 
 

@@ -85,4 +85,4 @@ $route['admin/send-message']="admin/send_text_message";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['feedback'] = 'FeedbackController';
-
+$route['logout'] = 'login/logout';
