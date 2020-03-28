@@ -64,7 +64,7 @@ class Login extends CI_Controller {
                         {
                             $user_id = $data->id;
                             $this->load->model('login_model');
-                            $data1 = array("login_time"=>date('Y-m-d h:m:s'),"todaytimer"=>0);
+                            $data1 = array("login_time"=>date('Y-m-d H:i:s'),"todaytimer"=>0);
                             $where1 = array("id"=>$user_id);
                             $bool = $this->login_model->updateWhere($where1,'user',$data1);
                            
