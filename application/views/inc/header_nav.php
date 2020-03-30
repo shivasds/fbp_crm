@@ -241,13 +241,13 @@ $(document).ready(function(){
                           url: 'logout',
                           success:function(data)
                           {
-                         // alert('user is actice');
+                         alert('Your session has been expired. Please Re-login');
                           },
                           error: function (jqXHR, status, err) {
                              //alert('Local error callback');
                           }
                     }); 
-}, 150000);
+}, 30 * 60 * 1000);
 </script>
 
 
