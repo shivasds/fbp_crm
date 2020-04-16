@@ -1231,5 +1231,15 @@ $list_id=implode(',', $ids);
         return $last;
     }
 
+    public function all_leads_count($value='')
+    {
+        $count = $this->db->select('count(*) as count')
+        ->from('callbacks_track')
+        ->where('userId',$this->session->userdata('user_id'))
+        ->group_by('callbackId');
+        return $count->count_all_results();
+
+    }
+
 
 }

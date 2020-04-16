@@ -63,7 +63,9 @@ class Dashboard extends CI_Controller {
             $data['today_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'today');
             $data['yesterday_callback_count'] = $this->callback_model->fetch_yesterday_callback_count($data['user_id']);
             $data['overdue_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'overdue');
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],"all","",true);
+           // $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],"all","",true);
+            $data['total_callback_count'] = $this->callback_model->all_leads_count();
+            
             $data['dead_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'dead');
             $data['close_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'close');
             $data['active_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'active');
