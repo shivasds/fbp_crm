@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://rawgit.com/KidSysco/jquery-ui-month-picker/v3.0.0/demo/MonthPicker.min.js"></script>
 <script type="text/javascript">
-     window.setInterval(function(){
+    /* window.setInterval(function(){
                 $.ajax({
                           //dataType : "json",
                           url: 'make_user_online',
@@ -66,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                              //alert('Local error callback');
                           }
                     }); 
-}, 5000);
+}, 5000);*/
 </script>
 <script type="text/javascript">
     $(function(){

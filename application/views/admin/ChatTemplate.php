@@ -283,7 +283,7 @@ height: 100px;
                       $this->load->model('user_model');
                       $user=$this->user_model->get_user_details($v);
                       $s =$user[0]['last_update']; 
-                      $i = strtotime(date('Y-m-d h:i:s')) - strtotime($s);
+                      $i = strtotime(date('Y-m-d H:i:s')) - strtotime($s);
                       //echo $i;
                       if($i<=10){
                         ?>

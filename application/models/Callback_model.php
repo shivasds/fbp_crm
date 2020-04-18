@@ -1201,6 +1201,7 @@ $list_id=implode(',', $ids);
          return $query?true:false;
         
     }
+
     function get_notification()
     {
 
@@ -1229,6 +1230,22 @@ $list_id=implode(',', $ids);
         ->get('callback')
         ->row();
         return $last;
+    }
+
+    public function all_leads_count($value='')
+    {
+        $count = $this->db->select('count(*) as count')
+        ->from('callbacks_track')
+        ->where('userId',$this->session->userdata('user_id'))
+        ->group_by('callbackId');
+        return $count->count_all_results();
+
+    }
+    function insertkyc($data)
+    {
+        $query=$this->db->insert('customer_kyc',$data);
+         return $query?true:false;
+        
     }
 
 

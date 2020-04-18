@@ -399,7 +399,7 @@ class User_model extends CI_Model {
 
     public function get_active_users_count($value='')
     {
-        $date = date("Y-m-d H:i:s", strtotime(date('Y-m-d h:i:s')) - 20);
+        $date = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s')) - 20);
         $this->db->select('count(*) as count')
         ->from('user')
         ->where('last_update>=',$date)

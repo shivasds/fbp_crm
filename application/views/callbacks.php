@@ -124,7 +124,7 @@
 			display:none;
 		}
         #search_form{
-            display:none;
+            display:block;
         }
         }
         @media (max-width: 1150px){
@@ -136,7 +136,7 @@
  
 	@media screen and (max-width: 900px) and (min-width: 550px) {
         #search_form{
-            display:none;
+            display:block;
         }
 		.priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-13,.priority-14{
 			display:none;
@@ -149,7 +149,7 @@
 			display:none;
 		}
         #search_form{
-            display:none;
+            display:block;
         }
         .icon .fa{
             background-color: #ffffff00; 
@@ -161,7 +161,7 @@
 	}
 	/* @media screen and (max-width: 384px) {
         #search_form{
-            display:none;
+            display:block;
         }
         .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-11{
 			display:none;
@@ -177,7 +177,7 @@
         }
         .
         #search_form{
-            display:none;
+            display:block;
         }
         .priority-4,.priority-5,.priority-6, .priority-7,.priority-8,.priority-10,.priority-11,.priority-13,.priority-14{
 			display:none;

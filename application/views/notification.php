@@ -5,7 +5,7 @@ $count =  $this->callback_model->get_notification_count();
         $this->session->set_userdata('notifications',$notifications);
         ?>
 
-           <ul class="nofitications-dropdown">
+           <ul class="nofitications-dropdown"> 
                                             <li class="dropdown note dra-down">
                                             <script type="text/javascript">
             

@@ -197,7 +197,7 @@ $(document).ready(function(){
   });
 
   var ul = document.getElementById('menu');
-  console.log(ul)
+ // console.log(ul)
     ul.onclick = function(event) {
         var target = getEventTarget(event);
         
@@ -220,6 +220,34 @@ $(document).ready(function(){
         return e.target || e.srcElement; 
     }
 //});
+</script>
+<script type="text/javascript">
+     window.setInterval(function(){
+                $.ajax({
+                          //dataType : "json",
+                          url: 'make_user_online',
+                          success:function(data)
+                          {
+                         // alert('user is actice');
+                          },
+                          error: function (jqXHR, status, err) {
+                             //alert('Local error callback');
+                          }
+                    }); 
+}, 5000);
+          window.setInterval(function(){
+                $.ajax({
+                          //dataType : "json",
+                          url: 'logout',
+                          success:function(data)
+                          {
+                         alert('Your session has been expired. Please Re-login');
+                          },
+                          error: function (jqXHR, status, err) {
+                             //alert('Local error callback');
+                          }
+                    }); 
+}, 30 * 60 * 1000);
 </script>
 
 

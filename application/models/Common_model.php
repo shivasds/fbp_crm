@@ -664,6 +664,16 @@ class Common_model extends MY_Model {
              
         return $query->num_rows();
     }
+    public function track_users($value='')
+    {
+       $this->db->select('*')
+       ->from('user')
+       ->where('date(last_login)',date('Y-m-d'))
+       ->where('type',1);
+       $query=$this->db->get();
+        return $query->result_array();
+
+    }
 
 
        }

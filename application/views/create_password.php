@@ -10,7 +10,7 @@
   
         <style>
             /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-            @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+            @import url(http:s//fonts.googleapis.com/css?family=Open+Sans);
             .btn { 
                 display: inline-block; 
                 *display: inline; 

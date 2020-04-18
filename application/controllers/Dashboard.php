@@ -63,7 +63,9 @@ class Dashboard extends CI_Controller {
             $data['today_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'today');
             $data['yesterday_callback_count'] = $this->callback_model->fetch_yesterday_callback_count($data['user_id']);
             $data['overdue_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],'overdue');
-            $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],"all","",true);
+           // $data['total_callback_count'] = $this->callback_model->fetch_callback_count($data['user_id'],"all","",true);
+            $data['total_callback_count'] = $this->callback_model->all_leads_count();
+            
             $data['dead_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'dead');
             $data['close_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'close');
             $data['active_leads_count'] = $this->callback_model->fetch_leads_count($data['user_id'],'active');
@@ -1302,5 +1304,16 @@ class Dashboard extends CI_Controller {
                     echo "<script>location.href='".base_url('dashboard/profile')."'</script>";
                 }
             }
+        }
+        public function customer_kyc($value='')
+        {
+           $save_data = $this->input->post();
+           //print_r($save_data);
+           $query = $this->callback_model->insertkyc($save_data,'customer_kyc');
+           if($query)
+            echo json_encode(array('success'=>'true')); 
+            else
+                echo json_encode(array('success'=>'false'));
+
         }
 }

@@ -56,6 +56,20 @@ class Login extends CI_Controller {
                             break;
                         
                     }
+                    if( $user_type == 'user')
+                    { 
+                        $date1 = date('Y-m-d',strtotime($data->login_time));
+                         // echo $date1."   ". date('Y-m-d');die;
+                        if($date1!=date('Y-m-d'))
+                        {
+                            $user_id = $data->id;
+                            $this->load->model('login_model');
+                            $data1 = array("login_time"=>date('Y-m-d H:i:s'),"todaytimer"=>0);
+                            $where1 = array("id"=>$user_id);
+                            $bool = $this->login_model->updateWhere($where1,'user',$data1);
+                           
+                        }
+                    }
 					if($user_type=='admin')
 			{
 				$this->data['error'] = true;

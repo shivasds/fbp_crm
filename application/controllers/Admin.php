@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -1083,13 +1084,13 @@ class Admin extends CI_Controller {
 			//$this->email->send();
 			if($this->email->send())
 				echo "Success";
-			else
-			echo $this->email->print_debugger();
+			/*else
+			echo $this->email->print_debugger();*/
 			//print_r($to_emails);
 			
 			exit;
 		}
-		echo "Error";
+		//echo "Error";
 	}
 
 	function generate_report(){	
@@ -3124,6 +3125,7 @@ if ($err) {
 	}
 public function make_user_online($value='')
 	{
+		$this->db->simple_query('update user set todaytimer = todaytimer+5 where Id ='. $this->session->userdata('user_id'));
 		$where = array('id'=>$this->session->userdata('user_id'));
 		$data = array('last_update'=>date('Y-m-d H:i:s'));
 		$bool = $this->callback_model->updateWhere($where,$data,'user');
@@ -3132,6 +3134,32 @@ public function make_user_online($value='')
 		else
 		echo 'error';
 
+	}
+	public function track_users($value='')
+	{
+	$data['name'] ="admin";
+		$data['heading'] ="User Track Records";
+		$data['trcking_data'] = $this->common_model->track_users();
+		if($value)
+		{
+			$subject="Users Login Report";
+			$mail_body = $this->load->view("reports/user_track_report", $data, true);
+			$to_emails ="hr@fullbasketproperty.com, vickyvani@fullbasketproperty.com, manjitvani@fullbasketproperty.com, sgupta@fullbasketproperty.com,shiva@secondsdigital.com";
+			// $to_emails ="hr@fullbasketproperty.com, shiva@secondsdigital.com";
+			$this->load->library('email');
+			$config = email_config();
+			
+			$this->email->initialize($config);
+			$this->email->from("admin@leads.com","Admin");
+			$this->email->to($to_emails);
+			$this->email->subject($subject);
+			$this->email->message($mail_body);
+			//$this->email->send();
+			if($this->email->send())
+				echo "Success";
+		}
+		else
+		$this->load->view('admin/track_users',$data);
 	}
 
 	 
