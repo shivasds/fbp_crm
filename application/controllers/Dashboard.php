@@ -1305,4 +1305,15 @@ class Dashboard extends CI_Controller {
                 }
             }
         }
+        public function customer_kyc($value='')
+        {
+           $save_data = $this->input->post();
+           //print_r($save_data);
+           $query = $this->callback_model->insertkyc($save_data,'customer_kyc');
+           if($query)
+            echo json_encode(array('success'=>'true')); 
+            else
+                echo json_encode(array('success'=>'false'));
+
+        }
 }

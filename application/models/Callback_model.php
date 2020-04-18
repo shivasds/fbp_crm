@@ -1201,6 +1201,7 @@ $list_id=implode(',', $ids);
          return $query?true:false;
         
     }
+
     function get_notification()
     {
 
@@ -1239,6 +1240,12 @@ $list_id=implode(',', $ids);
         ->group_by('callbackId');
         return $count->count_all_results();
 
+    }
+    function insertkyc($data)
+    {
+        $query=$this->db->insert('customer_kyc',$data);
+         return $query?true:false;
+        
     }
 
 

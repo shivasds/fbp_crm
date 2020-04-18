@@ -686,6 +686,79 @@ Team Fullbasket Property
                         </div>
                     </div>
                 <?php } ?>
+                <div class="col-md-6 form-group">
+                        <input type="checkbox" name="fancy-checkbox-info-kyc" onclick="clientKYC()"  id="fancy-checkbox-info-kyc" autocomplete="off" />
+                        <div class="btn-group">
+                            <label for="fancy-checkbox-info-kyc" class="btn btn-info">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span> </span>
+                            </label>
+                            <label for="fancy-checkbox-info-kyc" class="btn btn-default active">
+                               Customer KYC
+                            </label>
+                        </div>
+                        <div id="clientKYC" hidden class="col-sm-12 form-group">
+                            <input type="hidden" id="callback_id_kyc" name="callback_id_kyc" value="<?= $id ?>">
+                            <br>
+                            <div class="col-sm-12 form-group">
+                            <div class="alert alert-danger">
+                              <strong>Note:</strong> You can Update KYC Only Once
+                            </div>
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="Employment">Employment:</label>
+                                <input type="text" class="form-control" id="Employment" name="Employment" placeholder="Employment ">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="Designation">Designation:</label>
+                                <input type="text" class="form-control" id="Designation" name="Designation" placeholder="Designation">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="Salary">Salary (P.A):</label>
+                                <input type="text" class="form-control" id="Salary" name="Salary" placeholder="Salary">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="dob">Birth Date:</label>
+                                <input type="text" class="form-control" id="dob" name="dob" placeholder="dob">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="Anniversary">Anniversary Date:</label>
+                                <input type="text" class="form-control" id="Anniversary" name="Anniversary" placeholder="Anniversary">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="SpouseName">Spouse Name:</label>
+                                <input type="text" class="form-control" id="SpouseName" name="SpouseName" placeholder="Spouse Name">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="Spouseemployment">Spouse employment:</label>
+                                <input type="text" class="form-control" id="Spouseemployment" name="Spouseemployment" placeholder="Spouse employment">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="SpouseDesignation">Spouse Designation:</label>
+                                <input type="text" class="form-control" id="SpouseDesignation" name="SpouseDesignation" placeholder="Spouse Designation">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="SposeSalary">Spose Salary (P.A):</label>
+                                <input type="text" class="form-control" id="SposeSalary" name="SposeSalary" placeholder="Spose Salary">
+                            </div>
+                            <div class="col-sm-12 form-group">
+                                <label for="SpouseBirthDate">Spouse Birth Date:</label>
+                                <input type="text" class="form-control" id="SpouseBirthDate" name="SpouseBirthDate" placeholder="Spouse Birth Date">
+                            </div> 
+                            <div class="col-sm-12 form-group">
+                                <div class="alert alert-success" id="kyc_success" style="display:none">
+                                    <strong>Success!</strong> Customer KYC Updated .
+                                </div>
+                                <div class="alert alert-danger" id="kyc_error" style="display:none">
+                                    <strong>Failed!</strong> Customer KYC Updated Before.
+                                </div>
+
+                                
+                                <input type="hidden" name="" id="user_id" value="<?=$this->session->userdata('user_id');?>">
+                                <button type="button" onclick="customer_kyc()" class="btn btn-success">Send</button>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="clearfix"></div>
             <div class="container">                
@@ -1177,6 +1250,9 @@ e.preventDefault();
     function clientEmail(){
         $('#clientEmail').toggle();
     }
+    function clientKYC(){
+        $('#clientKYC').toggle();
+    }
     
     function le(){
         var b =$('#assign_by').val();
@@ -1341,6 +1417,51 @@ e.preventDefault();
                 }
                 $(".se-pre-con").hide("slow");
             }
+        });
+    }
+      function customer_kyc(){
+        // if($("#Employment").val() == ""){
+        //     alert("Please enter  Employment");
+        //     $("#Employment").focus();
+        //     return false;
+        // }
+        // if($("#Designation").val() == ""){
+        //     alert("Please enter Designation");
+        //     $("#Designation").focus();
+        //     return false;
+        // }
+        // if($("#Salary").val() == ""){
+        //     alert("Please enter Salary");
+        //     $("#Salary").focus();
+        //     return false;
+        // }
+        //$(".se-pre-con").show();
+        $.ajax({
+            type:"POST",
+            url: "<?php echo base_url()?>dashboard/customer_kyc",
+            data:{
+                callback_id:$("#callback_id_kyc").val(),
+                Employment:$("#Employment").val(),
+                Designation:$("#Designation").val(),
+                Salary:$("#Salary").val(),
+                Designation:$("#Designation").val(),
+                dob:$("#dob").val(),
+                Anniversary:$("#Anniversary").val(),
+                SpouseName:$("#SpouseName").val(),
+                Spouseemployment:$("#Spouseemployment").val(),
+                SpouseDesignation:$("#SpouseDesignation").val(),
+                SposeSalary:$("#SposeSalary").val(),
+                SpouseBirthDate:$("#SpouseBirthDate").val(),
+                user_id:$("#user_id").val()
+            },
+            success:function(data) { 
+                $("#kyc_success").show(); 
+                    
+            },
+        error: function (data) {
+            $("#kyc_success").hide();
+             $("#kyc_error").show(); 
+        }
         });
     }
 </script>
