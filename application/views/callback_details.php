@@ -697,53 +697,56 @@ Team Fullbasket Property
                                Customer KYC
                             </label>
                         </div>
-                        <div id="clientKYC" hidden class="col-sm-12 form-group">
+                       
+                    </div>
+
+                    <div id="clientKYC" hidden class="col-md-12 form-group">
                             <input type="hidden" id="callback_id_kyc" name="callback_id_kyc" value="<?= $id ?>">
                             <br>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-12 form-group">
                             <div class="alert alert-danger">
                               <strong>Note:</strong> You can Update KYC Only Once
                             </div>
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Employment">Employment:</label>
                                 <input type="text" class="form-control" id="Employment" name="Employment" placeholder="Employment ">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Designation">Designation:</label>
                                 <input type="text" class="form-control" id="Designation" name="Designation" placeholder="Designation">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Salary">Salary (P.A):</label>
                                 <input type="text" class="form-control" id="Salary" name="Salary" placeholder="Salary">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="dob">Birth Date:</label>
-                                <input type="text" class="form-control" id="dob" name="dob" placeholder="dob">
+                                <input type="text" class="form-control datepicker" id="dob" name="dob" placeholder="dob">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Anniversary">Anniversary Date:</label>
-                                <input type="text" class="form-control" id="Anniversary" name="Anniversary" placeholder="Anniversary">
+                                <input type="text" class="form-control datepicker" id="Anniversary" name="Anniversary" placeholder="Anniversary">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SpouseName">Spouse Name:</label>
                                 <input type="text" class="form-control" id="SpouseName" name="SpouseName" placeholder="Spouse Name">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Spouseemployment">Spouse employment:</label>
                                 <input type="text" class="form-control" id="Spouseemployment" name="Spouseemployment" placeholder="Spouse employment">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SpouseDesignation">Spouse Designation:</label>
                                 <input type="text" class="form-control" id="SpouseDesignation" name="SpouseDesignation" placeholder="Spouse Designation">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SposeSalary">Spose Salary (P.A):</label>
                                 <input type="text" class="form-control" id="SposeSalary" name="SposeSalary" placeholder="Spose Salary">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SpouseBirthDate">Spouse Birth Date:</label>
-                                <input type="text" class="form-control" id="SpouseBirthDate" name="SpouseBirthDate" placeholder="Spouse Birth Date">
+                                <input type="text" class="form-control datepicker" id="SpouseBirthDate" name="SpouseBirthDate" placeholder="Spouse Birth Date">
                             </div> 
                             <div class="col-sm-12 form-group">
                                 <div class="alert alert-success" id="kyc_success" style="display:none">
@@ -758,10 +761,10 @@ Team Fullbasket Property
                                 <button type="button" onclick="customer_kyc()" class="btn btn-success">Send</button>
                             </div>
                         </div>
-                    </div>
             </div>
             <div class="clearfix"></div>
-            <div class="container">                
+            <br>
+            <div class="container text-center">                
                 <button type="submit" class="btn btn-success" onclick="update_callback_details()" id="save" disabled style="width: 150px">Save</button>
             </div>
         </div>
