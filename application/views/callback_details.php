@@ -1537,6 +1537,16 @@ e.preventDefault();
 
 <!-- Bootstrap Core JavaScript 
    -->
+
+   <script>
+   $('.datepicker').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    showButtonPanel: true,
+    dateFormat: "m/d/yy"
+});
+
+   </script>
    <script>
     $(document).ready(function() {
          $('#example').DataTable({
@@ -1548,7 +1558,10 @@ e.preventDefault();
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
                 // Consistent format with the HTML5 picker
-                    dateFormat : 'dd/mm/yy'
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat : 'dd/mm/yy'
                 }
             );
         }
@@ -1692,6 +1705,9 @@ e.preventDefault();
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
                 // Consistent format with the HTML5 picker
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
                     dateFormat : 'dd/mm/yy'
                 }
             );
