@@ -699,7 +699,8 @@ Team Fullbasket Property
                         </div>
                         <div id="clientKYC" hidden class="col-sm-12 form-group">
                             <input type="hidden" id="callback_id_kyc" name="callback_id_kyc" value="<?= $id ?>">
-                            <br>
+                            <br>r
+                            r
                             <div class="col-sm-12 form-group">
                             <div class="alert alert-danger">
                               <strong>Note:</strong> You can Update KYC Only Once
