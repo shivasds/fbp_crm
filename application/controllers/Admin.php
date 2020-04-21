@@ -852,6 +852,7 @@ $customer_req = array(
 			$a_services=$this->input->post('a_services');
 			$tos=$this->input->post('tos');
 			$client_type=$this->input->post('client_type'); 
+			$dead_reason=$this->input->post('dead_reason'); 
 
 			if($budget!==null){
 				$this->session->set_userdata("budget",$budget);
