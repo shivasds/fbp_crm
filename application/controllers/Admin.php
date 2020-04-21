@@ -447,7 +447,14 @@ class Admin extends CI_Controller {
 				'notes'=>$query->notes,
 				'date_added'=>$query->date_added,
 				'last_update'=>$query->last_update,
-				'active'=>$query->active,
+				'active'=>$query->active,	
+	            'budget'=>$query->budget,  
+	            'Locality' => $query->Locality,
+	            'p_type' => $query->p_type,
+	            'possesion' => $query->possesion,
+	            'a_services' => $query->a_services,
+	            'tos' => $query->tos,
+	            'client_type' => $query->client_type,
 			);
 			$indiv_callback_data = $this->callback_model->get_callback_data($id);
 			$previous_callback = "";
@@ -507,6 +514,20 @@ class Admin extends CI_Controller {
 	function update_callback_details(){
 		$id = $this->input->post('callback_id');
 		
+$customer_req = array(
+			'callback_id'=>$id,
+            'budget'=>$this->input->post('budget'),  
+            'Locality' => $this->input->post('Locality'),
+            'p_type' => $this->input->post('p_type'),
+            'possesion' => $this->input->post('possesion'),
+            'a_services' => $this->input->post('a_services'),
+            'tos' => $this->input->post('tos'),
+            'client_type' => $this->input->post('client_type'),
+            'user_id' =>$this->session->userdata('user_id'),
+            'date_created' => date('Y-m-d')
+		);
+		$this->callback_model->insert_req($customer_req);
+
 		$update_data = array(
 			'last_update' => date('Y-m-d H:s:i')
 		);
@@ -536,6 +557,27 @@ class Admin extends CI_Controller {
 			$update_data['lead_source_id'] = $this->input->post('lead_source_id');
 		if($this->input->post('user_id'))
 			$update_data['user_id'] = $this->input->post('user_id');
+
+		if($this->input->post('budget'))
+			$update_data['budget'] = $this->input->post('budget');
+
+		if($this->input->post('Locality'))
+			$update_data['Locality'] = $this->input->post('Locality');
+
+		if($this->input->post('p_type'))
+			$update_data['p_type'] = $this->input->post('p_type');
+
+		if($this->input->post('possesion'))
+			$update_data['possesion'] = $this->input->post('possesion');
+
+		if($this->input->post('a_services'))
+			$update_data['a_services'] = $this->input->post('a_services');
+
+		if($this->input->post('tos'))
+			$update_data['tos'] = $this->input->post('tos');
+
+		if($this->input->post('client_type'))
+			$update_data['client_type'] = $this->input->post('client_type'); 
 		if($this->input->post('approve')){
 			$update_data['active'] = 0;
 			$update_data['verified_by'] = $this->session->userdata('user_id');
@@ -803,8 +845,51 @@ class Admin extends CI_Controller {
 			$sub_broker=$this->input->post('sub_broker');
 			$status=$this->input->post('status');
 			$city=$this->input->post('city');
-			$dead_reason=$this->input->post('dead_reason');
-		 
+			$budget=$this->input->post('budget');
+			$Locality=$this->input->post('Locality');
+			$p_type=$this->input->post('p_type');
+			$possesion=$this->input->post('possesion');
+			$a_services=$this->input->post('a_services');
+			$tos=$this->input->post('tos');
+			$client_type=$this->input->post('client_type'); 
+
+			if($budget!==null){
+				$this->session->set_userdata("budget",$budget);
+				if($budget)
+					$where.=" AND cb.budget=".trim($budget);
+			}
+			if($p_type!==null){
+				$this->session->set_userdata("p_type",$p_type);
+				if($p_type)
+					$where.=" AND cb.p_type=".trim($p_type);
+			}
+			if($possesion!==null){
+				$this->session->set_userdata("possesion",$possesion);
+				if($possesion)
+					$where.=" AND cb.possesion=".trim($possesion);
+			}
+			if($a_services!==null){
+				$this->session->set_userdata("a_services",$a_services);
+				if($a_services)
+					$where.=" AND cb.a_services=".trim($a_services);
+			}
+			if($tos!==null){
+				$this->session->set_userdata("tos",$tos);
+				if($tos)
+					$where.=" AND cb.tos=".trim($tos);
+			}
+			if($client_type!==null){
+				$this->session->set_userdata("client_type",$client_type);
+				if($client_type)
+					$where.=" AND cb.client_type=".trim($client_type);
+			}
+			if($Locality!==null){
+				$this->session->set_userdata("Locality",$Locality);
+				if($Locality)
+					$where.=" AND locality like '%".$Locality."%'";
+			} 
+
+
             
 			if($dept!==null){
 				$this->session->set_userdata("department",$dept);
@@ -844,7 +929,7 @@ class Admin extends CI_Controller {
 			if($dead_reason!==null){
 				$this->session->set_userdata("dead_reason", $dead_reason);
 				if($dead_reason)
-					$where.=" AND cb.reason_cause='".trim($dead_reason)."'";
+					$where.=" AND cb.reason_cause=".trim($dead_reason);
 			}
 			
 			$srxhtxt = trim($this->input->post('srxhtxt'));

@@ -534,6 +534,13 @@ class Dashboard extends CI_Controller {
             'date_added'=>$query->date_added,
             'last_update'=>$query->last_update,
             'active'=>$query->active, 
+            'budget'=>$query->budget,  
+            'Locality' => $query->Locality,
+            'p_type' => $query->p_type,
+            'possesion' => $query->possesion,
+            'a_services' => $query->a_services,
+            'tos' => $query->tos,
+            'client_type' => $query->client_type,
         );
 
         // $siteVisitResult = $this->callback_model->callbackSiteVisitDataByClause(['callback_id'=>$id, 'type !='=>1],['callback_id', 'project_id', 'date as visitDate']); 

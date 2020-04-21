@@ -1049,6 +1049,10 @@ $list_id=implode(',', $ids);
         $query=$this->db->insert('callback_extra_data',$data);
         return $this->db->insert_id();
     }
+    function insert_req($data){
+        $query=$this->db->insert('callback_customer_requirments',$data);
+        return $this->db->insert_id();
+    }
 
     function update_extra_details($params, $clause){
         $this->db->where($clause);

@@ -485,6 +485,81 @@ Team Fullbasket Property Services Pvt Ltd
                         </div>
                     </div>
                 <?php } ?>
+                <div class="col-sm-3 form-group">
+                    <label for="budget">Budget:</label>
+                    <!-- <input type="text" class="form-control" id="budget" name="budget" placeholder="budget in lacs or crores*" value="" required=""> -->
+                    <select  class="form-control"  id="budget" name="budget" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1" <?php if($budget==1) echo 'selected';?> >50 Lakhs</option>
+                                <option value="2" <?php if($budget==2) echo 'selected';?>>50-65L</option>
+                                <option value="3" <?php if($budget==3) echo 'selected';?>>65L-80L</option>
+                                <option value="4" <?php if($budget==4) echo 'selected';?>>1-1.5cr</option>
+                                <option value="5" <?php if($budget==5) echo 'selected';?>>1.5-2 cr</option>
+                                <option value="6" <?php if($budget==6) echo 'selected';?>>2 cr+</option>                                            
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="Locality">Locality:</label>
+                    <input type="text" class="form-control" id="Locality" name="Locality" placeholder="city, area*" value="<?=$Locality?>" required="">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="p_type">Purchase Type:</label>
+                    <!-- <input type="text" class="form-control" id="p_type" name="p_type" placeholder="Purchase Type*" value="" required=""> -->
+                    <select  class="form-control"  id="p_type" name="p_type" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1" <?php if($p_type==1) echo 'selected';?>>Apartment</option>
+                                <option value="2" <?php if($p_type==2) echo 'selected';?>>Villas</option>
+                                <option value="3" <?php if($p_type==3) echo 'selected';?>>Plots</option>
+                                <option value="4" <?php if($p_type==4) echo 'selected';?>>Penthouse</option>     
+                                <option value="5" <?php if($p_type==5) echo 'selected';?>>Duplex</option>     
+                                <option value="6" <?php if($p_type==6) echo 'selected';?>>Commericial</option>                                        
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="possesion">Possesion:</label>
+                   <!--  <input type="text" class="form-control" id="possesion" name="possesion" placeholder="Possesion*" value="" required=""> -->
+                    <select  class="form-control"  id="possesion" name="possesion" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1" <?php if($possesion==1) echo 'selected';?>>RTM</option>
+                                <option value="2" <?php if($possesion==2) echo 'selected';?>>1 Year</option>
+                                <option value="3" <?php if($possesion==3) echo 'selected';?>>2 Year</option>
+                                <option value="4" <?php if($possesion==4) echo 'selected';?>>New Launch</option>                                        
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="a_services">Additional Services:</label>
+                    <!-- <input type="text" class="form-control" id="a_services" name="a_services" placeholder="Additional Sevices*" value="" required=""> -->
+                     <select  class="form-control"  id="a_services" name="a_services" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1" <?php if($a_services==1) echo 'selected';?>>Site Visit Assitance</option>
+                                <option value="2" <?php if($a_services==2) echo 'selected';?>>Loans</option>
+                                <option value="3" <?php if($a_services==3) echo 'selected';?>>Interiors</option>
+                                <option value="4" <?php if($a_services==4) echo 'selected';?>>Resale Assistance</option>     
+                                <option value="5" <?php if($a_services==5) echo 'selected';?>>Rental Assistance</option>     
+                                <option value="6" <?php if($a_services==6) echo 'selected';?>>NONE</option>                                        
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="tos">Type Of Sale:</label>
+                    <!-- <input type="text" class="form-control" id="tos" name="tos" placeholder="Type Of Sale*" value="" required=""> -->
+                     <select  class="form-control"  id="tos" name="tos" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1" <?php if($tos==1) echo 'selected';?> >Primary</option>
+                                <option value="2" <?php if($tos==2) echo 'selected';?> >Resale</option>
+                                <option value="3" <?php if($tos==3) echo 'selected';?> >Rentals</option>                                            
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="client_type">Client Type:</label> 
+                    <select  class="form-control"  id="client_type" name="client_type" required="required" >
+                                <option value="">Select</option>  
+                                <option value="01" <?php if($client_type==1) echo 'selected';?>>Individual</option>
+                                <option value="02" <?php if($client_type==2) echo 'selected';?>>Investor</option>
+                                            
+                    </select>
+                </div>
+
+
                 <div class="clearfix"></div>
                 <div class="col-sm-6 form-group">
                     <label for="comment">Preview Callbacks:</label>
@@ -697,54 +772,58 @@ Team Fullbasket Property
                                Customer KYC
                             </label>
                         </div>
-                        <div id="clientKYC" hidden class="col-sm-12 form-group">
+                       
+                    </div>
+
+                    <div id="clientKYC" hidden class="col-md-12 form-group">
                             <input type="hidden" id="callback_id_kyc" name="callback_id_kyc" value="<?= $id ?>">
-                            <br>r
-                            r
+                            <br>
                             <div class="col-sm-12 form-group">
+                            <br>
+                            <div class="col-md-12 form-group">
                             <div class="alert alert-danger">
                               <strong>Note:</strong> You can Update KYC Only Once
                             </div>
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Employment">Employment:</label>
                                 <input type="text" class="form-control" id="Employment" name="Employment" placeholder="Employment ">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Designation">Designation:</label>
                                 <input type="text" class="form-control" id="Designation" name="Designation" placeholder="Designation">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Salary">Salary (P.A):</label>
                                 <input type="text" class="form-control" id="Salary" name="Salary" placeholder="Salary">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="dob">Birth Date:</label>
-                                <input type="text" class="form-control" id="dob" name="dob" placeholder="dob">
+                                <input type="text" class="form-control datepicker" id="dob" name="dob" placeholder="dob">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Anniversary">Anniversary Date:</label>
-                                <input type="text" class="form-control" id="Anniversary" name="Anniversary" placeholder="Anniversary">
+                                <input type="text" class="form-control datepicker" id="Anniversary" name="Anniversary" placeholder="Anniversary">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SpouseName">Spouse Name:</label>
                                 <input type="text" class="form-control" id="SpouseName" name="SpouseName" placeholder="Spouse Name">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="Spouseemployment">Spouse employment:</label>
                                 <input type="text" class="form-control" id="Spouseemployment" name="Spouseemployment" placeholder="Spouse employment">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SpouseDesignation">Spouse Designation:</label>
                                 <input type="text" class="form-control" id="SpouseDesignation" name="SpouseDesignation" placeholder="Spouse Designation">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SposeSalary">Spose Salary (P.A):</label>
                                 <input type="text" class="form-control" id="SposeSalary" name="SposeSalary" placeholder="Spose Salary">
                             </div>
-                            <div class="col-sm-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label for="SpouseBirthDate">Spouse Birth Date:</label>
-                                <input type="text" class="form-control" id="SpouseBirthDate" name="SpouseBirthDate" placeholder="Spouse Birth Date">
+                                <input type="text" class="form-control datepicker" id="SpouseBirthDate" name="SpouseBirthDate" placeholder="Spouse Birth Date">
                             </div> 
                             <div class="col-sm-12 form-group">
                                 <div class="alert alert-success" id="kyc_success" style="display:none">
@@ -759,10 +838,10 @@ Team Fullbasket Property
                                 <button type="button" onclick="customer_kyc()" class="btn btn-success">Send</button>
                             </div>
                         </div>
-                    </div>
             </div>
             <div class="clearfix"></div>
-            <div class="container">                
+            <br>
+            <div class="container text-center">                
                 <button type="submit" class="btn btn-success" onclick="update_callback_details()" id="save" disabled style="width: 150px">Save</button>
             </div>
         </div>
@@ -1124,7 +1203,42 @@ e.preventDefault();
             }
         }
         $(".se-pre-con").show();
+        if($("#budget").val()==""){
+                $("#budget").focus();
+                return false;
+            }
+             if($("#Locality").val()==""){
+                $("#Locality").focus();
+                return false;
+            }
+             if($("#p_type").val()==""){
+                $("#p_type").focus();
+                return false;
+            }
+             if($("#possesion").val()==""){
+                $("#possesion").focus();
+                return false;
+            }
+             if($("#a_services").val()==""){
+                $("#a_services").focus();
+                return false;
+            }
+             if($("#tos").val()==""){
+                $("#tos").focus();
+                return false;
+            }
+             if($("#client_type").val()==""){
+                $("#client_type").focus();
+                return false;
+            } 
         var data = {
+            'budget':$("#budget").val(),
+            'Locality':$("#Locality").val(),
+            'p_type' : $("#p_type").val(),
+            'possesion' : $("#possesion").val(),
+            'a_services':$("#a_services").val(),
+            'tos':$("#tos").val(),
+            'client_type':$("#client_type").val(),
             'extrxDataIds' : ($('#extraDataIds').val()) ? $('#extraDataIds').val() : 0,
             'callback_id':$('#mhid').val(),
             'status_id':$('#m_status').val(),
@@ -1153,12 +1267,9 @@ e.preventDefault();
             'est_month_of_invoice':$('#c_estMonthofInvoice').val(),
             'agreement_status':$('#c_agrmntStatus').val(),
             'project_type':$('#c_projectType').val(),
-
             'reason_for_dead':$('.reasonOfDead').val(),
-            'reason_cause':$('#selectDeadRsn').val(),
-            
+            'reason_cause':$('#selectDeadRsn').val(), 
             'current_callback':$('#current_callback1').val(),
-
             'name':$('#m_name1').val(),
             'due_date':$('#reassign_date').val()?$('#reassign_date').val()+' '+($('#reassign_time').val()?$('#reassign_time').val():'00:00'):null,
             'dept_id':$("#m_dept").val(),

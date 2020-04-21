@@ -54,7 +54,7 @@ $i=1;
                     $aAttr  = 'data-toggle="dropdown" dropdown-toggle';
                 ?>
 
- <li class="<?= ($this->router->fetch_method() == $pModule['permalink']) ? 'active' : '' ?>">
+ <li class="tooltip<?= ($this->router->fetch_method() == $pModule['permalink']) ? 'active' : '' ?>">
                     <a href="<?= $baseLink;?>" <?= $aAttr; ?> ><i class="<?php  echo $pModule['class']?>"></i> <span><?= $pModule['module'].((count($childModules)>0) ? '<span class="caret"></span>' :'') ?></span></a>
                     <?php
                     if(count($childModules)>0){

@@ -451,7 +451,7 @@
                     <label for="leadId">Lead Id:</label>
                     <input type="text" class="form-control" id="m_leadId" name="m_leadId" placeholder="Lead Id">
                 </div>
-                <div class="col-md-6 form-group">
+                <div class="col-md-3 form-group">
                     <label for="assign">Status:</label>
                     <select  class="form-control"  id="m_status" onchange="status(this.value)" name="m_status" required="required" >
                         <option value="">Select</option>
@@ -461,7 +461,7 @@
                         <?php } ?>           
                     </select>
                 </div>
-                <div class="col-md-6 form-group">
+                <div class="col-md-3 form-group">
                     <label for="assign">Assign To:</label>
                     <input type="hidden" id="hidden_user_id" name="hidden_user_id" value="">
                     <select  class="form-control"  id="m_user_name" name="m_user_name" required="required" >
@@ -490,7 +490,7 @@
                         <?php } ?>              
                     </select>
                 </div>
-                <div class="col-md-6 form-group">
+                <div class="col-md-3 form-group">
                     <label for="email">Sub Source:</label>
                     <select  class="form-control"  id="c_subSource" name="c_subSource" >
                         <option value="">Select</option>
@@ -699,20 +699,95 @@
                         <input type="text" class="form-control" id="c_estMonthofInvoice" name="email2" placeholder="Estimated month of invoice">
                     </div>
 
-                    <div class="col-sm-6 form-group">
+                    <div class="col-sm-3 form-group">
                         <label for="email">Agreement Status:</label>
                         <input type="text" class="form-control" id="c_agrmntStatus" name="email2" placeholder="Agreement Status">
                     </div>
 
-                    <div class="col-sm-6 form-group">
+                    <div class="col-sm-3 form-group">
                         <label for="email">Project Type:</label>
                         <input type="text" class="form-control" id="c_projectType" name="email2" placeholder="Project Type">
                     </div>
                 </div>
+                 <div class="col-sm-3 form-group">
+                    <label for="budget">Budget:</label>
+                    <!-- <input type="text" class="form-control" id="budget" name="budget" placeholder="budget in lacs or crores*" value="" required=""> -->
+                    <select  class="form-control"  id="budget" name="budget" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1">50 Lakhs</option>
+                                <option value="2">50-65L</option>
+                                <option value="3">65L-80L</option>
+                                <option value="4">1-1.5cr</option>
+                                <option value="5">1.5-2 cr</option>
+                                <option value="6">2 cr+</option>                                            
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="Locality">Locality:</label>
+                    <input type="text" class="form-control" id="Locality" name="Locality" placeholder="city, area*" value="" required="">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="p_type">Purchase Type:</label>
+                    <!-- <input type="text" class="form-control" id="p_type" name="p_type" placeholder="Purchase Type*" value="" required=""> -->
+                    <select  class="form-control"  id="p_type" name="p_type" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1">Apartment</option>
+                                <option value="2">Villas</option>
+                                <option value="3">Plots</option>
+                                <option value="4">Penthouse</option>     
+                                <option value="5">Duplex</option>     
+                                <option value="6">Commericial</option>                                        
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="possesion">Possesion:</label>
+                   <!--  <input type="text" class="form-control" id="possesion" name="possesion" placeholder="Possesion*" value="" required=""> -->
+                    <select  class="form-control"  id="possesion" name="possesion" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1">RTM</option>
+                                <option value="2">1 Year</option>
+                                <option value="3">2 Year</option>
+                                <option value="4">New Launch</option>                                        
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="a_services">Additional Services:</label>
+                    <!-- <input type="text" class="form-control" id="a_services" name="a_services" placeholder="Additional Sevices*" value="" required=""> -->
+                     <select  class="form-control"  id="a_services" name="a_services" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1">Site Visit Assitance</option>
+                                <option value="2">Loans</option>
+                                <option value="3">Interiors</option>
+                                <option value="4">Resale Assistance</option>     
+                                <option value="5">Rental Assistance</option>     
+                                <option value="6">NONE</option>                                        
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="tos">Type Of Sale:</label>
+                    <!-- <input type="text" class="form-control" id="tos" name="tos" placeholder="Type Of Sale*" value="" required=""> -->
+                     <select  class="form-control"  id="tos" name="tos" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1">Primary</option>
+                                <option value="2" >Resale</option>
+                                <option value="3">Rentals</option>                                            
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="client_type">Client Type:</label> 
+                    <select  class="form-control"  id="client_type" name="client_type" required="required" >
+                                <option value="">Select</option>  
+                                <option value="1">Individual</option>
+                                <option value="2">Investor</option>
+                                            
+                    </select>
+                </div>
+                <div class="clearfix"></div>
                 <div class="col-sm-6 form-group">
                     <label for="comment">Preview Callbacks:</label>
                     <textarea class="form-control" name="notes" id="previous_callback1" rows="3" id="comment" readonly></textarea>
                 </div>
+                    
                 <div class="col-sm-6 form-group">
                     <label for="comment">Current Callbacks:</label>
                     <textarea class="form-control" name="notes" rows="3" id="current_callback1" name="current_callback1" onblur="curr(this.value)" placeholder="PLease Update Your Changes To Save"></textarea>
@@ -852,7 +927,13 @@
                 $('#m_user_name').val(data.user_name);
                 $('#hidden_user_id').val(data.user_name);
                 $('#previous_callback1').val(data.previous_callback);
-                
+                $('#budget').val(data.budget);
+                $('#Locality').val(data.Locality);
+                $('#p_type').val(data.p_type);
+                $('#possesion').val(data.possesion);
+                $('#a_services').val(data.a_services);
+                $('#tos').val(data.tos);
+                $('#client_type').val(data.client_type);  
                 $('#c_subSource').val(data.sub_broker);
                 $('#client_name').val(data.name);
                 if(data.email1){
@@ -1044,7 +1125,14 @@
             'email2':$("#m_email2").val(),
             'project_id':$("#m_project").val(),
             'lead_source_id':$("#m_lead_source").val(),
-            'leadid':$("#m_leadId").val()
+            'leadid':$("#m_leadId").val(),
+            'budget':$('#budget').val(),
+            'Locality':$('#Locality').val(),
+            'p_type': $('#p_type').val(),
+            'possesion':  $('#possesion').val(),
+            'a_services':   $('#a_services').val(),
+            'tos':   $('#tos').val(),
+            'client_type':    $('#client_type').val(),
         };
 
         if($("#hidden_user_id").val() != $("#m_user_name").val())
