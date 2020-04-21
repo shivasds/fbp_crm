@@ -514,19 +514,19 @@ class Admin extends CI_Controller {
 	function update_callback_details(){
 		$id = $this->input->post('callback_id');
 		
-$customer_req = array(
-			'callback_id'=>$id,
-            'budget'=>$this->input->post('budget'),  
-            'Locality' => $this->input->post('Locality'),
-            'p_type' => $this->input->post('p_type'),
-            'possesion' => $this->input->post('possesion'),
-            'a_services' => $this->input->post('a_services'),
-            'tos' => $this->input->post('tos'),
-            'client_type' => $this->input->post('client_type'),
-            'user_id' =>$this->session->userdata('user_id'),
-            'date_created' => date('Y-m-d')
-		);
-		$this->callback_model->insert_req($customer_req);
+// $customer_req = array(
+// 			'callback_id'=>$id,
+//             'budget'=>$this->input->post('budget'),  
+//             'Locality' => $this->input->post('Locality'),
+//             'p_type' => $this->input->post('p_type'),
+//             'possesion' => $this->input->post('possesion'),
+//             'a_services' => $this->input->post('a_services'),
+//             'tos' => $this->input->post('tos'),
+//             'client_type' => $this->input->post('client_type'),
+//             'user_id' =>$this->session->userdata('user_id'),
+//             'date_created' => date('Y-m-d')
+// 		);
+// 		$this->callback_model->insert_req($customer_req);
 
 		$update_data = array(
 			'last_update' => date('Y-m-d H:s:i')

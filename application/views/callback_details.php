@@ -485,11 +485,11 @@ Team Fullbasket Property Services Pvt Ltd
                         </div>
                     </div>
                 <?php } ?>
-                <div class="col-sm-12" style="background: #b9bdc04f;margin-bottom: 30px; padding-bottom: 10px;" >
+               <!--  <div class="col-sm-12" style="background: #b9bdc04f;margin-bottom: 30px; padding-bottom: 10px;" >
                     <h1 class="text-center" >Client Requirement</h1>
                     <div class="col-sm-3 form-group">
                         <label for="budget">Budget:</label>
-                        <!-- <input type="text" class="form-control" id="budget" name="budget" placeholder="budget in lacs or crores*" value="" required=""> -->
+                         
                         <select  class="form-control"  id="budget" name="budget" required="required" >
                                     <option value="">Select</option>  
                                     <option value="1" <?php if($budget==1) echo 'selected';?> >50 Lakhs</option>
@@ -506,7 +506,7 @@ Team Fullbasket Property Services Pvt Ltd
                     </div>
                     <div class="col-sm-3 form-group">
                         <label for="p_type">Purchase Type:</label>
-                        <!-- <input type="text" class="form-control" id="p_type" name="p_type" placeholder="Purchase Type*" value="" required=""> -->
+                         
                         <select  class="form-control"  id="p_type" name="p_type" required="required" >
                                     <option value="">Select</option>  
                                     <option value="1" <?php if($p_type==1) echo 'selected';?>>Apartment</option>
@@ -519,7 +519,7 @@ Team Fullbasket Property Services Pvt Ltd
                     </div>
                     <div class="col-sm-3 form-group">
                         <label for="possesion">Possesion:</label>
-                       <!--  <input type="text" class="form-control" id="possesion" name="possesion" placeholder="Possesion*" value="" required=""> -->
+                        
                         <select  class="form-control"  id="possesion" name="possesion" required="required" >
                                     <option value="">Select</option>  
                                     <option value="1" <?php if($possesion==1) echo 'selected';?>>RTM</option>
@@ -530,7 +530,7 @@ Team Fullbasket Property Services Pvt Ltd
                     </div>
                     <div class="col-sm-3 form-group">
                         <label for="a_services">Additional Services:</label>
-                        <!-- <input type="text" class="form-control" id="a_services" name="a_services" placeholder="Additional Sevices*" value="" required=""> -->
+                         
                          <select  class="form-control"  id="a_services" name="a_services" required="required" >
                                     <option value="">Select</option>  
                                     <option value="1" <?php if($a_services==1) echo 'selected';?>>Site Visit Assitance</option>
@@ -543,7 +543,7 @@ Team Fullbasket Property Services Pvt Ltd
                     </div>
                     <div class="col-sm-3 form-group">
                         <label for="tos">Type Of Sale:</label>
-                        <!-- <input type="text" class="form-control" id="tos" name="tos" placeholder="Type Of Sale*" value="" required=""> -->
+                         
                          <select  class="form-control"  id="tos" name="tos" required="required" >
                                     <option value="">Select</option>  
                                     <option value="1" <?php if($tos==1) echo 'selected';?> >Primary</option>
@@ -562,7 +562,7 @@ Team Fullbasket Property Services Pvt Ltd
                     </div>
                  </div>
 
-                <div class="clearfix"></div>
+                <div class="clearfix"></div> -->
                 <div class="col-sm-6 form-group">
                     <label for="comment">Preview Callbacks:</label>
                     <textarea class="form-control" name="notes" id="previous_callback1" rows="5"  id="comment" readonly><?= $previous_callback;?></textarea>
@@ -1205,34 +1205,34 @@ e.preventDefault();
             }
         }
         $(".se-pre-con").show();
-        if($("#budget").val()==""){
-                $("#budget").focus();
-                return false;
-            }
-             if($("#Locality").val()==""){
-                $("#Locality").focus();
-                return false;
-            }
-             if($("#p_type").val()==""){
-                $("#p_type").focus();
-                return false;
-            }
-             if($("#possesion").val()==""){
-                $("#possesion").focus();
-                return false;
-            }
-             if($("#a_services").val()==""){
-                $("#a_services").focus();
-                return false;
-            }
-             if($("#tos").val()==""){
-                $("#tos").focus();
-                return false;
-            }
-             if($("#client_type").val()==""){
-                $("#client_type").focus();
-                return false;
-            } 
+        // if($("#budget").val()==""){
+        //         $("#budget").focus();
+        //         return false;
+        //     }
+        //      if($("#Locality").val()==""){
+        //         $("#Locality").focus();
+        //         return false;
+        //     }
+        //      if($("#p_type").val()==""){
+        //         $("#p_type").focus();
+        //         return false;
+        //     }
+        //      if($("#possesion").val()==""){
+        //         $("#possesion").focus();
+        //         return false;
+        //     }
+        //      if($("#a_services").val()==""){
+        //         $("#a_services").focus();
+        //         return false;
+        //     }
+        //      if($("#tos").val()==""){
+        //         $("#tos").focus();
+        //         return false;
+        //     }
+        //      if($("#client_type").val()==""){
+        //         $("#client_type").focus();
+        //         return false;
+        //     } 
         var data = {
             'budget':$("#budget").val(),
             'Locality':$("#Locality").val(),
