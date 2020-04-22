@@ -535,7 +535,8 @@ class Dashboard extends CI_Controller {
             'last_update'=>$query->last_update,
             'active'=>$query->active, 
             'budget'=>$query->budget,  
-            'Locality' => $query->Locality,
+            'location' => $query->location,
+            'cities' => $query->city,
             'p_type' => $query->p_type,
             'possesion' => $query->possesion,
             'a_services' => $query->a_services,
@@ -1322,5 +1323,15 @@ class Dashboard extends CI_Controller {
             else
                 echo json_encode(array('success'=>'false'));
 
+        }
+        public function allCities($value='')
+        { 
+               $data  = $this->callback_model->getName('cities',$this->input->get_post('cities'));
+           echo json_encode($data);
+        }
+        public function allLocations($value='')
+        {
+           $data  = $this->callback_model->getName('Locations',$this->input->get_post('Location'));
+           echo json_encode($data);
         }
 }

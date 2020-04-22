@@ -1251,6 +1251,20 @@ $list_id=implode(',', $ids);
          return $query?true:false;
         
     }
+    public function getName($table='',$where='')
+    {
+       $this->db->select('name')
+       
+       ->where('status',1);
+       if($where)
+        $this->db->like('name',$where);
+       $data =  $this->db->get($table)->result();
 
+       foreach($data as $row ){
+          $response[] = array("name"=>$row->name);
+       }
+
+        return $response;
+    }
 
 }
