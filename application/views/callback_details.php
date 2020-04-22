@@ -91,11 +91,11 @@
     }
 ?>
 <style>
-	@media (min-width: 992px){
+    @media (min-width: 992px){
    .col-md-6 {
     width: 25%;
       }
-	}
+    }
     @media screen and (min-width: 768px) {modal_ .modal-dialog  {width:900px; } } .form-group input[type="checkbox"] {display: none; } .form-group input[type="checkbox"] + .btn-group > label span {width: 20px; } .form-group input[type="checkbox"] + .btn-group > label span:first-child {display: none; } .form-group input[type="checkbox"] + .btn-group > label span:last-child {display: inline-block; } .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {display: inline-block; } .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {display: none; } tr.highlight_past td.due_date{background-color: #cc6666 !important; } tr.highlight_now td.due_date{background-color: #e4b13e !important; } tr.highlight_future td.due_date{background-color: #65dc68 !important; } #history_table td {border: 1px solid #aaa; padding: 5px } 
 
     .modal {
@@ -485,84 +485,7 @@ Team Fullbasket Property Services Pvt Ltd
                         </div>
                     </div>
                 <?php } ?>
-               <!--  <div class="col-sm-12" style="background: #b9bdc04f;margin-bottom: 30px; padding-bottom: 10px;" >
-                    <h1 class="text-center" >Client Requirement</h1>
-                    <div class="col-sm-3 form-group">
-                        <label for="budget">Budget:</label>
-                         
-                        <select  class="form-control"  id="budget" name="budget" required="required" >
-                                    <option value="">Select</option>  
-                                    <option value="1" <?php if($budget==1) echo 'selected';?> >50 Lakhs</option>
-                                    <option value="2" <?php if($budget==2) echo 'selected';?>>50-65L</option>
-                                    <option value="3" <?php if($budget==3) echo 'selected';?>>65L-80L</option>
-                                    <option value="4" <?php if($budget==4) echo 'selected';?>>1-1.5cr</option>
-                                    <option value="5" <?php if($budget==5) echo 'selected';?>>1.5-2 cr</option>
-                                    <option value="6" <?php if($budget==6) echo 'selected';?>>2 cr+</option>                                            
-                        </select>
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label for="Locality">Locality:</label>
-                        <input type="text" class="form-control" id="Locality" name="Locality" placeholder="city, area*" value="<?=$Locality?>" required="">
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label for="p_type">Purchase Type:</label>
-                         
-                        <select  class="form-control"  id="p_type" name="p_type" required="required" >
-                                    <option value="">Select</option>  
-                                    <option value="1" <?php if($p_type==1) echo 'selected';?>>Apartment</option>
-                                    <option value="2" <?php if($p_type==2) echo 'selected';?>>Villas</option>
-                                    <option value="3" <?php if($p_type==3) echo 'selected';?>>Plots</option>
-                                    <option value="4" <?php if($p_type==4) echo 'selected';?>>Penthouse</option>     
-                                    <option value="5" <?php if($p_type==5) echo 'selected';?>>Duplex</option>     
-                                    <option value="6" <?php if($p_type==6) echo 'selected';?>>Commericial</option>                                        
-                        </select>
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label for="possesion">Possesion:</label>
-                        
-                        <select  class="form-control"  id="possesion" name="possesion" required="required" >
-                                    <option value="">Select</option>  
-                                    <option value="1" <?php if($possesion==1) echo 'selected';?>>RTM</option>
-                                    <option value="2" <?php if($possesion==2) echo 'selected';?>>1 Year</option>
-                                    <option value="3" <?php if($possesion==3) echo 'selected';?>>2 Year</option>
-                                    <option value="4" <?php if($possesion==4) echo 'selected';?>>New Launch</option>                                        
-                        </select>
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label for="a_services">Additional Services:</label>
-                         
-                         <select  class="form-control"  id="a_services" name="a_services" required="required" >
-                                    <option value="">Select</option>  
-                                    <option value="1" <?php if($a_services==1) echo 'selected';?>>Site Visit Assitance</option>
-                                    <option value="2" <?php if($a_services==2) echo 'selected';?>>Loans</option>
-                                    <option value="3" <?php if($a_services==3) echo 'selected';?>>Interiors</option>
-                                    <option value="4" <?php if($a_services==4) echo 'selected';?>>Resale Assistance</option>     
-                                    <option value="5" <?php if($a_services==5) echo 'selected';?>>Rental Assistance</option>     
-                                    <option value="6" <?php if($a_services==6) echo 'selected';?>>NONE</option>                                        
-                        </select>
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label for="tos">Type Of Sale:</label>
-                         
-                         <select  class="form-control"  id="tos" name="tos" required="required" >
-                                    <option value="">Select</option>  
-                                    <option value="1" <?php if($tos==1) echo 'selected';?> >Primary</option>
-                                    <option value="2" <?php if($tos==2) echo 'selected';?> >Resale</option>
-                                    <option value="3" <?php if($tos==3) echo 'selected';?> >Rentals</option>                                            
-                        </select>
-                    </div>
-                    <div class="col-sm-3 form-group">
-                        <label for="client_type">Client Type:</label> 
-                        <select  class="form-control"  id="client_type" name="client_type" required="required" >
-                                    <option value="">Select</option>  
-                                    <option value="01" <?php if($client_type==1) echo 'selected';?>>Individual</option>
-                                    <option value="02" <?php if($client_type==2) echo 'selected';?>>Investor</option>
-                                                
-                        </select>
-                    </div>
-                 </div>
-
-                <div class="clearfix"></div> -->
+                <div class="clearfix"></div>
                 <div class="col-sm-6 form-group">
                     <label for="comment">Preview Callbacks:</label>
                     <textarea class="form-control" name="notes" id="previous_callback1" rows="5"  id="comment" readonly><?= $previous_callback;?></textarea>
@@ -579,7 +502,7 @@ Team Fullbasket Property Services Pvt Ltd
                         <div class="btn-group">
                             <label for="fancy-checkbox-success" class="btn btn-success" style="margin-right: 0;">
                                 <span class="glyphicon glyphicon-ok"></span>
-                                <span> </span>
+                                <span> </span>
                             </label>
                             <label for="fancy-checkbox-success" class="btn btn-default active">
                                ReAssign To Another Date 
@@ -602,7 +525,7 @@ Team Fullbasket Property Services Pvt Ltd
                             <div class="btn-group">
                                 <label for="fancy-checkbox-primary" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-ok"></span>
-                                    <span class=""> </span>
+                                    <span class=""> </span>
                                 </label>
                                 <label for="fancy-checkbox-primary" class="btn btn-default active">
                                    Site Visit Fixed
@@ -629,7 +552,7 @@ Team Fullbasket Property Services Pvt Ltd
                             <div class="btn-group">
                                 <label for="fancy-checkbox-default" class="btn btn-default">
                                     <span class="glyphicon glyphicon-ok"></span>
-                                    <span> </span>
+                                    <span> </span>
                                 </label>
                                 <label for="fancy-checkbox-default" class="btn btn-default active">
                                    Site Visit Done
@@ -656,7 +579,7 @@ Team Fullbasket Property Services Pvt Ltd
                             <div class="btn-group">
                                 <label for="fancy-checkbox-default_notdone" class="btn" style="background-color: #ad4ace;">
                                     <span class="glyphicon glyphicon-ok"></span>
-                                    <span> </span>
+                                    <span> </span>
                                 </label>
                                 <label for="fancy-checkbox-default_notdone" class="btn btn-default active">
                                    Site Visit Not Done
@@ -678,7 +601,7 @@ Team Fullbasket Property Services Pvt Ltd
                             <div class="btn-group">
                                 <label for="fancy-checkbox-danger" class="btn btn-danger">
                                     <span class="glyphicon glyphicon-ok"></span>
-                                    <span> </span>
+                                    <span> </span>
                                 </label>
                                 <label for="fancy-checkbox-danger" class="btn btn-default active">
                                    Face to Face Done
@@ -705,7 +628,7 @@ Team Fullbasket Property Services Pvt Ltd
                             <div class="btn-group">
                                 <label for="fancy-checkbox-warning" class="btn btn-warning">
                                     <span class="glyphicon glyphicon-ok"></span>
-                                    <span> </span>
+                                    <span> </span>
                                 </label>
                                 <label for="fancy-checkbox-warning" class="btn btn-default active">
                                    Important
@@ -718,7 +641,7 @@ Team Fullbasket Property Services Pvt Ltd
                         <div class="btn-group">
                             <label for="fancy-checkbox-info" class="btn btn-info">
                                 <span class="glyphicon glyphicon-ok"></span>
-                                <span> </span>
+                                <span> </span>
                             </label>
                             <label for="fancy-checkbox-info" class="btn btn-default active">
                                Client Registration Email
@@ -763,87 +686,9 @@ Team Fullbasket Property
                         </div>
                     </div>
                 <?php } ?>
-                <div class="col-md-6 form-group">
-                        <input type="checkbox" name="fancy-checkbox-info-kyc" onclick="clientKYC()"  id="fancy-checkbox-info-kyc" autocomplete="off" />
-                        <div class="btn-group">
-                            <label for="fancy-checkbox-info-kyc" class="btn btn-info">
-                                <span class="glyphicon glyphicon-ok"></span>
-                                <span> </span>
-                            </label>
-                            <label for="fancy-checkbox-info-kyc" class="btn btn-default active">
-                               Customer KYC
-                            </label>
-                        </div>
-                       
-                    </div>
-
-                    <div id="clientKYC" hidden class="col-md-12 form-group">
-                            <input type="hidden" id="callback_id_kyc" name="callback_id_kyc" value="<?= $id ?>">
-                            <br>
-                            <div class="col-sm-12 form-group">
-                            <br>
-                            <div class="col-md-12 form-group">
-                            <div class="alert alert-danger">
-                              <strong>Note:</strong> You can Update KYC Only Once
-                            </div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="Employment">Employment:</label>
-                                <input type="text" class="form-control" id="Employment" name="Employment" placeholder="Employment ">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="Designation">Designation:</label>
-                                <input type="text" class="form-control" id="Designation" name="Designation" placeholder="Designation">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="Salary">Salary (P.A):</label>
-                                <input type="text" class="form-control" id="Salary" name="Salary" placeholder="Salary">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="dob">Birth Date:</label>
-                                <input type="text" class="form-control datepicker" id="dob" name="dob" placeholder="dob">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="Anniversary">Anniversary Date:</label>
-                                <input type="text" class="form-control datepicker" id="Anniversary" name="Anniversary" placeholder="Anniversary">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="SpouseName">Spouse Name:</label>
-                                <input type="text" class="form-control" id="SpouseName" name="SpouseName" placeholder="Spouse Name">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="Spouseemployment">Spouse employment:</label>
-                                <input type="text" class="form-control" id="Spouseemployment" name="Spouseemployment" placeholder="Spouse employment">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="SpouseDesignation">Spouse Designation:</label>
-                                <input type="text" class="form-control" id="SpouseDesignation" name="SpouseDesignation" placeholder="Spouse Designation">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="SposeSalary">Spose Salary (P.A):</label>
-                                <input type="text" class="form-control" id="SposeSalary" name="SposeSalary" placeholder="Spose Salary">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="SpouseBirthDate">Spouse Birth Date:</label>
-                                <input type="text" class="form-control datepicker" id="SpouseBirthDate" name="SpouseBirthDate" placeholder="Spouse Birth Date">
-                            </div> 
-                            <div class="col-sm-12 form-group">
-                                <div class="alert alert-success" id="kyc_success" style="display:none">
-                                    <strong>Success!</strong> Customer KYC Updated .
-                                </div>
-                                <div class="alert alert-danger" id="kyc_error" style="display:none">
-                                    <strong>Failed!</strong> Customer KYC Updated Before.
-                                </div>
-
-                                
-                                <input type="hidden" name="" id="user_id" value="<?=$this->session->userdata('user_id');?>">
-                                <button type="button" onclick="customer_kyc()" class="btn btn-success">Send</button>
-                            </div>
-                        </div>
             </div>
             <div class="clearfix"></div>
-            <br>
-            <div class="container text-center">                
+            <div class="container">                
                 <button type="submit" class="btn btn-success" onclick="update_callback_details()" id="save" disabled style="width: 150px">Save</button>
             </div>
         </div>
@@ -867,7 +712,7 @@ Team Fullbasket Property
                                 <div class="btn-group">
                                     <label for="fancy-checkbox-default1" class="btn btn-default">
                                         <span class="glyphicon glyphicon-ok"></span>
-                                        <span> </span>
+                                        <span> </span>
                                     </label>
                                     <label for="fancy-checkbox-default1" class="btn btn-default active">
                                        Site Visit Done
@@ -894,7 +739,7 @@ Team Fullbasket Property
                                 <div class="btn-group">
                                     <label for="fancy-checkbox-default_notdone1" class="btn" style="background-color: #ad4ace;">
                                         <span class="glyphicon glyphicon-ok"></span>
-                                        <span> </span>
+                                        <span> </span>
                                     </label>
                                     <label for="fancy-checkbox-default_notdone1" class="btn btn-default active">
                                        Site Visit Not Done
@@ -1205,42 +1050,7 @@ e.preventDefault();
             }
         }
         $(".se-pre-con").show();
-        // if($("#budget").val()==""){
-        //         $("#budget").focus();
-        //         return false;
-        //     }
-        //      if($("#Locality").val()==""){
-        //         $("#Locality").focus();
-        //         return false;
-        //     }
-        //      if($("#p_type").val()==""){
-        //         $("#p_type").focus();
-        //         return false;
-        //     }
-        //      if($("#possesion").val()==""){
-        //         $("#possesion").focus();
-        //         return false;
-        //     }
-        //      if($("#a_services").val()==""){
-        //         $("#a_services").focus();
-        //         return false;
-        //     }
-        //      if($("#tos").val()==""){
-        //         $("#tos").focus();
-        //         return false;
-        //     }
-        //      if($("#client_type").val()==""){
-        //         $("#client_type").focus();
-        //         return false;
-        //     } 
         var data = {
-            'budget':$("#budget").val(),
-            'Locality':$("#Locality").val(),
-            'p_type' : $("#p_type").val(),
-            'possesion' : $("#possesion").val(),
-            'a_services':$("#a_services").val(),
-            'tos':$("#tos").val(),
-            'client_type':$("#client_type").val(),
             'extrxDataIds' : ($('#extraDataIds').val()) ? $('#extraDataIds').val() : 0,
             'callback_id':$('#mhid').val(),
             'status_id':$('#m_status').val(),
@@ -1269,9 +1079,12 @@ e.preventDefault();
             'est_month_of_invoice':$('#c_estMonthofInvoice').val(),
             'agreement_status':$('#c_agrmntStatus').val(),
             'project_type':$('#c_projectType').val(),
+
             'reason_for_dead':$('.reasonOfDead').val(),
-            'reason_cause':$('#selectDeadRsn').val(), 
+            'reason_cause':$('#selectDeadRsn').val(),
+            
             'current_callback':$('#current_callback1').val(),
+
             'name':$('#m_name1').val(),
             'due_date':$('#reassign_date').val()?$('#reassign_date').val()+' '+($('#reassign_time').val()?$('#reassign_time').val():'00:00'):null,
             'dept_id':$("#m_dept").val(),
@@ -1363,9 +1176,6 @@ e.preventDefault();
 
     function clientEmail(){
         $('#clientEmail').toggle();
-    }
-    function clientKYC(){
-        $('#clientKYC').toggle();
     }
     
     function le(){
@@ -1533,51 +1343,6 @@ e.preventDefault();
             }
         });
     }
-      function customer_kyc(){
-        // if($("#Employment").val() == ""){
-        //     alert("Please enter  Employment");
-        //     $("#Employment").focus();
-        //     return false;
-        // }
-        // if($("#Designation").val() == ""){
-        //     alert("Please enter Designation");
-        //     $("#Designation").focus();
-        //     return false;
-        // }
-        // if($("#Salary").val() == ""){
-        //     alert("Please enter Salary");
-        //     $("#Salary").focus();
-        //     return false;
-        // }
-        //$(".se-pre-con").show();
-        $.ajax({
-            type:"POST",
-            url: "<?php echo base_url()?>dashboard/customer_kyc",
-            data:{
-                callback_id:$("#callback_id_kyc").val(),
-                Employment:$("#Employment").val(),
-                Designation:$("#Designation").val(),
-                Salary:$("#Salary").val(),
-                Designation:$("#Designation").val(),
-                dob:$("#dob").val(),
-                Anniversary:$("#Anniversary").val(),
-                SpouseName:$("#SpouseName").val(),
-                Spouseemployment:$("#Spouseemployment").val(),
-                SpouseDesignation:$("#SpouseDesignation").val(),
-                SposeSalary:$("#SposeSalary").val(),
-                SpouseBirthDate:$("#SpouseBirthDate").val(),
-                user_id:$("#user_id").val()
-            },
-            success:function(data) { 
-                $("#kyc_success").show(); 
-                    
-            },
-        error: function (data) {
-            $("#kyc_success").hide();
-             $("#kyc_error").show(); 
-        }
-        });
-    }
 </script>
                        </div>
 
@@ -1648,16 +1413,6 @@ e.preventDefault();
 
 <!-- Bootstrap Core JavaScript 
    -->
-
-   <script>
-   $('.datepicker').datepicker({
-    changeMonth: true,
-    changeYear: true,
-    showButtonPanel: true,
-    dateFormat: "m/d/yy"
-});
-
-   </script>
    <script>
     $(document).ready(function() {
          $('#example').DataTable({
@@ -1669,10 +1424,7 @@ e.preventDefault();
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
                 // Consistent format with the HTML5 picker
-                changeMonth: true,
-                changeYear: true,
-                showButtonPanel: true,
-                dateFormat : 'dd/mm/yy'
+                    dateFormat : 'dd/mm/yy'
                 }
             );
         }
@@ -1816,9 +1568,6 @@ e.preventDefault();
             // If not native HTML5 support, fallback to jQuery datePicker
             $('input[type=date]').datepicker({
                 // Consistent format with the HTML5 picker
-                    changeMonth: true,
-                    changeYear: true,
-                    showButtonPanel: true,
                     dateFormat : 'dd/mm/yy'
                 }
             );
