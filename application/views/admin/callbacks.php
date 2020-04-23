@@ -709,9 +709,9 @@
                         <input type="text" class="form-control" id="c_projectType" name="email2" placeholder="Project Type">
                     </div>
                 </div>
-                 <div class="col-sm-3 form-group">
+                <!--  <div class="col-sm-3 form-group">
                     <label for="budget">Budget:</label>
-                    <!-- <input type="text" class="form-control" id="budget" name="budget" placeholder="budget in lacs or crores*" value="" required=""> -->
+                     
                     <select  class="form-control"  id="budget" name="budget" required="required" >
                                 <option value="">Select</option>  
                                 <option value="1">50 Lakhs</option>
@@ -728,7 +728,7 @@
                 </div>
                 <div class="col-sm-3 form-group">
                     <label for="p_type">Purchase Type:</label>
-                    <!-- <input type="text" class="form-control" id="p_type" name="p_type" placeholder="Purchase Type*" value="" required=""> -->
+                     
                     <select  class="form-control"  id="p_type" name="p_type" required="required" >
                                 <option value="">Select</option>  
                                 <option value="1">Apartment</option>
@@ -741,7 +741,7 @@
                 </div>
                 <div class="col-sm-3 form-group">
                     <label for="possesion">Possesion:</label>
-                   <!--  <input type="text" class="form-control" id="possesion" name="possesion" placeholder="Possesion*" value="" required=""> -->
+                    
                     <select  class="form-control"  id="possesion" name="possesion" required="required" >
                                 <option value="">Select</option>  
                                 <option value="1">RTM</option>
@@ -752,7 +752,7 @@
                 </div>
                 <div class="col-sm-3 form-group">
                     <label for="a_services">Additional Services:</label>
-                    <!-- <input type="text" class="form-control" id="a_services" name="a_services" placeholder="Additional Sevices*" value="" required=""> -->
+                    
                      <select  class="form-control"  id="a_services" name="a_services" required="required" >
                                 <option value="">Select</option>  
                                 <option value="1">Site Visit Assitance</option>
@@ -765,7 +765,7 @@
                 </div>
                 <div class="col-sm-3 form-group">
                     <label for="tos">Type Of Sale:</label>
-                    <!-- <input type="text" class="form-control" id="tos" name="tos" placeholder="Type Of Sale*" value="" required=""> -->
+                    
                      <select  class="form-control"  id="tos" name="tos" required="required" >
                                 <option value="">Select</option>  
                                 <option value="1">Primary</option>
@@ -782,7 +782,8 @@
                                             
                     </select>
                 </div>
-                <div class="clearfix"></div>
+                <div class="clearfix"></div> -->
+                <div class="clearfix"></div> 
                 <div class="col-sm-6 form-group">
                     <label for="comment">Preview Callbacks:</label>
                     <textarea class="form-control" name="notes" id="previous_callback1" rows="3" id="comment" readonly></textarea>
@@ -927,13 +928,13 @@
                 $('#m_user_name').val(data.user_name);
                 $('#hidden_user_id').val(data.user_name);
                 $('#previous_callback1').val(data.previous_callback);
-                $('#budget').val(data.budget);
-                $('#Locality').val(data.Locality);
-                $('#p_type').val(data.p_type);
-                $('#possesion').val(data.possesion);
-                $('#a_services').val(data.a_services);
-                $('#tos').val(data.tos);
-                $('#client_type').val(data.client_type);  
+                // $('#budget').val(data.budget);
+                // $('#Locality').val(data.Locality);
+                // $('#p_type').val(data.p_type);
+                // $('#possesion').val(data.possesion);
+                // $('#a_services').val(data.a_services);
+                // $('#tos').val(data.tos);
+                // $('#client_type').val(data.client_type);  
                 $('#c_subSource').val(data.sub_broker);
                 $('#client_name').val(data.name);
                 if(data.email1){
@@ -1126,13 +1127,13 @@
             'project_id':$("#m_project").val(),
             'lead_source_id':$("#m_lead_source").val(),
             'leadid':$("#m_leadId").val(),
-            'budget':$('#budget').val(),
-            'Locality':$('#Locality').val(),
-            'p_type': $('#p_type').val(),
-            'possesion':  $('#possesion').val(),
-            'a_services':   $('#a_services').val(),
-            'tos':   $('#tos').val(),
-            'client_type':    $('#client_type').val(),
+            // 'budget':$('#budget').val(),
+            // 'Locality':$('#Locality').val(),
+            // 'p_type': $('#p_type').val(),
+            // 'possesion':  $('#possesion').val(),
+            // 'a_services':   $('#a_services').val(),
+            // 'tos':   $('#tos').val(),
+            // 'client_type':    $('#client_type').val(),
         };
 
         if($("#hidden_user_id").val() != $("#m_user_name").val())
