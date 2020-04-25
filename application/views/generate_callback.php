@@ -139,6 +139,20 @@
                     <?php } ?>
                 </select>
             </div>
+            <div id="abc" hidden>
+                        <div class="col-xs-6 col-sm-4 col-md-3 form-group">
+                            <label for="ref_by">Refered By:</label>
+                            <select  class="form-control"  id="ref_by"  name="ref_by" >
+                                    <option value="">Select</option>  
+                                    <option value="1">Client</option>
+                                    <option value="2">Management</option> 
+                            </select>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3 form-group">
+                            <label for="mob_num">Mobile Number:</label>
+                             <input class="form-control" type="text" name="mob_num" id="mob_num" value="">
+                        </div>
+            </div>
 
             <!-- <div class="col-sm-3 form-group">
                 <label for="leadId">Lead Id:</label>
@@ -233,6 +247,21 @@
     </form>
 </div>
 <script type="text/javascript">
+        $(document).ready(function(){
+    function changesource(){
+        var a  = this.value;
+        if('6'==a)
+        {
+            $("#abc").show();
+            $("#ref_by").attr("required",true);
+        }
+        else
+        {
+            $("#abc").hidden();
+        }
+    }
+    $("#lead_source").on("change", changesource);
+});
     function reset_data(){
         $('#name').val('');
         $('#contact_no1').val('');

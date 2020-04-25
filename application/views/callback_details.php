@@ -21,8 +21,6 @@
     </div>
     <?php
 }
-
-
     ?>
 <body>
      <div class="se-pre-con"></div>
@@ -53,7 +51,7 @@
                                             $('.main-search').hide();
                                         });
                                     </script>
-                            <!--/profile_details-->
+                            /profile_details-->
                                 <div class="profile_details_left">
                                 <?php $this->load->view('notification');?>
                             </div>

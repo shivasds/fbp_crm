@@ -249,6 +249,7 @@ $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this-
         $this->db->join('user as u','u.id=cb.user_id','left');
         $this->db->join('broker as b','b.id=cb.broker_id','left');
         $this->db->join('status as s','s.id=cb.status_id','left');
+
         if($report == "clent_reg"){
             $this->db->join('client_reg as cr','cr.callback_id=cb.id');
             $this->db->group_by('cr.callback_id');
@@ -318,7 +319,7 @@ $this->db->where("(cb.user_id in(select id from user where reports_to ='".$this-
           
         $list_id=implode(',', $ids);
 
-        //$this->db->where("u.city_id", $this->session->userdata('city_id'));
+        $this->db->where("u.city_id", $this->session->userdata('city_id'));
          $this->db->where("(cb.user_id in(".$list_id."))", NULL, FALSE);
           //}
        
@@ -740,6 +741,8 @@ $list_id=implode(',', $ids);
             $this->db->where("c.active = 1 ", NULL, FALSE);
             $this->db->where("c.status_id != 4 ", NULL, FALSE);
             $this->db->where("c.status_id != 5 ", NULL, FALSE);
+        }
+        elseif($reportType == "svdead"){
         }
         else{
             if(trim($fromDate)){
@@ -1213,6 +1216,7 @@ $list_id=implode(',', $ids);
         $this->db->from('notification as n');
         $this->db->join('project as p','p.id=n.project_id');
         $this->db->join('user as u','u.id=n.user_id');
+        $this->db->where('n.close_date BETWEEN DATE_SUB(NOW(), INTERVAL 15 DAY) AND NOW()');
         $this->db->order_by("n.id", "desc");
         $q = $this->db->get();   
         return $q->result_array();
@@ -1265,6 +1269,48 @@ $list_id=implode(',', $ids);
        }
 
         return $response;
+    }
+    public function getMobile($table='',$where='')
+    {
+       $this->db->select('contact_no1');
+       if($where)
+        $this->db->like('contact_no1',$where);
+       $data =  $this->db->get($table)->result();
+
+       foreach($data as $row ){
+          $response[] = array("contact_no1"=>$row->contact_no1);
+       }
+
+        return $response;
+    }
+
+    public function resitevisit($value='')
+    {
+
+        $SQL = "select * from callback where id in (SELECT callback_id FROM `callback_extra_data` WHERE type= 2  group by callback_id Having COUNT(*) > 1)";
+        $query = $this->db->query($SQL);
+
+        return $query->result_array();
+    }
+     public function site_visit_dead($offset='',$limit='',$fromDate='',$toDate='',$user_id='')
+    {
+
+        $SQL = "select  cb.*, concat(u.first_name,' ',u.last_name) as emp_name, count(cb.id) as total, cb.user_id as user_id from callback cb left outer join user u on u.id = cb.user_id   where cb.id in(select callback_id from callback_data where callback_id in (SELECT callback_id FROM `callback_extra_data` WHERE type= 2 group by callback_id Having COUNT(*) >= 1) and status_id = 4)  and date(cb.date_added) >= '$fromDate' and date(cb.date_added) <= '$toDate'  GROUP by u.id  limit $offset,$limit";
+        if($user_id)
+            $SQL ="select  cb.*  from callback cb  where cb.id in(select callback_id from callback_data where callback_id in (SELECT callback_id FROM `callback_extra_data` WHERE type= 2 group by callback_id Having COUNT(*) >= 1) and status_id = 4)  and date(cb.date_added) >= '$fromDate' and date(cb.date_added) <= '$toDate'   and user_id = $user_id";
+    
+        $query = $this->db->query($SQL);
+
+        return $query->result_array();
+    }
+    public function Count_site_visit_dead($fromDate='',$toDate='')
+    {
+
+        $SQL = "select count(*) as Count from callback where id in(select callback_id from callback_data where callback_id in (SELECT callback_id FROM `callback_extra_data` WHERE type= 2 group by callback_id Having COUNT(*) >= 1) and status_id = 4) and date(date_added) >= '$fromDate' and date(date_added) <= '$toDate'";
+        $query = $this->db->query($SQL);
+
+        $data = $query->result_array();
+        return $data[0]['Count'];
     }
 
 }

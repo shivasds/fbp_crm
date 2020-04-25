@@ -122,7 +122,7 @@
                 <div class="form-group">
                     <label for="email" class="control-label col-sm-3">Lead Source*</label>
                     <div class="col-sm-9">
-                        <select type="email" class="form-control" name="lead_source" required>
+                        <select type="email" class="form-control" name="lead_source" id="lead_source" required>
                             <?php $lead_source= $this->common_model->all_active_lead_sources(); 
                             foreach( $lead_source as $source){ ?>
                                 <option value="<?php echo $source->id ?>"><?php echo $source->name ?></option>
@@ -130,6 +130,26 @@
                         </select>
                     </div>
                 </div>
+                <div id="abc" hidden>
+                    <div class="form-group">
+                    <label for="ref_by" class="control-label col-sm-3">Refered By:</label>
+                        <div class="col-sm-9">
+                            <select  class="form-control"  id="ref_by"  name="ref_by" >
+                                    <option value="">Select</option>  
+                                    <option value="1">Client</option>
+                                    <option value="2">Management</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mob_num" class="control-label col-sm-3">Mobile Number:</label>
+                        <div class="col-sm-9">
+                            
+                             <input class="form-control" type="text" name="mob_num" id="mob_num" value="">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="email" class="control-label col-sm-3">Assigned to*</label>
                     <div class="col-sm-9">
@@ -264,6 +284,21 @@
 											
 											toggle = !toggle;
 										});
+                                $(document).ready(function(){
+    function changesource(){
+        var a  = this.value;
+        if('6'==a)
+        {
+            $("#abc").show();
+            $("#ref_by").attr("required",true);
+        }
+        else
+        {
+            $("#abc").hidden();
+        }
+    }
+    $("#lead_source").on("change", changesource);
+});
 							</script>
 <!--js -->
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/vroom.css">

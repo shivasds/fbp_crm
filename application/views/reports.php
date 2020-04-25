@@ -132,6 +132,11 @@
             <div class="lead col-xs-5">
                 <input type="radio" class="form-control lead" id="callback_report" value="dailyCallback" name="reportType" >
             </div>  
+            <label for = "svdead" class="lead col-xs-7">site visit dead report:</label>
+            <div class="lead col-xs-5">
+                <input type="radio" class="form-control lead" id="svdead" value="svdead" name="reportType" >
+            </div>
+            <div class="clearfix"></div>
 		</div>
 		<div class="col-xs-6 col-md-6 form-group">
             <button type="reset" id="save" class="btn btn-danger btn-block">Cancel</button>

@@ -176,6 +176,43 @@
                     <?php } ?>               
                 </select>
             </div>
+             <div class="col-sm-3 form-group">
+                        <label for="Location">Location:</label>
+                        <input type="text" class="form-control" id="Location" name="location" value= "<?=$this->session->userdata('location');?>"placeholder="Location*">
+                    </div>
+                     <script>
+                      $(document).ready(function(){
+
+     // Initialize 
+     $( "#Location" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url: "<?=base_url()?>dashboard/allLocations/",
+            type: 'post',
+            dataType: "json",
+            data: {
+              Location: request.term
+            },
+            success: function( data ) {
+                response($.map(data, function (value, key) {
+                return {
+                    label: value.name, 
+                }
+            }));
+            }
+          });
+        },
+        select: function (event, ui) {
+          // Set selection
+          $('#Location').val(ui.item.label); // display the selected text
+          //$('#userid').val(ui.item.value); // save selected id to input
+          return false;
+        }
+      });
+
+    });
+                    </script>
             <?php
             if($this->session->userdata("user_type")=="City_head"){
                  $users = $this->user_model->get_city_users_active();
@@ -278,29 +315,26 @@
                     <!-- <input type="text" class="form-control" id="budget" name="budget" placeholder="budget in lacs or crores*" value="" required=""> -->
                     <select  class="form-control"  id="budget" name="budget"  >
                                 <option value="">Select</option>  
-                                <option value="1">50 Lakhs</option>
-                                <option value="2">50-65L</option>
-                                <option value="3">65L-80L</option>
-                                <option value="4">1-1.5cr</option>
-                                <option value="5">1.5-2 cr</option>
-                                <option value="6">2 cr+</option>                                            
+                                <option value="1" <?php if(($this->session->userdata("budget"))==1) echo 'selected' ?>>50 Lakhs</option>
+                                <option value="2" <?php if(($this->session->userdata("budget"))==2) echo 'selected' ?>>50-65L</option>
+                                <option value="3" <?php if(($this->session->userdata("budget"))==3) echo 'selected' ?>>65L-80L</option>
+                                <option value="4" <?php if(($this->session->userdata("budget"))==4) echo 'selected' ?>>1-1.5cr</option>
+                                <option value="5" <?php if(($this->session->userdata("budget"))==5) echo 'selected' ?>>1.5-2 cr</option>
+                                <option value="6" <?php if(($this->session->userdata("budget"))==6) echo 'selected' ?>>2 cr+</option>                                            
                     </select>
                 </div>
-                <div class="col-sm-3 form-group">
-                    <label for="Locality">Locality:</label>
-                    <input type="text" class="form-control" id="Locality" name="Locality" placeholder="city, area*" value="" >
-                </div>
+                 
                 <div class="col-sm-3 form-group">
                     <label for="p_type">Purchase Type:</label>
                     <!-- <input type="text" class="form-control" id="p_type" name="p_type" placeholder="Purchase Type*" value="" required=""> -->
                     <select  class="form-control"  id="p_type" name="p_type" >
                                 <option value="">Select</option>  
-                                <option value="1">Apartment</option>
-                                <option value="2">Villas</option>
-                                <option value="3">Plots</option>
-                                <option value="4">Penthouse</option>     
-                                <option value="5">Duplex</option>     
-                                <option value="6">Commericial</option>                                        
+                                <option value="1" <?php if(($this->session->userdata("p_type"))==1) echo 'selected' ?>>Apartment</option>
+                                <option value="2" <?php if(($this->session->userdata("p_type"))==2) echo 'selected' ?>>Villas</option>
+                                <option value="3" <?php if(($this->session->userdata("p_type"))==3) echo 'selected' ?>>Plots</option>
+                                <option value="4" <?php if(($this->session->userdata("p_type"))==4) echo 'selected' ?>>Penthouse</option>     
+                                <option value="5" <?php if(($this->session->userdata("p_type"))==5) echo 'selected' ?>>Duplex</option>     
+                                <option value="6" <?php if(($this->session->userdata("p_type"))==6) echo 'selected' ?>>Commericial</option>                                        
                     </select>
                 </div>
                 <div class="col-sm-3 form-group">
@@ -308,10 +342,10 @@
                    <!--  <input type="text" class="form-control" id="possesion" name="possesion" placeholder="Possesion*" value="" required=""> -->
                     <select  class="form-control"  id="possesion" name="possesion" >
                                 <option value="">Select</option>  
-                                <option value="1">RTM</option>
-                                <option value="2">1 Year</option>
-                                <option value="3">2 Year</option>
-                                <option value="4">New Launch</option>                                        
+                                <option value="1" <?php if(($this->session->userdata("possesion"))==1) echo 'selected' ?>>RTM</option>
+                                <option value="2" <?php if(($this->session->userdata("possesion"))==2) echo 'selected' ?>>1 Year</option>
+                                <option value="3" <?php if(($this->session->userdata("possesion"))==3) echo 'selected' ?>>2 Year</option>
+                                <option value="4" <?php if(($this->session->userdata("possesion"))==4) echo 'selected' ?>>New Launch</option>                                        
                     </select>
                 </div>
                 <div class="col-sm-3 form-group">
@@ -319,12 +353,12 @@
                     <!-- <input type="text" class="form-control" id="a_services" name="a_services" placeholder="Additional Sevices*" value="" required=""> -->
                      <select  class="form-control"  id="a_services" name="a_services" >
                                 <option value="">Select</option>  
-                                <option value="1">Site Visit Assitance</option>
-                                <option value="2">Loans</option>
-                                <option value="3">Interiors</option>
-                                <option value="4">Resale Assistance</option>     
-                                <option value="5">Rental Assistance</option>     
-                                <option value="6">NONE</option>                                        
+                                <option value="1" <?php if(($this->session->userdata("a_services"))==1) echo 'selected' ?>>Site Visit Assitance</option>
+                                <option value="2" <?php if(($this->session->userdata("a_services"))==2) echo 'selected' ?>>Loans</option>
+                                <option value="3" <?php if(($this->session->userdata("a_services"))==3) echo 'selected' ?>>Interiors</option>
+                                <option value="4" <?php if(($this->session->userdata("a_services"))==4) echo 'selected' ?>>Resale Assistance</option>     
+                                <option value="5" <?php if(($this->session->userdata("a_services"))==5) echo 'selected' ?>>Rental Assistance</option>     
+                                <option value="6" <?php if(($this->session->userdata("a_services"))==6) echo 'selected' ?>>NONE</option>                                        
                     </select>
                 </div>
                 <div class="col-sm-3 form-group">
@@ -332,17 +366,17 @@
                     <!-- <input type="text" class="form-control" id="tos" name="tos" placeholder="Type Of Sale*" value="" required=""> -->
                      <select  class="form-control"  id="tos" name="tos" >
                                 <option value="">Select</option>  
-                                <option value="1">Primary</option>
-                                <option value="2" >Resale</option>
-                                <option value="3">Rentals</option>                                            
+                                <option value="1" <?php if(($this->session->userdata("tos"))==1) echo 'selected' ?>>Primary</option>
+                                <option value="2"  <?php if(($this->session->userdata("tos"))==2) echo 'selected' ?>>Resale</option>
+                                <option value="3" <?php if(($this->session->userdata("tos"))==3) echo 'selected' ?>>Rentals</option>                                            
                     </select>
                 </div>
                 <div class="col-sm-3 form-group">
                     <label for="client_type">Client Type:</label> 
                     <select  class="form-control"  id="client_type" name="client_type">
                                 <option value="">Select</option>  
-                                <option value="1">Individual</option>
-                                <option value="2">Investor</option>
+                                <option value="1" <?php if(($this->session->userdata("client_type"))==1) echo 'selected' ?>>Individual</option>
+                                <option value="2" <?php if(($this->session->userdata("client_type"))==2) echo 'selected' ?>>Investor</option>
                                             
                     </select>
                 </div>
@@ -968,6 +1002,14 @@
         $('#searchDate').val("");
         $('#srxhtxt').val("");
         $('#dead_reason').val("");
+        $('#budget').val("");
+        $('#p_type').val("");
+        $('#possesion').val("");
+        $('#a_services').val("");
+        $('#tos').val("");
+        $('#client_type').val("");
+        $('#Location').val("");
+       
         $("#search_form").submit();
     }
     // $(document).ready(function() {

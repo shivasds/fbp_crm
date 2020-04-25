@@ -485,6 +485,32 @@ class Dashboard extends CI_Controller {
             $sub_broker=$this->input->post('sub_broker');
             $status=$this->input->post('status');
             $notes=$this->input->post('notes');
+            if($this->input->post('ref_by'))
+            {
+                $data=array(
+                'dept_id'=>$dept,
+                'name'=>$name,
+                'contact_no1'=>$contact_no1,
+                'contact_no2'=>$contact_no2,
+                'callback_type_id'=>$callback_type,
+                'email1'=>$email1,
+                'email2'=>$email2,
+                'project_id'=>$project,
+                'lead_source_id'=>$lead_source,
+                'leadid'=>trim("FBP-".sprintf("%'.011d",$leadId).PHP_EOL),
+                'user_id'=>$this->session->userdata("user_id"),
+                'due_date'=>$due_date,
+                'broker_id'=>$sub_broker,
+                'status_id'=>$status,
+                'notes'=>$notes,
+                'date_added'=>date('Y-m-d H:i:s'),
+                
+                'ref_type' => $this->input->post('ref_by'),
+                'ref_mobile' => $this->input->post('mob_num'),
+            );
+            }
+            else
+            {
             $data=array(
                 'dept_id'=>$dept,
                 'name'=>$name,
@@ -503,6 +529,8 @@ class Dashboard extends CI_Controller {
                 'notes'=>$notes,
                 'date_added'=>date('Y-m-d H:i:s'),
             );
+        }
+            
             $query=$this->callback_model->add_callbacks($data);
             redirect(base_url().'view_callbacks');
         }
@@ -566,7 +594,7 @@ class Dashboard extends CI_Controller {
         //$indiv_callback_data = $this->callback_model->getCallbackDataByUserId($id, $query->user_id);
         $previous_callback = "";
         foreach ($indiv_callback_data as $callback_data) {
-            $previous_callback .= $callback_data->status."****".$callback_data->date_added."****".$callback_data->user;
+            $previous_callback .= $callback_data->status."****".$callback_data->date_added."****".$callback_data->user_name;
             $previous_callback .= "\n---------------------------------\n";
             $previous_callback .= $callback_data->current_callback."\n\n";
         }
@@ -1332,6 +1360,11 @@ class Dashboard extends CI_Controller {
         public function allLocations($value='')
         {
            $data  = $this->callback_model->getName('Locations',$this->input->get_post('Location'));
+           echo json_encode($data);
+        }
+        public function mob_num($value='')
+        {
+           $data  = $this->callback_model->getMobile('callback',$this->input->get_post('contact_no1'));
            echo json_encode($data);
         }
 }

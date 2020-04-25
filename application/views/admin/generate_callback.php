@@ -132,7 +132,7 @@
 
             <div class="col-xs-6 col-sm-4 col-md-3 form-group">
                 <label for="assign">Lead Source:</label>
-                <select  class="form-control"  id="lead_source" name="lead_source" required="required" >
+                <select  class="form-control"  id="lead_source"  name="lead_source" required="required" >
                     <option value="">Select</option>
                     <?php $lead_source= $this->common_model->all_active_lead_sources(); 
                     foreach( $lead_source as $source){ ?>
@@ -140,6 +140,53 @@
                     <?php } ?>
                 </select>
             </div>
+             <div id="abc" hidden>
+                        <div class="col-xs-6 col-sm-4 col-md-3 form-group">
+                            <label for="ref_by">Refered By:</label>
+                            <select  class="form-control"  id="ref_by"  name="ref_by" >
+                                    <option value="">Select</option>  
+                                    <option value="1">Client</option>
+                                    <option value="2">Management</option> 
+                            </select>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3 form-group">
+                            <label for="mob_num">Mobile Number:</label>
+                             <input class="form-control" type="text" name="mob_num" id="mob_num" value="">
+                        </div>
+                        <script>
+                      $(document).ready(function(){
+
+     // Initialize 
+     $( "#mob_num1" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url: "<?=base_url()?>dashboard/mob_num/",
+            type: 'post',
+            dataType: "json",
+            data: {
+              contact_no1: request.term
+            },
+            success: function( data ) {
+                response($.map(data, function (value, key) {
+                return {
+                    label: value.contact_no1, 
+                }
+            }));
+            }
+          });
+        },
+        select: function (event, ui) {
+          // Set selection
+          $('#mob_num').val(ui.item.label); // display the selected text
+          //$('#userid').val(ui.item.value); // save selected id to input
+          return false;
+        }
+      });
+
+    });
+                    </script>
+             </div>
 
           <!--   <div class="col-xs-6 col-sm-4 col-md-3 form-group">
                 <label for="leadId">Lead Id:</label>
@@ -231,6 +278,7 @@
      </form>
 </div>
 <script type="text/javascript">
+    
     function reset_data(){
         $('#name').val('');
         $('#contact_no1').val('');
@@ -295,6 +343,22 @@
         });
 
     });
+   
+    $(document).ready(function(){
+    function changesource(){
+        var a  = this.value;
+        if('6'==a)
+        {
+            $("#abc").show();
+            $("#ref_by").attr("required",true);
+        }
+        else
+        {
+            $("#abc").hidden();
+        }
+    }
+    $("#lead_source").on("change", changesource);
+});
 </script>
 
 
@@ -360,10 +424,10 @@
 										});
 							</script>
 <!--js -->
-<link rel="stylesheet" href="<?php echo base_url()?>assets/css/vroom.css">
+<!-- <link rel="stylesheet" href="<?php echo base_url()?>assets/css/vroom.css">
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/vroom.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/TweenLite.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/CSSPlugin.min.js"></script> -->
 <!--<script src="<?php echo base_url()?>assets/js/scripts.js"></script>-->
 
 <!-- Bootstrap Core JavaScript -->

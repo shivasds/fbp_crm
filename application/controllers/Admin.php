@@ -315,7 +315,35 @@ class Admin extends CI_Controller {
 			$sub_broker=$this->input->post('sub_broker');
 			$status=$this->input->post('status');
 			$notes=$this->input->post('notes');
-			$data=array(
+			$data='';
+			  
+			if($this->input->post('ref_by'))
+			{
+				$data = array(
+				'dept_id'=>$dept,
+				'name'=>$name,
+				'contact_no1'=>$contact_no1,
+				'contact_no2'=>$contact_no2,
+				'callback_type_id'=>$callback_type,
+				'email1'=>$email1,
+				'email2'=>$email2,
+				'project_id'=>$project,
+				'lead_source_id'=>$lead_source,
+				'leadid'=> trim("FBP-".sprintf("%'.011d",$lead_ids).PHP_EOL),
+				'user_id'=>$user_name,
+				'due_date'=>$due_date,
+				'broker_id'=>$sub_broker,
+				'status_id'=>$status,
+				'notes'=>$notes,
+				'date_added'=>date('Y-m-d H:i:s'),
+				'ref_type' => $this->input->post('ref_by'),
+				'ref_mobile' => $this->input->post('mob_num'),
+				);
+				 
+			}
+			else
+			{
+				$data=array(
 				'dept_id'=>$dept,
 				'name'=>$name,
 				'contact_no1'=>$contact_no1,
@@ -333,6 +361,7 @@ class Admin extends CI_Controller {
 				'notes'=>$notes,
 				'date_added'=>date('Y-m-d H:i:s'),
 			); 
+			}
 			$query=$this->callback_model->add_callbacks($data);
 			redirect(base_url().'admin/callbacks');
 		}
@@ -847,14 +876,15 @@ $customer_req = array(
 			$sub_broker=$this->input->post('sub_broker');
 			$status=$this->input->post('status');
 			$city=$this->input->post('city');
-			$budget=$this->input->post('budget');
-			$Locality=$this->input->post('Locality');
+			$budget=$this->input->post('budget'); 
+			$location=$this->input->post('location');
 			$p_type=$this->input->post('p_type');
 			$possesion=$this->input->post('possesion');
 			$a_services=$this->input->post('a_services');
 			$tos=$this->input->post('tos');
 			$client_type=$this->input->post('client_type'); 
 			$dead_reason=$this->input->post('dead_reason'); 
+
 			
 			if($budget!==null){
 				$this->session->set_userdata("budget",$budget);
@@ -886,14 +916,12 @@ $customer_req = array(
 				if($client_type)
 					$where.=" AND cb.client_type=".trim($client_type);
 			}
-			if($Locality!==null){
-				$this->session->set_userdata("Locality",$Locality);
-				if($Locality)
-					$where.=" AND locality like '%".$Locality."%'";
+			if($location!==null){
+				$this->session->set_userdata("location",$location);
+				if($location)
+					$where.=" AND cb.location like '%".$location."%'";
 			} 
 
-
-            
 			if($dept!==null){
 				$this->session->set_userdata("department",$dept);
 				if($dept)
@@ -1223,9 +1251,18 @@ $customer_req = array(
 				$data['toDate'] = $toDate;
 				$data['reportType'] = $reportType;
 
+				
+
 				if($reportType != 'dailyCallback')
 				{
+				 if($reportType=="svdead")
+				{
+					$report_data = $this->site_visit_dead($fromDate,$toDate);
+
+				}else
+				{
 					$report_data = $this->generate_report_data($fromDate, $toDate, $dept, $city, $reportType,$project);
+				}
 
 				}
 				
@@ -2143,6 +2180,8 @@ $customer_req = array(
 					'status_id'=>$status,
 					'notes'=>$value['notes'],
 					'date_added'=>date('Y-m-d H:i:s'),
+					'ref_type' => $this->input->post('ref_by'),
+               		'ref_mobile' => $this->input->post('mob_num'),
 				);
 				if (!($this->callback_model->isexists_callbacks($data))){
 					$this->callback_model->add_callbacks($data);
@@ -3250,6 +3289,57 @@ public function make_user_online($value='')
 		$this->load->view('admin/track_users',$data);
 	}
 
+	public function resitevisit($value='')
+	{
+		$data['heading'] = "Users Re Site Visit Report";
+		$data['name'] ="Re Site Visit Report"; 
+		$data['result'] = $this->callback_model->resitevisit();
+		$this->load->view('reports/resitevisit',$data);
+	}
+	public function site_visit_dead($fromDate='',$toDate='')
+	{
+		$data['heading'] = "Users Site Visit Dead Report";
+		$data['name'] ="Site Visit Dead Report"; 
+		$data['view_page'] ="reports/site_visit_dead"; 
+		$date = explode(' ', $fromDate);
+		$fromDate = $date[0];
+		$date = explode(' ', $toDate);
+		$toDate = $date[0];
+		$rowCount 				= 1000;//$this->callback_model->Count_site_visit_dead($fromDate,$toDate);
+		$data["totalRecords"] 	= $rowCount;
+		$data["links"] 			= paginitaion(base_url().'admin/site_visit_dead/', 3,VIEW_PER_PAGE, $rowCount);
+		$page = $this->uri->segment(3);
+        $offset = !$page ? 0 : $page;
+		//------ End --------------
+		$data['result'] = $this->callback_model->site_visit_dead($offset,VIEW_PER_PAGE,$fromDate,$toDate);
+		//echo $this->db->last_query();die;
+		//echo $this->db->last_query();
+		//$this->load->view('reports/site_visit_dead_id',$data);
+		return $data;
+	}
+	public function site_visit_dead_by_id($fromDate='',$toDate='',$user_id='')
+	{
+		$data['heading'] = "Users Site Visit Dead Report ";
+		$data['name'] ="Site Visit Dead Report"; 
+		//$data['view_page'] ="reports/site_visit_dead"; 
+		$date = explode(' ', $this->input->get('fromDate'));
+		$fromDate = $date[0];
+		$date = explode(' ', $this->input->get('toDate'));
+		$toDate = $date[0];
+		$data['fromDate'] = $fromDate;
+		$data['toDate'] = $toDate;
+		$user_id = $this->input->get('user_id');
+		$rowCount 				= 1000;//$this->callback_model->Count_site_visit_dead($fromDate,$toDate);
+		$data["totalRecords"] 	= $rowCount;
+		$data["links"] 			= paginitaion(base_url().'admin/site_visit_dead/', 3,VIEW_PER_PAGE, $rowCount);
+		$page = $this->uri->segment(3);
+        $offset = !$page ? 0 : $page;
+		//------ End --------------
+		$data['result'] = $this->callback_model->site_visit_dead($offset,VIEW_PER_PAGE,$fromDate,$toDate,$user_id);
+//echo $this->db->last_query();die;
+		//print_r($data);
+		$this->load->view('reports/site_visit_dead_id',$data);
+	}
 	 
 
 }
