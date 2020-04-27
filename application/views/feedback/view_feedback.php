@@ -463,7 +463,7 @@ echo "<script>printFunction();</script>";
 
   </script> 
 </div> 
-	<p class="footer">&copy; <?=date('Y');?> Fullbasket Propertys. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> seconds digital solutions</a></p>
+	<p class="footer">&copy; <?=date('Y');?> Seconds Digitals. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> seconds digital solutions</a></p>
 </div>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/starrr.js"></script>
 

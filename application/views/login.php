@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CRM Fullbasket Property | Login</title>
+<title>CRM Seconds Digital | Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="keywords" content=" " />
@@ -36,7 +36,7 @@
 												
 													<div class="error-top">
 													<h2 class="inner-tittle page" style='align:nowrap;'></h2>
-                          <img src="<?php echo base_url()?>assets/img/logo.png"style="width: 35%;padding: 11px;margin-top: -30px;">
+                          <!-- <img src="<?php echo base_url()?>assets/img/logo.png"style="width: 35%;padding: 11px;margin-top: -30px;"> -->
                           <br>
 													    <div class="login">
 														<h3 class="inner-tittle t-inner" style="font-size: 25px;">Enter Your Details</h3>
@@ -103,7 +103,7 @@
 												<div class="error-btn">
 															
 															</div>
-										   <p>&copy <?= date('Y')?> Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Soultions</a></p>
+										   <p>&copy <?= date('Y')?> Seconds Digital . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Soultions</a></p>
 										</div>
 									<!--footer section end-->
 									<!--/404-->

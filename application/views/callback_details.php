@@ -295,9 +295,9 @@
                         <div class="col-sm-12 form-group">
                             <label for="comment">Mail Box:</label>
                             <textarea class="form-control" name="notesClient" id="c_notesClient" rows="18" id="comment">
-Greetings From Fullbasket Property.
+Greetings From Seconds Digital.
 
-With reference to your site visit on  assisted by Mr. abhishek from Fullbasket Property, we thank you for giving us an opportunity to serve you in searching your dream home.  At FBP it is our endeavour to help you with all the possible Property options which will suit your requirement. Mr.  from FBP will be at your service. He/she will be there to assist you in searching your dream home.
+With reference to your site visit on  assisted by Mr. abhishek from Seconds Digital, we thank you for giving us an opportunity to serve you in searching your dream home.  At FBP it is our endeavour to help you with all the possible Property options which will suit your requirement. Mr.  from FBP will be at your service. He/she will be there to assist you in searching your dream home.
   
 1. Home search - Assisting and helping you find your dream home suiting your requirements by giving you info on market trends, legalities, site visit assistance etc.
 
@@ -313,7 +313,7 @@ With reference to your site visit on  assisted by Mr. abhishek from Fullbasket P
 For any escalations/ complaints please write to admin@leads.com
 
 Regards
-Team Fullbasket Property Services Pvt Ltd
+Team Seconds Digital Services Pvt Ltd
                             </textarea>
                         </div>
                         <div class="col-sm-12 form-group" >
@@ -813,9 +813,9 @@ Team Fullbasket Property Services Pvt Ltd
                                 <textarea class="form-control" name="notes" id="client_email_body" rows="15" id="comment">          
 Dear sir / madam,
 
-Greetings From Fullbasket Property...
+Greetings From Seconds Digital...
 
-Kindly register the below client For __________________ project On behalf Of Fullbasket Property 
+Kindly register the below client For __________________ project On behalf Of Seconds Digital 
 
 Property & acknowledge.
 
@@ -826,7 +826,7 @@ Contact No. : ________________
 E-mail ID   : ________________
 
 Thanks & Regards
-Team Fullbasket Property
+Team Seconds Digital
                                 </textarea>
                             </div>
                             <div class="col-sm-12 form-group">
@@ -1108,7 +1108,7 @@ $(document).ready(function() {
             $('#save').prop('disabled', true);
         }
     }
-    var notesClient = "Greetings From Fullbasket Property.\n\nWith reference to your site visit on {site_visit_date} assisted by Mr. {site_assigned_by} from Fullbasket Property, we thank you for giving us an opportunity to serve you in searching your dream home.  At FBP it is our endeavour to help you with all the possible Property options which will suit your requirement. Mr. {relationship_manager} from FBP will be at your service. He/she will be there to assist you in searching your dream home.\n\n1. Home search - Assisting and helping you find your dream home suiting your requirements by giving you info on market trends, legalities, site visit assistance etc.\n\n2. Home loan Assistance - We will take away your pain of running around the banks to get your loan approved by giving doorstep service of bankers of your choice at your place.\n\n3. Property Purchase Assistance - Ensuring that your home buying becomes a pleasant experience our Relationship Manager will be there throughout the process Of documentation.\n\n4. Post sales Service – This is what differentiates us from others. We will be there for all possible help and guidance till you move into your home.\n\n5. Interior Services - We are tied With best interior designers in the city who give the best designs and execute them at a competitive price.\n\n\nFor any escalations/ complaints please write to admin@leads.com\n\nRegards\n\nTeam Fullbasket Property Services Pvt Ltd";
+    var notesClient = "Greetings From Seconds Digital.\n\nWith reference to your site visit on {site_visit_date} assisted by Mr. {site_assigned_by} from Seconds Digital, we thank you for giving us an opportunity to serve you in searching your dream home.  At FBP it is our endeavour to help you with all the possible Property options which will suit your requirement. Mr. {relationship_manager} from FBP will be at your service. He/she will be there to assist you in searching your dream home.\n\n1. Home search - Assisting and helping you find your dream home suiting your requirements by giving you info on market trends, legalities, site visit assistance etc.\n\n2. Home loan Assistance - We will take away your pain of running around the banks to get your loan approved by giving doorstep service of bankers of your choice at your place.\n\n3. Property Purchase Assistance - Ensuring that your home buying becomes a pleasant experience our Relationship Manager will be there throughout the process Of documentation.\n\n4. Post sales Service – This is what differentiates us from others. We will be there for all possible help and guidance till you move into your home.\n\n5. Interior Services - We are tied With best interior designers in the city who give the best designs and execute them at a competitive price.\n\n\nFor any escalations/ complaints please write to admin@leads.com\n\nRegards\n\nTeam Seconds Digital Services Pvt Ltd";
 
     function update_client_note(){
         var site_visit_date = $("#c_client_visit").val();
@@ -1555,7 +1555,7 @@ $(document).ready(function() {
 
                                      <!--footer section start-->
                                         <footer>
-                                           <p>&copy <?= date('Y')?> Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
+                                           <p>&copy <?= date('Y')?> Seconds Digital . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
                                         </footer>
                                     <!--footer section end-->
                                 </div>

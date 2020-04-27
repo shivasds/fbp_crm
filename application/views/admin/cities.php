@@ -70,7 +70,7 @@
             <button type="submit" id="add_city" style="margin-top:25px;" class="btn btn-success btn-block" onclick="add()" disabled>Add City</button>
         </div>
     </div>
-    <table id="example" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+    <table id="example1" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>City Id</th>
@@ -172,7 +172,7 @@
 
 									 <!--footer section start-->
 										<footer>
-										   <p>&copy <?= date('Y')?> Fullbasket Property . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
+										   <p>&copy <?= date('Y')?> Seconds Digital . All Rights Reserved | Design by <a href="https://secondsdigital.com/" target="_blank">Seconds Digital Solutions.</a></p>
 										</footer>
 									<!--footer section end-->
 								</div>

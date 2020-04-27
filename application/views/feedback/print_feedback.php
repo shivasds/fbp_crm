@@ -351,7 +351,7 @@ td, th {
 <body> 
 <div class="content">
 	<!-- <h1><img src='/assets/img/logo.png'></h1> -->
-	<h1>Fullbasket Property</h1> 
+	<h1>Seconds Digital</h1> 
 	<br>
 	<h2>Feedback Form</h2>
 	<div class="main">
@@ -389,7 +389,7 @@ td, th {
 	            ?>
 	</form>
 </div>
-<p class="footer">&copy; <?=date('Y');?> Fullbasket Propertys. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> seconds digital solutions</a></p>
+<p class="footer">&copy; <?=date('Y');?> Seconds Digitals. All Rights Reserved | Developed by <a href="http:s//secondsdigital.com"> seconds digital solutions</a></p>
 </div>
 
 </body>
