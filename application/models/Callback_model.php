@@ -1312,5 +1312,15 @@ $list_id=implode(',', $ids);
         $data = $query->result_array();
         return $data[0]['Count'];
     }
+    public function re_site_visit($offset='',$limit='',$fromDate='',$toDate='',$user_id='')
+    {
 
+        $SQL = "select  cb.*, concat(u.first_name,' ',u.last_name) as emp_name, count(cb.id) as total, cb.user_id as user_id from callback cb left outer join user u on u.id = cb.user_id   where cb.id in(select callback_id from callback_data where callback_id in (SELECT callback_id FROM `callback_extra_data` WHERE type= 2 group by callback_id Having COUNT(*) > 1))  and date(cb.date_added) >= '$fromDate' and date(cb.date_added) <= '$toDate'  GROUP by u.id  limit $offset,$limit";
+        if($user_id)
+            $SQL ="select  cb.*  from callback cb  where cb.id in(select callback_id from callback_data where callback_id in (SELECT callback_id FROM `callback_extra_data` WHERE type= 2 group by callback_id Having COUNT(*) >1))  and date(cb.date_added) >= '$fromDate' and date(cb.date_added) <= '$toDate'   and user_id = $user_id";
+    
+        $query = $this->db->query($SQL);
+
+        return $query->result_array();
+    }
 }

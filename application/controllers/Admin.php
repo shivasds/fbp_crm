@@ -1259,7 +1259,11 @@ $customer_req = array(
 				{
 					$report_data = $this->site_visit_dead($fromDate,$toDate);
 
-				}else
+				}
+				elseif ($reportType=="resv") {
+					$report_data = $this->re_site_visit($fromDate,$toDate);
+				}
+				else
 				{
 					$report_data = $this->generate_report_data($fromDate, $toDate, $dept, $city, $reportType,$project);
 				}
@@ -3317,6 +3321,8 @@ public function make_user_online($value='')
 		//$this->load->view('reports/site_visit_dead_id',$data);
 		return $data;
 	}
+
+	
 	public function site_visit_dead_by_id($fromDate='',$toDate='',$user_id='')
 	{
 		$data['heading'] = "Users Site Visit Dead Report ";
@@ -3339,6 +3345,51 @@ public function make_user_online($value='')
 //echo $this->db->last_query();die;
 		//print_r($data);
 		$this->load->view('reports/site_visit_dead_id',$data);
+	}
+	public function re_site_visit($fromDate='',$toDate='')
+	{
+		$data['heading'] = "Users Re Site Visits Report";
+		$data['name'] ="Re Site Visit  Report"; 
+		$data['view_page'] ="reports/re_site_visit"; 
+		$date = explode(' ', $fromDate);
+		$fromDate = $date[0];
+		$date = explode(' ', $toDate);
+		$toDate = $date[0];
+		$rowCount 				= 1000;//$this->callback_model->Count_site_visit_dead($fromDate,$toDate);
+		$data["totalRecords"] 	= $rowCount;
+		$data["links"] 			= paginitaion(base_url().'admin/re_site_visit', 3,VIEW_PER_PAGE, $rowCount);
+		$page = $this->uri->segment(3);
+        $offset = !$page ? 0 : $page;
+		//------ End --------------
+		$data['result'] = $this->callback_model->re_site_visit($offset,VIEW_PER_PAGE,$fromDate,$toDate);
+		//echo $this->db->last_query();die;
+		//echo $this->db->last_query();
+		//$this->load->view('reports/site_visit_dead_id',$data);
+		return $data;
+	}
+	
+	public function re_site_visit_by_id($fromDate='',$toDate='',$user_id='')
+	{
+		$data['heading'] = "Users Re Site Visit  Report ";
+		$data['name'] ="Re Site Visit Report"; 
+		//$data['view_page'] ="reports/site_visit_dead"; 
+		$date = explode(' ', $this->input->get('fromDate'));
+		$fromDate = $date[0];
+		$date = explode(' ', $this->input->get('toDate'));
+		$toDate = $date[0];
+		$data['fromDate'] = $fromDate;
+		$data['toDate'] = $toDate;
+		$user_id = $this->input->get('user_id');
+		$rowCount 				= 1000;//$this->callback_model->Count_site_visit_dead($fromDate,$toDate);
+		$data["totalRecords"] 	= $rowCount;
+		$data["links"] 			= paginitaion(base_url().'admin/re_site_visit_by_id/', 3,VIEW_PER_PAGE, $rowCount);
+		$page = $this->uri->segment(3);
+        $offset = !$page ? 0 : $page;
+		//------ End --------------
+		$data['result'] = $this->callback_model->re_site_visit($offset,VIEW_PER_PAGE,$fromDate,$toDate,$user_id);
+//echo $this->db->last_query();die;
+		//print_r($data);
+		$this->load->view('reports/re_site_visit_by_id',$data);
 	}
 	 
 
